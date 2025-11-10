@@ -1,28 +1,29 @@
-<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+<svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .logo-navy { fill: #1B3A5F; }
+      .navy { fill: #0E2F5A; }
+      .wave-stroke { stroke: #0E2F5A; stroke-width: 14; fill: none; stroke-linecap: round; }
     </style>
   </defs>
   
-  <!-- Letter C (left side) -->
-  <text x="50" y="200" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="900" class="logo-navy">C</text>
+  <!-- Letter C (left) -->
+  <text x="80" y="155" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="900" class="navy">C</text>
   
-  <!-- Letter A (center, dominant) -->
-  <g class="logo-navy">
-    <path d="M 200 80 L 250 80 L 300 270 L 260 270 L 250 230 L 200 230 L 190 270 L 150 270 Z M 210 190 L 240 190 L 225 110 Z"/>
+  <!-- Letter A (center, large and bold) -->
+  <g class="navy">
+    <polygon points="220,200 260,50 290,50 250,200"/>
+    <polygon points="290,50 320,50 360,200 330,200"/>
+    <rect x="240" y="115" width="90" height="20"/>
+    <polygon points="260,50 290,50 275,30"/>
   </g>
   
-  <!-- Three Wave Lines (diagonal flow) -->
-  <g class="logo-navy">
-    <path d="M 80 220 Q 140 200 200 180 Q 260 160 320 140 Q 350 130 380 125" 
-          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M 75 200 Q 135 180 195 160 Q 255 140 315 120 Q 345 110 375 105" 
-          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M 70 180 Q 130 160 190 140 Q 250 120 310 100 Q 340 90 370 85" 
-          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <!-- Three Curved Wave Lines -->
+  <g class="wave-stroke">
+    <path d="M 140 155 Q 200 150 260 145 Q 320 140 380 135 Q 420 132 450 138"/>
+    <path d="M 135 135 Q 195 130 255 125 Q 315 120 375 115 Q 415 112 445 118"/>
+    <path d="M 130 115 Q 190 110 250 105 Q 310 100 370 95 Q 410 92 440 98"/>
   </g>
   
-  <!-- Letter N (right side) -->
-  <text x="390" y="200" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="900" class="logo-navy">N</text>
+  <!-- Letter N (right) -->
+  <text x="470" y="155" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="900" class="navy">N</text>
 </svg>
