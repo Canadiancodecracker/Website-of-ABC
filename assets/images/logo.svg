@@ -1,28 +1,28 @@
-<svg width="500" height="150" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
-      .logo-element { fill: #0E2F5A; }
+      .logo-navy { fill: #1B3A5F; }
     </style>
   </defs>
   
   <!-- Letter C (left side) -->
-  <text x="40" y="90" font-family="'Inter', 'Poppins', 'Montserrat', sans-serif" font-size="56" font-weight="700" class="logo-element">C</text>
+  <text x="50" y="200" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="900" class="logo-navy">C</text>
   
   <!-- Letter A (center, dominant) -->
-  <g class="logo-element">
-    <polygon points="170,130 195,30 220,30 195,130"/>
-    <polygon points="220,30 245,30 270,130 245,130"/>
-    <polygon points="190,30 250,30 245,20 195,20"/>
-    <rect x="185" y="75" width="70" height="12"/>
+  <g class="logo-navy">
+    <path d="M 200 80 L 250 80 L 300 270 L 260 270 L 250 230 L 200 230 L 190 270 L 150 270 Z M 210 190 L 240 190 L 225 110 Z"/>
   </g>
   
-  <!-- Three Wave Lines -->
-  <g stroke="#0E2F5A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 100 65 Q 150 60 200 63 Q 250 66 300 55 L 305 58 Q 255 70 205 67 Q 155 64 105 70 Z" fill="#0E2F5A" stroke-width="1"/>
-    <path d="M 105 80 Q 155 75 205 78 Q 255 81 305 70 L 310 73 Q 260 85 210 82 Q 160 79 110 85 Z" fill="#0E2F5A" stroke-width="1"/>
-    <path d="M 110 95 Q 160 90 210 93 Q 260 96 310 85 L 315 88 Q 265 100 215 97 Q 165 94 115 100 Z" fill="#0E2F5A" stroke-width="1"/>
+  <!-- Three Wave Lines (diagonal flow) -->
+  <g class="logo-navy">
+    <path d="M 80 220 Q 140 200 200 180 Q 260 160 320 140 Q 350 130 380 125" 
+          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M 75 200 Q 135 180 195 160 Q 255 140 315 120 Q 345 110 375 105" 
+          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M 70 180 Q 130 160 190 140 Q 250 120 310 100 Q 340 90 370 85" 
+          stroke="#1B3A5F" stroke-width="12" fill="none" stroke-linecap="round"/>
   </g>
   
   <!-- Letter N (right side) -->
-  <text x="360" y="90" font-family="'Inter', 'Poppins', 'Montserrat', sans-serif" font-size="56" font-weight="700" class="logo-element">N</text>
+  <text x="390" y="200" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="900" class="logo-navy">N</text>
 </svg>
