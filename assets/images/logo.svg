@@ -1,0 +1,28 @@
+<svg width="500" height="150" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .logo-element { fill: #0E2F5A; }
+    </style>
+  </defs>
+  
+  <!-- Letter C (left side) -->
+  <text x="40" y="90" font-family="'Inter', 'Poppins', 'Montserrat', sans-serif" font-size="56" font-weight="700" class="logo-element">C</text>
+  
+  <!-- Letter A (center, dominant) -->
+  <g class="logo-element">
+    <polygon points="170,130 195,30 220,30 195,130"/>
+    <polygon points="220,30 245,30 270,130 245,130"/>
+    <polygon points="190,30 250,30 245,20 195,20"/>
+    <rect x="185" y="75" width="70" height="12"/>
+  </g>
+  
+  <!-- Three Wave Lines -->
+  <g stroke="#0E2F5A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 100 65 Q 150 60 200 63 Q 250 66 300 55 L 305 58 Q 255 70 205 67 Q 155 64 105 70 Z" fill="#0E2F5A" stroke-width="1"/>
+    <path d="M 105 80 Q 155 75 205 78 Q 255 81 305 70 L 310 73 Q 260 85 210 82 Q 160 79 110 85 Z" fill="#0E2F5A" stroke-width="1"/>
+    <path d="M 110 95 Q 160 90 210 93 Q 260 96 310 85 L 315 88 Q 265 100 215 97 Q 165 94 115 100 Z" fill="#0E2F5A" stroke-width="1"/>
+  </g>
+  
+  <!-- Letter N (right side) -->
+  <text x="360" y="90" font-family="'Inter', 'Poppins', 'Montserrat', sans-serif" font-size="56" font-weight="700" class="logo-element">N</text>
+</svg>
