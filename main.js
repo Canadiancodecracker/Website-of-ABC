@@ -146,7 +146,10 @@ function applyLang(lang) {
 
 function setupLangToggle() {
   document.querySelectorAll('[data-setlang]').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-setlang')));
+    btn.addEventListener('click', () => {
+      applyLang(btn.getAttribute('data-setlang'));
+      loadNews(); // Reload news when language changes
+    });
   });
   const saved = localStorage.getItem('lang') || 'en';
   applyLang(saved);
@@ -170,52 +173,61 @@ form?.addEventListener('submit', (e) => {
 });
 
 document.getElementById('y').textContent = new Date().getFullYear();
-setupLangToggle();
 
 // News & Updates Dynamic Loader
-(function() {
-  function getCurrentLanguage() {
-    return localStorage.getItem('lang') || 'en';
+function getCurrentLanguage() {
+  return localStorage.getItem('lang') || 'en';
+}
+
+async function loadNews() {
+  try {
+    const response = await fetch('news_data.json');
+    if (!response.ok) throw new Error('Failed to fetch news');
+    const data = await response.json();
+    renderNews(data.news);
+  } catch (error) {
+    console.error('Error loading news:', error);
+  }
+}
+
+function renderNews(newsItems) {
+  const container = document.getElementById('news-scroll-container');
+  if (!container) {
+    console.error('News container not found');
+    return;
   }
 
-  async function loadNews() {
-    try {
-      const response = await fetch('news_data.json');
-      const data = await response.json();
-      renderNews(data.news);
-    } catch (error) {
-      console.error('Error loading news:', error);
-    }
-  }
-
-  function renderNews(newsItems) {
-    const container = document.getElementById('news-scroll-container');
-    if (!container) return;
-
-    const lang = getCurrentLanguage();
-    const allItems = [...newsItems, ...newsItems];
+  const lang = getCurrentLanguage();
+  const allItems = [...newsItems, ...newsItems]; // Duplicate for infinite scroll
+  
+  container.innerHTML = allItems.map(item => {
+    const date = lang === 'zh' ? item.date_zh : item.date;
+    const title = lang === 'zh' ? item.title_zh : item.title_en;
+    const summary = lang === 'zh' ? item.summary_zh : item.summary_en;
+    const readMore = lang === 'zh' ? '阅读更多 →' : 'Read More →';
     
-    container.innerHTML = allItems.map(item => {
-      const date = lang === 'zh' ? item.date_zh : item.date;
-      const title = lang === 'zh' ? item.title_zh : item.title_en;
-      const summary = lang === 'zh' ? item.summary_zh : item.summary_en;
-      const readMore = lang === 'zh' ? '阅读更多 →' : 'Read More →';
-      
-      return `
-        <div class="news-item">
-          <div class="news-date">${date}</div>
-          <h3 class="news-title">${title}</h3>
-          <p class="news-summary">${summary}</p>
-          <a href="${item.link}" class="news-read-more">${readMore}</a>
-        </div>
-      `;
-    }).join('');
-  }
+    return `
+      <div class="news-item">
+        <div class="news-date">${date}</div>
+        <h3 class="news-title">${title}</h3>
+        <p class="news-summary">${summary}</p>
+        <a href="${item.link}" class="news-read-more">${readMore}</a>
+      </div>
+    `;
+  }).join('');
+  
+  console.log('News loaded successfully:', allItems.length, 'items');
+}
 
-  document.addEventListener('DOMContentLoaded', () => {
-    loadNews();
-    document.querySelectorAll('[data-setlang]').forEach(btn => {
-      btn.addEventListener('click', () => setTimeout(loadNews, 100));
-    });
-  });
-})();
+// Initialize everything
+function init() {
+  setupLangToggle();
+  loadNews();
+}
+
+// Run init when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
