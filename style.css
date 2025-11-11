@@ -93,3 +93,14 @@ section[id]{scroll-margin-top:5rem;}
   color: #4CAF50;
   transform: translateX(4px);
 }
+
+/* Debug news section - make items more visible */
+#news-scroll-container {
+  min-height: 100px !important;
+}
+
+.news-item {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
