@@ -1,27 +1,34 @@
-    <footer class="bg-white">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 border-t border-gray-200">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+    <footer class="bg-white border-t border-gray-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
           <!-- Left: Logo and Brand -->
-          <div class="flex items-center gap-2 justify-center md:justify-start">
+          <div class="flex items-center gap-2">
             <img src="assets/images/logo.svg" alt="ABC Chemical Logo" class="h-8 w-auto" />
-            <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+            <span class="font-semibold text-sm" id="footerBrand">ABC Chemical Co., Ltd.</span>
           </div>
           
-          <!-- Center: QR Code -->
-          <div class="flex flex-col items-center gap-3">
-            <img src="assets/images/abc-chemical-qr-code.png" alt="QR Code" class="w-24 h-24" />
-            <p class="text-xs text-gray-600 text-center">Scan to visit our website</p>
-          </div>
+          <!-- Center: Navigation Links -->
+          <nav class="flex items-center gap-6 text-sm">
+            <a href="#" class="hover:text-brand-blue transition" data-i18n="footer.privacy">Privacy</a>
+            <a href="#" class="hover:text-brand-blue transition" data-i18n="footer.terms">Terms</a>
+            <a href="#" class="hover:text-brand-blue transition" data-i18n="footer.compliance">Compliance</a>
+          </nav>
           
-          <!-- Right: Links and Copyright -->
-          <div class="flex flex-col items-center md:items-end gap-3">
-            <nav class="flex items-center gap-6 text-sm">
-              <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
-              <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
-              <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
-            </nav>
-            <div class="text-xs text-gray-500"><span data-i18n="footer.c">©</span> <span id="y"></span> <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span></div>
+          <!-- Right: QR Code -->
+          <div class="flex items-center gap-3">
+            <div class="text-right hidden sm:block">
+              <p class="text-xs font-semibold text-gray-900">Scan to Visit</p>
+              <p class="text-xs text-gray-500">Our Website</p>
+            </div>
+            <img src="assets/images/abc-chemical-qr-code.png" alt="Website QR Code" class="w-16 h-16 rounded border border-gray-200" />
           </div>
+        </div>
+        
+        <!-- Copyright - Full Width Below -->
+        <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+          <p class="text-xs text-gray-500">
+            <span data-i18n="footer.c">©</span> <span id="y"></span> <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span>
+          </p>
         </div>
       </div>
     </footer>
