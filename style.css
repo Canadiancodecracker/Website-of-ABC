@@ -104,3 +104,17 @@ section[id]{scroll-margin-top:5rem;}
   visibility: visible !important;
   opacity: 1 !important;
 }
+#news-scroll-container {
+  animation: scrollNews 40s linear infinite;
+  padding-top: 0 !important;
+}
+
+@keyframes scrollNews {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.news-item {
+  margin-bottom: 24px;
+  min-height: 180px;
+}
