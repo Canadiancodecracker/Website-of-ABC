@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>All News - ABC Chemical</title>
+    <meta name="description" content="All news and updates from ABC Chemical Co., Ltd." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
+            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans">
+    <header class="bg-white border-b border-gray-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="text-brand-blue hover:underline">← Back to Home</a>
+          <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden" role="group" aria-label="Language toggle">
+            <button id="btn-en" class="lang-btn lang-active" data-setlang="en" aria-pressed="true">EN</button>
+            <button id="btn-zh" class="lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-8" data-i18n="news.allNews">All News</h1>
+      <div id="all-news-container" class="space-y-6"></div>
+    </main>
+
+    <script src="./main.js"></script>
+    <script>
+      async function loadAllNews() {
+        try {
+          const response = await fetch('news_data.json');
+          if (!response.ok) throw new Error('Failed to fetch news');
+          const data = await response.json();
+          renderAllNews(data.news);
+        } catch (error) {
+          console.error('Error loading news:', error);
+        }
+      }
+
+      function renderAllNews(newsItems) {
+        const container = document.getElementById('all-news-container');
+        if (!container) return;
+
+        const lang = getCurrentLanguage();
+        
+        container.innerHTML = newsItems.map(item => {
+          const date = lang === 'zh' ? item.date_zh : item.date;
+          const title = lang === 'zh' ? item.title_zh : item.title_en;
+          const summary = lang === 'zh' ? item.summary_zh : item.summary_en;
+          const link = lang === 'zh' ? (item.link_zh || item.link) : item.link;
+          const readMore = lang === 'zh' ? '阅读更多 →' : 'Read More →';
+          
+          return `
+            <article class="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="text-sm text-gray-500 mb-2">${date}</div>
+              <h2 class="text-xl font-bold text-gray-900 mb-3">${title}</h2>
+              <p class="text-gray-700 mb-4">${summary}</p>
+              <a href="${link}" class="inline-flex items-center text-brand-blue hover:text-brand-blue/80 font-semibold">
+                ${readMore}
+              </a>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Reload news when language changes
+      const originalApplyLang = applyLang;
+      applyLang = function(lang) {
+        originalApplyLang(lang);
+        if (document.getElementById('all-news-container')) {
+          loadAllNews();
+        }
+      };
+
+      // Initialize
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          init();
+          loadAllNews();
+        });
+      } else {
+        init();
+        loadAllNews();
+      }
+    </script>
+  </body>
+</html>
+
