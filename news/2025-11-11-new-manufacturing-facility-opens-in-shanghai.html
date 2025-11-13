@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Manufacturing Facility Opens in Shanghai - ABC Chemical</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../main.js"></script>
+</head>
+<body class="bg-gray-50">
+  <header class="bg-white border-b border-gray-200">
+    <div class="mx-auto max-w-4xl px-4 py-6">
+      <div class="flex items-center justify-between">
+        <a href="../index.html" class="text-brand-blue hover:underline">← <span data-i18n="news.back">Back to Home</span></a>
+        <div class="flex gap-2">
+          <button data-setlang="en" class="px-3 py-1 text-sm rounded border">EN</button>
+          <button data-setlang="zh" class="px-3 py-1 text-sm rounded border">中</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="mx-auto max-w-4xl px-4 py-12">
+    <article>
+      <div class="mb-6">
+        <p class="text-sm text-gray-500 mb-2" id="article-date-en">2025-11-11</p>
+        <p class="text-sm text-gray-500 mb-2 hidden" id="article-date-zh">2025-11-11</p>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4" id="article-title-en">New Manufacturing Facility Opens in Shanghai</h1>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4 hidden" id="article-title-zh">上海新制造工厂正式启用</h1>
+      </div>
+      
+      <div class="prose prose-lg max-w-none" id="article-content-en">
+        <p></p>
+        <p>ABC Chemical Co., Ltd. is proud to announce the grand opening of our new manufacturing facility in Shanghai, representing a $50 million investment in cutting-edge production technology.</p>
+        <p>The facility spans 100,000 square meters and features fully automated production lines for calcium carbide and cyanamide derivatives.</p>
+        <p>This expansion increases our total production capacity by 40% and creates 200 new jobs in the region.</p>
+        <p>The facility incorporates the latest environmental protection systems, including closed-loop water recycling and solar power generation.</p>
+      </div>
+      
+      <div class="prose prose-lg max-w-none hidden" id="article-content-zh">
+        <p>ABC化工有限公司自豪地宣布位于上海的新制造工厂正式开业，这代表着5000万美元的尖端生产技术投资。</p>
+        <p>该工厂占地10万平方米，配备全自动电石和氰胺衍生物生产线。</p>
+        <p>此次扩建使我们的总产能增加40%，并在该地区创造200个新就业岗位。</p>
+        <p>工厂采用最新环保系统，包括闭环水循环和太阳能发电。</p>
+      </div>
+    </article>
+  </main>
+  
+  <script>
+    // Language switcher for article page
+    document.querySelectorAll('[data-setlang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-setlang');
+        
+        // Toggle date
+        document.getElementById('article-date-en').classList.toggle('hidden', lang === 'zh');
+        document.getElementById('article-date-zh').classList.toggle('hidden', lang === 'en');
+        
+        // Toggle title
+        document.getElementById('article-title-en').classList.toggle('hidden', lang === 'zh');
+        document.getElementById('article-title-zh').classList.toggle('hidden', lang === 'en');
+        
+        // Toggle content
+        document.getElementById('article-content-en').classList.toggle('hidden', lang === 'zh');
+        document.getElementById('article-content-zh').classList.toggle('hidden', lang === 'en');
+        
+        // Update button states
+        document.querySelectorAll('[data-setlang]').forEach(b => {
+          b.classList.toggle('bg-brand-blue', b.getAttribute('data-setlang') === lang);
+          b.classList.toggle('text-white', b.getAttribute('data-setlang') === lang);
+        });
+        
+        localStorage.setItem('lang', lang);
+      });
+    });
+    
+    // Apply saved language
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.querySelector(`[data-setlang="${savedLang}"]`)?.click();
+  </script>
+</body>
+</html>
