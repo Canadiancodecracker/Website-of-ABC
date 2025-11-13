@@ -8,7 +8,8 @@
       "title_zh": "ABC化工研究人员成功开创绿色催化方法",
       "summary_en": "Breakthrough in sustainable manufacturing reduces industrial waste by 30%",
       "summary_zh": "可持续制造突破将工业废弃物减少30%",
-      "link": "news/2024-12-18-green-catalysis.html"
+      "link": "news/2024-12-18-green-catalysis.html",
+      "link_zh": "news/2024-12-18-green-catalysis-zh.html"
     },
     {
       "id": 2,
@@ -18,7 +19,8 @@
       "title_zh": "与全球物流公司建立战略合作",
       "summary_en": "Enhancing supply chain resilience for reliable global delivery",
       "summary_zh": "提高供应链弹性确保全球可靠交付",
-      "link": "news/2024-12-17-logistics-partnership.html"
+      "link": "news/2024-12-17-logistics-partnership.html",
+      "link_zh": "news/2024-12-17-logistics-partnership-zh.html"
     },
     {
       "id": 3,
@@ -28,7 +30,8 @@
       "title_zh": "超级绿色倡议：2026年减少20%碳排放",
       "summary_en": "Company-wide commitment to renewable energy and emissions reduction",
       "summary_zh": "公司范围承诺使用可再生能源和减排",
-      "link": "news/2024-12-15-super-green.html"
+      "link": "news/2024-12-15-super-green.html",
+      "link_zh": "news/2024-12-15-super-green-zh.html"
     }
   ]
 }
