@@ -26,11 +26,11 @@ The contact form is configured to use **Formspree**, a service that handles form
    ```
 
 ### Step 4: Configure Email Notifications
-1. In your Formspree dashboard, go to your form's settings
-2. Add your email address: **shenming@263.net** to receive notifications
-3. Go to "Settings" → "Email Notifications"
-4. Enable email notifications and verify your email address
-5. (Optional) Set up auto-reply messages
+1. In your Formspree dashboard, go to the **Workflow** tab
+2. Click "+ Add New" or "Add Action" and select **Email**
+3. Set the recipient email to: **shenming2008@gmail.com**
+4. Save the changes
+5. (Optional) Verify your email address in Account settings if needed
 
 ### Step 5: Test the Form
 1. Deploy your changes to GitHub Pages
@@ -49,11 +49,11 @@ The contact form is configured to use **Formspree**, a service that handles form
    - Ability to export data
    - Search and filter options
 
-### Option 2: Email Notifications (Configured for: shenming@263.net)
-- Once configured in Formspree, you'll receive emails at **shenming@263.net** for each submission
+### Option 2: Email Notifications (Configured for: shenming2008@gmail.com)
+- Once configured in Formspree, you'll receive emails at **shenming2008@gmail.com** for each submission
 - The email contains all form data (name, email, company, phone, message)
 - You can reply directly to the submitter's email address
-- **Setup**: In Formspree dashboard → Your Form → Settings → Email Notifications → Add shenming@263.net
+- **Setup**: In Formspree dashboard → Your Form → Workflow tab → Add Email action → Set recipient to shenming2008@gmail.com
 
 ### Option 3: Formspree API (Advanced)
 - Access submissions programmatically via Formspree API
