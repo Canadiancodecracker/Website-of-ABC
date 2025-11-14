@@ -477,12 +477,11 @@
               <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="contact.title">Request Information</h2>
               <p class="mt-2 text-gray-700" data-i18n="contact.desc">Tell us about your application, required specs, and target volumes. Our team will respond promptly.</p>
               <!-- 
-                FORM SETUP REQUIRED: Replace YOUR_FORM_ID with your Formspree Form ID
-                Get your Form ID from https://formspree.io after creating a form
+                Formspree Configuration:
+                - Form Endpoint: https://formspree.io/f/mjkjgjoe
+                - Email Recipient: shenming2008@gmail.com
+                - Configure email in Formspree dashboard → Workflow tab → Add Email action
                 See FORM_SETUP.md for detailed instructions
-                
-                Email notifications will be sent to: shenming2008@gmail.com
-                Configure this in Formspree dashboard → Workflow tab → Add Email action
               -->
               <form id="contactForm" action="https://formspree.io/f/mjkjgjoe" method="POST" class="mt-8 grid grid-cols-1 gap-4">
                 <!-- Hidden field for reply-to email -->

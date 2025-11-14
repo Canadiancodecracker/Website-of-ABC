@@ -22,8 +22,9 @@ The contact form is configured to use **Formspree**, a service that handles form
    ```
 3. Replace `YOUR_FORM_ID` with your actual Formspree Form ID
    ```html
-   <form id="contactForm" action="https://formspree.io/f/xvgkqyzw" method="POST" class="mt-8 grid grid-cols-1 gap-4">
+   <form id="contactForm" action="https://formspree.io/f/mjkjgjoe" method="POST" class="mt-8 grid grid-cols-1 gap-4">
    ```
+   **Note:** The form is already configured with Form ID: `mjkjgjoe`
 
 ### Step 4: Configure Email Notifications
 1. In your Formspree dashboard, go to the **Workflow** tab
