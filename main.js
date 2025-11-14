@@ -45,7 +45,8 @@ const T = {
       p1: { title: "Calcium Carbide", desc: "High‑purity feedstock supporting acetylene generation and downstream specialty syntheses." },
       p2: { title: "Cyanamide Derivatives", desc: "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems." },
       p3: { title: "Performance Products", desc: "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance." },
-      p4: { title: "Industrial Intermediates", desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses." }
+      p4: { title: "Industrial Intermediates", desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses." },
+      p5: { title: "Calcium Cyanamide", desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses." }
     },
     apps: {
       title: "Applications",
@@ -149,7 +150,8 @@ const T = {
       p1: { title: "电石（碳化钙）", desc: "高纯度原料，支持乙炔制备与下游特种合成。" },
       p2: { title: "氰胺衍生物", desc: "氰胺与双氰胺，具备可控反应性与高性能固化方案。" },
       p3: { title: "性能产品", desc: "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。" },
-      p4: { title: "工业中间体", desc: "硫脲与硝酸胍，可靠的高级合成中间体。" }
+      p4: { title: "工业中间体", desc: "硫脲与硝酸胍，可靠的高级合成中间体。" },
+      p5: { title: "氰氨化钙", desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。" }
     },
     apps: {
       title: "应用",
