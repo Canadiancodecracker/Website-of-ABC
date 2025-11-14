@@ -146,24 +146,21 @@ function applyLang(lang) {
   });
 
   // Update ISO certificate links based on language
+  // Chinese version links to Chinese certificates, English version links to English certificates
   const iso9001Link = document.getElementById('iso-9001-link');
   const iso14001Link = document.getElementById('iso-14001-link');
   const iso45001Link = document.getElementById('iso-45001-link');
   
-  if (iso9001Link) {
-    iso9001Link.href = lang === 'zh' 
-      ? 'assets/iso/iso-9001-certificate-zh.png' 
-      : 'assets/iso/iso-9001-certificate.png';
-  }
-  if (iso14001Link) {
-    iso14001Link.href = lang === 'zh' 
-      ? 'assets/iso/iso-14001-certificate-zh.png' 
-      : 'assets/iso/iso-14001-certificate.png';
-  }
-  if (iso45001Link) {
-    iso45001Link.href = lang === 'zh' 
-      ? 'assets/iso/iso-45001-certificate-zh.png' 
-      : 'assets/iso/iso-45001-certificate.png';
+  if (lang === 'zh') {
+    // Chinese version: use Chinese certificates
+    if (iso9001Link) iso9001Link.href = 'assets/iso/iso-9001-certificate-zh.png';
+    if (iso14001Link) iso14001Link.href = 'assets/iso/iso-14001-certificate-zh.png';
+    if (iso45001Link) iso45001Link.href = 'assets/iso/iso-45001-certificate-zh.png';
+  } else {
+    // English version: use English certificates
+    if (iso9001Link) iso9001Link.href = 'assets/iso/iso-9001-certificate.png';
+    if (iso14001Link) iso14001Link.href = 'assets/iso/iso-14001-certificate.png';
+    if (iso45001Link) iso45001Link.href = 'assets/iso/iso-45001-certificate.png';
   }
 
   localStorage.setItem('lang', lang);
