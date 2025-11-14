@@ -27,13 +27,38 @@ The contact form is configured to use **Formspree**, a service that handles form
 
 ### Step 4: Configure Email Notifications
 1. In your Formspree dashboard, go to your form's settings
-2. Add your email address to receive notifications
-3. (Optional) Set up auto-reply messages
+2. Add your email address: **shenming@263.net** to receive notifications
+3. Go to "Settings" → "Email Notifications"
+4. Enable email notifications and verify your email address
+5. (Optional) Set up auto-reply messages
 
 ### Step 5: Test the Form
 1. Deploy your changes to GitHub Pages
 2. Fill out and submit the contact form on your website
 3. Check your email - you should receive the form submission!
+
+## Where to View Messages
+
+### Option 1: Formspree Dashboard (Recommended)
+1. Log in to [https://formspree.io](https://formspree.io)
+2. Click on your form name
+3. Go to the **"Submissions"** tab
+4. You'll see all form submissions listed with:
+   - Timestamp
+   - All form fields (name, email, company, phone, message)
+   - Ability to export data
+   - Search and filter options
+
+### Option 2: Email Notifications (Configured for: shenming@263.net)
+- Once configured in Formspree, you'll receive emails at **shenming@263.net** for each submission
+- The email contains all form data (name, email, company, phone, message)
+- You can reply directly to the submitter's email address
+- **Setup**: In Formspree dashboard → Your Form → Settings → Email Notifications → Add shenming@263.net
+
+### Option 3: Formspree API (Advanced)
+- Access submissions programmatically via Formspree API
+- Useful for integrating with other systems
+- See [Formspree API documentation](https://help.formspree.io/hc/en-us/articles/360055613373-The-Formspree-API) for details
 
 ## How It Works
 
