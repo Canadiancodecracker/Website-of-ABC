@@ -118,3 +118,22 @@ section[id]{scroll-margin-top:5rem;}
   margin-bottom: 24px;
   min-height: 180px;
 }
+
+/* Navigation Dropdown Styles */
+nav .group:hover .absolute {
+  pointer-events: auto;
+}
+
+nav .absolute {
+  pointer-events: none;
+}
+
+nav .group svg {
+  transition: transform 0.2s;
+  opacity: 0.6;
+}
+
+nav .group:hover svg {
+  transform: rotate(180deg);
+  opacity: 1;
+}

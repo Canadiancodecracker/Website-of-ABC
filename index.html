@@ -34,13 +34,98 @@
             <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
           </a>
 
-          <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#home" class="hover:text-brand-blue transition" data-i18n="nav.home">Home</a>
-            <a href="#products" class="hover:text-brand-blue transition" data-i18n="nav.products">Products</a>
-            <a href="#applications" class="hover:text-brand-blue transition" data-i18n="nav.applications">Applications</a>
-            <a href="#sustainability" class="hover:text-brand-blue transition" data-i18n="nav.sustainability">Sustainability</a>
-            <a href="#resources" class="hover:text-brand-blue transition" data-i18n="nav.resources">Resources</a>
-            <a href="#contact" class="hover:text-brand-blue transition" data-i18n="nav.contact">Contact</a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <!-- Home Dropdown -->
+            <div class="relative group">
+              <a href="#home" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.home">Home</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#home" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.home.about">About Us</a>
+                  <a href="#home" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.home.overview">Company Overview</a>
+                  <a href="all-news.html" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.home.news">News & Updates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Dropdown -->
+            <div class="relative group">
+              <a href="#products" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.products">Products</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.calcium">Calcium Carbide</a>
+                  <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
+                  <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.performance">Performance Products</a>
+                  <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.intermediates">Industrial Intermediates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Applications Dropdown -->
+            <div class="relative group">
+              <a href="#applications" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.applications">Applications</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#applications" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
+                  <a href="#applications" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
+                  <a href="#applications" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.applications.metallurgy">Metallurgy & Industry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sustainability Dropdown -->
+            <div class="relative group">
+              <a href="#sustainability" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.sustainability">Sustainability</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#sustainability" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.sustainability.policy">Environmental Policy</a>
+                  <a href="#sustainability" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
+                  <a href="#sustainability" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.sustainability.ehs">EHS Practices</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resources Dropdown -->
+            <div class="relative group">
+              <a href="#resources" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.resources">Resources</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#resources" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.resources.sds">SDS Documents</a>
+                  <a href="#resources" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.resources.datasheets">Datasheets</a>
+                  <a href="all-news.html" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.resources.news">All News</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Dropdown -->
+            <div class="relative group">
+              <a href="#contact" class="hover:text-brand-blue transition flex items-center gap-1">
+                <span data-i18n="nav.contact">Contact</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </a>
+              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="#contact" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.contact.general">General Inquiries</a>
+                  <a href="#contact" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.contact.sales">Sales</a>
+                  <a href="#contact" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.contact.technical">Technical Support</a>
+                </div>
+              </div>
+            </div>
+
             <div class="ml-2 h-6 w-px bg-gray-300"></div>
             <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden" role="group" aria-label="Language toggle">
               <button id="btn-en" class="lang-btn lang-active" data-setlang="en" aria-pressed="true">EN</button>
