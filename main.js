@@ -277,6 +277,62 @@ function setupLangToggle() {
   applyLang(saved);
 }
 
+// Setup dropdown menus
+function setupDropdowns() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+  
+  // Close all dropdowns
+  function closeAllDropdowns() {
+    dropdownMenus.forEach(menu => {
+      menu.classList.remove('active');
+    });
+    document.querySelectorAll('.dropdown-container').forEach(container => {
+      container.classList.remove('active');
+    });
+  }
+  
+  // Handle dropdown toggle clicks
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const dropdownId = toggle.getAttribute('data-dropdown');
+      const dropdownMenu = document.getElementById(`dropdown-${dropdownId}`);
+      const container = toggle.closest('.dropdown-container');
+      
+      // Toggle the clicked dropdown
+      const isActive = dropdownMenu.classList.contains('active');
+      closeAllDropdowns();
+      
+      if (!isActive) {
+        dropdownMenu.classList.add('active');
+        container.classList.add('active');
+      }
+    });
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-container')) {
+      closeAllDropdowns();
+    }
+  });
+  
+  // Close dropdown when clicking on a dropdown link
+  dropdownMenus.forEach(menu => {
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        // Small delay to allow navigation
+        setTimeout(() => {
+          closeAllDropdowns();
+        }, 100);
+      });
+    });
+  });
+}
+
 const btn = document.getElementById('menuBtn');
 const panel = document.getElementById('mobileNav');
 btn?.addEventListener('click', () => {
@@ -345,6 +401,7 @@ function renderNews(newsItems) {
 // Initialize everything
 function init() {
   setupLangToggle();
+  setupDropdowns();
   loadNews();
 }
 

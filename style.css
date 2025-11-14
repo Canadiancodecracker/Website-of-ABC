@@ -120,20 +120,36 @@ section[id]{scroll-margin-top:5rem;}
 }
 
 /* Navigation Dropdown Styles */
-nav .group:hover .absolute {
-  pointer-events: auto;
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  padding: 0;
 }
 
-nav .absolute {
+.dropdown-menu {
   pointer-events: none;
 }
 
-nav .group svg {
+.dropdown-menu.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto;
+}
+
+.dropdown-icon {
   transition: transform 0.2s;
   opacity: 0.6;
 }
 
-nav .group:hover svg {
+.dropdown-container.active .dropdown-icon {
   transform: rotate(180deg);
   opacity: 1;
+}
+
+.dropdown-container.active .dropdown-toggle {
+  color: #0E3C75;
 }

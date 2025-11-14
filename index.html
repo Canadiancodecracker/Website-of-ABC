@@ -36,12 +36,12 @@
 
           <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
             <!-- Home Dropdown -->
-            <div class="relative group">
-              <a href="#home" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="home">
                 <span data-i18n="nav.home">Home</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-home" class="dropdown-menu absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#home" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.home.about">About Us</a>
                   <a href="#home" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.home.overview">Company Overview</a>
@@ -51,12 +51,12 @@
             </div>
 
             <!-- Products Dropdown -->
-            <div class="relative group">
-              <a href="#products" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="products">
                 <span data-i18n="nav.products">Products</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-products" class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.calcium">Calcium Carbide</a>
                   <a href="#products" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
@@ -67,12 +67,12 @@
             </div>
 
             <!-- Applications Dropdown -->
-            <div class="relative group">
-              <a href="#applications" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="applications">
                 <span data-i18n="nav.applications">Applications</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-applications" class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#applications" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
                   <a href="#applications" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
@@ -82,12 +82,12 @@
             </div>
 
             <!-- Sustainability Dropdown -->
-            <div class="relative group">
-              <a href="#sustainability" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="sustainability">
                 <span data-i18n="nav.sustainability">Sustainability</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-sustainability" class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#sustainability" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.sustainability.policy">Environmental Policy</a>
                   <a href="#sustainability" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
@@ -97,12 +97,12 @@
             </div>
 
             <!-- Resources Dropdown -->
-            <div class="relative group">
-              <a href="#resources" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="resources">
                 <span data-i18n="nav.resources">Resources</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-resources" class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#resources" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.resources.sds">SDS Documents</a>
                   <a href="#resources" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.resources.datasheets">Datasheets</a>
@@ -112,12 +112,12 @@
             </div>
 
             <!-- Contact Dropdown -->
-            <div class="relative group">
-              <a href="#contact" class="hover:text-brand-blue transition flex items-center gap-1">
+            <div class="relative dropdown-container">
+              <button type="button" class="dropdown-toggle hover:text-brand-blue transition flex items-center gap-1" data-dropdown="contact">
                 <span data-i18n="nav.contact">Contact</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              </a>
-              <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <svg class="w-3 h-3 dropdown-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="dropdown-contact" class="dropdown-menu absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible transition-all duration-200 z-50">
                 <div class="py-2">
                   <a href="#contact" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.contact.general">General Inquiries</a>
                   <a href="#contact" class="block px-4 py-2 hover:bg-gray-50" data-i18n="nav.contact.sales">Sales</a>
