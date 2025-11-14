@@ -44,9 +44,16 @@
     <script>
       async function loadAllNews() {
         try {
-          const response = await fetch('news_data.json');
+          console.log('loadAllNews: Fetching news_data.json...');
+          // Add cache-busting parameter to ensure fresh data
+          const response = await fetch('news_data.json?v=' + new Date().getTime());
           if (!response.ok) throw new Error('Failed to fetch news');
           const data = await response.json();
+          console.log('loadAllNews: Data loaded, items:', data.news ? data.news.length : 0);
+          if (data.news && data.news.length > 0) {
+            console.log('loadAllNews: First item date:', data.news[0].date);
+            console.log('loadAllNews: First item title:', data.news[0].title_en);
+          }
           renderAllNews(data.news);
         } catch (error) {
           console.error('Error loading news:', error);
@@ -55,11 +62,24 @@
 
       function renderAllNews(newsItems) {
         const container = document.getElementById('all-news-container');
-        if (!container) return;
+        if (!container) {
+          console.error('renderAllNews: Container not found');
+          return;
+        }
 
         const lang = getCurrentLanguage();
+        console.log('renderAllNews: Language:', lang, 'Items:', newsItems.length);
         
-        container.innerHTML = newsItems.map(item => {
+        // Sort news by date (newest first)
+        const sortedItems = [...newsItems].sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB - dateA; // Descending order (newest first)
+        });
+        
+        console.log('renderAllNews: Sorted items (first 3 dates):', sortedItems.slice(0, 3).map(item => item.date));
+        
+        container.innerHTML = sortedItems.map(item => {
           const date = lang === 'zh' ? item.date_zh : item.date;
           const title = lang === 'zh' ? item.title_zh : item.title_en;
           const summary = lang === 'zh' ? item.summary_zh : item.summary_en;

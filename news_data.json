@@ -1,6 +1,17 @@
 {
   "news": [
     {
+      "id": 6,
+      "date": "2025-11-14",
+      "date_zh": "2025年11月14日",
+      "title_en": "ABC Chemical Launches State-of-the-Art API Project: Dimethylamine Hydrochloride Plant in Ningxia",
+      "title_zh": "ABC化工启动尖端API项目：宁夏二甲胺盐酸盐工厂开建",
+      "summary_en": "ABC Chemical Co., Ltd. has initiated a major project in Ningxia for the production of Dimethylamine Hydrochloride (DMH) API, with the first phase targeting a capacity of 10,000 MT/Year.",
+      "summary_zh": "ABC化工有限公司在宁夏启动了一项生产盐酸二甲胺（DMH）API的重大项目，一期产能目标为10,000公吨/年。",
+      "link": "news/2025-11-14-dimethylamine-hydrochloride-plant.html",
+      "link_zh": "news/2025-11-14-dimethylamine-hydrochloride-plant-zh.html"
+    },
+    {
       "id": 1,
       "date": "2024-12-18",
       "date_zh": "2024年12月18日",

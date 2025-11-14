@@ -370,7 +370,10 @@ form?.addEventListener('submit', (e) => {
   form.reset();
 });
 
-document.getElementById('y').textContent = new Date().getFullYear();
+const yearElement = document.getElementById('y');
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 // News & Updates Dynamic Loader
 function getCurrentLanguage() {
@@ -379,10 +382,20 @@ function getCurrentLanguage() {
 
 async function loadNews() {
   try {
-    const response = await fetch('news_data.json');
-    if (!response.ok) throw new Error('Failed to fetch news');
+    console.log('Loading news from news_data.json...');
+    // Add cache-busting parameter to ensure fresh data
+    const response = await fetch('news_data.json?v=' + new Date().getTime());
+    if (!response.ok) {
+      throw new Error(`Failed to fetch news: ${response.status} ${response.statusText}`);
+    }
     const data = await response.json();
-    renderNews(data.news);
+    console.log('News data loaded:', data);
+    console.log('Number of news items:', data.news ? data.news.length : 0);
+    if (data.news && data.news.length > 0) {
+      renderNews(data.news);
+    } else {
+      console.error('No news items found in data');
+    }
   } catch (error) {
     console.error('Error loading news:', error);
   }
@@ -391,14 +404,26 @@ async function loadNews() {
 function renderNews(newsItems) {
   const container = document.getElementById('news-scroll-container');
   if (!container) {
-    console.error('News container not found');
+    // Silently return if container doesn't exist (e.g., on all-news.html page)
     return;
   }
+  console.log('renderNews called with', newsItems.length, 'items');
+  console.log('News container found:', container);
 
   const lang = getCurrentLanguage();
-  const allItems = [...newsItems, ...newsItems]; // Duplicate for infinite scroll
+  console.log('Current language:', lang);
   
-  container.innerHTML = allItems.map(item => {
+  // Sort news by date (newest first) before duplicating for infinite scroll
+  const sortedItems = [...newsItems].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA; // Descending order (newest first)
+  });
+  console.log('Sorted news items (first 3):', sortedItems.slice(0, 3).map(item => ({ date: item.date, title: item.title_en })));
+  
+  const allItems = [...sortedItems, ...sortedItems]; // Duplicate for infinite scroll
+  
+  const html = allItems.map(item => {
     const date = lang === 'zh' ? item.date_zh : item.date;
     const title = lang === 'zh' ? item.title_zh : item.title_en;
     const summary = lang === 'zh' ? item.summary_zh : item.summary_en;
@@ -415,19 +440,50 @@ function renderNews(newsItems) {
     `;
   }).join('');
   
-  console.log('News loaded successfully:', allItems.length, 'items');
+  container.innerHTML = html;
+  console.log('News rendered successfully:', allItems.length, 'items total');
+  console.log('Container innerHTML length:', container.innerHTML.length);
 }
 
 // Initialize everything
 function init() {
+  console.log('Initializing...');
   setupLangToggle();
   setupMobileDropdowns();
-  loadNews();
+  
+  // Wait a bit to ensure DOM is fully ready
+  setTimeout(() => {
+    const container = document.getElementById('news-scroll-container');
+    if (container) {
+      console.log('Container found, loading news...');
+      loadNews();
+    }
+    // Don't log error if container doesn't exist - it might be a different page (e.g., all-news.html)
+  }, 200);
 }
 
 // Run init when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded fired');
+    init();
+  });
 } else {
-  init();
+  // DOM already loaded, but wait a bit to ensure all elements are ready
+  console.log('DOM already loaded, initializing...');
+  setTimeout(init, 100);
 }
+
+// Also try loading news after a short delay as a fallback (only on pages with the container)
+setTimeout(() => {
+  const container = document.getElementById('news-scroll-container');
+  if (container) {
+    if (container.innerHTML.trim() === '') {
+      console.log('News container is empty after 1 second, retrying loadNews...');
+      loadNews();
+    } else {
+      console.log('News container has content:', container.innerHTML.length, 'chars');
+    }
+  }
+  // Silently skip if container doesn't exist (e.g., on all-news.html)
+}, 1000);
