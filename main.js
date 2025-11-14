@@ -39,7 +39,7 @@ const T = {
     res: {
       title: "Resources",
       desc: "Download product datasheets and compliance statements. (Placeholders)",
-      r1: "Calcium Carbide — Datasheet (PDF)",
+      r1: "Calcium Carbide - SDS",
       r2: "Dicyandiamide — Datasheet (PDF)",
       r3: "Creatine Monohydrate — Datasheet (PDF)",
       r4: "Guanidine Nitrate — Datasheet (PDF)",
@@ -94,7 +94,7 @@ const T = {
     res: {
       title: "资料中心",
       desc: "下载产品数据表与合规文件（占位）。",
-      r1: "电石 — 产品数据表（PDF）",
+      r1: "电石 - SDS",
       r2: "双氰胺 — 产品数据表（PDF）",
       r3: "肌酸一水合物 — 产品数据表（PDF）",
       r4: "硝酸胍 — 产品数据表（PDF）",
@@ -161,6 +161,18 @@ function applyLang(lang) {
     if (iso9001Link) iso9001Link.href = 'assets/iso/iso-9001-certificate.png';
     if (iso14001Link) iso14001Link.href = 'assets/iso/iso-14001-certificate.png';
     if (iso45001Link) iso45001Link.href = 'assets/iso/iso-45001-certificate.png';
+  }
+
+  // Update Calcium Carbide SDS link based on language
+  const calciumCarbideSdsLink = document.getElementById('calcium-carbide-sds-link');
+  if (calciumCarbideSdsLink) {
+    if (lang === 'zh') {
+      calciumCarbideSdsLink.href = 'assets/sds/SDS_Calcium_Carbide_Chinese.pdf';
+      calciumCarbideSdsLink.download = 'SDS_Calcium_Carbide_Chinese.pdf';
+    } else {
+      calciumCarbideSdsLink.href = 'assets/sds/SDS_Calcium_Carbide_English.pdf';
+      calciumCarbideSdsLink.download = 'SDS_Calcium_Carbide_English.pdf';
+    }
   }
 
   localStorage.setItem('lang', lang);
