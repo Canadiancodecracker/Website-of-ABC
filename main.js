@@ -413,15 +413,19 @@ function renderNews(newsItems) {
   const lang = getCurrentLanguage();
   console.log('Current language:', lang);
   
-  // Sort news by date (newest first) before duplicating for infinite scroll
+  // Sort news by date (newest first) and take only the top 3 most recent
   const sortedItems = [...newsItems].sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB - dateA; // Descending order (newest first)
   });
-  console.log('Sorted news items (first 3):', sortedItems.slice(0, 3).map(item => ({ date: item.date, title: item.title_en })));
   
-  const allItems = [...sortedItems, ...sortedItems]; // Duplicate for infinite scroll
+  // Only show the 3 most recent news items in the floating news section
+  const topThreeItems = sortedItems.slice(0, 3);
+  console.log('Displaying top 3 news items:', topThreeItems.map(item => ({ date: item.date, title: item.title_en })));
+  
+  // Duplicate for infinite scroll animation
+  const allItems = [...topThreeItems, ...topThreeItems];
   
   const html = allItems.map(item => {
     const date = lang === 'zh' ? item.date_zh : item.date;
@@ -441,8 +445,7 @@ function renderNews(newsItems) {
   }).join('');
   
   container.innerHTML = html;
-  console.log('News rendered successfully:', allItems.length, 'items total');
-  console.log('Container innerHTML length:', container.innerHTML.length);
+  console.log('News rendered successfully: Top 3 most recent articles displayed (', topThreeItems.length, 'unique items,', allItems.length, 'total for animation)');
 }
 
 // Initialize everything
