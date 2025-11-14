@@ -89,7 +89,7 @@ const T = {
       name: "Full Name", company: "Company", email: "Email", phone: "Phone (optional)", message: "Message",
       submit: "Send Request", privacy: "By submitting this form, you agree to our Privacy Policy."
     },
-    aside: { title: "Corporate Headquarters", subtitle: "Global Sales & Technical Service", general: "General Inquiries", sales: "Sales", note: "* Addresses and phone numbers are placeholders." },
+    aside: { title: "Corporate Headquarters", subtitle: "Global Sales & Technical Service", general: "General Inquiries", sales: "Sales", technical: "Technical Support", technicalLink: "View details →", note: "* Addresses and phone numbers are placeholders." },
     footer: { privacy: "Privacy", terms: "Terms", compliance: "Compliance", c: "©", rights: "All rights reserved." },
     news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists" },
     video: { title: "Discover ABC Chemical", subtitle: "Learn more about our advanced calcium and cyanamide solutions" }
@@ -183,7 +183,7 @@ const T = {
       name: "姓名", company: "公司", email: "邮箱", phone: "电话（可选）", message: "留言",
       submit: "发送需求", privacy: "提交即表示您同意我们的隐私政策。"
     },
-    aside: { title: "公司总部", subtitle: "全球销售与技术服务", general: "综合咨询", sales: "销售", note: "＊ 地址与电话为示例信息。" },
+    aside: { title: "公司总部", subtitle: "全球销售与技术服务", general: "综合咨询", sales: "销售", technical: "技术支持", technicalLink: "查看详情 →", note: "＊ 地址与电话为示例信息。" },
     footer: { privacy: "隐私", terms: "条款", compliance: "合规", c: "©", rights: "保留所有权利。" },
     news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家" },
     video: { title: "探索ABC化工", subtitle: "了解更多关于我们先进的钙与氰胺解决方案" }
