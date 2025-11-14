@@ -363,11 +363,70 @@ btn?.addEventListener('click', () => {
 
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
-form?.addEventListener('submit', (e) => {
+const submitButton = form?.querySelector('button[type="submit"]');
+
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   const lang = localStorage.getItem('lang') || 'en';
-  note.textContent = (lang === 'zh') ? '感谢您的提交，我们将尽快联系。' : 'Thanks — your request has been noted. Our team will get back shortly.';
-  form.reset();
+  
+  // Disable submit button and show loading state
+  if (submitButton) {
+    submitButton.disabled = true;
+    const originalText = submitButton.textContent;
+    submitButton.textContent = lang === 'zh' ? '发送中...' : 'Sending...';
+    
+    try {
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Set reply-to email from the email field
+      const emailField = form.querySelector('#email');
+      if (emailField && emailField.value) {
+        formData.set('_replyto', emailField.value);
+      }
+      
+      // Send to Formspree
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Success
+        note.textContent = lang === 'zh' 
+          ? '✓ 感谢您的提交，我们将尽快联系您。' 
+          : '✓ Thanks — your request has been sent. Our team will get back to you shortly.';
+        note.className = 'text-sm text-green-600 font-medium';
+        form.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+          note.textContent = '';
+          note.className = 'text-sm text-gray-600';
+        }, 5000);
+      } else {
+        // Error from Formspree
+        const data = await response.json();
+        throw new Error(data.error || 'Form submission failed');
+      }
+    } catch (error) {
+      // Network or other error
+      console.error('Form submission error:', error);
+      note.textContent = lang === 'zh'
+        ? '✗ 发送失败，请稍后重试或直接发送邮件联系我们。'
+        : '✗ Failed to send. Please try again later or contact us directly via email.';
+      note.className = 'text-sm text-red-600 font-medium';
+      
+      // Reset button
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+    }
+  }
 });
 
 const yearElement = document.getElementById('y');

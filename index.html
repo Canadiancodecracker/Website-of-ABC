@@ -476,7 +476,14 @@
             <div>
               <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="contact.title">Request Information</h2>
               <p class="mt-2 text-gray-700" data-i18n="contact.desc">Tell us about your application, required specs, and target volumes. Our team will respond promptly.</p>
-              <form id="contactForm" class="mt-8 grid grid-cols-1 gap-4">
+              <!-- 
+                FORM SETUP REQUIRED: Replace YOUR_FORM_ID with your Formspree Form ID
+                Get your Form ID from https://formspree.io after creating a form
+                See FORM_SETUP.md for detailed instructions
+              -->
+              <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="mt-8 grid grid-cols-1 gap-4">
+                <!-- Hidden field for reply-to email -->
+                <input type="hidden" name="_replyto" id="_replyto" />
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label for="name" class="label" data-i18n="form.name">Full Name</label>
