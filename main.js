@@ -52,7 +52,8 @@ const T = {
     },
     aside: { title: "Corporate Headquarters", subtitle: "Global Sales & Technical Service", general: "General Inquiries", sales: "Sales", note: "* Addresses and phone numbers are placeholders." },
     footer: { privacy: "Privacy", terms: "Terms", compliance: "Compliance", c: "©", rights: "All rights reserved." },
-    news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists" }
+    news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists" },
+    video: { title: "Discover ABC Chemical", subtitle: "Learn more about our advanced calcium and cyanamide solutions" }
   },
 
   zh: {
@@ -106,7 +107,8 @@ const T = {
     },
     aside: { title: "公司总部", subtitle: "全球销售与技术服务", general: "综合咨询", sales: "销售", note: "＊ 地址与电话为示例信息。" },
     footer: { privacy: "隐私", terms: "条款", compliance: "合规", c: "©", rights: "保留所有权利。" },
-    news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家" }
+    news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家" },
+    video: { title: "探索ABC化工", subtitle: "了解更多关于我们先进的钙与氰胺解决方案" }
   }
 };
 
