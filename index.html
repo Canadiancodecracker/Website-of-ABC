@@ -700,26 +700,43 @@
             // Create scene
             scene = new THREE.Scene();
 
-            // Create camera
-            camera = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 100);
-            camera.position.set(0, 0, 4);
+            // Create camera - positioned to show hemisphere view
+            camera = new THREE.PerspectiveCamera(50, rect.width / rect.height, 0.1, 100);
+            camera.position.set(0, 0.5, 3.5);
+            camera.lookAt(0, 0, 0);
 
             // Add lights
-            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-            const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
-            dirLight.position.set(5, 3, 5);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            dirLight.position.set(5, 5, 5);
             scene.add(dirLight);
 
-            const radius = 1.4;
+            const radius = 1.6;
             const detail = 64;
 
-            // Base sphere - orange landmasses (earth-like)
+            // Enable local clipping for hemisphere view
+            renderer.localClippingEnabled = true;
+
+            // Create clipping plane to show only hemisphere (top half)
+            const clipPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
+
+            // Load world map texture
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.crossOrigin = 'anonymous';
+            
+            // Create sphere geometry
             const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
+            
+            // Create globe with blue material (world map texture can be added later if needed)
+            // For now, using blue sphere with map-like appearance
             const baseMat = new THREE.MeshPhongMaterial({
-              color: 0xff8c42, // Orange color for landmasses
+              color: 0x4a90e2, // Blue color for oceans
               shininess: 30,
               specular: 0x222222,
+              clippingPlanes: [clipPlane],
+              clipShadows: true,
             });
+            
             baseSphere = new THREE.Mesh(sphereGeo, baseMat);
             scene.add(baseSphere);
 
@@ -728,10 +745,26 @@
               color: 0xcccccc,
               wireframe: true,
               transparent: true,
-              opacity: 0.15,
+              opacity: 0.2,
+              clippingPlanes: [clipPlane],
             });
             wireSphere = new THREE.Mesh(sphereGeo, wireMat);
             scene.add(wireSphere);
+            
+            // Try to load world map texture as overlay (optional enhancement)
+            textureLoader.load(
+              'https://raw.githubusercontent.com/turban/webgl-earth/master/images/2_no_clouds_4k.jpg',
+              (texture) => {
+                // Texture loaded - update material
+                baseMat.map = texture;
+                baseMat.needsUpdate = true;
+                console.log('Earth texture loaded');
+              },
+              undefined,
+              (err) => {
+                console.warn('Texture load failed, using blue material:', err);
+              }
+            );
 
             // Sales markers - many more locations
             const markers = [
@@ -796,7 +829,10 @@
               const marker = new THREE.Mesh(markerGeometry, markerMaterial);
               const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
               marker.position.copy(v);
-              markerGroup.add(marker);
+              // Only show markers in the upper hemisphere
+              if (v.y >= 0) {
+                markerGroup.add(marker);
+              }
             });
 
             scene.add(markerGroup);
