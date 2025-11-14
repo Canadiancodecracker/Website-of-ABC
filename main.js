@@ -227,6 +227,7 @@ const T = {
 };
 
 function applyLang(lang) {
+  console.log('applyLang called with language:', lang);
   const dict = T[lang];
   document.documentElement.lang = (lang === 'zh') ? 'zh-Hans' : 'en';
   const b = document.getElementById('brand'); if (b) b.textContent = dict.brand;
@@ -234,20 +235,37 @@ function applyLang(lang) {
   const fb = document.getElementById('footerBrand'); if (fb) fb.textContent = dict.corp;
   const rights = document.getElementById('rights'); if (rights) rights.textContent = dict.corp + ' ' + T[lang].footer.rights;
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const path = el.getAttribute('data-i18n').split('.');
+  const i18nElements = document.querySelectorAll('[data-i18n]');
+  console.log(`Found ${i18nElements.length} elements with data-i18n attribute`);
+  
+  i18nElements.forEach(el => {
+    const i18nPath = el.getAttribute('data-i18n');
+    if (!i18nPath) return;
+    
+    const path = i18nPath.split('.');
     let cur = dict;
-    for (const k of path) {
+    
+    for (let i = 0; i < path.length; i++) {
+      const k = path[i];
       if (cur == null) {
-        console.warn(`Translation path broken at "${k}" in "${el.getAttribute('data-i18n')}"`);
-        break;
+        console.warn(`Translation path broken at "${k}" in "${i18nPath}" (cur is null/undefined)`);
+        return;
+      }
+      if (i < path.length - 1 && (typeof cur !== 'object' || cur[k] === undefined)) {
+        console.warn(`Translation path broken at "${k}" in "${i18nPath}" (not an object or key missing)`);
+        return;
       }
       cur = cur[k];
     }
+    
     if (typeof cur === 'string') {
       el.textContent = cur;
-    } else if (cur == null) {
-      console.warn(`Translation not found for "${el.getAttribute('data-i18n')}" in language "${lang}"`);
+      // Log successful translations for about menu items
+      if (i18nPath.startsWith('nav.about.')) {
+        console.log(`✓ Translated "${i18nPath}" to "${cur}"`);
+      }
+    } else {
+      console.warn(`Translation not found or invalid for "${i18nPath}" in language "${lang}" (got: ${typeof cur})`);
     }
   });
 
