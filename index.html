@@ -350,12 +350,12 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <!-- Header -->
           <div class="text-center mb-8">
-            <div class="text-xs uppercase tracking-wider text-blue-200 mb-2.5" data-i18n="globalSales.eyebrow">Global Sales Network</div>
+            <div class="text-xs uppercase tracking-wider mb-2.5" style="color: #4CAF50;" data-i18n="globalSales.eyebrow">Global Sales Network</div>
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">
-              <span class="text-white" data-i18n="globalSales.headline1">Our global reach</span>
-              <span class="block sm:inline text-brand-blue" style="color: #0E3C75;" data-i18n="globalSales.headline2">across 50+ countries</span>
+              <span style="color: #4CAF50;" data-i18n="globalSales.headline1">Our global reach</span>
+              <span class="block sm:inline" style="color: #4CAF50;" data-i18n="globalSales.headline2">across 50+ countries</span>
             </h2>
-            <p class="max-w-3xl mx-auto text-base text-blue-100" data-i18n="globalSales.subhead">
+            <p class="max-w-3xl mx-auto text-base" style="color: #4CAF50;" data-i18n="globalSales.subhead">
               From North America to Asia, ABC Chemical supplies high-purity materials to customers in more than 50 countries, supporting agriculture, nutrition, and advanced industries.
             </p>
           </div>
@@ -363,20 +363,20 @@
           <!-- KPI row -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
             <div class="text-center">
-              <div class="text-3xl sm:text-4xl font-extrabold text-brand-blue global-kpi-number" style="color: #0E3C75;" data-target="50" data-suffix="+">0</div>
-              <div class="text-sm text-white mt-1" data-i18n="globalSales.kpi1">countries served worldwide</div>
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="50" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi1">countries served worldwide</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl sm:text-4xl font-extrabold text-brand-blue global-kpi-number" style="color: #0E3C75;" data-target="120" data-suffix="+">0</div>
-              <div class="text-sm text-white mt-1" data-i18n="globalSales.kpi2">distribution & logistics partners</div>
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="120" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi2">distribution & logistics partners</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl sm:text-4xl font-extrabold text-brand-blue global-kpi-number" style="color: #0E3C75;" data-target="25" data-suffix="+">0</div>
-              <div class="text-sm text-white mt-1" data-i18n="globalSales.kpi3">years of manufacturing experience</div>
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="25" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi3">years of manufacturing experience</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl sm:text-4xl font-extrabold text-brand-blue global-kpi-number" style="color: #0E3C75;" data-target="99.9" data-suffix="%">0</div>
-              <div class="text-sm text-white mt-1" data-i18n="globalSales.kpi4">on-spec batch reliability</div>
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="99.9" data-suffix="%">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi4">on-spec batch reliability</div>
             </div>
           </div>
 
@@ -657,9 +657,14 @@
 
       /* ===================== 3D GLOBE ===================== */
       (function () {
+        let globeInitialized = false;
+        
         function initGlobe() {
+          if (globeInitialized) return;
+          
           if (!window.THREE) {
             console.error("THREE.js failed to load");
+            setTimeout(initGlobe, 100);
             return;
           }
 
@@ -675,21 +680,30 @@
             return;
           }
 
+          // Check if container is visible and has dimensions
+          const rect = container.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0) {
+            setTimeout(initGlobe, 200);
+            return;
+          }
+
+          globeInitialized = true;
+
           const renderer = new THREE.WebGLRenderer({
             canvas,
             antialias: true,
-            alpha: true,
+            alpha: false,
           });
           renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
           renderer.setClearColor(0xffffff, 1);
 
           const scene = new THREE.Scene();
-          const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+          const camera = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 100);
           camera.position.set(0, 0, 4);
 
           // Lights
-          scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-          const dirLight = new THREE.DirectionalLight(0x0E3C75, 1.0);
+          scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+          const dirLight = new THREE.DirectionalLight(0x0E3C75, 1.2);
           dirLight.position.set(5, 2, 3);
           scene.add(dirLight);
 
@@ -785,14 +799,13 @@
           window.addEventListener("resize", resizeRenderer);
           
           // Initial resize
-          setTimeout(resizeRenderer, 100);
+          resizeRenderer();
           
-          // Use IntersectionObserver to initialize when visible
+          // Use IntersectionObserver to ensure proper initialization
           const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 resizeRenderer();
-                observer.disconnect();
               }
             });
           }, { threshold: 0.1 });
@@ -811,21 +824,25 @@
           animate();
         }
 
-        // Wait for DOM and THREE.js to be ready
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', () => {
+        // Initialize when page is ready
+        function tryInit() {
+          if (document.readyState === 'complete') {
             if (window.THREE) {
-              initGlobe();
+              setTimeout(initGlobe, 300);
             } else {
-              window.addEventListener('load', initGlobe);
+              setTimeout(tryInit, 100);
             }
-          });
-        } else {
-          if (window.THREE) {
-            initGlobe();
           } else {
-            window.addEventListener('load', initGlobe);
+            window.addEventListener('load', () => {
+              setTimeout(initGlobe, 300);
+            });
           }
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', tryInit);
+        } else {
+          tryInit();
         }
       })();
     </script>
