@@ -92,7 +92,17 @@ const T = {
     aside: { title: "Corporate Headquarters", subtitle: "Global Sales & Technical Service", general: "General Inquiries", sales: "Sales", technical: "Technical Support", technicalLink: "View details →", note: "* Addresses and phone numbers are placeholders." },
     footer: { privacy: "Privacy", terms: "Terms", compliance: "Compliance", c: "©", rights: "All rights reserved." },
     news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists" },
-    video: { title: "Discover ABC Chemical", subtitle: "Learn more about our advanced calcium and cyanamide solutions" }
+    video: { title: "Discover ABC Chemical", subtitle: "Learn more about our advanced calcium and cyanamide solutions" },
+    globalSales: {
+      eyebrow: "Global Sales Network",
+      headline1: "Our global reach",
+      headline2: "across 50+ countries",
+      subhead: "From North America to Asia, ABC Chemical supplies high-purity materials to customers in more than 50 countries, supporting agriculture, nutrition, and advanced industries.",
+      kpi1: "countries served worldwide",
+      kpi2: "distribution & logistics partners",
+      kpi3: "years of manufacturing experience",
+      kpi4: "on-spec batch reliability"
+    }
   },
 
   zh: {
@@ -186,7 +196,17 @@ const T = {
     aside: { title: "公司总部", subtitle: "全球销售与技术服务", general: "综合咨询", sales: "销售", technical: "技术支持", technicalLink: "查看详情 →", note: "＊ 地址与电话为示例信息。" },
     footer: { privacy: "隐私", terms: "条款", compliance: "合规", c: "©", rights: "保留所有权利。" },
     news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家" },
-    video: { title: "探索ABC化工", subtitle: "了解更多关于我们先进的钙与氰胺解决方案" }
+    video: { title: "探索ABC化工", subtitle: "了解更多关于我们先进的钙与氰胺解决方案" },
+    globalSales: {
+      eyebrow: "全球销售网络",
+      headline1: "我们的全球覆盖",
+      headline2: "遍及50多个国家",
+      subhead: "从北美到亚洲，ABC化工向50多个国家的客户供应高纯度材料，支持农业、营养和先进工业。",
+      kpi1: "服务国家/地区",
+      kpi2: "分销与物流合作伙伴",
+      kpi3: "年制造经验",
+      kpi4: "批次合格率"
+    }
   }
 };
 

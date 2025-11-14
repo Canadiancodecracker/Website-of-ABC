@@ -345,6 +345,49 @@
         </div>
       </section>
 
+      <!-- Global Sales Network -->
+      <section id="global-sales" class="py-16 sm:py-20" style="background: radial-gradient(circle at top, #020617 0%, #000 55%, #020617 100%);">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <!-- Header -->
+          <div class="text-center mb-8">
+            <div class="text-xs uppercase tracking-wider text-gray-400 mb-2.5" data-i18n="globalSales.eyebrow">Global Sales Network</div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-3">
+              <span data-i18n="globalSales.headline1">Our global reach</span>
+              <span class="block sm:inline" style="background: linear-gradient(90deg, #f97316, #fb923c, #fde68a); -webkit-background-clip: text; background-clip: text; color: transparent;" data-i18n="globalSales.headline2">across 50+ countries</span>
+            </h2>
+            <p class="max-w-3xl mx-auto text-base text-gray-300" data-i18n="globalSales.subhead">
+              From North America to Asia, ABC Chemical supplies high-purity materials to customers in more than 50 countries, supporting agriculture, nutrition, and advanced industries.
+            </p>
+          </div>
+
+          <!-- KPI row -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold text-orange-400 global-kpi-number" data-target="50" data-suffix="+">0</div>
+              <div class="text-sm text-gray-300 mt-1" data-i18n="globalSales.kpi1">countries served worldwide</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold text-orange-400 global-kpi-number" data-target="120" data-suffix="+">0</div>
+              <div class="text-sm text-gray-300 mt-1" data-i18n="globalSales.kpi2">distribution & logistics partners</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold text-orange-400 global-kpi-number" data-target="25" data-suffix="+">0</div>
+              <div class="text-sm text-gray-300 mt-1" data-i18n="globalSales.kpi3">years of manufacturing experience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold text-orange-400 global-kpi-number" data-target="99.9" data-suffix="%">0</div>
+              <div class="text-sm text-gray-300 mt-1" data-i18n="globalSales.kpi4">on-spec batch reliability</div>
+            </div>
+          </div>
+
+          <!-- Globe -->
+          <div class="mt-8 rounded-3xl border border-gray-700/35 overflow-hidden relative" style="background: radial-gradient(circle at top, #020617 0%, #020617 40%, #000 100%); box-shadow: 0 32px 70px rgba(15, 23, 42, 0.8), 0 0 0 1px rgba(15, 23, 42, 0.7); height: min(480px, 55vh);">
+            <canvas id="globe-canvas"></canvas>
+            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0) 55%, rgba(15, 23, 42, 0.95) 90%, #020617 100%);"></div>
+          </div>
+        </div>
+      </section>
+
       <!-- Applications -->
       <section id="applications" class="py-16 sm:py-20 bg-white border-y border-gray-200">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -567,7 +610,178 @@
       </div>
     </footer>
 
+    <!-- Three.js for 3D Globe -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
     <script src="./main.js"></script>
+    <script>
+      /* ===================== KPI COUNTERS ===================== */
+      (function () {
+        const counters = document.querySelectorAll(".global-kpi-number");
+        
+        function animateCounter(el) {
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+          const isPercent = suffix.includes("%");
+          const duration = 1500;
+          const start = performance.now();
+
+          function frame(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            let value;
+            if (isPercent) {
+              value = (target * eased).toFixed(1);
+            } else {
+              value = Math.round(target * eased);
+            }
+            el.textContent = value + suffix;
+            if (progress < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        counters.forEach((el) => observer.observe(el));
+      })();
+
+      /* ===================== 3D GLOBE ===================== */
+      (function () {
+        if (!window.THREE) {
+          console.error("THREE.js failed to load");
+          return;
+        }
+
+        const canvas = document.getElementById("globe-canvas");
+        if (!canvas) return;
+
+        const renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: true,
+        });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+        camera.position.set(0, 0, 4);
+
+        // Lights
+        scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+        const dirLight = new THREE.DirectionalLight(0xffa14f, 1.2);
+        dirLight.position.set(5, 2, 3);
+        scene.add(dirLight);
+
+        const radius = 1.4;
+        const detail = 64;
+
+        // Base sphere
+        const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
+        const baseMat = new THREE.MeshStandardMaterial({
+          color: 0x020617,
+          metalness: 0.15,
+          roughness: 0.8,
+          emissive: 0x020617,
+        });
+        const baseSphere = new THREE.Mesh(sphereGeo, baseMat);
+        scene.add(baseSphere);
+
+        // Wireframe overlay
+        const wireMat = new THREE.MeshBasicMaterial({
+          color: 0xffa14f,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.32,
+        });
+        const wireSphere = new THREE.Mesh(sphereGeo, wireMat);
+        scene.add(wireSphere);
+
+        // Soft atmosphere
+        const atmoGeo = new THREE.SphereGeometry(radius * 1.03, detail, detail);
+        const atmoMat = new THREE.MeshBasicMaterial({
+          color: 0x38bdf8,
+          transparent: true,
+          opacity: 0.18,
+        });
+        const atmosphere = new THREE.Mesh(atmoGeo, atmoMat);
+        scene.add(atmosphere);
+
+        // Sales markers
+        const markers = [
+          { lat: 43.7, lon: -79.4 },   // Toronto
+          { lat: 40.7, lon: -74.0 },   // New York
+          { lat: -23.6, lon: -46.6 },  // São Paulo
+          { lat: 51.5, lon: -0.1 },    // London
+          { lat: 48.9, lon: 2.4 },     // Paris
+          { lat: 35.7, lon: 139.7 },   // Tokyo
+          { lat: 31.2, lon: 121.5 },   // Shanghai
+          { lat: 28.6, lon: 77.2 },    // Delhi
+          { lat: -33.9, lon: 151.2 },  // Sydney
+          { lat: 25.3, lon: 55.3 },    // Dubai
+        ];
+
+        function latLonToVector3(lat, lon, r) {
+          const phi = (90 - lat) * (Math.PI / 180);
+          const theta = (lon + 180) * (Math.PI / 180);
+          return new THREE.Vector3(
+            -r * Math.sin(phi) * Math.cos(theta),
+            r * Math.cos(phi),
+            r * Math.sin(phi) * Math.sin(theta)
+          );
+        }
+
+        const pointPositions = new Float32Array(markers.length * 3);
+        markers.forEach((m, i) => {
+          const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
+          pointPositions[i * 3 + 0] = v.x;
+          pointPositions[i * 3 + 1] = v.y;
+          pointPositions[i * 3 + 2] = v.z;
+        });
+
+        const pointsGeo = new THREE.BufferGeometry();
+        pointsGeo.setAttribute("position", new THREE.BufferAttribute(pointPositions, 3));
+        const pointsMat = new THREE.PointsMaterial({
+          color: 0xfff7ed,
+          size: 0.045,
+        });
+        const points = new THREE.Points(pointsGeo, pointsMat);
+        scene.add(points);
+
+        // Resize handling
+        function resizeRenderer() {
+          const rect = canvas.getBoundingClientRect();
+          const width = rect.width;
+          const height = rect.height || rect.width * 0.6;
+          renderer.setSize(width, height, false);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+        }
+
+        window.addEventListener("resize", resizeRenderer);
+        resizeRenderer();
+
+        // Animation loop
+        function animate() {
+          wireSphere.rotation.y += 0.0022;
+          baseSphere.rotation.y += 0.0022;
+          atmosphere.rotation.y += 0.0015;
+          points.rotation.y += 0.0022;
+          renderer.render(scene, camera);
+          requestAnimationFrame(animate);
+        }
+        animate();
+      })();
+    </script>
   </body>
 </html>
 
