@@ -359,11 +359,14 @@ function applyLang(lang) {
 function setupLangToggle() {
   document.querySelectorAll('[data-setlang]').forEach(btn => {
     btn.addEventListener('click', () => {
-      applyLang(btn.getAttribute('data-setlang'));
+      const lang = btn.getAttribute('data-setlang');
+      console.log('Language toggle clicked, switching to:', lang);
+      applyLang(lang);
       loadNews(); // Reload news when language changes
     });
   });
   const saved = localStorage.getItem('lang') || 'en';
+  console.log('Initial language from localStorage:', saved);
   applyLang(saved);
 }
 
