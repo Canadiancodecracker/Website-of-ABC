@@ -123,21 +123,23 @@ section[id]{scroll-margin-top:4.5rem;}
 .mega-nav-header {
   background: #FFFFFF;
   border-bottom: 1px solid #E4E7EB;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .mega-nav-container {
   position: relative;
-  overflow: visible;
+  overflow: visible !important;
+}
+
+.mega-nav-inner {
+  position: relative;
+  overflow: visible !important;
+  height: 72px;
 }
 
 .mega-nav-menu {
   position: relative;
-  overflow: visible;
-}
-
-.mega-nav-inner {
-  height: 72px;
+  overflow: visible !important;
 }
 
 @media (max-width: 1023px) {
@@ -185,8 +187,9 @@ section[id]{scroll-margin-top:4.5rem;}
   position: absolute;
   top: calc(100% + 8px);
   left: 50%;
-  width: 280px;
-  min-width: 240px;
+  width: auto;
+  min-width: 280px;
+  max-width: 320px;
   background: #FFFFFF;
   border-radius: 14px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
@@ -195,7 +198,8 @@ section[id]{scroll-margin-top:4.5rem;}
   pointer-events: none;
   transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
   transform: translateX(-50%) translateY(-10px);
-  z-index: 1000;
+  z-index: 9999;
+  margin-left: 0;
 }
 
 .mega-dropdown::before {
@@ -220,10 +224,10 @@ section[id]{scroll-margin-top:4.5rem;}
 }
 
 .mega-dropdown-content {
-  padding: 16px 0;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
 }
 
 .mega-dropdown-item {
@@ -232,10 +236,10 @@ section[id]{scroll-margin-top:4.5rem;}
   font-weight: 500;
   font-family: 'Inter', 'SF Pro', ui-sans-serif, system-ui, Arial, sans-serif;
   color: #0A1A2F;
-  padding: 12px 24px;
+  padding: 14px 28px;
   transition: background-color 0.2s ease;
   text-decoration: none;
-  white-space: normal;
+  white-space: nowrap;
   line-height: 1.5;
 }
 
