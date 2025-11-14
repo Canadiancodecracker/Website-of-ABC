@@ -72,6 +72,19 @@ const T = {
       soon: "Coming soon"
     },
     contact: { title: "Request Information", desc: "Tell us about your application, required specs, and target volumes. Our team will respond promptly." },
+    techSupport: {
+      title: "Technical Support",
+      phoneTitle: "Technical Support Hotline",
+      phone: "Phone:",
+      international: "International:",
+      availability: "Availability:",
+      availabilityValue: "24 hours / 7 days a week",
+      languages: "Languages:",
+      languagesValue: "English / Chinese",
+      emailTitle: "Email Support",
+      emailLabel: "Technical Support Email:",
+      emailNote: "(Guaranteed response within 24 hours)"
+    },
     form: {
       name: "Full Name", company: "Company", email: "Email", phone: "Phone (optional)", message: "Message",
       submit: "Send Request", privacy: "By submitting this form, you agree to our Privacy Policy."
@@ -153,6 +166,19 @@ const T = {
       soon: "即将上线"
     },
     contact: { title: "信息咨询", desc: "请告知您的应用、关键指标与目标量，我们将尽快回复。" },
+    techSupport: {
+      title: "技术支持",
+      phoneTitle: "技术支持热线",
+      phone: "电话（中国）：",
+      international: "国际电话：",
+      availability: "服务时间：",
+      availabilityValue: "7天24小时全天候",
+      languages: "支持语言：",
+      languagesValue: "英语 / 中文",
+      emailTitle: "邮件支持",
+      emailLabel: "技术支持邮箱：",
+      emailNote: "（24小时内保证回复）"
+    },
     form: {
       name: "姓名", company: "公司", email: "邮箱", phone: "电话（可选）", message: "留言",
       submit: "发送需求", privacy: "提交即表示您同意我们的隐私政策。"
