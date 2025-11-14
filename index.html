@@ -381,9 +381,8 @@
           </div>
 
           <!-- Globe -->
-          <div class="mt-8 rounded-3xl border border-blue-300/20 overflow-hidden relative bg-white" style="box-shadow: 0 32px 70px rgba(14, 60, 117, 0.3), 0 0 0 1px rgba(14, 60, 117, 0.2); height: min(480px, 55vh);">
-            <canvas id="globe-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
-            <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 55%, rgba(255, 255, 255, 0.3) 90%, rgba(255, 255, 255, 0.5) 100%);"></div>
+          <div id="globe-container" class="mt-8 rounded-3xl border border-blue-300/20 overflow-hidden relative bg-white" style="box-shadow: 0 32px 70px rgba(14, 60, 117, 0.3), 0 0 0 1px rgba(14, 60, 117, 0.2); height: min(480px, 55vh); min-height: 400px;">
+            <canvas id="globe-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 1;"></canvas>
           </div>
         </div>
       </section>
@@ -611,7 +610,7 @@
     </footer>
 
     <!-- Three.js for 3D Globe -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="./main.js"></script>
     <script>
       /* ===================== KPI COUNTERS ===================== */
@@ -657,192 +656,208 @@
 
       /* ===================== 3D GLOBE ===================== */
       (function () {
-        let globeInitialized = false;
+        let renderer, scene, camera, baseSphere, wireSphere, atmosphere, points;
+        let animationId = null;
         
         function initGlobe() {
-          if (globeInitialized) return;
+          // Check if already initialized
+          if (renderer) return;
           
+          // Check for THREE.js
           if (!window.THREE) {
-            console.error("THREE.js failed to load");
-            setTimeout(initGlobe, 100);
+            console.warn("THREE.js not loaded yet, retrying...");
+            setTimeout(initGlobe, 200);
             return;
           }
 
           const canvas = document.getElementById("globe-canvas");
-          if (!canvas) {
-            console.error("Canvas element not found");
+          const container = document.getElementById("globe-container");
+          
+          if (!canvas || !container) {
+            console.warn("Globe elements not found, retrying...");
+            setTimeout(initGlobe, 200);
             return;
           }
 
-          const container = canvas.parentElement;
-          if (!container) {
-            console.error("Canvas container not found");
-            return;
-          }
-
-          // Check if container is visible and has dimensions
+          // Wait for container to have dimensions
           const rect = container.getBoundingClientRect();
           if (rect.width === 0 || rect.height === 0) {
             setTimeout(initGlobe, 200);
             return;
           }
 
-          globeInitialized = true;
-
-          const renderer = new THREE.WebGLRenderer({
-            canvas,
-            antialias: true,
-            alpha: false,
-          });
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          renderer.setClearColor(0xffffff, 1);
-
-          const scene = new THREE.Scene();
-          const camera = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 100);
-          camera.position.set(0, 0, 4);
-
-          // Lights
-          scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-          const dirLight = new THREE.DirectionalLight(0x0E3C75, 1.2);
-          dirLight.position.set(5, 2, 3);
-          scene.add(dirLight);
-
-          const radius = 1.4;
-          const detail = 64;
-
-          // Base sphere - blue color
-          const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
-          const baseMat = new THREE.MeshStandardMaterial({
-            color: 0x0E3C75,
-            metalness: 0.2,
-            roughness: 0.7,
-            emissive: 0x0a2d5a,
-          });
-          const baseSphere = new THREE.Mesh(sphereGeo, baseMat);
-          scene.add(baseSphere);
-
-          // Wireframe overlay - brand blue
-          const wireMat = new THREE.MeshBasicMaterial({
-            color: 0x0E3C75,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.4,
-          });
-          const wireSphere = new THREE.Mesh(sphereGeo, wireMat);
-          scene.add(wireSphere);
-
-          // Soft atmosphere - light blue
-          const atmoGeo = new THREE.SphereGeometry(radius * 1.03, detail, detail);
-          const atmoMat = new THREE.MeshBasicMaterial({
-            color: 0x4a90e2,
-            transparent: true,
-            opacity: 0.15,
-          });
-          const atmosphere = new THREE.Mesh(atmoGeo, atmoMat);
-          scene.add(atmosphere);
-
-          // Sales markers
-          const markers = [
-            { lat: 43.7, lon: -79.4 },   // Toronto
-            { lat: 40.7, lon: -74.0 },   // New York
-            { lat: -23.6, lon: -46.6 },  // São Paulo
-            { lat: 51.5, lon: -0.1 },    // London
-            { lat: 48.9, lon: 2.4 },     // Paris
-            { lat: 35.7, lon: 139.7 },   // Tokyo
-            { lat: 31.2, lon: 121.5 },   // Shanghai
-            { lat: 28.6, lon: 77.2 },    // Delhi
-            { lat: -33.9, lon: 151.2 },  // Sydney
-            { lat: 25.3, lon: 55.3 },    // Dubai
-          ];
-
-          function latLonToVector3(lat, lon, r) {
-            const phi = (90 - lat) * (Math.PI / 180);
-            const theta = (lon + 180) * (Math.PI / 180);
-            return new THREE.Vector3(
-              -r * Math.sin(phi) * Math.cos(theta),
-              r * Math.cos(phi),
-              r * Math.sin(phi) * Math.sin(theta)
-            );
-          }
-
-          const pointPositions = new Float32Array(markers.length * 3);
-          markers.forEach((m, i) => {
-            const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
-            pointPositions[i * 3 + 0] = v.x;
-            pointPositions[i * 3 + 1] = v.y;
-            pointPositions[i * 3 + 2] = v.z;
-          });
-
-          const pointsGeo = new THREE.BufferGeometry();
-          pointsGeo.setAttribute("position", new THREE.BufferAttribute(pointPositions, 3));
-          const pointsMat = new THREE.PointsMaterial({
-            color: 0x0E3C75,
-            size: 0.08,
-            sizeAttenuation: true,
-          });
-          const points = new THREE.Points(pointsGeo, pointsMat);
-          scene.add(points);
-
-          // Resize handling
-          function resizeRenderer() {
-            const rect = container.getBoundingClientRect();
-            const width = rect.width;
-            const height = rect.height;
-            
-            if (width > 0 && height > 0) {
-              renderer.setSize(width, height, false);
-              camera.aspect = width / height;
-              camera.updateProjectionMatrix();
-            }
-          }
-
-          window.addEventListener("resize", resizeRenderer);
-          
-          // Initial resize
-          resizeRenderer();
-          
-          // Use IntersectionObserver to ensure proper initialization
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                resizeRenderer();
-              }
+          try {
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({
+              canvas: canvas,
+              antialias: true,
+              alpha: false,
             });
-          }, { threshold: 0.1 });
-          
-          observer.observe(container);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0xffffff, 1);
+            renderer.setSize(rect.width, rect.height, false);
 
-          // Animation loop
-          function animate() {
-            requestAnimationFrame(animate);
-            wireSphere.rotation.y += 0.0022;
-            baseSphere.rotation.y += 0.0022;
-            atmosphere.rotation.y += 0.0015;
-            points.rotation.y += 0.0022;
-            renderer.render(scene, camera);
+            // Create scene
+            scene = new THREE.Scene();
+
+            // Create camera
+            camera = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 100);
+            camera.position.set(0, 0, 4);
+
+            // Add lights
+            scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+            const dirLight = new THREE.DirectionalLight(0x0E3C75, 1.2);
+            dirLight.position.set(5, 2, 3);
+            scene.add(dirLight);
+
+            const radius = 1.4;
+            const detail = 64;
+
+            // Base sphere
+            const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
+            const baseMat = new THREE.MeshStandardMaterial({
+              color: 0x0E3C75,
+              metalness: 0.2,
+              roughness: 0.7,
+              emissive: 0x0a2d5a,
+            });
+            baseSphere = new THREE.Mesh(sphereGeo, baseMat);
+            scene.add(baseSphere);
+
+            // Wireframe overlay
+            const wireMat = new THREE.MeshBasicMaterial({
+              color: 0x0E3C75,
+              wireframe: true,
+              transparent: true,
+              opacity: 0.4,
+            });
+            wireSphere = new THREE.Mesh(sphereGeo, wireMat);
+            scene.add(wireSphere);
+
+            // Atmosphere
+            const atmoGeo = new THREE.SphereGeometry(radius * 1.03, detail, detail);
+            const atmoMat = new THREE.MeshBasicMaterial({
+              color: 0x4a90e2,
+              transparent: true,
+              opacity: 0.15,
+            });
+            atmosphere = new THREE.Mesh(atmoGeo, atmoMat);
+            scene.add(atmosphere);
+
+            // Sales markers
+            const markers = [
+              { lat: 43.7, lon: -79.4 },   // Toronto
+              { lat: 40.7, lon: -74.0 },   // New York
+              { lat: -23.6, lon: -46.6 },  // São Paulo
+              { lat: 51.5, lon: -0.1 },    // London
+              { lat: 48.9, lon: 2.4 },     // Paris
+              { lat: 35.7, lon: 139.7 },   // Tokyo
+              { lat: 31.2, lon: 121.5 },   // Shanghai
+              { lat: 28.6, lon: 77.2 },    // Delhi
+              { lat: -33.9, lon: 151.2 },  // Sydney
+              { lat: 25.3, lon: 55.3 },    // Dubai
+            ];
+
+            function latLonToVector3(lat, lon, r) {
+              const phi = (90 - lat) * (Math.PI / 180);
+              const theta = (lon + 180) * (Math.PI / 180);
+              return new THREE.Vector3(
+                -r * Math.sin(phi) * Math.cos(theta),
+                r * Math.cos(phi),
+                r * Math.sin(phi) * Math.sin(theta)
+              );
+            }
+
+            const pointPositions = new Float32Array(markers.length * 3);
+            markers.forEach((m, i) => {
+              const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
+              pointPositions[i * 3 + 0] = v.x;
+              pointPositions[i * 3 + 1] = v.y;
+              pointPositions[i * 3 + 2] = v.z;
+            });
+
+            const pointsGeo = new THREE.BufferGeometry();
+            pointsGeo.setAttribute("position", new THREE.BufferAttribute(pointPositions, 3));
+            const pointsMat = new THREE.PointsMaterial({
+              color: 0x0E3C75,
+              size: 0.08,
+              sizeAttenuation: true,
+            });
+            points = new THREE.Points(pointsGeo, pointsMat);
+            scene.add(points);
+
+            // Resize handler
+            function handleResize() {
+              if (!container || !renderer || !camera) return;
+              const rect = container.getBoundingClientRect();
+              if (rect.width > 0 && rect.height > 0) {
+                renderer.setSize(rect.width, rect.height, false);
+                camera.aspect = rect.width / rect.height;
+                camera.updateProjectionMatrix();
+              }
+            }
+
+            window.addEventListener("resize", handleResize);
+
+            // IntersectionObserver for visibility
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting && renderer) {
+                  handleResize();
+                }
+              });
+            }, { threshold: 0.1 });
+            observer.observe(container);
+
+            // Start animation
+            function animate() {
+              if (!renderer || !scene || !camera) return;
+              
+              animationId = requestAnimationFrame(animate);
+              
+              if (wireSphere) wireSphere.rotation.y += 0.0022;
+              if (baseSphere) baseSphere.rotation.y += 0.0022;
+              if (atmosphere) atmosphere.rotation.y += 0.0015;
+              if (points) points.rotation.y += 0.0022;
+              
+              renderer.render(scene, camera);
+            }
+            
+            animate();
+            console.log("Globe initialized successfully");
+          } catch (error) {
+            console.error("Error initializing globe:", error);
           }
-          animate();
         }
 
-        // Initialize when page is ready
-        function tryInit() {
+        // Initialize when ready
+        function startInit() {
           if (document.readyState === 'complete') {
             if (window.THREE) {
-              setTimeout(initGlobe, 300);
+              setTimeout(initGlobe, 500);
             } else {
-              setTimeout(tryInit, 100);
+              // Wait for THREE.js to load
+              const checkThree = setInterval(() => {
+                if (window.THREE) {
+                  clearInterval(checkThree);
+                  setTimeout(initGlobe, 500);
+                }
+              }, 100);
+              // Timeout after 10 seconds
+              setTimeout(() => clearInterval(checkThree), 10000);
             }
           } else {
             window.addEventListener('load', () => {
-              setTimeout(initGlobe, 300);
+              setTimeout(startInit, 500);
             });
           }
         }
 
+        // Start initialization
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', tryInit);
+          document.addEventListener('DOMContentLoaded', startInit);
         } else {
-          tryInit();
+          startInit();
         }
       })();
     </script>
