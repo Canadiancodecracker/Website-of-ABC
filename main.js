@@ -237,8 +237,18 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const path = el.getAttribute('data-i18n').split('.');
     let cur = dict;
-    for (const k of path) cur = cur?.[k];
-    if (typeof cur === 'string') el.textContent = cur;
+    for (const k of path) {
+      if (cur == null) {
+        console.warn(`Translation path broken at "${k}" in "${el.getAttribute('data-i18n')}"`);
+        break;
+      }
+      cur = cur[k];
+    }
+    if (typeof cur === 'string') {
+      el.textContent = cur;
+    } else if (cur == null) {
+      console.warn(`Translation not found for "${el.getAttribute('data-i18n')}" in language "${lang}"`);
+    }
   });
 
   const PH = {
