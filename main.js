@@ -42,7 +42,7 @@ const T = {
       r1: "Calcium Carbide - SDS",
       r2: "Dicyandiamide - SDS",
       r3: "Creatine Monohydrate - SDS",
-      r4: "Guanidine Nitrate — Datasheet (PDF)",
+      r4: "Guanidine Nitrate - SDS",
       soon: "Coming soon"
     },
     contact: { title: "Request Information", desc: "Tell us about your application, required specs, and target volumes. Our team will respond promptly." },
@@ -97,7 +97,7 @@ const T = {
       r1: "电石 - SDS",
       r2: "双氰胺 - SDS",
       r3: "一水肌酸 - SDS",
-      r4: "硝酸胍 — 产品数据表（PDF）",
+      r4: "硝酸胍 - SDS",
       soon: "即将上线"
     },
     contact: { title: "信息咨询", desc: "请告知您的应用、关键指标与目标量，我们将尽快回复。" },
@@ -196,6 +196,18 @@ function applyLang(lang) {
     } else {
       creatineMonohydrateSdsLink.href = 'assets/sds/SDS_Creatine_Monohydrate_English.html';
       creatineMonohydrateSdsLink.download = 'SDS_Creatine_Monohydrate_English.html';
+    }
+  }
+
+  // Update Guanidine Nitrate SDS link based on language
+  const guanidineNitrateSdsLink = document.getElementById('guanidine-nitrate-sds-link');
+  if (guanidineNitrateSdsLink) {
+    if (lang === 'zh') {
+      guanidineNitrateSdsLink.href = 'assets/sds/SDS_Guanidine_Nitrate_Chinese.html';
+      guanidineNitrateSdsLink.download = 'SDS_Guanidine_Nitrate_Chinese.html';
+    } else {
+      guanidineNitrateSdsLink.href = 'assets/sds/SDS_Guanidine_Nitrate_English.html';
+      guanidineNitrateSdsLink.download = 'SDS_Guanidine_Nitrate_English.html';
     }
   }
 
