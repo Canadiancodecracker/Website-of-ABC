@@ -277,58 +277,32 @@ function setupLangToggle() {
   applyLang(saved);
 }
 
-// Setup dropdown menus
-function setupDropdowns() {
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+// Setup mobile dropdown menus (click-to-expand)
+function setupMobileDropdowns() {
+  const mobileToggles = document.querySelectorAll('.mega-mobile-toggle');
   
-  // Close all dropdowns
-  function closeAllDropdowns() {
-    dropdownMenus.forEach(menu => {
-      menu.classList.remove('active');
-    });
-    document.querySelectorAll('.dropdown-container').forEach(container => {
-      container.classList.remove('active');
-    });
-  }
-  
-  // Handle dropdown toggle clicks
-  dropdownToggles.forEach(toggle => {
+  mobileToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       
-      const dropdownId = toggle.getAttribute('data-dropdown');
-      const dropdownMenu = document.getElementById(`dropdown-${dropdownId}`);
-      const container = toggle.closest('.dropdown-container');
+      const dropdownId = toggle.getAttribute('data-mobile-dropdown');
+      const mobileItem = toggle.closest('.mega-mobile-item');
+      const isActive = mobileItem.classList.contains('active');
+      
+      // Close all other mobile dropdowns
+      document.querySelectorAll('.mega-mobile-item').forEach(item => {
+        if (item !== mobileItem) {
+          item.classList.remove('active');
+        }
+      });
       
       // Toggle the clicked dropdown
-      const isActive = dropdownMenu.classList.contains('active');
-      closeAllDropdowns();
-      
-      if (!isActive) {
-        dropdownMenu.classList.add('active');
-        container.classList.add('active');
+      if (isActive) {
+        mobileItem.classList.remove('active');
+      } else {
+        mobileItem.classList.add('active');
       }
-    });
-  });
-  
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown-container')) {
-      closeAllDropdowns();
-    }
-  });
-  
-  // Close dropdown when clicking on a dropdown link
-  dropdownMenus.forEach(menu => {
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        // Small delay to allow navigation
-        setTimeout(() => {
-          closeAllDropdowns();
-        }, 100);
-      });
     });
   });
 }
@@ -401,7 +375,7 @@ function renderNews(newsItems) {
 // Initialize everything
 function init() {
   setupLangToggle();
-  setupDropdowns();
+  setupMobileDropdowns();
   loadNews();
 }
 
