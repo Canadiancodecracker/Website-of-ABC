@@ -1,0 +1,76 @@
+{
+  "regions": [
+    {
+      "name": "North America",
+      "clients": 45,
+      "salesVolume": "High",
+      "keyProducts": ["Calcium Carbide", "Cyanamide Derivatives"],
+      "locations": [
+        { "city": "Toronto", "lat": 43.7, "lon": -79.4, "clients": 8 },
+        { "city": "New York", "lat": 40.7, "lon": -74.0, "clients": 12 },
+        { "city": "Los Angeles", "lat": 34.1, "lon": -118.2, "clients": 10 },
+        { "city": "Chicago", "lat": 41.9, "lon": -87.6, "clients": 7 },
+        { "city": "Houston", "lat": 29.8, "lon": -95.4, "clients": 8 }
+      ]
+    },
+    {
+      "name": "Europe",
+      "clients": 38,
+      "salesVolume": "High",
+      "keyProducts": ["Performance Products", "Industrial Intermediates"],
+      "locations": [
+        { "city": "London", "lat": 51.5, "lon": -0.1, "clients": 9 },
+        { "city": "Paris", "lat": 48.9, "lon": 2.4, "clients": 7 },
+        { "city": "Berlin", "lat": 52.5, "lon": 13.4, "clients": 6 },
+        { "city": "Madrid", "lat": 40.4, "lon": -3.7, "clients": 5 },
+        { "city": "Amsterdam", "lat": 52.4, "lon": 4.9, "clients": 6 },
+        { "city": "Moscow", "lat": 55.8, "lon": 37.6, "clients": 5 }
+      ]
+    },
+    {
+      "name": "Asia Pacific",
+      "clients": 62,
+      "salesVolume": "Very High",
+      "keyProducts": ["All Product Lines"],
+      "locations": [
+        { "city": "Tokyo", "lat": 35.7, "lon": 139.7, "clients": 15 },
+        { "city": "Shanghai", "lat": 31.2, "lon": 121.5, "clients": 18 },
+        { "city": "Beijing", "lat": 39.9, "lon": 116.4, "clients": 12 },
+        { "city": "Singapore", "lat": 1.3, "lon": 103.8, "clients": 8 },
+        { "city": "Delhi", "lat": 28.6, "lon": 77.2, "clients": 9 }
+      ]
+    },
+    {
+      "name": "Middle East & Africa",
+      "clients": 22,
+      "salesVolume": "Medium",
+      "keyProducts": ["Calcium Carbide", "Performance Products"],
+      "locations": [
+        { "city": "Dubai", "lat": 25.3, "lon": 55.3, "clients": 8 },
+        { "city": "Riyadh", "lat": 24.7, "lon": 46.7, "clients": 7 },
+        { "city": "Cairo", "lat": 31.2, "lon": 29.9, "clients": 7 }
+      ]
+    },
+    {
+      "name": "South America",
+      "clients": 18,
+      "salesVolume": "Medium",
+      "keyProducts": ["Cyanamide Derivatives", "Industrial Intermediates"],
+      "locations": [
+        { "city": "São Paulo", "lat": -23.6, "lon": -46.6, "clients": 10 },
+        { "city": "Buenos Aires", "lat": -34.6, "lon": -58.4, "clients": 8 }
+      ]
+    },
+    {
+      "name": "Oceania",
+      "clients": 12,
+      "salesVolume": "Medium",
+      "keyProducts": ["Performance Products"],
+      "locations": [
+        { "city": "Sydney", "lat": -33.9, "lon": 151.2, "clients": 7 },
+        { "city": "Melbourne", "lat": -37.8, "lon": 144.9, "clients": 5 }
+      ]
+    }
+  ]
+}
+

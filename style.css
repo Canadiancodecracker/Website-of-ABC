@@ -330,3 +330,77 @@ section[id]{scroll-margin-top:4.5rem;}
 .mega-mobile-link:hover {
   background-color: #F5F7FA;
 }
+
+/* Client Sales Map Styles */
+#sales-map-container {
+  position: relative;
+}
+
+#sales-map {
+  border-radius: 24px;
+}
+
+/* Custom Leaflet marker styles */
+.custom-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(14, 60, 117, 0.2);
+}
+
+.leaflet-popup-content {
+  margin: 16px;
+  font-family: 'Inter', 'SF Pro', ui-sans-serif, system-ui, Arial, sans-serif;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+/* Leaflet controls styling */
+.leaflet-control-zoom a {
+  background-color: white;
+  color: #0E3C75;
+  border: 1px solid #E4E7EB;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #0E3C75;
+  color: white;
+}
+
+.leaflet-control-attribution {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #0E3C75;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Map info panel */
+#map-info-panel {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#map-info-panel.hidden {
+  display: none;
+}
+
+#close-info {
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 8px;
+}
+
+#close-info:hover {
+  color: #0E3C75;
+}

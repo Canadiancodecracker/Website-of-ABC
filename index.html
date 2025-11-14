@@ -380,9 +380,15 @@
             </div>
           </div>
 
-          <!-- Globe -->
-          <div id="globe-container" class="mt-8 rounded-3xl border border-blue-300/20 overflow-hidden relative bg-white" style="box-shadow: 0 32px 70px rgba(14, 60, 117, 0.3), 0 0 0 1px rgba(14, 60, 117, 0.2); height: min(480px, 55vh); min-height: 400px;">
-            <canvas id="globe-canvas" style="width: 100%; height: 100%; display: block; position: relative; z-index: 1;"></canvas>
+          <!-- Client Sales Map -->
+          <div id="sales-map-container" class="mt-8 rounded-3xl border border-blue-300/20 overflow-hidden relative bg-white" style="box-shadow: 0 32px 70px rgba(14, 60, 117, 0.3), 0 0 0 1px rgba(14, 60, 117, 0.2); height: min(600px, 70vh); min-height: 500px;">
+            <div id="sales-map" style="width: 100%; height: 100%;"></div>
+            <!-- Map Info Panel -->
+            <div id="map-info-panel" class="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-xs hidden" style="z-index: 1000;">
+              <button id="close-info" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">×</button>
+              <h3 id="info-title" class="font-bold text-brand-blue mb-2"></h3>
+              <p id="info-content" class="text-sm text-gray-600"></p>
+            </div>
           </div>
         </div>
       </section>
@@ -609,8 +615,9 @@
       </div>
     </footer>
 
-    <!-- Three.js for 3D Globe -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <!-- Leaflet.js for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./main.js"></script>
     <script>
       /* ===================== KPI COUNTERS ===================== */
@@ -654,262 +661,250 @@
         counters.forEach((el) => observer.observe(el));
       })();
 
-      /* ===================== 3D GLOBE ===================== */
+      /* ===================== CLIENT SALES MAP ===================== */
       (function () {
-        let renderer, scene, camera, baseSphere, wireSphere, points;
-        let animationId = null;
-        
-        function initGlobe() {
-          // Check if already initialized
-          if (renderer) return;
-          
-          // Check for THREE.js
-          if (!window.THREE) {
-            console.warn("THREE.js not loaded yet, retrying...");
-            setTimeout(initGlobe, 200);
-            return;
-          }
+        let map = null;
+        let salesData = null;
 
-          const canvas = document.getElementById("globe-canvas");
-          const container = document.getElementById("globe-container");
-          
-          if (!canvas || !container) {
-            console.warn("Globe elements not found, retrying...");
-            setTimeout(initGlobe, 200);
-            return;
-          }
-
-          // Wait for container to have dimensions
-          const rect = container.getBoundingClientRect();
-          if (rect.width === 0 || rect.height === 0) {
-            setTimeout(initGlobe, 200);
-            return;
-          }
-
-          try {
-            // Create renderer
-            renderer = new THREE.WebGLRenderer({
-              canvas: canvas,
-              antialias: true,
-              alpha: false,
-            });
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0xffffff, 1);
-            renderer.setSize(rect.width, rect.height, false);
-
-            // Create scene
-            scene = new THREE.Scene();
-
-            // Create camera - positioned to show hemisphere view
-            camera = new THREE.PerspectiveCamera(50, rect.width / rect.height, 0.1, 100);
-            camera.position.set(0, 0.5, 3.5);
-            camera.lookAt(0, 0, 0);
-
-            // Add lights
-            scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-            const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-            dirLight.position.set(5, 5, 5);
-            scene.add(dirLight);
-
-            const radius = 1.6;
-            const detail = 64;
-
-            // Enable local clipping for hemisphere view
-            renderer.localClippingEnabled = true;
-
-            // Create clipping plane to show only hemisphere (top half)
-            const clipPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0);
-
-            // Load world map texture
-            const textureLoader = new THREE.TextureLoader();
-            textureLoader.crossOrigin = 'anonymous';
-            
-            // Create sphere geometry
-            const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
-            
-            // Create globe with blue material (world map texture can be added later if needed)
-            // For now, using blue sphere with map-like appearance
-            const baseMat = new THREE.MeshPhongMaterial({
-              color: 0x4a90e2, // Blue color for oceans
-              shininess: 30,
-              specular: 0x222222,
-              clippingPlanes: [clipPlane],
-              clipShadows: true,
-            });
-            
-            baseSphere = new THREE.Mesh(sphereGeo, baseMat);
-            scene.add(baseSphere);
-
-            // Subtle wireframe grid for longitude/latitude lines
-            const wireMat = new THREE.MeshBasicMaterial({
-              color: 0xcccccc,
-              wireframe: true,
-              transparent: true,
-              opacity: 0.2,
-              clippingPlanes: [clipPlane],
-            });
-            wireSphere = new THREE.Mesh(sphereGeo, wireMat);
-            scene.add(wireSphere);
-            
-            // Try to load world map texture as overlay (optional enhancement)
-            textureLoader.load(
-              'https://raw.githubusercontent.com/turban/webgl-earth/master/images/2_no_clouds_4k.jpg',
-              (texture) => {
-                // Texture loaded - update material
-                baseMat.map = texture;
-                baseMat.needsUpdate = true;
-                console.log('Earth texture loaded');
-              },
-              undefined,
-              (err) => {
-                console.warn('Texture load failed, using blue material:', err);
-              }
-            );
-
-            // Sales markers - many more locations
-            const markers = [
-              // North America
-              { lat: 43.7, lon: -79.4 },   // Toronto
-              { lat: 40.7, lon: -74.0 },   // New York
-              { lat: 34.1, lon: -118.2 },  // Los Angeles
-              { lat: 37.8, lon: -122.4 },  // San Francisco
-              { lat: 41.9, lon: -87.6 },   // Chicago
-              { lat: 29.8, lon: -95.4 },   // Houston
-              // South America
-              { lat: -23.6, lon: -46.6 },  // São Paulo
-              { lat: -34.6, lon: -58.4 },  // Buenos Aires
-              { lat: -12.0, lon: -77.0 },  // Lima
-              // Europe
-              { lat: 51.5, lon: -0.1 },    // London
-              { lat: 48.9, lon: 2.4 },     // Paris
-              { lat: 52.5, lon: 13.4 },    // Berlin
-              { lat: 41.9, lon: 12.5 },    // Rome
-              { lat: 40.4, lon: -3.7 },    // Madrid
-              { lat: 52.4, lon: 4.9 },     // Amsterdam
-              { lat: 55.8, lon: 37.6 },    // Moscow
-              // Asia
-              { lat: 35.7, lon: 139.7 },   // Tokyo
-              { lat: 37.6, lon: 126.9 },   // Seoul
-              { lat: 31.2, lon: 121.5 },   // Shanghai
-              { lat: 39.9, lon: 116.4 },   // Beijing
-              { lat: 22.3, lon: 114.2 },   // Hong Kong
-              { lat: 1.3, lon: 103.8 },    // Singapore
-              { lat: 13.8, lon: 100.5 },   // Bangkok
-              { lat: 28.6, lon: 77.2 },    // Delhi
-              { lat: 19.1, lon: 72.9 },    // Mumbai
-              { lat: 12.9, lon: 77.6 },    // Bangalore
-              // Middle East
-              { lat: 25.3, lon: 55.3 },    // Dubai
-              { lat: 24.7, lon: 46.7 },    // Riyadh
-              { lat: 31.2, lon: 29.9 },    // Cairo
-              // Oceania
-              { lat: -33.9, lon: 151.2 },  // Sydney
-              { lat: -37.8, lon: 144.9 },  // Melbourne
-              { lat: -36.8, lon: 174.8 },  // Auckland
-            ];
-
-            function latLonToVector3(lat, lon, r) {
-              const phi = (90 - lat) * (Math.PI / 180);
-              const theta = (lon + 180) * (Math.PI / 180);
-              return new THREE.Vector3(
-                -r * Math.sin(phi) * Math.cos(theta),
-                r * Math.cos(phi),
-                r * Math.sin(phi) * Math.sin(theta)
-              );
+        // Placeholder client sales data (can be loaded from JSON file)
+        const defaultSalesData = {
+          regions: [
+            {
+              name: "North America",
+              clients: 45,
+              salesVolume: "High",
+              keyProducts: ["Calcium Carbide", "Cyanamide Derivatives"],
+              locations: [
+                { city: "Toronto", lat: 43.7, lon: -79.4, clients: 8 },
+                { city: "New York", lat: 40.7, lon: -74.0, clients: 12 },
+                { city: "Los Angeles", lat: 34.1, lon: -118.2, clients: 10 },
+                { city: "Chicago", lat: 41.9, lon: -87.6, clients: 7 },
+                { city: "Houston", lat: 29.8, lon: -95.4, clients: 8 }
+              ]
+            },
+            {
+              name: "Europe",
+              clients: 38,
+              salesVolume: "High",
+              keyProducts: ["Performance Products", "Industrial Intermediates"],
+              locations: [
+                { city: "London", lat: 51.5, lon: -0.1, clients: 9 },
+                { city: "Paris", lat: 48.9, lon: 2.4, clients: 7 },
+                { city: "Berlin", lat: 52.5, lon: 13.4, clients: 6 },
+                { city: "Madrid", lat: 40.4, lon: -3.7, clients: 5 },
+                { city: "Amsterdam", lat: 52.4, lon: 4.9, clients: 6 },
+                { city: "Moscow", lat: 55.8, lon: 37.6, clients: 5 }
+              ]
+            },
+            {
+              name: "Asia Pacific",
+              clients: 62,
+              salesVolume: "Very High",
+              keyProducts: ["All Product Lines"],
+              locations: [
+                { city: "Tokyo", lat: 35.7, lon: 139.7, clients: 15 },
+                { city: "Shanghai", lat: 31.2, lon: 121.5, clients: 18 },
+                { city: "Beijing", lat: 39.9, lon: 116.4, clients: 12 },
+                { city: "Singapore", lat: 1.3, lon: 103.8, clients: 8 },
+                { city: "Delhi", lat: 28.6, lon: 77.2, clients: 9 }
+              ]
+            },
+            {
+              name: "Middle East & Africa",
+              clients: 22,
+              salesVolume: "Medium",
+              keyProducts: ["Calcium Carbide", "Performance Products"],
+              locations: [
+                { city: "Dubai", lat: 25.3, lon: 55.3, clients: 8 },
+                { city: "Riyadh", lat: 24.7, lon: 46.7, clients: 7 },
+                { city: "Cairo", lat: 31.2, lon: 29.9, clients: 7 }
+              ]
+            },
+            {
+              name: "South America",
+              clients: 18,
+              salesVolume: "Medium",
+              keyProducts: ["Cyanamide Derivatives", "Industrial Intermediates"],
+              locations: [
+                { city: "São Paulo", lat: -23.6, lon: -46.6, clients: 10 },
+                { city: "Buenos Aires", lat: -34.6, lon: -58.4, clients: 8 }
+              ]
+            },
+            {
+              name: "Oceania",
+              clients: 12,
+              salesVolume: "Medium",
+              keyProducts: ["Performance Products"],
+              locations: [
+                { city: "Sydney", lat: -33.9, lon: 151.2, clients: 7 },
+                { city: "Melbourne", lat: -37.8, lon: 144.9, clients: 5 }
+              ]
             }
+          ]
+        };
 
-            // Create markers as spheres (dark blue dots)
-            const markerGroup = new THREE.Group();
-            const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
-            const markerMaterial = new THREE.MeshBasicMaterial({
-              color: 0x0E3C75, // Dark blue
+        function initSalesMap() {
+          const mapContainer = document.getElementById("sales-map");
+          const infoPanel = document.getElementById("map-info-panel");
+          const closeBtn = document.getElementById("close-info");
+
+          if (!mapContainer) {
+            console.warn("Sales map container not found");
+            return;
+          }
+
+          // Initialize map with custom blue/white theme
+          map = L.map('sales-map', {
+            center: [30, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 6,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            attributionControl: false
+          });
+
+          // Custom tile layer with blue/white theme
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; ABC Chemical Co., Ltd.',
+            maxZoom: 6,
+            tileSize: 256,
+            zoomOffset: 0
+          }).addTo(map);
+
+          // Try to load sales data from JSON, fallback to default
+          fetch('data/sales-data.json')
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error('Sales data file not found');
+            })
+            .then(data => {
+              salesData = data;
+              addMarkersToMap();
+            })
+            .catch(error => {
+              console.warn('Using default sales data:', error);
+              salesData = defaultSalesData;
+              addMarkersToMap();
             });
 
-            markers.forEach((m) => {
-              const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-              const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
-              marker.position.copy(v);
-              // Only show markers in the upper hemisphere
-              if (v.y >= 0) {
-                markerGroup.add(marker);
-              }
-            });
+          function addMarkersToMap() {
+            if (!salesData || !map) return;
 
-            scene.add(markerGroup);
-            points = markerGroup; // Store reference for animation
-
-            // Resize handler
-            function handleResize() {
-              if (!container || !renderer || !camera) return;
-              const rect = container.getBoundingClientRect();
-              if (rect.width > 0 && rect.height > 0) {
-                renderer.setSize(rect.width, rect.height, false);
-                camera.aspect = rect.width / rect.height;
-                camera.updateProjectionMatrix();
-              }
-            }
-
-            window.addEventListener("resize", handleResize);
-
-            // IntersectionObserver for visibility
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting && renderer) {
-                  handleResize();
-                }
+            // Create custom icon for markers
+            const createCustomIcon = (clientCount) => {
+              const size = Math.max(20, Math.min(40, 20 + clientCount * 2));
+              return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="width: ${size}px; height: ${size}px; background: #0E3C75; border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: ${size * 0.4}px;">${clientCount}</div>`,
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
               });
-            }, { threshold: 0.1 });
-            observer.observe(container);
+            };
 
-            // Start animation
-            function animate() {
-              if (!renderer || !scene || !camera) return;
-              
-              animationId = requestAnimationFrame(animate);
-              
-              // Slow, smooth rotation
-              if (wireSphere) wireSphere.rotation.y += 0.001;
-              if (baseSphere) baseSphere.rotation.y += 0.001;
-              if (points) points.rotation.y += 0.001;
-              
-              renderer.render(scene, camera);
-            }
-            
-            animate();
-            console.log("Globe initialized successfully");
-          } catch (error) {
-            console.error("Error initializing globe:", error);
+            // Add markers for each location
+            salesData.regions.forEach(region => {
+              region.locations.forEach(location => {
+                const marker = L.marker([location.lat, location.lon], {
+                  icon: createCustomIcon(location.clients)
+                }).addTo(map);
+
+                // Create popup content
+                const popupContent = `
+                  <div style="min-width: 200px;">
+                    <h3 style="font-weight: bold; color: #0E3C75; margin-bottom: 8px;">${location.city}</h3>
+                    <p style="margin: 4px 0;"><strong>Region:</strong> ${region.name}</p>
+                    <p style="margin: 4px 0;"><strong>Clients:</strong> ${location.clients}</p>
+                    <p style="margin: 4px 0;"><strong>Sales Volume:</strong> ${region.salesVolume}</p>
+                    <p style="margin: 4px 0;"><strong>Key Products:</strong> ${region.keyProducts.join(', ')}</p>
+                  </div>
+                `;
+
+                marker.bindPopup(popupContent);
+
+                // Add click handler for info panel
+                marker.on('click', function() {
+                  document.getElementById('info-title').textContent = `${location.city}, ${region.name}`;
+                  document.getElementById('info-content').innerHTML = `
+                    <p><strong>Active Clients:</strong> ${location.clients}</p>
+                    <p><strong>Total Regional Clients:</strong> ${region.clients}</p>
+                    <p><strong>Sales Volume:</strong> ${region.salesVolume}</p>
+                    <p><strong>Key Products:</strong> ${region.keyProducts.join(', ')}</p>
+                  `;
+                  infoPanel.classList.remove('hidden');
+                });
+              });
+            });
+
+            // Add region heatmap circles
+            salesData.regions.forEach(region => {
+              const avgLat = region.locations.reduce((sum, loc) => sum + loc.lat, 0) / region.locations.length;
+              const avgLon = region.locations.reduce((sum, loc) => sum + loc.lon, 0) / region.locations.length;
+              const totalClients = region.clients;
+              const radius = Math.max(100000, Math.min(500000, totalClients * 8000));
+
+              L.circle([avgLat, avgLon], {
+                radius: radius,
+                fillColor: '#0E3C75',
+                fillOpacity: 0.15,
+                color: '#0E3C75',
+                weight: 2,
+                opacity: 0.3
+              }).addTo(map);
+            });
           }
+
+          // Close info panel
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+              infoPanel.classList.add('hidden');
+            });
+          }
+
+          // Handle map resize
+          function handleResize() {
+            if (map) {
+              setTimeout(() => {
+                map.invalidateSize();
+              }, 100);
+            }
+          }
+
+          window.addEventListener('resize', handleResize);
+
+          // Use IntersectionObserver to initialize when visible
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && map) {
+                handleResize();
+              }
+            });
+          }, { threshold: 0.1 });
+
+          observer.observe(mapContainer);
         }
 
         // Initialize when ready
-        function startInit() {
-          if (document.readyState === 'complete') {
-            if (window.THREE) {
-              setTimeout(initGlobe, 500);
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            if (window.L) {
+              setTimeout(initSalesMap, 300);
             } else {
-              // Wait for THREE.js to load
-              const checkThree = setInterval(() => {
-                if (window.THREE) {
-                  clearInterval(checkThree);
-                  setTimeout(initGlobe, 500);
-                }
-              }, 100);
-              // Timeout after 10 seconds
-              setTimeout(() => clearInterval(checkThree), 10000);
+              window.addEventListener('load', () => {
+                setTimeout(initSalesMap, 300);
+              });
             }
+          });
+        } else {
+          if (window.L) {
+            setTimeout(initSalesMap, 300);
           } else {
             window.addEventListener('load', () => {
-              setTimeout(startInit, 500);
+              setTimeout(initSalesMap, 300);
             });
           }
-        }
-
-        // Start initialization
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', startInit);
-        } else {
-          startInit();
         }
       })();
     </script>
