@@ -656,7 +656,7 @@
 
       /* ===================== 3D GLOBE ===================== */
       (function () {
-        let renderer, scene, camera, baseSphere, wireSphere, atmosphere, points;
+        let renderer, scene, camera, baseSphere, wireSphere, points;
         let animationId = null;
         
         function initGlobe() {
@@ -705,57 +705,74 @@
             camera.position.set(0, 0, 4);
 
             // Add lights
-            scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-            const dirLight = new THREE.DirectionalLight(0x0E3C75, 1.2);
-            dirLight.position.set(5, 2, 3);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            dirLight.position.set(5, 3, 5);
             scene.add(dirLight);
 
             const radius = 1.4;
             const detail = 64;
 
-            // Base sphere
+            // Base sphere - orange landmasses (earth-like)
             const sphereGeo = new THREE.SphereGeometry(radius, detail, detail);
-            const baseMat = new THREE.MeshStandardMaterial({
-              color: 0x0E3C75,
-              metalness: 0.2,
-              roughness: 0.7,
-              emissive: 0x0a2d5a,
+            const baseMat = new THREE.MeshPhongMaterial({
+              color: 0xff8c42, // Orange color for landmasses
+              shininess: 30,
+              specular: 0x222222,
             });
             baseSphere = new THREE.Mesh(sphereGeo, baseMat);
             scene.add(baseSphere);
 
-            // Wireframe overlay
+            // Subtle wireframe grid for longitude/latitude lines
             const wireMat = new THREE.MeshBasicMaterial({
-              color: 0x0E3C75,
+              color: 0xcccccc,
               wireframe: true,
               transparent: true,
-              opacity: 0.4,
+              opacity: 0.15,
             });
             wireSphere = new THREE.Mesh(sphereGeo, wireMat);
             scene.add(wireSphere);
 
-            // Atmosphere
-            const atmoGeo = new THREE.SphereGeometry(radius * 1.03, detail, detail);
-            const atmoMat = new THREE.MeshBasicMaterial({
-              color: 0x4a90e2,
-              transparent: true,
-              opacity: 0.15,
-            });
-            atmosphere = new THREE.Mesh(atmoGeo, atmoMat);
-            scene.add(atmosphere);
-
-            // Sales markers
+            // Sales markers - many more locations
             const markers = [
+              // North America
               { lat: 43.7, lon: -79.4 },   // Toronto
               { lat: 40.7, lon: -74.0 },   // New York
+              { lat: 34.1, lon: -118.2 },  // Los Angeles
+              { lat: 37.8, lon: -122.4 },  // San Francisco
+              { lat: 41.9, lon: -87.6 },   // Chicago
+              { lat: 29.8, lon: -95.4 },   // Houston
+              // South America
               { lat: -23.6, lon: -46.6 },  // São Paulo
+              { lat: -34.6, lon: -58.4 },  // Buenos Aires
+              { lat: -12.0, lon: -77.0 },  // Lima
+              // Europe
               { lat: 51.5, lon: -0.1 },    // London
               { lat: 48.9, lon: 2.4 },     // Paris
+              { lat: 52.5, lon: 13.4 },    // Berlin
+              { lat: 41.9, lon: 12.5 },    // Rome
+              { lat: 40.4, lon: -3.7 },    // Madrid
+              { lat: 52.4, lon: 4.9 },     // Amsterdam
+              { lat: 55.8, lon: 37.6 },    // Moscow
+              // Asia
               { lat: 35.7, lon: 139.7 },   // Tokyo
+              { lat: 37.6, lon: 126.9 },   // Seoul
               { lat: 31.2, lon: 121.5 },   // Shanghai
+              { lat: 39.9, lon: 116.4 },   // Beijing
+              { lat: 22.3, lon: 114.2 },   // Hong Kong
+              { lat: 1.3, lon: 103.8 },    // Singapore
+              { lat: 13.8, lon: 100.5 },   // Bangkok
               { lat: 28.6, lon: 77.2 },    // Delhi
-              { lat: -33.9, lon: 151.2 },  // Sydney
+              { lat: 19.1, lon: 72.9 },    // Mumbai
+              { lat: 12.9, lon: 77.6 },    // Bangalore
+              // Middle East
               { lat: 25.3, lon: 55.3 },    // Dubai
+              { lat: 24.7, lon: 46.7 },    // Riyadh
+              { lat: 31.2, lon: 29.9 },    // Cairo
+              // Oceania
+              { lat: -33.9, lon: 151.2 },  // Sydney
+              { lat: -37.8, lon: 144.9 },  // Melbourne
+              { lat: -36.8, lon: 174.8 },  // Auckland
             ];
 
             function latLonToVector3(lat, lon, r) {
@@ -768,23 +785,22 @@
               );
             }
 
-            const pointPositions = new Float32Array(markers.length * 3);
-            markers.forEach((m, i) => {
-              const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
-              pointPositions[i * 3 + 0] = v.x;
-              pointPositions[i * 3 + 1] = v.y;
-              pointPositions[i * 3 + 2] = v.z;
+            // Create markers as spheres (dark blue dots)
+            const markerGroup = new THREE.Group();
+            const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
+            const markerMaterial = new THREE.MeshBasicMaterial({
+              color: 0x0E3C75, // Dark blue
             });
 
-            const pointsGeo = new THREE.BufferGeometry();
-            pointsGeo.setAttribute("position", new THREE.BufferAttribute(pointPositions, 3));
-            const pointsMat = new THREE.PointsMaterial({
-              color: 0x0E3C75,
-              size: 0.08,
-              sizeAttenuation: true,
+            markers.forEach((m) => {
+              const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+              const v = latLonToVector3(m.lat, m.lon, radius * 1.01);
+              marker.position.copy(v);
+              markerGroup.add(marker);
             });
-            points = new THREE.Points(pointsGeo, pointsMat);
-            scene.add(points);
+
+            scene.add(markerGroup);
+            points = markerGroup; // Store reference for animation
 
             // Resize handler
             function handleResize() {
@@ -815,10 +831,10 @@
               
               animationId = requestAnimationFrame(animate);
               
-              if (wireSphere) wireSphere.rotation.y += 0.0022;
-              if (baseSphere) baseSphere.rotation.y += 0.0022;
-              if (atmosphere) atmosphere.rotation.y += 0.0015;
-              if (points) points.rotation.y += 0.0022;
+              // Slow, smooth rotation
+              if (wireSphere) wireSphere.rotation.y += 0.001;
+              if (baseSphere) baseSphere.rotation.y += 0.001;
+              if (points) points.rotation.y += 0.001;
               
               renderer.render(scene, camera);
             }
