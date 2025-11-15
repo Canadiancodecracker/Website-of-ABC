@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>ABC Chemical — Advanced Calcium & Cyanamide Solutions</title>
     <meta name="description" content="ABC Chemical Co., Ltd. supplies high‑purity calcium and cyanamide derivatives for agriculture, nutrition, and industry." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Suppress Tailwind CDN production warning
+      const originalWarn = console.warn;
+      console.warn = function(...args) {
+        if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) {
+          return; // Suppress Tailwind CDN warning
+        }
+        originalWarn.apply(console, args);
+      };
+      
       tailwind.config = {
         theme: {
           extend: {
@@ -135,7 +145,7 @@
                 class="w-full h-auto"
                 poster="assets/images/video-poster.jpg"
               >
-                <source src="Video 01.mp4" type="video/mp4">
+                <source src="Video 2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
