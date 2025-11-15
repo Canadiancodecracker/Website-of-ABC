@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ABC Chemical — Advanced Calcium & Cyanamide Solutions</title>
+    <meta name="description" content="ABC Chemical Co., Ltd. supplies high‑purity calcium and cyanamide derivatives for agriculture, nutrition, and industry." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
+            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-brand-blue focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+          <a href="#home" class="flex items-center gap-2">
+            <img src="assets/images/logo.svg" alt="ABC Chemical Logo" class="h-12 w-auto" />
+            <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical</span>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a href="#home" class="hover:text-brand-blue transition" data-i18n="nav.home">Home</a>
+            <a href="#products" class="hover:text-brand-blue transition" data-i18n="nav.products">Products</a>
+            <a href="#applications" class="hover:text-brand-blue transition" data-i18n="nav.applications">Applications</a>
+            <a href="#sustainability" class="hover:text-brand-blue transition" data-i18n="nav.sustainability">Sustainability</a>
+            <a href="#resources" class="hover:text-brand-blue transition" data-i18n="nav.resources">Resources</a>
+            <a href="#contact" class="hover:text-brand-blue transition" data-i18n="nav.contact">Contact</a>
+            <div class="ml-2 h-6 w-px bg-gray-300"></div>
+            <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden" role="group" aria-label="Language toggle">
+              <button id="btn-en" class="lang-btn lang-active" data-setlang="en" aria-pressed="true">EN</button>
+              <button id="btn-zh" class="lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+            </div>
+          </nav>
+
+          <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:text-brand-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-blue" aria-label="Open main menu" aria-expanded="false">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Nav -->
+      <div id="mobileNav" class="md:hidden hidden border-t border-gray-200 bg-white">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 grid gap-1 text-sm font-medium">
+          <a href="#home" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.home">Home</a>
+          <a href="#products" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.products">Products</a>
+          <a href="#applications" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.applications">Applications</a>
+          <a href="#sustainability" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.sustainability">Sustainability</a>
+          <a href="#resources" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.resources">Resources</a>
+          <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.contact">Contact</a>
+          <div class="flex gap-2 pt-2">
+            <button id="m-en" class="lang-btn flex-1" data-setlang="en">EN</button>
+            <button id="m-zh" class="lang-btn flex-1" data-setlang="zh">中</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="pt-16">
+      <!-- Hero -->
+      <section id="home" class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-100"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="py-16 sm:py-24 lg:py-28 grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+              <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-blue/80 bg-brand-blue/5 ring-1 ring-brand-blue/10 rounded-full px-3 py-1" data-i18n="hero.kicker">Reliable • Scientific • Global</span>
+              <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900" data-i18n="hero.headline">
+                Advanced Calcium &amp; Cyanamide Solutions.
+              </h1>
+              <p class="mt-5 text-base sm:text-lg text-gray-700 max-w-2xl" data-i18n="hero.tagline">
+                ABC Chemical Co., Ltd. — Chemistry You Can Rely On. High‑purity materials engineered for reliability, safety, and performance across agriculture, nutrition, and heavy industry.
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#products" class="btn-primary" data-i18n="hero.ctaPrimary">Explore Our Products</a>
+                <a href="#contact" class="btn-secondary" data-i18n="hero.ctaSecondary">Contact Sales</a>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div class="relative h-64 sm:h-80 lg:h-[28rem] rounded-2xl bg-brand-blue shadow-brand overflow-hidden">
+                <svg viewBox="0 0 600 600" class="absolute inset-0 h-full w-full opacity-30">
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#ffffff"/>
+                      <stop offset="100%" stop-color="#8bb6e5"/>
+                    </linearGradient>
+                  </defs>
+                  <g stroke="url(#g1)" stroke-width="1.2">
+                    <path d="M0 60 H600M0 120 H600M0 180 H600M0 240 H600M0 300 H600M0 360 H600M0 420 H600M0 480 H600M0 540 H600"/>
+                    <path d="M60 0 V600M120 0 V600M180 0 V600M240 0 V600M300 0 V600M360 0 V600M420 0 V600M480 0 V600M540 0 V600"/>
+                  </g>
+                </svg>
+                
+                <div class="relative z-10 h-full flex flex-col">
+                  <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                    <h2 class="text-lg font-bold text-white tracking-tight">NEWS & UPDATES</h2>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/20">
+                      Calcium & Cyanamide Specialists
+                    </span>
+                  </div>
+                  
+                  <div class="flex-1 overflow-hidden px-6">
+                    <div id="news-scroll-container" class="space-y-4 py-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO SECTION - NEW! -->
+      <section class="py-12 sm:py-16 bg-white border-y border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-xl mx-auto">
+            <div class="rounded-2xl overflow-hidden shadow-brand bg-gray-900">
+              <video 
+                controls 
+                class="w-full h-auto"
+                poster="assets/images/video-poster.jpg"
+              >
+                <source src="Video 01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="mt-6 text-center">
+              <h3 class="text-xl font-semibold text-gray-900">Discover ABC Chemical</h3>
+              <p class="mt-2 text-gray-600">Learn more about our advanced calcium and cyanamide solutions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="py-16 sm:py-20">
+      <!-- GLOBAL SALES MAP SECTION -->
+      <section id="global-sales-map" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Header -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white mb-4">
+              Global Reach — Supplying 50+ Countries Worldwide
+            </h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              From North America to Asia, ABC Chemical's high-purity materials power innovation across industries.
+            </p>
+          </div>
+          
+          <!-- Globe Container -->
+          <div id="globe-container" class="mb-16"></div>
+          
+          <!-- KPI Stats -->
+          <div id="global-stats" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="stat-card">
+              <span class="stat-number" data-target="50">0</span>
+              <div class="stat-label">Countries</div>
+              <div class="stat-sublabel">Worldwide Presence</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="120">0</span>
+              <div class="stat-label">Partners</div>
+              <div class="stat-sublabel">Global Distributors</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="25">0</span>
+              <div class="stat-label">Years</div>
+              <div class="stat-sublabel">Manufacturing Excellence</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="99">0</span>
+              <div class="stat-label">Quality</div>
+              <div class="stat-sublabel">Customer Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="products.title">Product Lines</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="products.desc">Quality‑driven products engineered for performance, consistency, and safety across critical industries.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p1.title">Calcium Carbide</h3>
+              <p class="card-desc" data-i18n="products.p1.desc">High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l0 0a2 2 0 1 1-2.83 2.83l0 0A1.65 1.65 0 0 0 16 19.4a1.65 1.65 0 0 0-1.82.33l0 0a2 2 0 1 1-2.83-2.83l0 0A1.65 1.65 0 0 0 8.6 16a1.65 1.65 0 0 0-1.82-.33l0 0a2 2 0 1 1-2.83-2.83l0 0A1.65 1.65 0 0 0 4.6 8.6a1.65 1.65 0 0 0-.33-1.82l0 0a2 2 0 1 1 2.83-2.83l0 0A1.65 1.65 0 0 0 8.6 4.6a1.65 1.65 0 0 0 1.82-.33l0 0a2 2 0 1 1 2.83 2.83l0 0A1.65 1.65 0 0 0 16 8.6a1.65 1.65 0 0 0 1.82.33l0 0a2 2 0 1 1 2.83 2.83l0 0A1.65 1.65 0 0 0 19.4 15z"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p2.title">Cyanamide Derivatives</h3>
+              <p class="card-desc" data-i18n="products.p2.desc">Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p3.title">Performance Products</h3>
+              <p class="card-desc" data-i18n="products.p3.desc">Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v2a3 3 0 0 1-.88 2.12L4 11.24V14a6 6 0 0 0 6 6h4a6 6 0 0 0 6-6v-2.76l-4.12-4.12A3 3 0 0 1 15 5V3"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p4.title">Industrial Intermediates</h3>
+              <p class="card-desc" data-i18n="products.p4.desc">Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Applications -->
+      <section id="applications" class="py-16 sm:py-20 bg-white border-y border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="apps.title">Applications</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="apps.desc">Proven performance across vital sectors — from crop productivity to human nutrition and heavy industry.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21C7 21 3 17 3 13c0-6 6-10 10-10 4 0 8 4 8 8 0 4-4 10-10 10z"/><path d="M12 12c-1.5 2-3 3-5 4"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a1.title">Agriculture & Fertilizers</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a1.desc">Cyanamide‑based solutions supporting nitrogen efficiency and soil health.</p>
+            </article>
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="8" height="8" rx="4"/><rect x="13" y="8" width="8" height="8" rx="4"/><path d="M11 12h2"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a2.title">Pharmaceuticals & Nutrition</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a2.desc">Creatine & GAA produced with strict quality practices for reliable performance.</p>
+            </article>
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M7 20V9l4 2V9l6 2v9"/><path d="M10 13v7M14 15v5M18 14v6"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a3.title">Metallurgy & Industry</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a3.desc">Calcium carbide solutions enabling acetylene workflows and metal processing.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sustainability -->
+      <section id="sustainability" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-6">
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="sus.title">Sustainability & Responsibility</h2>
+              <p class="mt-3 text-gray-700" data-i18n="sus.desc">We invest in cleaner production technologies, closed‑loop utilities, and rigorous EHS practices to minimize environmental impact while maximizing product value.</p>
+              <ul class="mt-6 space-y-3 text-sm text-gray-700">
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l1">Energy‑efficient utilities and heat recovery across key units</span></li>
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l2">Responsible sourcing and transparent quality systems</span></li>
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l3">Compliance aligned with global standards and customer audits</span></li>
+              </ul>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="badge">ISO 9001</span>
+                <span class="badge">ISO 14001</span>
+                <span class="badge">ISO 45001</span>
+              </div>
+            </div>
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="metric-card"><div class="metric">99%</div><div class="metric-label" data-i18n="sus.m1">Water Recycled</div></div>
+              <div class="metric-card"><div class="metric">24/7</div><div class="metric-label" data-i18n="sus.m2">EHS Monitoring</div></div>
+              <div class="metric-card"><div class="metric">ISO</div><div class="metric-label" data-i18n="sus.m3">Driven Systems</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section id="resources" class="py-16 sm:py-20 bg-white border-t border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="res.title">Resources</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="res.desc">Download product datasheets and compliance statements. (Placeholders)</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="#" class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r1">Calcium Carbide — Datasheet (PDF)</div><div class="res-sub" data-i18n="res.soon">Coming soon</div></div></a>
+            <a href="#" class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r2">Dicyandiamide — Datasheet (PDF)</div><div class="res-sub" data-i18n="res.soon">Coming soon</div></div></a>
+            <a href="#" class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r3">Creatine Monohydrate — Datasheet (PDF)</div><div class="res-sub" data-i18n="res.soon">Coming soon</div></div></a>
+            <a href="#" class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r4">Guanidine Nitrate — Datasheet (PDF)</div><div class="res-sub" data-i18n="res.soon">Coming soon</div></div></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-16 sm:py-20 bg-white border-t border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="contact.title">Request Information</h2>
+              <p class="mt-2 text-gray-700" data-i18n="contact.desc">Tell us about your application, required specs, and target volumes. Our team will respond promptly.</p>
+              <form id="contactForm" class="mt-8 grid grid-cols-1 gap-4">
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="name" class="label" data-i18n="form.name">Full Name</label>
+                    <input id="name" name="name" type="text" required class="input" placeholder="Jane Doe" />
+                  </div>
+                  <div>
+                    <label for="company" class="label" data-i18n="form.company">Company</label>
+                    <input id="company" name="company" type="text" class="input" placeholder="ABC Trading Inc." />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="email" class="label" data-i18n="form.email">Email</label>
+                    <input id="email" name="email" type="email" required class="input" placeholder="jane@company.com" />
+                  </div>
+                  <div>
+                    <label for="phone" class="label" data-i18n="form.phone">Phone (optional)</label>
+                    <input id="phone" name="phone" type="tel" class="input" placeholder="+1 555 123 4567" />
+                  </div>
+                </div>
+                <div>
+                  <label for="message" class="label" data-i18n="form.message">Message</label>
+                  <textarea id="message" name="message" rows="4" required class="input textarea" placeholder="Product(s) of interest, specs, annual volume, delivery terms..."></textarea>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button type="submit" class="btn-primary" data-i18n="form.submit">Send Request</button>
+                  <p id="formNote" class="text-sm text-gray-600" aria-live="polite"></p>
+                </div>
+                <p class="text-xs text-gray-500" data-i18n="form.privacy">By submitting this form, you agree to our Privacy Policy.</p>
+              </form>
+            </div>
+            <aside class="bg-gray-50 rounded-2xl border border-gray-200 p-6 shadow-md">
+              <h3 class="text-lg font-semibold" data-i18n="aside.title">Corporate Headquarters</h3>
+              <p class="mt-2 text-sm text-gray-700"><span id="corpName">ABC Chemical Co., Ltd.</span><br/><span data-i18n="aside.subtitle">Global Sales & Technical Service</span></p>
+              <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                <div class="rounded-lg bg-white border border-gray-200 p-4">
+                  <div class="font-semibold" data-i18n="aside.general">General Inquiries</div>
+                  <a href="mailto:info@abcchemical.example" class="block text-brand-blue mt-1">info@abcchemical.example</a>
+                </div>
+                <div class="rounded-lg bg-white border border-gray-200 p-4">
+                  <div class="font-semibold" data-i18n="aside.sales">Sales</div>
+                  <a href="mailto:sales@abcchemical.example" class="block text-brand-blue mt-1">sales@abcchemical.example</a>
+                </div>
+              </div>
+              <div class="mt-4 text-xs text-gray-500" data-i18n="aside.note">* Addresses and phone numbers are placeholders.</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 border-t border-gray-200">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-2">
+            <img src="assets/images/logo.svg" alt="ABC Chemical Logo" class="h-8 w-auto" />
+            <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+          </div>
+          <nav class="flex items-center gap-6 text-sm">
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <div class="text-xs text-gray-500"><span data-i18n="footer.c">©</span> <span id="y"></span> <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span></div>
+            <img src="assets/images/abc-chemical-qr-code.png" alt="Scan to visit" class="w-12 h-12" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+  <script src="js/globe.js"></script>
+  <script src="js/statsCounter.js"></script>
+</html>
+

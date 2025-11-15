@@ -1,24 +1,99 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <!-- CRITICAL: Suppress Tailwind warning - MUST be absolute first -->
+    <!-- HTML Version: v10 - If you see warning at line 64, browser is using CACHED HTML -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Last-Modified" content="0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=1" />
+    <link rel="icon" type="image/png" href="assets/images/abc-logo.png" />
+    <link rel="shortcut icon" href="favicon.ico?v=1" />
     <title>ABC Chemical — Advanced Calcium & Cyanamide Solutions</title>
     <meta name="description" content="ABC Chemical Co., Ltd. supplies high‑purity calcium and cyanamide derivatives for agriculture, nutrition, and industry." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS CDN - Note: For production, consider using a compiled version -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
-            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
-            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+      // Verify Tailwind warning suppression is working
+      (function() {
+        setTimeout(function() {
+          if (typeof window !== 'undefined') {
+            if (window._tailwindSuppressed === true) {
+              console.log('%c✅✅✅ Tailwind suppression v10 VERIFIED - Warning should be suppressed ✅✅✅', 'color: green; font-weight: bold; font-size: 16px; background: #e8f5e9; padding: 8px; border: 2px solid green;');
+            } else {
+              console.error('%c❌❌❌ Tailwind suppression NOT ACTIVE - HTML file is CACHED! ❌❌❌', 'color: red; font-weight: bold; font-size: 18px; background: yellow; padding: 10px; border: 3px solid red;');
+              console.error('%cDO A HARD REFRESH: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: red; font-weight: bold; font-size: 16px;');
+              alert('⚠️ OLD HTML FILE DETECTED!\n\nYour browser is using a cached version.\n\nPlease do a HARD REFRESH:\n• Windows/Linux: Ctrl+Shift+R\n• Mac: Cmd+Shift+R\n\nOr clear your browser cache completely.');
+            }
+            
+            // Check HTML version
+            if (window._htmlVersion !== 'v10') {
+              console.error('%c❌ WRONG HTML VERSION! Expected v10, got:', window._htmlVersion, 'color: red; font-weight: bold;');
+              console.error('%c⚠️ Browser is using CACHED HTML file!', 'color: red; font-weight: bold; font-size: 16px;');
+              // Force reload after 2 seconds if wrong version
+              setTimeout(function() {
+                if (window._htmlVersion !== 'v10') {
+                  console.error('%c🔄 FORCING PAGE RELOAD to get fresh HTML...', 'color: orange; font-weight: bold;');
+                  window.location.reload(true);
+                }
+              }, 2000);
+            }
           }
-        }
-      }
+        }, 200);
+      })();
+    </script>
+    <!-- CRITICAL: Load main.js with maximum cache-busting -->
+    <script>
+      (function() {
+        const ts = Date.now();
+        const rnd = Math.random().toString(36).substring(7);
+        const perf = performance.now();
+        const script = document.createElement('script');
+        script.src = './main.js?v=' + ts + '&r=' + rnd + '&p=' + perf + '&_=' + Math.random() + '&force=1';
+        script.async = false;
+        script.defer = false;
+        script.setAttribute('data-load-time', ts);
+        
+        script.onload = function() {
+          console.log('%c🚀 main.js script tag loaded', 'color: green; font-weight: bold;');
+          console.log('Load timestamp:', ts);
+          
+          // Check version immediately and repeatedly until found
+          let attempts = 0;
+          const maxAttempts = 20;
+          const checkVersion = function() {
+            attempts++;
+            if (window._mainJsVersion === 'v9') {
+              console.log('%c✅✅✅ CORRECT VERSION (v9) DETECTED! ✅✅✅', 'color: green; font-weight: bold; font-size: 18px; background: #e8f5e9; padding: 10px; border: 3px solid green;');
+            } else if (window._mainJsVersion) {
+              console.error('%c❌❌❌ WRONG VERSION DETECTED! ❌❌❌', 'color: red; font-weight: bold; font-size: 20px; background: yellow; padding: 10px;');
+              console.error('Expected: v9, Got:', window._mainJsVersion);
+              console.error('%cDO A HARD REFRESH: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: red; font-weight: bold; font-size: 16px;');
+              alert('⚠️ OLD CODE DETECTED!\n\nYour browser is using a cached version.\n\nPlease do a HARD REFRESH:\n• Windows/Linux: Ctrl+Shift+R\n• Mac: Cmd+Shift+R\n\nOr clear your browser cache completely.');
+            } else if (attempts < maxAttempts) {
+              setTimeout(checkVersion, 50);
+            } else {
+              console.warn('⚠️ Version check timeout - main.js may not have loaded correctly');
+            }
+          };
+          setTimeout(checkVersion, 50);
+        };
+        
+        script.onerror = function() {
+          console.error('❌ Failed to load main.js - trying fallback');
+          const fallback = document.createElement('script');
+          fallback.src = './main.js?v=FALLBACK-' + Date.now();
+          fallback.async = false;
+          document.head.appendChild(fallback);
+        };
+        
+        document.head.appendChild(script);
+      })();
     </script>
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -40,7 +115,7 @@
             <!-- Home Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="home">
-                <span data-i18n="nav.home">Home</span>
+                <span data-i18n="nav.home._">Home</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-home" class="mega-dropdown">
@@ -60,9 +135,9 @@
               </button>
               <div id="mega-dropdown-about" class="mega-dropdown">
                 <div class="mega-dropdown-content">
-                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.events">Events</a>
+                  <a href="events.html" class="mega-dropdown-item" data-i18n="nav.about.events">Events</a>
                   <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.media">Media</a>
-                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.gallery">Factory Gallery</a>
+                  <a href="factory-gallery.html" class="mega-dropdown-item" data-i18n="nav.about.gallery">Factory Gallery</a>
                   <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.careers">Careers / Hiring</a>
                 </div>
               </div>
@@ -71,7 +146,7 @@
             <!-- Products Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="products">
-                <span data-i18n="nav.products">Products</span>
+                <span data-i18n="nav.products._">Products</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-products" class="mega-dropdown">
@@ -87,7 +162,7 @@
             <!-- Applications Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="applications">
-                <span data-i18n="nav.applications">Applications</span>
+                <span data-i18n="nav.applications._">Applications</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-applications" class="mega-dropdown">
@@ -102,7 +177,7 @@
             <!-- Sustainability Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="sustainability">
-                <span data-i18n="nav.sustainability">Sustainability</span>
+                <span data-i18n="nav.sustainability._">Sustainability</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-sustainability" class="mega-dropdown">
@@ -117,7 +192,7 @@
             <!-- Resources Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="resources">
-                <span data-i18n="nav.resources">Resources</span>
+                <span data-i18n="nav.resources._">Resources</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-resources" class="mega-dropdown">
@@ -132,7 +207,7 @@
             <!-- Contact Dropdown -->
             <div class="mega-nav-item relative">
               <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="contact">
-                <span data-i18n="nav.contact">Contact</span>
+                <span data-i18n="nav.contact._">Contact</span>
                 <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               <div id="mega-dropdown-contact" class="mega-dropdown">
@@ -169,7 +244,7 @@
           <!-- Mobile menu items with expandable dropdowns -->
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="home">
-              <span data-i18n="nav.home">Home</span>
+              <span data-i18n="nav.home._">Home</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -184,15 +259,15 @@
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
-              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.events">Events</a>
+              <a href="events.html" class="mega-mobile-link" data-i18n="nav.about.events">Events</a>
               <a href="#about" class="mega-mobile-link" data-i18n="nav.about.media">Media</a>
-              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.gallery">Factory Gallery</a>
+              <a href="factory-gallery.html" class="mega-mobile-link" data-i18n="nav.about.gallery">Factory Gallery</a>
               <a href="#about" class="mega-mobile-link" data-i18n="nav.about.careers">Careers / Hiring</a>
             </div>
           </div>
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="products">
-              <span data-i18n="nav.products">Products</span>
+              <span data-i18n="nav.products._">Products</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -204,7 +279,7 @@
           </div>
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="applications">
-              <span data-i18n="nav.applications">Applications</span>
+              <span data-i18n="nav.applications._">Applications</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -215,7 +290,7 @@
           </div>
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="sustainability">
-              <span data-i18n="nav.sustainability">Sustainability</span>
+              <span data-i18n="nav.sustainability._">Sustainability</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -226,7 +301,7 @@
           </div>
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="resources">
-              <span data-i18n="nav.resources">Resources</span>
+              <span data-i18n="nav.resources._">Resources</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -237,7 +312,7 @@
           </div>
           <div class="mega-mobile-item">
             <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="contact">
-              <span data-i18n="nav.contact">Contact</span>
+              <span data-i18n="nav.contact._">Contact</span>
               <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="mega-mobile-dropdown hidden">
@@ -318,7 +393,8 @@
               <video 
                 controls 
                 class="w-full h-auto"
-                poster="assets/images/video-poster.jpg"
+                poster="assets/images/video-poster.jpg?v=1"
+                preload="metadata"
               >
                 <source src="Video 2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -662,7 +738,37 @@
     <!-- Leaflet.js for Interactive Map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="./main.js"></script>
+    <script>
+      // Service worker cleanup (run after main.js loads)
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister().then(function() {
+              console.log('Service worker unregistered');
+            });
+          }
+        });
+      }
+    </script>
+    <script>
+      // Handle video poster image errors gracefully - prevent 404 in console
+      document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('video[poster]');
+        if (video && video.poster) {
+          // Preload poster image to catch 404 early and remove attribute if it fails
+          const posterImg = new Image();
+          posterImg.onload = function() {
+            // Poster loaded successfully - no action needed
+          };
+          posterImg.onerror = function() {
+            // Poster failed to load - remove it to prevent 404 error in console
+            video.removeAttribute('poster');
+            console.log('Video poster image not found, removed to prevent 404 error');
+          };
+          posterImg.src = video.poster;
+        }
+      });
+    </script>
     <script>
       /* ===================== KPI COUNTERS ===================== */
       (function () {

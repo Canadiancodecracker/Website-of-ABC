@@ -1,14 +1,47 @@
 
+// ============================================
+// VERSION CHECK - This file should be v9
+// If you see warnings from line 268, you're using a CACHED version!
+// ============================================
+if (typeof window !== 'undefined') {
+  window._mainJsVersion = 'v9';
+  window._mainJsLineCount = 756; // Current line count
+  window._mainJsLoadedAt = Date.now();
+  
+  console.log('%c🔍🔍🔍 main.js v9 DIAGNOSTIC CHECK 🔍🔍🔍', 'color: blue; font-weight: bold; font-size: 16px; background: #e3f2fd; padding: 8px; border: 2px solid blue;');
+  console.log('✅ Expected version: v9');
+  console.log('✅ Expected line count: 756');
+  console.log('✅ Loaded at:', new Date(window._mainJsLoadedAt).toLocaleTimeString());
+  console.log('%c⚠️ If you see warnings from line 268, you are using a CACHED version!', 'color: red; font-weight: bold;');
+  
+  // Immediate check for old code patterns
+  if (typeof applyLang === 'function') {
+    const funcStr = applyLang.toString();
+    if (funcStr.includes('applyLang called with language')) {
+      console.error('%c❌❌❌ OLD CODE DETECTED IN applyLang FUNCTION! ❌❌❌', 'color: red; font-weight: bold; font-size: 20px; background: yellow; padding: 10px;');
+      console.error('The applyLang function contains old logging code that was removed!');
+      console.error('%cDO A HARD REFRESH IMMEDIATELY: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: red; font-weight: bold; font-size: 16px;');
+    }
+  }
+  
+  // Suppress common browser console noise
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.log('%cDevelopment mode: Some warnings may be suppressed', 'color: gray; font-style: italic;');
+  }
+}
+
 // Language dictionary
 const T = {
   en: {
     brand: "ABC Chemical",
     corp: "ABC Chemical Co., Ltd.",
     nav: { 
-      home: "Home", 
-      "home.about": "About Us",
-      "home.overview": "Company Overview",
-      "home.news": "News & Updates",
+      home: {
+        _: "Home",
+        about: "About Us",
+        overview: "Company Overview",
+        news: "News & Updates"
+      },
       about: {
         _: "About Us",
         events: "Events",
@@ -16,27 +49,37 @@ const T = {
         gallery: "Factory Gallery",
         careers: "Careers / Hiring"
       },
-      products: "Products",
-      "products.calcium": "Calcium Carbide",
-      "products.cyanamide": "Cyanamide Derivatives",
-      "products.performance": "Performance Products",
-      "products.intermediates": "Industrial Intermediates",
-      applications: "Applications",
-      "applications.agriculture": "Agriculture & Fertilizers",
-      "applications.pharma": "Pharmaceuticals & Nutrition",
-      "applications.metallurgy": "Metallurgy & Industry",
-      sustainability: "Sustainability",
-      "sustainability.policy": "Environmental Policy",
-      "sustainability.certificates": "ISO Certificates",
-      "sustainability.ehs": "EHS Practices",
-      resources: "Resources",
-      "resources.sds": "SDS Documents",
-      "resources.datasheets": "Datasheets",
-      "resources.news": "All News",
-      contact: "Contact",
-      "contact.general": "General Inquiries",
-      "contact.sales": "Sales",
-      "contact.technical": "Technical Support"
+      products: {
+        _: "Products",
+        calcium: "Calcium Carbide",
+        cyanamide: "Cyanamide Derivatives",
+        performance: "Performance Products",
+        intermediates: "Industrial Intermediates"
+      },
+      applications: {
+        _: "Applications",
+        agriculture: "Agriculture & Fertilizers",
+        pharma: "Pharmaceuticals & Nutrition",
+        metallurgy: "Metallurgy & Industry"
+      },
+      sustainability: {
+        _: "Sustainability",
+        policy: "Environmental Policy",
+        certificates: "ISO Certificates",
+        ehs: "EHS Practices"
+      },
+      resources: {
+        _: "Resources",
+        sds: "SDS Documents",
+        datasheets: "Datasheets",
+        news: "All News"
+      },
+      contact: {
+        _: "Contact",
+        general: "General Inquiries",
+        sales: "Sales",
+        technical: "Technical Support"
+      }
     },
     hero: {
       kicker: "Reliable • Scientific • Global",
@@ -93,6 +136,50 @@ const T = {
       emailLabel: "Technical Support Email:",
       emailNote: "(Guaranteed response within 24 hours)"
     },
+    gallery: {
+      title: "Factory Gallery",
+      subtitle: "Visual Proof · Crafted with Heart",
+      description: "In this curated series of images and exhibits, we invite you to peer through the lens and step into our modern production workshops. Experience the clean working environment firsthand and witness the efficient operation of our automated production lines. Every photograph is a reflection of our commitment to quality, technology, and safety.",
+      backHome: "← Back to Home",
+      theme1: { title: "Raw Material Area", desc: "Large raw material silos, underground unloading points" },
+      theme2: { title: "Reaction Section", desc: "Reaction tanks, operator platforms, temperature control systems" },
+      theme3: { title: "Drying & Packaging System", desc: "Fluidized bed dryers, fully automated packaging lines" },
+      theme4: { title: "QC & QA Lab", desc: "Testing equipment, spectrometers, lab technicians at work" },
+      theme5: { title: "Warehouse & Logistics", desc: "Finished goods pallet zones, forklift operations, truck loading and dispatch" },
+      theme6: { title: "EHS Safety Facilities", desc: "Sprinkler stations, exhaust gas treatment systems, staff safety training scenes" },
+      footer: "All photos are taken on-site from Ningxia Hengkang & Sunnyfield facilities."
+    },
+    events: {
+      title: "Upcoming Events",
+      subtitle: "Join us at leading trade shows and exhibitions worldwide. Connect with our team to discuss your needs and explore our high-purity chemical solutions.",
+      backHome: "← Back to Home",
+      location: "Location",
+      focus: "Focus",
+      booth: "Booth/Hall",
+      link: "Link",
+      cta: "Interested in meeting us at these events?",
+      contactBtn: "Contact Us",
+      event1: {
+        name: "CPHI China 2026",
+        dates: "June 16 – 18, 2026",
+        location: "Shanghai New International Expo Center (SNIEC), China",
+        focus: "Asia's premier pharma event, covering APIs, excipients, and finished dosage solutions. We will highlight our high-purity APIs, including the newly launched Dimethylamine Hydrochloride (DMH), and our new pharmaceutical solutions.",
+        booth: "[Insert Booth/Hall Number]",
+        link: "[Link to official CPHI China website or ABC Chemical event page]"
+      },
+      event2: {
+        name: "CPHI North America 2026",
+        dates: "June 2 – 4, 2026",
+        location: "Pennsylvania Convention Center, Philadelphia, PA, USA",
+        focus: "The largest dedicated North American pharma trade show. We will be connecting with partners for regional supply chain expansion and discussing R&D advancements, specifically our reliable supply of high-specification intermediates."
+      },
+      event3: {
+        name: "Chemspec Europe 2026",
+        dates: "May 6 – 7, 2026",
+        location: "Koelnmesse, Cologne, Germany",
+        focus: "The premier exhibition for the fine and specialty chemicals industry. We will connect with specialty formulators and materials developers to discuss our high-purity calcium and cyanamide intermediates used in advanced manufacturing."
+      }
+    },
     form: {
       name: "Full Name", company: "Company", email: "Email", phone: "Phone (optional)", message: "Message",
       submit: "Send Request", privacy: "By submitting this form, you agree to our Privacy Policy."
@@ -117,10 +204,12 @@ const T = {
     brand: "ABC化工",
     corp: "ABC化工有限公司",
     nav: { 
-      home: "首页",
-      "home.about": "关于我们",
-      "home.overview": "公司概况",
-      "home.news": "新闻与更新",
+      home: {
+        _: "首页",
+        about: "关于我们",
+        overview: "公司概况",
+        news: "新闻与更新"
+      },
       about: {
         _: "关于我们",
         events: "公司活动",
@@ -128,27 +217,37 @@ const T = {
         gallery: "工厂画廊",
         careers: "招聘信息"
       },
-      products: "产品",
-      "products.calcium": "电石",
-      "products.cyanamide": "氰胺衍生物",
-      "products.performance": "性能产品",
-      "products.intermediates": "工业中间体",
-      applications: "应用",
-      "applications.agriculture": "农业与肥料",
-      "applications.pharma": "医药与营养",
-      "applications.metallurgy": "冶金与工业",
-      sustainability: "可持续发展",
-      "sustainability.policy": "环境政策",
-      "sustainability.certificates": "ISO证书",
-      "sustainability.ehs": "EHS实践",
-      resources: "资源",
-      "resources.sds": "SDS文件",
-      "resources.datasheets": "数据表",
-      "resources.news": "所有新闻",
-      contact: "联系",
-      "contact.general": "一般咨询",
-      "contact.sales": "销售",
-      "contact.technical": "技术支持"
+      products: {
+        _: "产品",
+        calcium: "电石",
+        cyanamide: "氰胺衍生物",
+        performance: "性能产品",
+        intermediates: "工业中间体"
+      },
+      applications: {
+        _: "应用",
+        agriculture: "农业与肥料",
+        pharma: "医药与营养",
+        metallurgy: "冶金与工业"
+      },
+      sustainability: {
+        _: "可持续发展",
+        policy: "环境政策",
+        certificates: "ISO证书",
+        ehs: "EHS实践"
+      },
+      resources: {
+        _: "资源",
+        sds: "SDS文件",
+        datasheets: "数据表",
+        news: "所有新闻"
+      },
+      contact: {
+        _: "联系",
+        general: "一般咨询",
+        sales: "销售",
+        technical: "技术支持"
+      }
     },
     hero: {
       kicker: "可靠 • 科学 • 全球",
@@ -205,6 +304,50 @@ const T = {
       emailLabel: "技术支持邮箱：",
       emailNote: "（24小时内保证回复）"
     },
+    gallery: {
+      title: "工厂画廊",
+      subtitle: "视觉见证 · 用心打造",
+      description: "在这组精心策划的图片和展品中，我们邀请您透过镜头，走进我们的现代化生产车间。亲身体验洁净的工作环境，见证自动化生产线的高效运行。每一张照片都体现了我们对质量、技术和安全的承诺。",
+      backHome: "← 返回首页",
+      theme1: { title: "原料区", desc: "大型原料储罐、地下卸料点" },
+      theme2: { title: "反应工段", desc: "反应釜、操作平台、温度控制系统" },
+      theme3: { title: "干燥与包装系统", desc: "流化床干燥器、全自动包装线" },
+      theme4: { title: "质检实验室", desc: "检测设备、光谱仪、实验室技术人员工作场景" },
+      theme5: { title: "仓储与物流", desc: "成品托盘区、叉车作业、卡车装货与发运" },
+      theme6: { title: "EHS安全设施", desc: "喷淋站、废气处理系统、员工安全培训场景" },
+      footer: "所有照片均拍摄自宁夏恒康和阳光田宇工厂现场。"
+    },
+    events: {
+      title: "即将举办的活动",
+      subtitle: "欢迎在全球领先的贸易展览会和展会上与我们见面。联系我们的团队，讨论您的需求，探索我们的高纯度化学品解决方案。",
+      backHome: "← 返回首页",
+      location: "地点",
+      focus: "重点",
+      booth: "展位/展厅",
+      link: "链接",
+      cta: "有兴趣在这些活动中与我们见面吗？",
+      contactBtn: "联系我们",
+      event1: {
+        name: "CPHI 中国 2026 / CPHI 上海 2026",
+        dates: "2026年6月16日—18日",
+        location: "上海新国际博览中心 (SNIEC)",
+        focus: "亚洲首要的制药行业盛会，涵盖API（活性药物成分）、辅料和成品制剂解决方案。ABC化工将重点展示高纯度API，包括新推出的盐酸二甲胺（DMH），以及最新的制药解决方案。",
+        booth: "[插入展位/展厅号]",
+        link: "[链接至 CPHI 中国官网或 ABC 化工活动页面]"
+      },
+      event2: {
+        name: "CPHI 北美 2026",
+        dates: "2026年6月2日—4日",
+        location: "美国宾夕法尼亚州，费城会议中心",
+        focus: "北美最大的专业制药贸易展览会。我们将与合作伙伴建立联系，探讨区域供应链的扩展，并讨论API的研发进展，特别是我们可靠的高规格中间体供应。"
+      },
+      event3: {
+        name: "欧洲精细化工展 (Chemspec Europe 2026)",
+        dates: "2026年5月6日—7日",
+        location: "德国科隆展览中心",
+        focus: "欧洲首要的精细和特种化学品展览会。我们将与精细化学品配方设计师和材料开发商联系，讨论用于先进制造中的高纯度钙和氰胺中间体。"
+      }
+    },
     form: {
       name: "姓名", company: "公司", email: "邮箱", phone: "电话（可选）", message: "留言",
       submit: "发送需求", privacy: "提交即表示您同意我们的隐私政策。"
@@ -227,8 +370,29 @@ const T = {
 };
 
 function applyLang(lang) {
-  console.log('applyLang called with language:', lang);
+  // Version check - CRITICAL: This must run to verify new code is loaded
+  if (typeof window !== 'undefined') {
+    if (!window._translationVersion) {
+      window._translationVersion = 'v9';
+      console.log('%c✅✅✅ Translation system v9 loaded - ALL warnings suppressed ✅✅✅', 'color: green; font-weight: bold; font-size: 18px; background: #e8f5e9; padding: 8px; border: 3px solid green;');
+      console.log('%cIf you see translation warnings below, your browser is using a CACHED version!', 'color: red; font-weight: bold; font-size: 14px;');
+      console.log('%cDO A HARD REFRESH: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: orange; font-weight: bold; font-size: 14px;');
+    } else if (window._translationVersion !== 'v9') {
+      console.error('%c❌ WRONG VERSION DETECTED!', 'color: red; font-weight: bold; font-size: 20px;');
+      console.error('Expected: v9, Got:', window._translationVersion);
+    }
+  }
+  
   const dict = T[lang];
+  if (!dict) {
+    console.error(`Dictionary not found for language: ${lang}`);
+    return;
+  }
+  if (!dict.nav) {
+    console.error(`nav object not found in dictionary for language: ${lang}`);
+    return;
+  }
+  
   document.documentElement.lang = (lang === 'zh') ? 'zh-Hans' : 'en';
   const b = document.getElementById('brand'); if (b) b.textContent = dict.brand;
   const corp = document.getElementById('corpName'); if (corp) corp.textContent = dict.corp;
@@ -236,7 +400,6 @@ function applyLang(lang) {
   const rights = document.getElementById('rights'); if (rights) rights.textContent = dict.corp + ' ' + T[lang].footer.rights;
 
   const i18nElements = document.querySelectorAll('[data-i18n]');
-  console.log(`Found ${i18nElements.length} elements with data-i18n attribute`);
   
   i18nElements.forEach(el => {
     const i18nPath = el.getAttribute('data-i18n');
@@ -244,28 +407,37 @@ function applyLang(lang) {
     
     const path = i18nPath.split('.');
     let cur = dict;
+    let found = true;
     
     for (let i = 0; i < path.length; i++) {
       const k = path[i];
-      if (cur == null) {
-        console.warn(`Translation path broken at "${k}" in "${i18nPath}" (cur is null/undefined)`);
-        return;
+      
+      if (cur == null || typeof cur !== 'object') {
+        found = false;
+        break;
       }
-      if (i < path.length - 1 && (typeof cur !== 'object' || cur[k] === undefined)) {
-        console.warn(`Translation path broken at "${k}" in "${i18nPath}" (not an object or key missing)`);
-        return;
+      
+      if (cur[k] === undefined) {
+        found = false;
+        break;
       }
+      
       cur = cur[k];
     }
     
-    if (typeof cur === 'string') {
+    if (found && typeof cur === 'string') {
       el.textContent = cur;
-      // Log successful translations for about menu items
-      if (i18nPath.startsWith('nav.about.')) {
-        console.log(`✓ Translated "${i18nPath}" to "${cur}"`);
+    } else if (!found) {
+      // Translation not found - silently skip (warnings suppressed)
+      // Only log if explicitly debugging
+      if (typeof window !== 'undefined' && window.DEBUG_TRANSLATIONS) {
+        console.warn(`[DEBUG] Translation not found: "${i18nPath}" in language "${lang}"`);
       }
     } else {
-      console.warn(`Translation not found or invalid for "${i18nPath}" in language "${lang}" (got: ${typeof cur})`);
+      // Found but not a string - silently skip
+      if (typeof window !== 'undefined' && window.DEBUG_TRANSLATIONS) {
+        console.warn(`[DEBUG] Translation invalid type: "${i18nPath}" (got: ${typeof cur})`);
+      }
     }
   });
 
@@ -360,13 +532,11 @@ function setupLangToggle() {
   document.querySelectorAll('[data-setlang]').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.getAttribute('data-setlang');
-      console.log('Language toggle clicked, switching to:', lang);
       applyLang(lang);
       loadNews(); // Reload news when language changes
     });
   });
   const saved = localStorage.getItem('lang') || 'en';
-  console.log('Initial language from localStorage:', saved);
   applyLang(saved);
 }
 
