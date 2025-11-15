@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- CRITICAL: Suppress Tailwind warning - MUST be absolute first -->
+    <!-- HTML Version: v10 - If you see warning at line 64, browser is using CACHED HTML -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Last-Modified" content="0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=1" />
+    <link rel="icon" type="image/png" href="assets/images/abc-logo.png" />
+    <link rel="shortcut icon" href="favicon.ico?v=1" />
+    <title>ABC Chemical — Advanced Calcium & Cyanamide Solutions</title>
+    <meta name="description" content="ABC Chemical Co., Ltd. supplies high‑purity calcium and cyanamide derivatives for agriculture, nutrition, and industry." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN - Note: For production, consider using a compiled version -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
+            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+          }
+        }
+      }
+      // Suppress Tailwind CDN warning
+      if (typeof window !== 'undefined') {
+        window._tailwindSuppressed = true;
+        window._htmlVersion = 'v10';
+        const originalWarn = console.warn;
+        console.warn = function(...args) {
+          if (args[0] && typeof args[0] === 'string' && args[0].includes('Tailwind')) {
+            return; // Suppress Tailwind warnings
+          }
+          originalWarn.apply(console, args);
+        };
+      }
+    </script>
+    <!-- CRITICAL: Load main.js with maximum cache-busting -->
+    <script>
+      (function() {
+        const ts = Date.now();
+        const rnd = Math.random().toString(36).substring(7);
+        const perf = performance.now();
+        const script = document.createElement('script');
+        script.src = './main.js?v=' + ts + '&r=' + rnd + '&p=' + perf + '&_=' + Math.random() + '&force=1';
+        script.async = false;
+        script.defer = false;
+        script.setAttribute('data-load-time', ts);
+        
+        script.onload = function() {
+          console.log('%c🚀 main.js script tag loaded', 'color: green; font-weight: bold;');
+          console.log('Load timestamp:', ts);
+          
+          // Check version immediately and repeatedly until found
+          let attempts = 0;
+          const maxAttempts = 20;
+          const checkVersion = function() {
+            attempts++;
+            if (window._mainJsVersion === 'v9') {
+              console.log('%c✅✅✅ CORRECT VERSION (v9) DETECTED! ✅✅✅', 'color: green; font-weight: bold; font-size: 18px; background: #e8f5e9; padding: 10px; border: 3px solid green;');
+            } else if (window._mainJsVersion) {
+              console.error('%c❌❌❌ WRONG VERSION DETECTED! ❌❌❌', 'color: red; font-weight: bold; font-size: 20px; background: yellow; padding: 10px;');
+              console.error('Expected: v9, Got:', window._mainJsVersion);
+              console.error('%cDO A HARD REFRESH: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: red; font-weight: bold; font-size: 16px;');
+            } else if (attempts < maxAttempts) {
+              setTimeout(checkVersion, 50);
+            } else {
+              console.warn('⚠️ Version check timeout - main.js may not have loaded correctly');
+            }
+          };
+          setTimeout(checkVersion, 50);
+        };
+        
+        script.onerror = function() {
+          console.error('❌ Failed to load main.js - trying fallback');
+          const fallback = document.createElement('script');
+          fallback.src = './main.js?v=FALLBACK-' + Date.now();
+          fallback.async = false;
+          document.head.appendChild(fallback);
+        };
+        
+        document.head.appendChild(script);
+      })();
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-brand-blue focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
+
+    <!-- Header -->
+    <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+      <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-2 flex-shrink-0">
+            <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+            <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center mega-nav-menu" style="gap: 40px;">
+            <!-- Home Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="home">
+                <span data-i18n="nav.home._">Home</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-home" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#home" class="mega-dropdown-item" data-i18n="nav.home.about">About Us</a>
+                  <a href="#home" class="mega-dropdown-item" data-i18n="nav.home.overview">Company Overview</a>
+                  <a href="all-news.html" class="mega-dropdown-item" data-i18n="nav.home.news">News & Updates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- About Us Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="about">
+                <span data-i18n="nav.about._">About Us</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-about" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="events.html" class="mega-dropdown-item" data-i18n="nav.about.events">Events</a>
+                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.media">Media</a>
+                  <a href="factory-gallery.html" class="mega-dropdown-item" data-i18n="nav.about.gallery">Factory Gallery</a>
+                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.careers">Careers / Hiring</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="products">
+                <span data-i18n="nav.products._">Products</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-products" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.calcium">Calcium Carbide</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.performance">Performance Products</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.intermediates">Industrial Intermediates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Applications Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="applications">
+                <span data-i18n="nav.applications._">Applications</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-applications" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.metallurgy">Metallurgy & Industry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sustainability Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="sustainability">
+                <span data-i18n="nav.sustainability._">Sustainability</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-sustainability" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.policy">Environmental Policy</a>
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.ehs">EHS Practices</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resources Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="resources">
+                <span data-i18n="nav.resources._">Resources</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-resources" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#resources" class="mega-dropdown-item" data-i18n="nav.resources.sds">SDS Documents</a>
+                  <a href="#resources" class="mega-dropdown-item" data-i18n="nav.resources.datasheets">Datasheets</a>
+                  <a href="all-news.html" class="mega-dropdown-item" data-i18n="nav.resources.news">All News</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="contact">
+                <span data-i18n="nav.contact._">Contact</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-contact" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#contact" class="mega-dropdown-item" data-i18n="nav.contact.general">General Inquiries</a>
+                  <a href="#contact" class="mega-dropdown-item" data-i18n="nav.contact.sales">Sales</a>
+                  <a href="#technical-support" class="mega-dropdown-item" data-i18n="nav.contact.technical">Technical Support</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <!-- Language Switch -->
+          <div class="mega-nav-lang flex items-center gap-2 flex-shrink-0">
+            <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle" style="border-color: #E4E7EB;">
+              <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
+              <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-md p-2" style="color: #0A1A2F;" aria-label="Open main menu" aria-expanded="false">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Nav -->
+      <div id="mobileNav" class="lg:hidden hidden border-t bg-white" style="border-color: #E4E7EB;">
+        <nav class="mega-mobile-nav mx-auto px-4 sm:px-6 py-4">
+          <!-- Mobile menu items with expandable dropdowns -->
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="home">
+              <span data-i18n="nav.home._">Home</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#home" class="mega-mobile-link" data-i18n="nav.home.about">About Us</a>
+              <a href="#home" class="mega-mobile-link" data-i18n="nav.home.overview">Company Overview</a>
+              <a href="all-news.html" class="mega-mobile-link" data-i18n="nav.home.news">News & Updates</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="about">
+              <span data-i18n="nav.about._">About Us</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="events.html" class="mega-mobile-link" data-i18n="nav.about.events">Events</a>
+              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.media">Media</a>
+              <a href="factory-gallery.html" class="mega-mobile-link" data-i18n="nav.about.gallery">Factory Gallery</a>
+              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.careers">Careers / Hiring</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="products">
+              <span data-i18n="nav.products._">Products</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.calcium">Calcium Carbide</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.performance">Performance Products</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.intermediates">Industrial Intermediates</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="applications">
+              <span data-i18n="nav.applications._">Applications</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.metallurgy">Metallurgy & Industry</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="sustainability">
+              <span data-i18n="nav.sustainability._">Sustainability</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.policy">Environmental Policy</a>
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.ehs">EHS Practices</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="resources">
+              <span data-i18n="nav.resources._">Resources</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#resources" class="mega-mobile-link" data-i18n="nav.resources.sds">SDS Documents</a>
+              <a href="#resources" class="mega-mobile-link" data-i18n="nav.resources.datasheets">Datasheets</a>
+              <a href="all-news.html" class="mega-mobile-link" data-i18n="nav.resources.news">All News</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="contact">
+              <span data-i18n="nav.contact._">Contact</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#contact" class="mega-mobile-link" data-i18n="nav.contact.general">General Inquiries</a>
+              <a href="#contact" class="mega-mobile-link" data-i18n="nav.contact.sales">Sales</a>
+              <a href="#technical-support" class="mega-mobile-link" data-i18n="nav.contact.technical">Technical Support</a>
+            </div>
+          </div>
+          <div class="flex gap-2 pt-4 border-t" style="border-color: #E4E7EB;">
+            <button id="m-en" class="mega-lang-btn flex-1 mega-lang-active" data-setlang="en">EN</button>
+            <button id="m-zh" class="mega-lang-btn flex-1" data-setlang="zh">中</button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="mega-main-content" style="padding-top: 72px;">
+      <!-- Hero -->
+      <section id="home" class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-100"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="py-16 sm:py-24 lg:py-28 grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+              <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-blue/80 bg-brand-blue/5 ring-1 ring-brand-blue/10 rounded-full px-3 py-1" data-i18n="hero.kicker">Reliable • Scientific • Global</span>
+              <h1 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900" data-i18n="hero.headline">
+                Advanced Calcium &amp; Cyanamide Solutions.
+              </h1>
+              <p class="mt-5 text-base sm:text-lg text-gray-700 max-w-2xl" data-i18n="hero.tagline">
+                ABC Chemical Co., Ltd. — Chemistry You Can Rely On. High‑purity materials engineered for reliability, safety, and performance across agriculture, nutrition, and heavy industry.
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#products" class="btn-primary" data-i18n="hero.ctaPrimary">Explore Our Products</a>
+                <a href="#contact" class="btn-secondary" data-i18n="hero.ctaSecondary">Contact Sales</a>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div class="relative h-64 sm:h-80 lg:h-[28rem] rounded-2xl bg-brand-blue shadow-brand overflow-hidden">
+                <svg viewBox="0 0 600 600" class="absolute inset-0 h-full w-full opacity-30">
+                  <defs>
+                    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#ffffff"/>
+                      <stop offset="100%" stop-color="#8bb6e5"/>
+                    </linearGradient>
+                  </defs>
+                  <g stroke="url(#g1)" stroke-width="1.2">
+                    <path d="M0 60 H600M0 120 H600M0 180 H600M0 240 H600M0 300 H600M0 360 H600M0 420 H600M0 480 H600M0 540 H600"/>
+                    <path d="M60 0 V600M120 0 V600M180 0 V600M240 0 V600M300 0 V600M360 0 V600M420 0 V600M480 0 V600M540 0 V600"/>
+                  </g>
+                </svg>
+                
+                <div class="relative z-10 h-full flex flex-col">
+                  <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                    <h2 class="text-lg font-bold text-white tracking-tight" data-i18n="news.title">NEWS & UPDATES</h2>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/20" data-i18n="news.badge">
+                      Calcium & Cyanamide Specialists
+                    </span>
+                  </div>
+                  
+                  <div class="flex-1 overflow-hidden px-6">
+                    <div id="news-scroll-container" class="space-y-4 py-4"></div>
+                  </div>
+                  
+                  <div class="absolute bottom-4 right-4">
+                    <a href="all-news.html" class="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all" data-i18n="news.viewAll">View all News</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO SECTION - NEW! -->
+      <section class="py-12 sm:py-16 bg-white border-y border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-md mx-auto">
+            <div class="rounded-2xl overflow-hidden shadow-brand bg-gray-900">
+              <video 
+                controls 
+                class="w-full h-auto"
+                poster="assets/images/video-poster.jpg?v=1"
+                preload="metadata"
+              >
+                <source src="Video 2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="mt-6 text-center">
+              <h3 class="text-xl font-semibold text-gray-900" data-i18n="video.title">Discover ABC Chemical</h3>
+              <p class="mt-2 text-gray-600" data-i18n="video.subtitle">Learn more about our advanced calcium and cyanamide solutions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="py-16 sm:py-20">
+
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="products.title">Product Lines</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="products.desc">Quality‑driven products engineered for performance, consistency, and safety across critical industries.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p1.title">Calcium Carbide</h3>
+              <p class="card-desc" data-i18n="products.p1.desc">High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21C7 21 3 17 3 13c0-6 6-10 10-10 4 0 8 4 8 8 0 4-4 10-10 10z"/><path d="M12 12c-1.5 2-3 3-5 4"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p5.title">Calcium Cyanamide</h3>
+              <p class="card-desc" data-i18n="products.p5.desc">A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l0 0a2 2 0 1 1-2.83 2.83l0 0A1.65 1.65 0 0 0 16 19.4a1.65 1.65 0 0 0-1.82.33l0 0a2 2 0 1 1-2.83-2.83l0 0A1.65 1.65 0 0 0 8.6 16a1.65 1.65 0 0 0-1.82-.33l0 0a2 2 0 1 1-2.83-2.83l0 0A1.65 1.65 0 0 0 4.6 8.6a1.65 1.65 0 0 0-.33-1.82l0 0a2 2 0 1 1 2.83-2.83l0 0A1.65 1.65 0 0 0 8.6 4.6a1.65 1.65 0 0 0 1.82-.33l0 0a2 2 0 1 1 2.83 2.83l0 0A1.65 1.65 0 0 0 16 8.6a1.65 1.65 0 0 0 1.82.33l0 0a2 2 0 1 1 2.83 2.83l0 0A1.65 1.65 0 0 0 19.4 15z"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p2.title">Cyanamide Derivatives</h3>
+              <p class="card-desc" data-i18n="products.p2.desc">Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p3.title">Performance Products</h3>
+              <p class="card-desc" data-i18n="products.p3.desc">Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance.</p>
+            </article>
+            <article class="card">
+              <div class="icon bg-brand-blue/10">
+                <svg class="h-6 w-6 text-brand-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v2a3 3 0 0 1-.88 2.12L4 11.24V14a6 6 0 0 0 6 6h4a6 6 0 0 0 6-6v-2.76l-4.12-4.12A3 3 0 0 1 15 5V3"/></svg>
+              </div>
+              <h3 class="card-title" data-i18n="products.p4.title">Industrial Intermediates</h3>
+              <p class="card-desc" data-i18n="products.p4.desc">Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Sales Network -->
+      <section id="global-sales" class="py-16 sm:py-20" style="background: linear-gradient(135deg, #0E3C75 0%, #0a2d5a 50%, #0E3C75 100%);">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <!-- Header -->
+          <div class="text-center mb-8">
+            <div class="text-xs uppercase tracking-wider mb-2.5" style="color: #4CAF50;" data-i18n="globalSales.eyebrow">Global Sales Network</div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3">
+              <span style="color: #4CAF50;" data-i18n="globalSales.headline1">Our global reach</span>
+              <span class="block sm:inline" style="color: #4CAF50;" data-i18n="globalSales.headline2">across 50+ countries</span>
+            </h2>
+            <p class="max-w-3xl mx-auto text-base" style="color: #4CAF50;" data-i18n="globalSales.subhead">
+              From North America to Asia, ABC Chemical supplies high-purity materials to customers in more than 50 countries, supporting agriculture, nutrition, and advanced industries.
+            </p>
+          </div>
+
+          <!-- KPI row -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="50" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi1">countries served worldwide</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="120" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi2">distribution & logistics partners</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="25" data-suffix="+">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi3">years of manufacturing experience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl sm:text-4xl font-extrabold global-kpi-number" style="color: #4CAF50;" data-target="99.9" data-suffix="%">0</div>
+              <div class="text-sm mt-1" style="color: #4CAF50;" data-i18n="globalSales.kpi4">on-spec batch reliability</div>
+            </div>
+          </div>
+
+          <!-- Client Sales Map -->
+          <div id="sales-map-container" class="mt-8 rounded-3xl border border-blue-300/20 overflow-hidden relative bg-white" style="box-shadow: 0 32px 70px rgba(14, 60, 117, 0.3), 0 0 0 1px rgba(14, 60, 117, 0.2); height: min(600px, 70vh); min-height: 500px;">
+            <div id="sales-map" style="width: 100%; height: 100%;"></div>
+            <!-- Map Info Panel -->
+            <div id="map-info-panel" class="absolute top-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-xs hidden" style="z-index: 1000;">
+              <button id="close-info" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">×</button>
+              <h3 id="info-title" class="font-bold text-brand-blue mb-2"></h3>
+              <p id="info-content" class="text-sm text-gray-600"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Applications -->
+      <section id="applications" class="py-16 sm:py-20 bg-white border-y border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="apps.title">Applications</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="apps.desc">Proven performance across vital sectors — from crop productivity to human nutrition and heavy industry.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21C7 21 3 17 3 13c0-6 6-10 10-10 4 0 8 4 8 8 0 4-4 10-10 10z"/><path d="M12 12c-1.5 2-3 3-5 4"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a1.title">Agriculture & Fertilizers</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a1.desc">Cyanamide‑based solutions supporting nitrogen efficiency and soil health.</p>
+            </article>
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="8" height="8" rx="4"/><rect x="13" y="8" width="8" height="8" rx="4"/><path d="M11 12h2"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a2.title">Pharmaceuticals & Nutrition</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a2.desc">Creatine & GAA produced with strict quality practices for reliable performance.</p>
+            </article>
+            <article class="app-card">
+              <div class="app-icon">
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M7 20V9l4 2V9l6 2v9"/><path d="M10 13v7M14 15v5M18 14v6"/></svg>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-i18n="apps.a3.title">Metallurgy & Industry</h3>
+              <p class="mt-2 text-sm text-gray-700" data-i18n="apps.a3.desc">Calcium carbide solutions enabling acetylene workflows and metal processing.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sustainability -->
+      <section id="sustainability" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-6">
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="sus.title">Sustainability & Responsibility</h2>
+              <p class="mt-3 text-gray-700" data-i18n="sus.desc">We invest in cleaner production technologies, closed‑loop utilities, and rigorous EHS practices to minimize environmental impact while maximizing product value.</p>
+              <ul class="mt-6 space-y-3 text-sm text-gray-700">
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l1">Energy‑efficient utilities and heat recovery across key units</span></li>
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l2">Responsible sourcing and transparent quality systems</span></li>
+                <li class="flex items-start gap-3"><span class="check"></span><span data-i18n="sus.l3">Compliance aligned with global standards and customer audits</span></li>
+              </ul>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <a id="iso-9001-link" href="assets/iso/iso-9001-certificate.png" target="_blank" class="badge hover:bg-gray-100 transition">ISO 9001</a>
+                <a id="iso-14001-link" href="assets/iso/iso-14001-certificate.png" target="_blank" class="badge hover:bg-gray-100 transition">ISO 14001</a>
+                <a id="iso-45001-link" href="assets/iso/iso-45001-certificate.png" target="_blank" class="badge hover:bg-gray-100 transition">ISO 45001</a>
+              </div>
+            </div>
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="metric-card"><div class="metric">99%</div><div class="metric-label" data-i18n="sus.m1">Water Recycled</div></div>
+              <div class="metric-card"><div class="metric">24/7</div><div class="metric-label" data-i18n="sus.m2">EHS Monitoring</div></div>
+              <div class="metric-card"><div class="metric">ISO</div><div class="metric-label" data-i18n="sus.m3">Driven Systems</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources -->
+      <section id="resources" class="py-16 sm:py-20 bg-white border-t border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="res.title">Resources</h2>
+            <p class="mt-2 text-gray-700 max-w-2xl" data-i18n="res.desc">Download product datasheets and compliance statements. (Placeholders)</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a id="calcium-carbide-sds-link" href="assets/sds/SDS_Calcium_Carbide_English.pdf" download class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r1">Calcium Carbide - SDS</div></div></a>
+            <a id="dicyandiamide-sds-link" href="assets/sds/SDS_Dicyandiamide_English.html" download class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r2">Dicyandiamide - SDS</div></div></a>
+            <a id="creatine-monohydrate-sds-link" href="assets/sds/SDS_Creatine_Monohydrate_English.html" download class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r3">Creatine Monohydrate - SDS</div></div></a>
+            <a id="guanidine-nitrate-sds-link" href="assets/sds/SDS_Guanidine_Nitrate_English.html" download class="res-card"><div class="res-icon"></div><div><div class="res-title" data-i18n="res.r4">Guanidine Nitrate - SDS</div></div></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-16 sm:py-20 bg-white border-t border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight" data-i18n="contact.title">Request Information</h2>
+              <p class="mt-2 text-gray-700" data-i18n="contact.desc">Tell us about your application, required specs, and target volumes. Our team will respond promptly.</p>
+              <!-- 
+                Formspree Configuration:
+                - Form Endpoint: https://formspree.io/f/mjkjgjoe
+                - Email Recipient: shenming2008@gmail.com
+                - Configure email in Formspree dashboard → Workflow tab → Add Email action
+                See FORM_SETUP.md for detailed instructions
+              -->
+              <form id="contactForm" action="https://formspree.io/f/mjkjgjoe" method="POST" class="mt-8 grid grid-cols-1 gap-4">
+                <!-- Hidden field for reply-to email -->
+                <input type="hidden" name="_replyto" id="_replyto" />
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="name" class="label" data-i18n="form.name">Full Name</label>
+                    <input id="name" name="name" type="text" required class="input" placeholder="Jane Doe" />
+                  </div>
+                  <div>
+                    <label for="company" class="label" data-i18n="form.company">Company</label>
+                    <input id="company" name="company" type="text" class="input" placeholder="ABC Trading Inc." />
+                  </div>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="email" class="label" data-i18n="form.email">Email</label>
+                    <input id="email" name="email" type="email" required class="input" placeholder="jane@company.com" />
+                  </div>
+                  <div>
+                    <label for="phone" class="label" data-i18n="form.phone">Phone (optional)</label>
+                    <input id="phone" name="phone" type="tel" class="input" placeholder="+1 555 123 4567" />
+                  </div>
+                </div>
+                <div>
+                  <label for="message" class="label" data-i18n="form.message">Message</label>
+                  <textarea id="message" name="message" rows="4" required class="input textarea" placeholder="Product(s) of interest, specs, annual volume, delivery terms..."></textarea>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button type="submit" class="btn-primary" data-i18n="form.submit">Send Request</button>
+                  <p id="formNote" class="text-sm text-gray-600" aria-live="polite"></p>
+                </div>
+                <p class="text-xs text-gray-500" data-i18n="form.privacy">By submitting this form, you agree to our Privacy Policy.</p>
+              </form>
+            </div>
+            <aside class="bg-gray-50 rounded-2xl border border-gray-200 p-6 shadow-md">
+              <h3 class="text-lg font-semibold" data-i18n="aside.title">Corporate Headquarters</h3>
+              <p class="mt-2 text-sm text-gray-700"><span id="corpName">ABC Chemical Co., Ltd.</span><br/><span data-i18n="aside.subtitle">Global Sales & Technical Service</span></p>
+              <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+                <div class="rounded-lg bg-white border border-gray-200 p-4">
+                  <div class="font-semibold" data-i18n="aside.general">General Inquiries</div>
+                  <a href="mailto:info@abcchemical.example" class="block text-brand-blue mt-1">info@abcchemical.example</a>
+                </div>
+                <div class="rounded-lg bg-white border border-gray-200 p-4">
+                  <div class="font-semibold" data-i18n="aside.sales">Sales</div>
+                  <a href="mailto:sales@abcchemical.example" class="block text-brand-blue mt-1">sales@abcchemical.example</a>
+                </div>
+                <div class="rounded-lg bg-white border border-gray-200 p-4">
+                  <div class="font-semibold" data-i18n="aside.technical">Technical Support</div>
+                  <a href="mailto:support@abc-chemical.com" class="block text-brand-blue mt-1">support@abc-chemical.com</a>
+                  <a href="#technical-support" class="block text-sm text-gray-600 mt-2 hover:text-brand-blue" data-i18n="aside.technicalLink">View details →</a>
+                </div>
+              </div>
+              <div class="mt-4 text-xs text-gray-500" data-i18n="aside.note">* Addresses and phone numbers are placeholders.</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Support -->
+      <section id="technical-support" class="py-16 sm:py-20 bg-gray-50 border-t border-gray-200">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-center mb-12" data-i18n="techSupport.title">Technical Support</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Phone Support -->
+              <div class="bg-white rounded-2xl border border-gray-200 p-8 shadow-md">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-semibold" data-i18n="techSupport.phoneTitle">Technical Support Hotline</h3>
+                </div>
+                <div class="space-y-4 text-gray-700">
+                  <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1" data-i18n="techSupport.phone">Phone:</p>
+                    <a href="tel:+86951xxxxxxx" class="text-lg font-semibold text-brand-blue hover:underline">+86-951-xxxxxxx</a>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1" data-i18n="techSupport.international">International:</p>
+                    <a href="tel:+1416xxxxxxx" class="text-lg font-semibold text-brand-blue hover:underline">+1-416-xxx-xxxx</a>
+                  </div>
+                  <div class="pt-4 border-t border-gray-200">
+                    <p class="text-sm font-medium text-gray-500 mb-1" data-i18n="techSupport.availability">Availability:</p>
+                    <p class="text-base" data-i18n="techSupport.availabilityValue">24 hours / 7 days a week</p>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1" data-i18n="techSupport.languages">Languages:</p>
+                    <p class="text-base" data-i18n="techSupport.languagesValue">English / Chinese</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email Support -->
+              <div class="bg-white rounded-2xl border border-gray-200 p-8 shadow-md">
+                <div class="flex items-center gap-3 mb-6">
+                  <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-semibold" data-i18n="techSupport.emailTitle">Email Support</h3>
+                </div>
+                <div class="space-y-4 text-gray-700">
+                  <div>
+                    <p class="text-sm font-medium text-gray-500 mb-1" data-i18n="techSupport.emailLabel">Technical Support Email:</p>
+                    <a href="mailto:support@abc-chemical.com" class="text-lg font-semibold text-brand-blue hover:underline break-all">support@abc-chemical.com</a>
+                  </div>
+                  <div class="pt-4 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 italic" data-i18n="techSupport.emailNote">(Guaranteed response within 24 hours)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 border-t border-gray-200">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-2">
+            <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto" />
+            <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+          </div>
+          <nav class="flex items-center gap-6 text-sm">
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+            <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <div class="text-xs text-gray-500"><span data-i18n="footer.c">©</span> <span id="y"></span> <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span></div>
+            <img src="assets/images/abc-chemical-qr-code.png" alt="Scan to visit" class="w-12 h-12" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Leaflet.js for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Service worker cleanup (run after main.js loads)
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister().then(function() {
+              console.log('Service worker unregistered');
+            });
+          }
+        });
+      }
+    </script>
+    <script>
+      // Handle video poster image errors gracefully - prevent 404 in console
+      document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('video[poster]');
+        if (video && video.poster) {
+          // Preload poster image to catch 404 early and remove attribute if it fails
+          const posterImg = new Image();
+          posterImg.onload = function() {
+            // Poster loaded successfully - no action needed
+          };
+          posterImg.onerror = function() {
+            // Poster failed to load - remove it to prevent 404 error in console
+            video.removeAttribute('poster');
+            console.log('Video poster image not found, removed to prevent 404 error');
+          };
+          posterImg.src = video.poster;
+        }
+      });
+    </script>
+    <script>
+      /* ===================== KPI COUNTERS ===================== */
+      (function () {
+        const counters = document.querySelectorAll(".global-kpi-number");
+        
+        function animateCounter(el) {
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+          const isPercent = suffix.includes("%");
+          const duration = 1500;
+          const start = performance.now();
+
+          function frame(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+            let value;
+            if (isPercent) {
+              value = (target * eased).toFixed(1);
+            } else {
+              value = Math.round(target * eased);
+            }
+            el.textContent = value + suffix;
+            if (progress < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        counters.forEach((el) => observer.observe(el));
+      })();
+
+      /* ===================== CLIENT SALES MAP ===================== */
+      (function () {
+        let map = null;
+        let salesData = null;
+
+        // Placeholder client sales data (can be loaded from JSON file)
+        const defaultSalesData = {
+          regions: [
+            {
+              name: "North America",
+              clients: 45,
+              salesVolume: "High",
+              keyProducts: ["Calcium Carbide", "Cyanamide Derivatives"],
+              locations: [
+                { city: "Toronto", lat: 43.7, lon: -79.4, clients: 8 },
+                { city: "New York", lat: 40.7, lon: -74.0, clients: 12 },
+                { city: "Los Angeles", lat: 34.1, lon: -118.2, clients: 10 },
+                { city: "Chicago", lat: 41.9, lon: -87.6, clients: 7 },
+                { city: "Houston", lat: 29.8, lon: -95.4, clients: 8 }
+              ]
+            },
+            {
+              name: "Europe",
+              clients: 38,
+              salesVolume: "High",
+              keyProducts: ["Performance Products", "Industrial Intermediates"],
+              locations: [
+                { city: "London", lat: 51.5, lon: -0.1, clients: 9 },
+                { city: "Paris", lat: 48.9, lon: 2.4, clients: 7 },
+                { city: "Berlin", lat: 52.5, lon: 13.4, clients: 6 },
+                { city: "Madrid", lat: 40.4, lon: -3.7, clients: 5 },
+                { city: "Amsterdam", lat: 52.4, lon: 4.9, clients: 6 },
+                { city: "Moscow", lat: 55.8, lon: 37.6, clients: 5 }
+              ]
+            },
+            {
+              name: "Asia Pacific",
+              clients: 62,
+              salesVolume: "Very High",
+              keyProducts: ["All Product Lines"],
+              locations: [
+                { city: "Tokyo", lat: 35.7, lon: 139.7, clients: 15 },
+                { city: "Shanghai", lat: 31.2, lon: 121.5, clients: 18 },
+                { city: "Beijing", lat: 39.9, lon: 116.4, clients: 12 },
+                { city: "Singapore", lat: 1.3, lon: 103.8, clients: 8 },
+                { city: "Delhi", lat: 28.6, lon: 77.2, clients: 9 }
+              ]
+            },
+            {
+              name: "Middle East & Africa",
+              clients: 22,
+              salesVolume: "Medium",
+              keyProducts: ["Calcium Carbide", "Performance Products"],
+              locations: [
+                { city: "Dubai", lat: 25.3, lon: 55.3, clients: 8 },
+                { city: "Riyadh", lat: 24.7, lon: 46.7, clients: 7 },
+                { city: "Cairo", lat: 31.2, lon: 29.9, clients: 7 }
+              ]
+            },
+            {
+              name: "South America",
+              clients: 18,
+              salesVolume: "Medium",
+              keyProducts: ["Cyanamide Derivatives", "Industrial Intermediates"],
+              locations: [
+                { city: "São Paulo", lat: -23.6, lon: -46.6, clients: 10 },
+                { city: "Buenos Aires", lat: -34.6, lon: -58.4, clients: 8 }
+              ]
+            },
+            {
+              name: "Oceania",
+              clients: 12,
+              salesVolume: "Medium",
+              keyProducts: ["Performance Products"],
+              locations: [
+                { city: "Sydney", lat: -33.9, lon: 151.2, clients: 7 },
+                { city: "Melbourne", lat: -37.8, lon: 144.9, clients: 5 }
+              ]
+            }
+          ]
+        };
+
+        function initSalesMap() {
+          const mapContainer = document.getElementById("sales-map");
+          const infoPanel = document.getElementById("map-info-panel");
+          const closeBtn = document.getElementById("close-info");
+
+          if (!mapContainer) {
+            console.warn("Sales map container not found");
+            return;
+          }
+
+          // Initialize map with custom blue/white theme
+          map = L.map('sales-map', {
+            center: [30, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 6,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            attributionControl: false
+          });
+
+          // Custom tile layer with blue/white theme
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; ABC Chemical Co., Ltd.',
+            maxZoom: 6,
+            tileSize: 256,
+            zoomOffset: 0
+          }).addTo(map);
+
+          // Try to load sales data from JSON, fallback to default
+          fetch('data/sales-data.json')
+            .then(response => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error('Sales data file not found');
+            })
+            .then(data => {
+              salesData = data;
+              addMarkersToMap();
+            })
+            .catch(error => {
+              console.warn('Using default sales data:', error);
+              salesData = defaultSalesData;
+              addMarkersToMap();
+            });
+
+          function addMarkersToMap() {
+            if (!salesData || !map) return;
+
+            // Create custom icon for markers
+            const createCustomIcon = (clientCount) => {
+              const size = Math.max(20, Math.min(40, 20 + clientCount * 2));
+              return L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="width: ${size}px; height: ${size}px; background: #0E3C75; border: 3px solid white; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: ${size * 0.4}px;">${clientCount}</div>`,
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2]
+              });
+            };
+
+            // Add markers for each location
+            salesData.regions.forEach(region => {
+              region.locations.forEach(location => {
+                const marker = L.marker([location.lat, location.lon], {
+                  icon: createCustomIcon(location.clients)
+                }).addTo(map);
+
+                // Create popup content
+                const popupContent = `
+                  <div style="min-width: 200px;">
+                    <h3 style="font-weight: bold; color: #0E3C75; margin-bottom: 8px;">${location.city}</h3>
+                    <p style="margin: 4px 0;"><strong>Region:</strong> ${region.name}</p>
+                    <p style="margin: 4px 0;"><strong>Clients:</strong> ${location.clients}</p>
+                    <p style="margin: 4px 0;"><strong>Sales Volume:</strong> ${region.salesVolume}</p>
+                    <p style="margin: 4px 0;"><strong>Key Products:</strong> ${region.keyProducts.join(', ')}</p>
+                  </div>
+                `;
+
+                marker.bindPopup(popupContent);
+
+                // Add click handler for info panel
+                marker.on('click', function() {
+                  document.getElementById('info-title').textContent = `${location.city}, ${region.name}`;
+                  document.getElementById('info-content').innerHTML = `
+                    <p><strong>Active Clients:</strong> ${location.clients}</p>
+                    <p><strong>Total Regional Clients:</strong> ${region.clients}</p>
+                    <p><strong>Sales Volume:</strong> ${region.salesVolume}</p>
+                    <p><strong>Key Products:</strong> ${region.keyProducts.join(', ')}</p>
+                  `;
+                  infoPanel.classList.remove('hidden');
+                });
+              });
+            });
+
+            // Add region heatmap circles
+            salesData.regions.forEach(region => {
+              const avgLat = region.locations.reduce((sum, loc) => sum + loc.lat, 0) / region.locations.length;
+              const avgLon = region.locations.reduce((sum, loc) => sum + loc.lon, 0) / region.locations.length;
+              const totalClients = region.clients;
+              const radius = Math.max(100000, Math.min(500000, totalClients * 8000));
+
+              L.circle([avgLat, avgLon], {
+                radius: radius,
+                fillColor: '#0E3C75',
+                fillOpacity: 0.15,
+                color: '#0E3C75',
+                weight: 2,
+                opacity: 0.3
+              }).addTo(map);
+            });
+          }
+
+          // Close info panel
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+              infoPanel.classList.add('hidden');
+            });
+          }
+
+          // Handle map resize
+          function handleResize() {
+            if (map) {
+              setTimeout(() => {
+                map.invalidateSize();
+              }, 100);
+            }
+          }
+
+          window.addEventListener('resize', handleResize);
+
+          // Use IntersectionObserver to initialize when visible
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && map) {
+                handleResize();
+              }
+            });
+          }, { threshold: 0.1 });
+
+          observer.observe(mapContainer);
+        }
+
+        // Initialize when ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => {
+            if (window.L) {
+              setTimeout(initSalesMap, 300);
+            } else {
+              window.addEventListener('load', () => {
+                setTimeout(initSalesMap, 300);
+              });
+            }
+          });
+        } else {
+          if (window.L) {
+            setTimeout(initSalesMap, 300);
+          } else {
+            window.addEventListener('load', () => {
+              setTimeout(initSalesMap, 300);
+            });
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
+
