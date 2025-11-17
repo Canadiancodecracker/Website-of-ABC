@@ -96,7 +96,19 @@ const T = {
       p2: { title: "Cyanamide Derivatives", desc: "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems." },
       p3: { title: "Performance Products", desc: "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance." },
       p4: { title: "Industrial Intermediates", desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses." },
-      p5: { title: "Calcium Cyanamide", desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses." }
+      p5: { 
+        title: "Calcium Cyanamide", 
+        desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.",
+        formula: "CaNCN",
+        linearFormula: "CaNCN",
+        cas: "156-62-7",
+        mw: "80.10",
+        ecNumber: "205-861-8",
+        fullName: "Granular Lime Nitrogen / Calcium Cyanamide (CaCN₂)",
+        synonyms: "Calcium carbimide, Cyanamide calcium derivative, Cyanamide calcium salt",
+        appearance: "Gray-black granule",
+        fullDesc: "Calcium cyanamide is a slow-release nitrogen fertilizer. It is used to increase crop yield and effectively kill harmful bacteria and insects, optimize soil structure, eliminate soil hardening, alleviate soil acidification, and supplement soil with calcium and nitrogen."
+      }
     },
     apps: {
       title: "Applications",
@@ -288,7 +300,19 @@ const T = {
       p2: { title: "氰胺衍生物", desc: "氰胺与双氰胺，具备可控反应性与高性能固化方案。" },
       p3: { title: "性能产品", desc: "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。" },
       p4: { title: "工业中间体", desc: "硫脲与硝酸胍，可靠的高级合成中间体。" },
-      p5: { title: "氰氨化钙", desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。" }
+      p5: { 
+        title: "氰氨化钙", 
+        desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。",
+        formula: "CaNCN",
+        linearFormula: "CaNCN",
+        cas: "156-62-7",
+        mw: "80.10",
+        ecNumber: "205-861-8",
+        fullName: "颗粒石灰氮 / 氰氨化钙 (CaCN₂)",
+        synonyms: "氰胺钙，氰酰胺钙衍生物，氰酰胺钙盐",
+        appearance: "灰黑色颗粒",
+        fullDesc: "氰氨化钙是一种缓释氮肥。用于提高作物产量，有效杀灭有害细菌和害虫，优化土壤结构，消除土壤板结，缓解土壤酸化，补充土壤钙和氮。"
+      }
     },
     apps: {
       title: "应用",
