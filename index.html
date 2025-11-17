@@ -116,18 +116,19 @@
                     <path d="M0 60 H600M0 120 H600M0 180 H600M0 240 H600M0 300 H600M0 360 H600M0 420 H600M0 480 H600M0 540 H600"/>
                     <path d="M60 0 V600M120 0 V600M180 0 V600M240 0 V600M300 0 V600M360 0 V600M420 0 V600M480 0 V600M540 0 V600"/>
                   </g>
-                  <g fill="#ffffff" opacity="0.9">
-                    <circle cx="120" cy="120" r="5"/><circle cx="300" cy="200" r="6"/><circle cx="420" cy="340" r="4"/><circle cx="220" cy="420" r="5"/><circle cx="520" cy="160" r="5"/>
-                  </g>
-                  <g stroke="#ffffff" stroke-width="2" opacity="0.9">
-                    <line x1="120" y1="120" x2="300" y2="200"/>
-                    <line x1="300" y1="200" x2="420" y2="340"/>
-                    <line x1="300" y1="200" x2="220" y2="420"/>
-                    <line x1="520" y1="160" x2="420" y2="340"/>
-                  </g>
                 </svg>
-                <div class="absolute top-4 right-4 bg-white/90 text-brand-blue text-xs font-semibold px-3 py-1 rounded-full ring-1 ring-brand-blue/20" data-i18n="hero.badge">
-                  Calcium &amp; Cyanamide Specialists
+                
+                <div class="relative z-10 h-full flex flex-col">
+                  <div class="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                    <h2 class="text-lg font-bold text-white tracking-tight">NEWS & UPDATES</h2>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white border border-white/20">
+                      Calcium & Cyanamide Specialists
+                    </span>
+                  </div>
+                  
+                  <div class="flex-1 overflow-hidden px-6">
+                    <div id="news-scroll-container" class="space-y-4 py-4"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,7 +139,7 @@
       <!-- VIDEO SECTION - NEW! -->
       <section class="py-12 sm:py-16 bg-white border-y border-gray-200">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-4xl mx-auto">
+          <div class="max-w-xl mx-auto">
             <div class="rounded-2xl overflow-hidden shadow-brand bg-gray-900">
               <video 
                 controls 
@@ -152,6 +153,51 @@
             <div class="mt-6 text-center">
               <h3 class="text-xl font-semibold text-gray-900">Discover ABC Chemical</h3>
               <p class="mt-2 text-gray-600">Learn more about our advanced calcium and cyanamide solutions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GLOBAL SALES MAP SECTION -->
+      <section id="global-sales-map" class="py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Header -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white mb-4">
+              Global Reach — Supplying 50+ Countries Worldwide
+            </h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+              From North America to Asia, ABC Chemical's high-purity materials power innovation across industries.
+            </p>
+          </div>
+          
+          <!-- Globe Container -->
+          <div id="globe-container" class="mb-16"></div>
+          
+          <!-- KPI Stats -->
+          <div id="global-stats" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="stat-card">
+              <span class="stat-number" data-target="50">0</span>
+              <div class="stat-label">Countries</div>
+              <div class="stat-sublabel">Worldwide Presence</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="120">0</span>
+              <div class="stat-label">Partners</div>
+              <div class="stat-sublabel">Global Distributors</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="25">0</span>
+              <div class="stat-label">Years</div>
+              <div class="stat-sublabel">Manufacturing Excellence</div>
+            </div>
+            
+            <div class="stat-card">
+              <span class="stat-number" data-target="99">0</span>
+              <div class="stat-label">Quality</div>
+              <div class="stat-sublabel">Customer Satisfaction</div>
             </div>
           </div>
         </div>
@@ -353,5 +399,7 @@
     </footer>
 
     <script src="./main.js"></script>
+    <script src="js/globe.js"></script>
+    <script src="js/statsCounter.js"></script>
   </body>
 </html>
