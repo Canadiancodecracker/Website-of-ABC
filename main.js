@@ -91,7 +91,9 @@ const T = {
       l1: "Energy‑efficient utilities and heat recovery across key units",
       l2: "Responsible sourcing and transparent quality systems",
       l3: "Compliance aligned with global standards and customer audits",
-      m1: "Water Recycled", m2: "EHS Monitoring", m3: "Driven Systems"
+      m1: "Water Recycled", m2: "EHS Monitoring", m3: "Driven Systems",
+      certNote: "Click on certificates to view full document.",
+      certChinese: "Chinese version:"
     },
     res: {
       title: "Resources",
@@ -259,7 +261,9 @@ const T = {
       l1: "关键装置的高效能公用系统与余热回收",
       l2: "负责任的采购与透明的质量体系",
       l3: "对标国际标准并通过客户审核的合规体系",
-      m1: "水资源回收率", m2: "环保安全监测", m3: "以ISO为驱动"
+      m1: "水资源回收率", m2: "环保安全监测", m3: "以ISO为驱动",
+      certNote: "点击证书查看完整文档。",
+      certChinese: "中文版本:"
     },
     res: {
       title: "资料中心",
