@@ -13,8 +13,8 @@
     <!-- Suppress Tailwind CDN warning BEFORE loading Tailwind -->
     <script>
       (function() {
-        const originalWarn = console.warn;
-        console.warn = function(...args) {
+      const originalWarn = console.warn;
+      console.warn = function(...args) {
           const msg = args[0];
           // Suppress Tailwind CDN production warnings
           if (msg && typeof msg === 'string') {
@@ -23,14 +23,14 @@
                 msg.includes('Tailwind CSS')) {
               return; // Suppress warning
             }
-          }
-          originalWarn.apply(console, args);
-        };
+        }
+        originalWarn.apply(console, args);
+      };
       })();
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+      
     <script>
       // Tailwind config
       tailwind.config = {
@@ -418,28 +418,6 @@
               </div>
               <h3 class="card-title" data-i18n="products.p1.title">Calcium Carbide</h3>
               <p class="card-desc" data-i18n="products.p1.desc">High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.</p>
-              <div class="mt-4 pt-4 border-t border-gray-200 text-xs space-y-1.5">
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Formula:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p1.formula">CaC₂</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">CAS:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p1.cas">75-20-7</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">MW:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p1.mw">64.10</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Product #:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p1.productNum">21039</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Brand:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p1.brand">GLOBUS</span>
-                </div>
-              </div>
               <div class="mt-4 flex items-center text-brand-blue text-sm font-medium">
                 <span>View Full Specifications</span>
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -453,28 +431,6 @@
               </div>
               <h3 class="card-title" data-i18n="products.p5.title">Calcium Cyanamide</h3>
               <p class="card-desc" data-i18n="products.p5.desc">A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.</p>
-              <div class="mt-4 pt-4 border-t border-gray-200 text-xs space-y-1.5">
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Formula:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p5.formula">CaNCN</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">CAS:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p5.cas">156-62-7</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">MW:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p5.mw">80.10</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">EC #:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p5.ecNumber">205-861-8</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Appearance:</span>
-                  <span class="font-medium text-gray-900" data-i18n="products.p5.appearance">Gray-black granule</span>
-                </div>
-              </div>
               <div class="mt-4 flex items-center text-brand-blue text-sm font-medium">
                 <span>View Full Specifications</span>
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
