@@ -1,0 +1,121 @@
+{
+  "products": [
+    {
+      "id": "calcium-carbide",
+      "name_en": "Calcium Carbide",
+      "name_zh": "电石（碳化钙）",
+      "formula": "CaC₂",
+      "cas_number": "75-20-7",
+      "molecular_weight": "64.10",
+      "product_number": "21039",
+      "product_brand": "GLOBUS",
+      "short_description_en": "High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.",
+      "short_description_zh": "高纯度原料，支持乙炔制备与下游特种合成。",
+      "full_description_en": "Calcium carbide is used primarily for the generation of acetylene gas and as a reducing agent in steelmaking. Available in granulated, technical grade with ≥75% gas-volumetric purity.",
+      "full_description_zh": "电石主要用于生成乙炔气体，并作为炼钢中的还原剂。颗粒状工业级，纯度≥75%（气体体积法）。",
+      "synonyms_en": ["Calcium acetylide", "Calcium dicarbide"],
+      "synonyms_zh": ["乙炔钙", "二碳化钙"],
+      "specifications": {
+        "appearance_color_en": "Light Gray to Gray",
+        "appearance_color_zh": "浅灰色至灰色",
+        "appearance_form_en": "Granules",
+        "appearance_form_zh": "颗粒",
+        "assay_gasvolumetric": "P15, S2.5%",
+        "particle_size": "COAR/SWG",
+        "purity": "≥75% (gas-volumetric)",
+        "purity_zh": "≥75%（气体体积法）"
+      },
+      "detailed_specs_en": [
+        { "test": "Appearance (Color)", "specification": "Light Gray to Gray" },
+        { "test": "Appearance (Form)", "specification": "Granules" },
+        { "test": "Assay (Gasvolumetric)", "specification": "P15, S2.5%" },
+        { "test": "Particle Size", "specification": "COAR/SWG" },
+        { "test": "CAS Number", "specification": "75-20-7" },
+        { "test": "Molecular Weight", "specification": "64.10" },
+        { "test": "Product Number", "specification": "21039" },
+        { "test": "Product Brand", "specification": "GLOBUS" }
+      ],
+      "detailed_specs_zh": [
+        { "test": "外观（颜色）", "specification": "浅灰色至灰色" },
+        { "test": "外观（形态）", "specification": "颗粒" },
+        { "test": "含量（气体体积法）", "specification": "P15, S2.5%" },
+        { "test": "粒度", "specification": "COAR/SWG" },
+        { "test": "CAS号", "specification": "75-20-7" },
+        { "test": "分子量", "specification": "64.10" },
+        { "test": "产品编号", "specification": "21039" },
+        { "test": "产品品牌", "specification": "GLOBUS" }
+      ],
+      "applications_en": [
+        "Acetylene gas generation for welding and cutting",
+        "Steel desulfurization in metallurgy",
+        "Calcium cyanamide production",
+        "Organic synthesis intermediate",
+        "Carbide lamp fuel"
+      ],
+      "applications_zh": [
+        "焊接和切割用乙炔气体生成",
+        "冶金中的钢脱硫",
+        "氰氨化钙生产",
+        "有机合成中间体",
+        "电石灯燃料"
+      ],
+      "packaging_en": ["25kg bags", "50kg drums", "Bulk shipment available"],
+      "packaging_zh": ["25公斤袋装", "50公斤桶装", "可提供散装运输"],
+      "storage_en": "Store in a cool, dry, well-ventilated area away from moisture. Keep container tightly closed.",
+      "storage_zh": "存放在阴凉、干燥、通风良好的地方，远离潮湿。保持容器密闭。",
+      "safety_notes_en": "Reacts violently with water to produce flammable acetylene gas. Handle with care. Use appropriate PPE.",
+      "safety_notes_zh": "与水剧烈反应产生易燃乙炔气体。小心操作。使用适当的个人防护装备。"
+    },
+    {
+      "id": "calcium-cyanamide",
+      "name_en": "Calcium Cyanamide",
+      "name_zh": "氰氨化钙",
+      "formula": "CaCN₂",
+      "cas_number": "156-62-7",
+      "molecular_weight": "80.10",
+      "short_description_en": "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.",
+      "short_description_zh": "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。",
+      "full_description_en": "Calcium cyanamide is a versatile agricultural chemical used as a nitrogen fertilizer and soil improver. It also serves as an important intermediate in the production of various cyanamide derivatives.",
+      "full_description_zh": "氰氨化钙是一种多用途农业化学品，用作氮肥和土壤改良剂。它也是生产各种氰胺衍生物的重要中间体。",
+      "applications_en": [
+        "Nitrogen fertilizer for crops",
+        "Soil sterilization and pH adjustment",
+        "Intermediate for dicyandiamide production",
+        "Weed and pest control",
+        "Steel desulfurization"
+      ],
+      "applications_zh": [
+        "作物氮肥",
+        "土壤消毒和pH调节",
+        "双氰胺生产中间体",
+        "杂草和害虫控制",
+        "钢脱硫"
+      ]
+    },
+    {
+      "id": "cyanamide-derivatives",
+      "name_en": "Cyanamide Derivatives",
+      "name_zh": "氰胺衍生物",
+      "short_description_en": "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems.",
+      "short_description_zh": "氰胺与双氰胺，具备可控反应性与高性能固化方案。",
+      "products": ["Cyanamide", "Dicyandiamide"]
+    },
+    {
+      "id": "performance-products",
+      "name_en": "Performance Products",
+      "name_zh": "性能产品",
+      "short_description_en": "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance.",
+      "short_description_zh": "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。",
+      "products": ["Creatine Monohydrate", "Guanidinoacetic Acid (GAA)"]
+    },
+    {
+      "id": "industrial-intermediates",
+      "name_en": "Industrial Intermediates",
+      "name_zh": "工业中间体",
+      "short_description_en": "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses.",
+      "short_description_zh": "硫脲与硝酸胍，可靠的高级合成中间体。",
+      "products": ["Thiourea", "Guanidine Nitrate"]
+    }
+  ]
+}
+

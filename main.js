@@ -72,7 +72,27 @@ const T = {
     products: {
       title: "Product Lines",
       desc: "Quality‑driven products engineered for performance, consistency, and safety across critical industries.",
-      p1: { title: "Calcium Carbide", desc: "High‑purity feedstock supporting acetylene generation and downstream specialty syntheses." },
+      p1: { 
+        title: "Calcium Carbide", 
+        desc: "High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.",
+        formula: "CaC₂",
+        cas: "75-20-7",
+        mw: "64.10",
+        productNum: "21039",
+        brand: "GLOBUS",
+        fullName: "Calcium carbide granulated, technical, ≥75% (gas-volumetric)",
+        synonyms: "Calcium acetylide, Calcium dicarbide",
+        specs: {
+          colorLabel: "Appearance (Color)",
+          colorValue: "Light Gray to Gray",
+          formLabel: "Appearance (Form)",
+          formValue: "Granules",
+          assayLabel: "Assay (Gasvolumetric)",
+          assayValue: "P15, S2.5%",
+          sizeLabel: "Particle Size",
+          sizeValue: "COAR/SWG"
+        }
+      },
       p2: { title: "Cyanamide Derivatives", desc: "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems." },
       p3: { title: "Performance Products", desc: "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance." },
       p4: { title: "Industrial Intermediates", desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses." },
@@ -244,7 +264,27 @@ const T = {
     products: {
       title: "产品系列",
       desc: "面向关键行业的高品质产品，强调性能、一致性与安全。",
-      p1: { title: "电石（碳化钙）", desc: "高纯度原料，支持乙炔制备与下游特种合成。" },
+      p1: { 
+        title: "电石（碳化钙）", 
+        desc: "高纯度原料，支持乙炔制备与下游特种合成。",
+        formula: "CaC₂",
+        cas: "75-20-7",
+        mw: "64.10",
+        productNum: "21039",
+        brand: "GLOBUS",
+        fullName: "电石颗粒，工业级，≥75%（气体体积法）",
+        synonyms: "乙炔钙，二碳化钙",
+        specs: {
+          colorLabel: "外观（颜色）",
+          colorValue: "浅灰色至灰色",
+          formLabel: "外观（形态）",
+          formValue: "颗粒",
+          assayLabel: "含量（气体体积法）",
+          assayValue: "P15, S2.5%",
+          sizeLabel: "粒度",
+          sizeValue: "COAR/SWG"
+        }
+      },
       p2: { title: "氰胺衍生物", desc: "氰胺与双氰胺，具备可控反应性与高性能固化方案。" },
       p3: { title: "性能产品", desc: "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。" },
       p4: { title: "工业中间体", desc: "硫脲与硝酸胍，可靠的高级合成中间体。" },
