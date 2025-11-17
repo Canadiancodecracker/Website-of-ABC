@@ -107,7 +107,8 @@ const T = {
         fullName: "Granular Lime Nitrogen / Calcium Cyanamide (CaCN₂)",
         synonyms: "Calcium carbimide, Cyanamide calcium derivative, Cyanamide calcium salt",
         appearance: "Gray-black granule",
-        fullDesc: "Calcium cyanamide is a slow-release nitrogen fertilizer. It is used to increase crop yield and effectively kill harmful bacteria and insects, optimize soil structure, eliminate soil hardening, alleviate soil acidification, and supplement soil with calcium and nitrogen."
+        fullDesc: "Calcium cyanamide is a slow-release nitrogen fertilizer. It is used to increase crop yield and effectively kill harmful bacteria and insects, optimize soil structure, eliminate soil hardening, alleviate soil acidification, and supplement soil with calcium and nitrogen.",
+        appearanceLabel: "Appearance"
       }
     },
     apps: {
@@ -311,7 +312,8 @@ const T = {
         fullName: "颗粒石灰氮 / 氰氨化钙 (CaCN₂)",
         synonyms: "氰胺钙，氰酰胺钙衍生物，氰酰胺钙盐",
         appearance: "灰黑色颗粒",
-        fullDesc: "氰氨化钙是一种缓释氮肥。用于提高作物产量，有效杀灭有害细菌和害虫，优化土壤结构，消除土壤板结，缓解土壤酸化，补充土壤钙和氮。"
+        fullDesc: "氰氨化钙是一种缓释氮肥。用于提高作物产量，有效杀灭有害细菌和害虫，优化土壤结构，消除土壤板结，缓解土壤酸化，补充土壤钙和氮。",
+        appearanceLabel: "外观"
       }
     },
     apps: {
