@@ -113,59 +113,6 @@
       ]
     },
     {
-      "id": "sales-international",
-      "title_en": "International Sales Manager",
-      "title_zh": "国际销售经理",
-      "department_en": "Sales & Marketing",
-      "department_zh": "销售与市场部",
-      "location_en": "Office-based with travel",
-      "location_zh": "办公室为主，需出差",
-      "employment_type_en": "Full-time",
-      "employment_type_zh": "全职",
-      "summary_en": "Drive international sales growth by developing customer relationships, identifying market opportunities, and delivering solutions across multiple regions.",
-      "summary_zh": "通过拓展客户关系、发现市场机会并提供跨区域解决方案，推动国际销售增长。",
-      "responsibilities_en": [
-        "Develop and execute sales strategies for international markets",
-        "Build and maintain relationships with global customers and distributors",
-        "Identify new business opportunities and expand market presence",
-        "Negotiate contracts, pricing, and terms with international clients",
-        "Collaborate with logistics, technical support, and customer service teams"
-      ],
-      "responsibilities_zh": [
-        "制定并执行国际市场销售策略",
-        "与全球客户及分销商建立并维护关系",
-        "发掘新商机并扩大市场份额",
-        "与国际客户谈判合同、价格与条款",
-        "与物流、技术支持及客服团队协作"
-      ],
-      "requirements_en": [
-        "Bachelor's degree in Business, Chemistry, or related field",
-        "3+ years of international sales experience in chemical industry",
-        "Excellent English communication skills (written and verbal)",
-        "Strong negotiation and relationship-building abilities",
-        "Willingness to travel internationally (up to 30%)"
-      ],
-      "requirements_zh": [
-        "商务、化学或相关专业本科学历",
-        "3年以上化工行业国际销售经验",
-        "出色的英语沟通能力（书面与口头）",
-        "较强的谈判与关系建立能力",
-        "愿意国际出差（最多30%）"
-      ],
-      "benefits_en": [
-        "Attractive base salary plus commission structure",
-        "Travel allowances and international exposure",
-        "Health and life insurance",
-        "Performance bonuses and career growth opportunities"
-      ],
-      "benefits_zh": [
-        "优厚的基本工资加提成结构",
-        "差旅补贴与国际化视野",
-        "健康与人寿保险",
-        "绩效奖金与职业成长机会"
-      ]
-    },
-    {
       "id": "rd-engineer",
       "title_en": "R&D Engineer - Process Development",
       "title_zh": "研发工程师 - 工艺开发",
