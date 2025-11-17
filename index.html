@@ -36,29 +36,135 @@
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white focus:text-brand-blue focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
 
     <!-- Header -->
-    <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="h-16 flex items-center justify-between">
-          <a href="#home" class="flex items-center gap-2">
+    <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+      <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+          <!-- Logo -->
+          <a href="#home" class="flex items-center gap-2 flex-shrink-0">
             <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
-            <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical</span>
+            <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
           </a>
 
-          <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#home" class="hover:text-brand-blue transition" data-i18n="nav.home">Home</a>
-            <a href="#products" class="hover:text-brand-blue transition" data-i18n="nav.products">Products</a>
-            <a href="#applications" class="hover:text-brand-blue transition" data-i18n="nav.applications">Applications</a>
-            <a href="#sustainability" class="hover:text-brand-blue transition" data-i18n="nav.sustainability">Sustainability</a>
-            <a href="#resources" class="hover:text-brand-blue transition" data-i18n="nav.resources">Resources</a>
-            <a href="#contact" class="hover:text-brand-blue transition" data-i18n="nav.contact">Contact</a>
-            <div class="ml-2 h-6 w-px bg-gray-300"></div>
-            <div class="inline-flex rounded-lg border border-gray-300 overflow-hidden" role="group" aria-label="Language toggle">
-              <button id="btn-en" class="lang-btn lang-active" data-setlang="en" aria-pressed="true">EN</button>
-              <button id="btn-zh" class="lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center mega-nav-menu" style="gap: 40px;">
+            <!-- Home Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="home">
+                <span data-i18n="nav.home._">Home</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-home" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#home" class="mega-dropdown-item" data-i18n="nav.home.about">About Us</a>
+                  <a href="#home" class="mega-dropdown-item" data-i18n="nav.home.overview">Company Overview</a>
+                  <a href="all-news.html" class="mega-dropdown-item" data-i18n="nav.home.news">News & Updates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- About Us Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="about">
+                <span data-i18n="nav.about._">About Us</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-about" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="events.html" class="mega-dropdown-item" data-i18n="nav.about.events">Events</a>
+                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.media">Media</a>
+                  <a href="factory-gallery.html" class="mega-dropdown-item" data-i18n="nav.about.gallery">Factory Gallery</a>
+                  <a href="#about" class="mega-dropdown-item" data-i18n="nav.about.careers">Careers / Hiring</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Products Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="products">
+                <span data-i18n="nav.products._">Products</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-products" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.calcium">Calcium Carbide</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.performance">Performance Products</a>
+                  <a href="#products" class="mega-dropdown-item" data-i18n="nav.products.intermediates">Industrial Intermediates</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Applications Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="applications">
+                <span data-i18n="nav.applications._">Applications</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-applications" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
+                  <a href="#applications" class="mega-dropdown-item" data-i18n="nav.applications.metallurgy">Metallurgy & Industry</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sustainability Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="sustainability">
+                <span data-i18n="nav.sustainability._">Sustainability</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-sustainability" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.policy">Environmental Policy</a>
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
+                  <a href="#sustainability" class="mega-dropdown-item" data-i18n="nav.sustainability.ehs">EHS Practices</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resources Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="resources">
+                <span data-i18n="nav.resources._">Resources</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-resources" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#resources" class="mega-dropdown-item" data-i18n="nav.resources.sds">SDS Documents</a>
+                  <a href="#resources" class="mega-dropdown-item" data-i18n="nav.resources.datasheets">Datasheets</a>
+                  <a href="all-news.html" class="mega-dropdown-item" data-i18n="nav.resources.news">All News</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Dropdown -->
+            <div class="mega-nav-item relative">
+              <button type="button" class="mega-nav-link flex items-center gap-1.5" data-dropdown="contact">
+                <span data-i18n="nav.contact._">Contact</span>
+                <svg class="mega-nav-arrow w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              <div id="mega-dropdown-contact" class="mega-dropdown">
+                <div class="mega-dropdown-content">
+                  <a href="#contact" class="mega-dropdown-item" data-i18n="nav.contact.general">General Inquiries</a>
+                  <a href="#contact" class="mega-dropdown-item" data-i18n="nav.contact.sales">Sales</a>
+                  <a href="#technical-support" class="mega-dropdown-item" data-i18n="nav.contact.technical">Technical Support</a>
+                </div>
+              </div>
             </div>
           </nav>
 
-          <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:text-brand-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-blue" aria-label="Open main menu" aria-expanded="false">
+          <!-- Language Switch -->
+          <div class="mega-nav-lang flex items-center gap-2 flex-shrink-0">
+            <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle" style="border-color: #E4E7EB;">
+              <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
+              <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-md p-2" style="color: #0A1A2F;" aria-label="Open main menu" aria-expanded="false">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="3" y1="6" x2="21" y2="6" />
               <line x1="3" y1="12" x2="21" y2="12" />
@@ -68,23 +174,97 @@
         </div>
       </div>
       <!-- Mobile Nav -->
-      <div id="mobileNav" class="md:hidden hidden border-t border-gray-200 bg-white">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 grid gap-1 text-sm font-medium">
-          <a href="#home" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.home">Home</a>
-          <a href="#products" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.products">Products</a>
-          <a href="#applications" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.applications">Applications</a>
-          <a href="#sustainability" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.sustainability">Sustainability</a>
-          <a href="#resources" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.resources">Resources</a>
-          <a href="#contact" class="block px-3 py-2 rounded-md hover:bg-gray-100" data-i18n="nav.contact">Contact</a>
-          <div class="flex gap-2 pt-2">
-            <button id="m-en" class="lang-btn flex-1" data-setlang="en">EN</button>
-            <button id="m-zh" class="lang-btn flex-1" data-setlang="zh">中</button>
+      <div id="mobileNav" class="lg:hidden hidden border-t bg-white" style="border-color: #E4E7EB;">
+        <nav class="mega-mobile-nav mx-auto px-4 sm:px-6 py-4">
+          <!-- Mobile menu items with expandable dropdowns -->
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="home">
+              <span data-i18n="nav.home._">Home</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#home" class="mega-mobile-link" data-i18n="nav.home.about">About Us</a>
+              <a href="#home" class="mega-mobile-link" data-i18n="nav.home.overview">Company Overview</a>
+              <a href="all-news.html" class="mega-mobile-link" data-i18n="nav.home.news">News & Updates</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="about">
+              <span data-i18n="nav.about._">About Us</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="events.html" class="mega-mobile-link" data-i18n="nav.about.events">Events</a>
+              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.media">Media</a>
+              <a href="factory-gallery.html" class="mega-mobile-link" data-i18n="nav.about.gallery">Factory Gallery</a>
+              <a href="#about" class="mega-mobile-link" data-i18n="nav.about.careers">Careers / Hiring</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="products">
+              <span data-i18n="nav.products._">Products</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.calcium">Calcium Carbide</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.cyanamide">Cyanamide Derivatives</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.performance">Performance Products</a>
+              <a href="#products" class="mega-mobile-link" data-i18n="nav.products.intermediates">Industrial Intermediates</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="applications">
+              <span data-i18n="nav.applications._">Applications</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.agriculture">Agriculture & Fertilizers</a>
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.pharma">Pharmaceuticals & Nutrition</a>
+              <a href="#applications" class="mega-mobile-link" data-i18n="nav.applications.metallurgy">Metallurgy & Industry</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="sustainability">
+              <span data-i18n="nav.sustainability._">Sustainability</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.policy">Environmental Policy</a>
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.certificates">ISO Certificates</a>
+              <a href="#sustainability" class="mega-mobile-link" data-i18n="nav.sustainability.ehs">EHS Practices</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="resources">
+              <span data-i18n="nav.resources._">Resources</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#resources" class="mega-mobile-link" data-i18n="nav.resources.sds">SDS Documents</a>
+              <a href="#resources" class="mega-mobile-link" data-i18n="nav.resources.datasheets">Datasheets</a>
+              <a href="all-news.html" class="mega-mobile-link" data-i18n="nav.resources.news">All News</a>
+            </div>
+          </div>
+          <div class="mega-mobile-item">
+            <button type="button" class="mega-mobile-toggle w-full flex items-center justify-between py-3" data-mobile-dropdown="contact">
+              <span data-i18n="nav.contact._">Contact</span>
+              <svg class="mega-mobile-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="mega-mobile-dropdown hidden">
+              <a href="#contact" class="mega-mobile-link" data-i18n="nav.contact.general">General Inquiries</a>
+              <a href="#contact" class="mega-mobile-link" data-i18n="nav.contact.sales">Sales</a>
+              <a href="#technical-support" class="mega-mobile-link" data-i18n="nav.contact.technical">Technical Support</a>
+            </div>
+          </div>
+          <div class="flex gap-2 pt-4 border-t" style="border-color: #E4E7EB;">
+            <button id="m-en" class="mega-lang-btn flex-1 mega-lang-active" data-setlang="en">EN</button>
+            <button id="m-zh" class="mega-lang-btn flex-1" data-setlang="zh">中</button>
           </div>
         </nav>
       </div>
     </header>
 
-    <main id="main" class="pt-16">
+    <main id="main" class="mega-main-content" style="padding-top: 72px;">
       <!-- Hero -->
       <section id="home" class="relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-100"></div>
