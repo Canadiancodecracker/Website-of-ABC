@@ -17,10 +17,10 @@
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     
-    // Set canvas size
-    const size = Math.min(600, window.innerWidth - 40);
+    // Set canvas size - WIDER GLOBE (increased from 600 to 900)
+    const size = Math.min(900, window.innerWidth - 40);
     canvas.width = size;
-    canvas.height = size * 0.6; // Half sphere takes less height
+    canvas.height = size * 0.65; // Slightly taller for better viewing
     canvas.style.maxWidth = '100%';
     canvas.style.height = 'auto';
     canvas.style.display = 'block';
@@ -29,15 +29,15 @@
     container.innerHTML = '';
     container.appendChild(canvas);
 
-    // Globe configuration
+    // Globe configuration - LARGER RADIUS
     const centerX = canvas.width / 2;
-    const centerY = canvas.height * 0.85; // Position sphere lower to show top hemisphere
-    const radius = Math.min(canvas.width, canvas.height) * 0.42;
+    const centerY = canvas.height * 0.88; // Position sphere lower to show top hemisphere
+    const radius = Math.min(canvas.width, canvas.height) * 0.52; // Increased from 0.42 to 0.52
     
     let rotation = 0;
     const rotationSpeed = 0.003;
 
-    // Cloudflare-inspired color palette
+    // Cloudflare-inspired color palette - ENHANCED FOR VISIBILITY
     const colors = {
       sphere: {
         base: '#0a1e3d',       // Very dark blue
@@ -46,12 +46,12 @@
         gradient3: '#3b82f6',  // Light blue
       },
       map: {
-        continents: '#ff9f57',  // Orange for landmass
+        continents: '#ff9f57',  // Brighter orange for landmass
         continentsAlt: '#ffb87a', // Lighter orange
-        borders: 'rgba(255, 255, 255, 0.1)',
+        borders: 'rgba(255, 255, 255, 0.3)', // MORE VISIBLE white borders
       },
-      grid: 'rgba(255, 255, 255, 0.06)', // Very subtle grid
-      glow: 'rgba(59, 130, 246, 0.25)',
+      grid: 'rgba(255, 255, 255, 0.05)', // Very subtle grid
+      glow: 'rgba(59, 130, 246, 0.3)',
       markers: '#ffd700',      // Gold for markers
       connections: 'rgba(255, 159, 87, 0.15)', // Orange connections
       hubConnections: 'rgba(255, 159, 87, 0.25)', // Brighter for hub lines
@@ -278,18 +278,19 @@
           }
           ctx.closePath();
           
-          // Gradient fill based on depth
+          // Gradient fill based on depth - MUCH MORE VISIBLE
           const avgDepth = points.reduce((sum, p) => sum + p.depth, 0) / points.length;
-          const opacity = Math.max(0.4, Math.min(0.9, (avgDepth + radius) / radius));
+          const opacity = Math.max(0.7, Math.min(0.95, (avgDepth + radius) / radius)); // Increased from 0.4-0.9 to 0.7-0.95
           
+          // Brighter, more visible continents
           ctx.fillStyle = colors.map.continents;
-          ctx.globalAlpha = opacity * 0.85;
+          ctx.globalAlpha = opacity * 0.95; // Increased from 0.85 to 0.95
           ctx.fill();
           
-          // Subtle border
+          // THICKER, MORE VISIBLE borders
           ctx.strokeStyle = colors.map.borders;
-          ctx.lineWidth = 0.5;
-          ctx.globalAlpha = opacity * 0.5;
+          ctx.lineWidth = 1.5; // Increased from 0.5 to 1.5
+          ctx.globalAlpha = opacity * 0.8; // Increased from 0.5 to 0.8
           ctx.stroke();
           
           ctx.globalAlpha = 1.0;
@@ -512,7 +513,7 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        const newSize = Math.min(600, window.innerWidth - 40);
+        const newSize = Math.min(900, window.innerWidth - 40); // Updated to match new max size
         if (Math.abs(newSize - canvas.width) > 50) {
           initGlobe(); // Reinitialize with new size
         }
