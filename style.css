@@ -431,8 +431,8 @@ section[id]{scroll-margin-top:4.5rem;}
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem auto;
-  padding: 2rem 0; /* Increased padding */
+  margin: 0 auto;
+  padding: 0;
   max-width: 1000px; /* Allow wider globe */
 }
 
