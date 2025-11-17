@@ -1,0 +1,223 @@
+{
+  "company": {
+    "name_en": "ABC Chemical Co., Ltd.",
+    "name_zh": "ABC 化工有限公司",
+    "intro_en": "ABC Chemical Co., Ltd. is a specialty chemical manufacturer focusing on calcium cyanamide and their downstream derivatives. Our products serve agriculture, nutrition, materials science and various industrial applications worldwide. As our business continues to grow, we are looking for talented, responsible and growth-minded professionals to join our team.",
+    "intro_zh": "ABC 化工有限公司是一家专注于钙氰、双氰胺及其下游衍生物的精细化工生产企业。产品广泛应用于农业、营养品、材料科学以及全球工业领域。随着业务的不断发展，我们诚邀专业且负责、富有成长性的人才加盟。与公司共同打造高标准、高安全性、高品质的现代化工企业。"
+  },
+  "jobs": [
+    {
+      "id": "production-operations",
+      "title_en": "Production & Operations Management",
+      "title_zh": "生产与运营管理",
+      "department_en": "Production Department",
+      "department_zh": "生产部",
+      "location_en": "On-site, Plant",
+      "location_zh": "工厂现场办公",
+      "employment_type_en": "Full-time",
+      "employment_type_zh": "全职",
+      "summary_en": "Responsible for the daily operation management of chemical production lines, ensuring stable production, continuous improvement of efficiency and safety.",
+      "summary_zh": "负责化工生产线的日常运行管理，确保生产稳定运行、效率与安全持续改善。",
+      "responsibilities_en": [
+        "Oversee daily chemical production operations and ensure compliance with safety & environmental standards",
+        "Coordinate production schedules, inventory, and quality control procedures",
+        "Lead process optimization and efficiency improvement initiatives",
+        "Manage production team and ensure proper training and SOPs adherence",
+        "Collaborate with R&D, QC, and maintenance teams to resolve production issues"
+      ],
+      "responsibilities_zh": [
+        "监督化工生产日常运营，确保符合安全与环保标准",
+        "协调生产排程、库存与质量控制流程",
+        "主导工艺优化与效率改进项目",
+        "管理生产团队并确保培训与SOP执行",
+        "与研发、质检、维保团队协作解决生产问题"
+      ],
+      "requirements_en": [
+        "Bachelor's degree or above in Chemical Engineering, Chemistry, or related field",
+        "3+ years of experience in chemical production management",
+        "Strong knowledge of chemical safety, quality control, and regulatory compliance",
+        "Excellent problem-solving and team leadership skills",
+        "Proficiency in production planning and lean manufacturing principles"
+      ],
+      "requirements_zh": [
+        "化工、化学或相关专业本科及以上学历",
+        "3年以上化工生产管理经验",
+        "扎实的化工安全、质量控制与合规知识",
+        "出色的问题解决与团队领导能力",
+        "熟练掌握生产计划与精益制造原则"
+      ],
+      "benefits_en": [
+        "Competitive salary and performance bonuses",
+        "Comprehensive health insurance and retirement plans",
+        "Professional development and training opportunities",
+        "Safe and modern working environment"
+      ],
+      "benefits_zh": [
+        "具有竞争力的薪资与绩效奖金",
+        "完善的健康保险与退休计划",
+        "职业发展与培训机会",
+        "安全现代的工作环境"
+      ]
+    },
+    {
+      "id": "qa-quality-control",
+      "title_en": "QA/QC Quality Control Engineer",
+      "title_zh": "质量控制工程师",
+      "department_en": "Quality Department",
+      "department_zh": "质量部",
+      "location_en": "On-site, Lab & Plant",
+      "location_zh": "实验室与工厂现场",
+      "employment_type_en": "Full-time",
+      "employment_type_zh": "全职",
+      "summary_en": "Ensure product quality meets customer specifications and regulatory standards through testing, inspection, and quality system management.",
+      "summary_zh": "通过检测、检验与质量体系管理，确保产品质量符合客户规格与法规标准。",
+      "responsibilities_en": [
+        "Conduct quality testing and analysis of raw materials, in-process samples, and finished products",
+        "Implement and maintain ISO 9001/14001/45001 quality management systems",
+        "Investigate quality issues and implement corrective and preventive actions (CAPA)",
+        "Prepare quality documentation, inspection reports, and COAs for customers",
+        "Coordinate with production and R&D teams for quality improvement projects"
+      ],
+      "responsibilities_zh": [
+        "对原材料、中间样品与成品进行质量检测与分析",
+        "实施并维护ISO 9001/14001/45001质量管理体系",
+        "调查质量问题并实施纠正与预防措施（CAPA）",
+        "编制质量文档、检验报告与客户COA",
+        "与生产及研发团队协作推进质量改进项目"
+      ],
+      "requirements_en": [
+        "Bachelor's degree in Chemistry, Chemical Engineering, or related field",
+        "2+ years of QA/QC experience in chemical industry",
+        "Familiarity with analytical instruments (HPLC, GC, UV, etc.)",
+        "Knowledge of ISO quality standards and GMP practices",
+        "Detail-oriented with strong analytical and documentation skills"
+      ],
+      "requirements_zh": [
+        "化学、化工或相关专业本科学历",
+        "2年以上化工行业QA/QC经验",
+        "熟悉分析仪器操作（HPLC、GC、UV等）",
+        "了解ISO质量标准与GMP规范",
+        "注重细节，具备较强分析与文档能力"
+      ],
+      "benefits_en": [
+        "Competitive salary package",
+        "Health insurance and annual health check-ups",
+        "Career advancement opportunities",
+        "Professional training and certifications"
+      ],
+      "benefits_zh": [
+        "具有竞争力的薪酬待遇",
+        "健康保险与年度体检",
+        "职业晋升机会",
+        "专业培训与认证支持"
+      ]
+    },
+    {
+      "id": "sales-international",
+      "title_en": "International Sales Manager",
+      "title_zh": "国际销售经理",
+      "department_en": "Sales & Marketing",
+      "department_zh": "销售与市场部",
+      "location_en": "Office-based with travel",
+      "location_zh": "办公室为主，需出差",
+      "employment_type_en": "Full-time",
+      "employment_type_zh": "全职",
+      "summary_en": "Drive international sales growth by developing customer relationships, identifying market opportunities, and delivering solutions across multiple regions.",
+      "summary_zh": "通过拓展客户关系、发现市场机会并提供跨区域解决方案，推动国际销售增长。",
+      "responsibilities_en": [
+        "Develop and execute sales strategies for international markets",
+        "Build and maintain relationships with global customers and distributors",
+        "Identify new business opportunities and expand market presence",
+        "Negotiate contracts, pricing, and terms with international clients",
+        "Collaborate with logistics, technical support, and customer service teams"
+      ],
+      "responsibilities_zh": [
+        "制定并执行国际市场销售策略",
+        "与全球客户及分销商建立并维护关系",
+        "发掘新商机并扩大市场份额",
+        "与国际客户谈判合同、价格与条款",
+        "与物流、技术支持及客服团队协作"
+      ],
+      "requirements_en": [
+        "Bachelor's degree in Business, Chemistry, or related field",
+        "3+ years of international sales experience in chemical industry",
+        "Excellent English communication skills (written and verbal)",
+        "Strong negotiation and relationship-building abilities",
+        "Willingness to travel internationally (up to 30%)"
+      ],
+      "requirements_zh": [
+        "商务、化学或相关专业本科学历",
+        "3年以上化工行业国际销售经验",
+        "出色的英语沟通能力（书面与口头）",
+        "较强的谈判与关系建立能力",
+        "愿意国际出差（最多30%）"
+      ],
+      "benefits_en": [
+        "Attractive base salary plus commission structure",
+        "Travel allowances and international exposure",
+        "Health and life insurance",
+        "Performance bonuses and career growth opportunities"
+      ],
+      "benefits_zh": [
+        "优厚的基本工资加提成结构",
+        "差旅补贴与国际化视野",
+        "健康与人寿保险",
+        "绩效奖金与职业成长机会"
+      ]
+    },
+    {
+      "id": "rd-engineer",
+      "title_en": "R&D Engineer - Process Development",
+      "title_zh": "研发工程师 - 工艺开发",
+      "department_en": "Research & Development",
+      "department_zh": "研发部",
+      "location_en": "R&D Center",
+      "location_zh": "研发中心",
+      "employment_type_en": "Full-time",
+      "employment_type_zh": "全职",
+      "summary_en": "Lead process development and optimization projects for calcium cyanamide derivatives and new product innovations.",
+      "summary_zh": "主导钙氰胺衍生物工艺开发与优化及新产品创新项目。",
+      "responsibilities_en": [
+        "Design and conduct experiments for process development and optimization",
+        "Scale up laboratory processes to pilot and commercial production",
+        "Analyze reaction kinetics, yields, and process economics",
+        "Collaborate with production team for technology transfer",
+        "Prepare technical reports, patents, and R&D documentation"
+      ],
+      "responsibilities_zh": [
+        "设计并执行工艺开发与优化实验",
+        "将实验室工艺放大至中试及商业化生产",
+        "分析反应动力学、收率与工艺经济性",
+        "与生产团队协作进行技术转移",
+        "编写技术报告、专利与研发文档"
+      ],
+      "requirements_en": [
+        "Master's degree or above in Chemistry, Chemical Engineering, or related field",
+        "2+ years of R&D experience in chemical industry",
+        "Strong knowledge of organic synthesis and process chemistry",
+        "Experience with reaction optimization and scale-up",
+        "Proficiency in analytical techniques and data analysis"
+      ],
+      "requirements_zh": [
+        "化学、化工或相关专业硕士及以上学历",
+        "2年以上化工行业研发经验",
+        "扎实的有机合成与工艺化学知识",
+        "反应优化与放大经验",
+        "熟练掌握分析技术与数据分析"
+      ],
+      "benefits_en": [
+        "Competitive R&D compensation package",
+        "Patent incentives and innovation bonuses",
+        "State-of-the-art R&D facilities and equipment",
+        "Continuous learning and professional development"
+      ],
+      "benefits_zh": [
+        "具有竞争力的研发薪酬待遇",
+        "专利激励与创新奖金",
+        "先进的研发设施与设备",
+        "持续学习与职业发展机会"
+      ]
+    }
+  ]
+}
+

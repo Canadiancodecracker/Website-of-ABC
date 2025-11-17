@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join ABC Chemical - Explore career opportunities in chemical manufacturing, R&D, quality control, and international sales.">
+  <title>Careers - ABC Chemical Co., Ltd.</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Tailwind CDN Warning Suppression -->
+  <script>
+    (function() {
+      const originalWarn = console.warn;
+      console.warn = function(...args) {
+        if (args[0]?.includes?.('cdn.tailwindcss.com')) return;
+        originalWarn.apply(console, args);
+      };
+    })();
+  </script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-blue': '#1e40af',
+            'brand-blue-dark': '#1e3a8a',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .job-card {
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+    
+    .job-card:hover {
+      border-left-color: #1e40af;
+      transform: translateX(4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .job-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+    
+    .job-details.expanded {
+      max-height: 2000px;
+    }
+    
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: start;
+      gap: 0.5rem;
+    }
+    
+    .check-icon {
+      color: #10b981;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 0.125rem;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center space-x-2 text-xl font-bold text-gray-900 hover:text-brand-blue transition-colors">
+            <svg class="h-8 w-8" viewBox="0 0 32 32" fill="none">
+              <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="#1e40af"/>
+              <path d="M4 16L16 22L28 16" stroke="#1e40af" stroke-width="2"/>
+              <path d="M4 22L16 28L28 22" stroke="#1e40af" stroke-width="2"/>
+            </svg>
+            <span data-i18n="brand">ABC Chemical</span>
+          </a>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="text-gray-600 hover:text-brand-blue transition-colors font-medium" data-i18n="nav.backHome">
+            ← Back to Home
+          </a>
+          
+          <!-- Language Toggle -->
+          <div class="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+            <button id="lang-en" class="px-3 py-1 rounded-md font-medium transition-colors bg-brand-blue-dark text-white">
+              EN
+            </button>
+            <button id="lang-zh" class="px-3 py-1 rounded-md font-medium transition-colors text-gray-600 hover:bg-gray-200">
+              中
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-brand-blue-dark via-brand-blue to-blue-600 text-white py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="hero.title">Join Our Team</h1>
+          <p class="text-xl text-blue-100 max-w-3xl mx-auto" data-i18n="hero.subtitle">
+            Build your career with a leading specialty chemical manufacturer
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Introduction -->
+    <section class="py-12 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4" data-i18n="company.title">About ABC Chemical</h2>
+          <p id="company-intro" class="text-lg text-gray-600 leading-relaxed">
+            Loading company information...
+          </p>
+          
+          <!-- Company Stats -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-brand-blue">50+</div>
+              <div class="text-sm text-gray-600 mt-1" data-i18n="stats.countries">Countries Served</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-brand-blue">25+</div>
+              <div class="text-sm text-gray-600 mt-1" data-i18n="stats.years">Years Experience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-brand-blue">500+</div>
+              <div class="text-sm text-gray-600 mt-1" data-i18n="stats.employees">Employees</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-brand-blue">ISO</div>
+              <div class="text-sm text-gray-600 mt-1" data-i18n="stats.certified">Certified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section class="py-12 bg-gray-50">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4" data-i18n="jobs.title">Current Openings</h2>
+          <p class="text-lg text-gray-600" data-i18n="jobs.subtitle">Explore opportunities to grow with us</p>
+        </div>
+        
+        <!-- Job Cards Container -->
+        <div id="jobs-container" class="max-w-5xl mx-auto space-y-6">
+          <!-- Jobs will be loaded here -->
+          <div class="text-center py-12">
+            <p class="text-gray-500">Loading job listings...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Us -->
+    <section class="py-12 bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4" data-i18n="why.title">Why Join ABC Chemical?</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="why.growth.title">Career Growth</h3>
+            <p class="text-gray-600" data-i18n="why.growth.desc">Professional development programs and clear advancement paths</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="why.team.title">Global Team</h3>
+            <p class="text-gray-600" data-i18n="why.team.desc">Work with talented professionals from around the world</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+              <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2" data-i18n="why.benefits.title">Great Benefits</h3>
+            <p class="text-gray-600" data-i18n="why.benefits.desc">Competitive compensation and comprehensive benefits package</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center space-x-2 mb-4 md:mb-0">
+          <svg class="h-6 w-6" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4L4 10L16 16L28 10L16 4Z" fill="#60a5fa"/>
+            <path d="M4 16L16 22L28 16" stroke="#60a5fa" stroke-width="2"/>
+            <path d="M4 22L16 28L28 22" stroke="#60a5fa" stroke-width="2"/>
+          </svg>
+          <span class="font-semibold" data-i18n="corp">ABC Chemical Co., Ltd.</span>
+        </div>
+        
+        <div class="text-center md:text-right">
+          <p class="text-sm">
+            <span data-i18n="footer.c">©</span> 2025 <span data-i18n="corp">ABC Chemical Co., Ltd.</span> 
+            <span data-i18n="footer.rights">All rights reserved.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Translations
+    const translations = {
+      en: {
+        brand: "ABC Chemical",
+        corp: "ABC Chemical Co., Ltd.",
+        "nav.backHome": "← Back to Home",
+        "hero.title": "Join Our Team",
+        "hero.subtitle": "Build your career with a leading specialty chemical manufacturer",
+        "company.title": "About ABC Chemical",
+        "jobs.title": "Current Openings",
+        "jobs.subtitle": "Explore opportunities to grow with us",
+        "job.viewDetails": "View Details",
+        "job.hideDetails": "Hide Details",
+        "job.applyNow": "Apply Now",
+        "job.responsibilities": "Key Responsibilities",
+        "job.requirements": "Requirements",
+        "job.benefits": "Benefits",
+        "stats.countries": "Countries Served",
+        "stats.years": "Years Experience",
+        "stats.employees": "Employees",
+        "stats.certified": "Certified",
+        "why.title": "Why Join ABC Chemical?",
+        "why.growth.title": "Career Growth",
+        "why.growth.desc": "Professional development programs and clear advancement paths",
+        "why.team.title": "Global Team",
+        "why.team.desc": "Work with talented professionals from around the world",
+        "why.benefits.title": "Great Benefits",
+        "why.benefits.desc": "Competitive compensation and comprehensive benefits package",
+        "footer.c": "©",
+        "footer.rights": "All rights reserved."
+      },
+      zh: {
+        brand: "ABC化工",
+        corp: "ABC化工有限公司",
+        "nav.backHome": "← 返回首页",
+        "hero.title": "加入我们",
+        "hero.subtitle": "与领先的精细化工企业共创事业",
+        "company.title": "关于ABC化工",
+        "jobs.title": "招聘职位",
+        "jobs.subtitle": "探索与我们共同成长的机会",
+        "job.viewDetails": "查看详情",
+        "job.hideDetails": "收起详情",
+        "job.applyNow": "立即申请",
+        "job.responsibilities": "主要职责",
+        "job.requirements": "任职要求",
+        "job.benefits": "福利待遇",
+        "stats.countries": "服务国家",
+        "stats.years": "年经验",
+        "stats.employees": "员工",
+        "stats.certified": "认证",
+        "why.title": "为什么选择ABC化工？",
+        "why.growth.title": "职业发展",
+        "why.growth.desc": "专业发展计划与清晰的晋升路径",
+        "why.team.title": "全球团队",
+        "why.team.desc": "与来自世界各地的优秀专业人士共事",
+        "why.benefits.title": "优厚福利",
+        "why.benefits.desc": "具有竞争力的薪酬与全面的福利待遇",
+        "footer.c": "©",
+        "footer.rights": "保留所有权利。"
+      }
+    };
+
+    let currentLang = 'en';
+    let jobsData = null;
+
+    // Apply translations
+    function applyTranslations(lang) {
+      const elements = document.querySelectorAll('[data-i18n]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+
+    // Load jobs data
+    async function loadJobsData() {
+      try {
+        const response = await fetch('data/jobs-data.json?v=' + Date.now());
+        jobsData = await response.json();
+        updateCompanyInfo();
+        renderJobs();
+      } catch (error) {
+        console.error('Error loading jobs:', error);
+        document.getElementById('jobs-container').innerHTML = '<p class="text-center text-red-500">Error loading job listings</p>';
+      }
+    }
+
+    // Update company info
+    function updateCompanyInfo() {
+      if (!jobsData) return;
+      const key = currentLang === 'en' ? 'intro_en' : 'intro_zh';
+      document.getElementById('company-intro').textContent = jobsData.company[key];
+    }
+
+    // Render jobs
+    function renderJobs() {
+      if (!jobsData || !jobsData.jobs) return;
+      
+      const container = document.getElementById('jobs-container');
+      const lang = currentLang;
+      
+      container.innerHTML = jobsData.jobs.map(job => `
+        <div class="job-card bg-white rounded-lg shadow-md p-6">
+          <!-- Job Header -->
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">${job['title_' + lang]}</h3>
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="tag bg-blue-100 text-brand-blue">
+                  ${job['department_' + lang]}
+                </span>
+                <span class="tag bg-green-100 text-green-700">
+                  ${job['employment_type_' + lang]}
+                </span>
+                <span class="tag bg-gray-100 text-gray-700">
+                  📍 ${job['location_' + lang]}
+                </span>
+              </div>
+              <p class="text-gray-600">${job['summary_' + lang]}</p>
+            </div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="flex gap-3 mt-4">
+            <button onclick="toggleJobDetails('${job.id}')" 
+                    class="view-details-btn px-6 py-2 bg-brand-blue text-white rounded-lg hover:bg-brand-blue-dark transition-colors font-medium">
+              <span data-i18n="job.viewDetails">View Details</span>
+              <svg class="inline-block w-4 h-4 ml-2 transition-transform" id="arrow-${job.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <a href="mailto:hr@abcchemical.example?subject=Application for ${job['title_en']}" 
+               class="px-6 py-2 bg-white border-2 border-brand-blue text-brand-blue rounded-lg hover:bg-blue-50 transition-colors font-medium">
+              <span data-i18n="job.applyNow">Apply Now</span>
+            </a>
+          </div>
+          
+          <!-- Job Details (Hidden by default) -->
+          <div id="details-${job.id}" class="job-details mt-6 pt-6 border-t border-gray-200">
+            <!-- Responsibilities -->
+            <div class="mb-6">
+              <h4 class="text-lg font-bold text-gray-900 mb-3" data-i18n="job.responsibilities">Key Responsibilities</h4>
+              <ul class="space-y-2">
+                ${job['responsibilities_' + lang].map(item => `
+                  <li class="flex items-start">
+                    <span class="check-icon mr-2">✓</span>
+                    <span class="text-gray-600">${item}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+            
+            <!-- Requirements -->
+            <div class="mb-6">
+              <h4 class="text-lg font-bold text-gray-900 mb-3" data-i18n="job.requirements">Requirements</h4>
+              <ul class="space-y-2">
+                ${job['requirements_' + lang].map(item => `
+                  <li class="flex items-start">
+                    <span class="check-icon mr-2">✓</span>
+                    <span class="text-gray-600">${item}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+            
+            <!-- Benefits -->
+            <div class="mb-6">
+              <h4 class="text-lg font-bold text-gray-900 mb-3" data-i18n="job.benefits">Benefits</h4>
+              <div class="benefits-grid">
+                ${job['benefits_' + lang].map(item => `
+                  <div class="benefit-item">
+                    <span class="check-icon">✓</span>
+                    <span class="text-gray-600">${item}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      
+      // Reapply translations after rendering
+      applyTranslations(lang);
+    }
+
+    // Toggle job details
+    function toggleJobDetails(jobId) {
+      const details = document.getElementById('details-' + jobId);
+      const arrow = document.getElementById('arrow-' + jobId);
+      
+      if (details.classList.contains('expanded')) {
+        details.classList.remove('expanded');
+        arrow.classList.remove('rotate-180');
+      } else {
+        details.classList.add('expanded');
+        arrow.classList.add('rotate-180');
+      }
+    }
+
+    // Language switching
+    document.getElementById('lang-en').addEventListener('click', () => {
+      currentLang = 'en';
+      document.getElementById('lang-en').classList.add('bg-brand-blue-dark', 'text-white');
+      document.getElementById('lang-en').classList.remove('text-gray-600', 'hover:bg-gray-200');
+      document.getElementById('lang-zh').classList.remove('bg-brand-blue-dark', 'text-white');
+      document.getElementById('lang-zh').classList.add('text-gray-600', 'hover:bg-gray-200');
+      applyTranslations('en');
+      updateCompanyInfo();
+      renderJobs();
+    });
+
+    document.getElementById('lang-zh').addEventListener('click', () => {
+      currentLang = 'zh';
+      document.getElementById('lang-zh').classList.add('bg-brand-blue-dark', 'text-white');
+      document.getElementById('lang-zh').classList.remove('text-gray-600', 'hover:bg-gray-200');
+      document.getElementById('lang-en').classList.remove('bg-brand-blue-dark', 'text-white');
+      document.getElementById('lang-en').classList.add('text-gray-600', 'hover:bg-gray-200');
+      applyTranslations('zh');
+      updateCompanyInfo();
+      renderJobs();
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      applyTranslations('en');
+      loadJobsData();
+    });
+  </script>
+</body>
+</html>
+
