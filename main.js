@@ -1,33 +1,13 @@
 
 // ============================================
-// VERSION CHECK - This file should be v9
-// If you see warnings from line 268, you're using a CACHED version!
+// VERSION CHECK - This file should be v10 (Production Clean)
 // ============================================
 if (typeof window !== 'undefined') {
-  window._mainJsVersion = 'v9';
-  window._mainJsLineCount = 756; // Current line count
+  window._mainJsVersion = 'v10';
+  window._mainJsLineCount = 747; // Current line count
   window._mainJsLoadedAt = Date.now();
   
-  console.log('%c🔍🔍🔍 main.js v9 DIAGNOSTIC CHECK 🔍🔍🔍', 'color: blue; font-weight: bold; font-size: 16px; background: #e3f2fd; padding: 8px; border: 2px solid blue;');
-  console.log('✅ Expected version: v9');
-  console.log('✅ Expected line count: 756');
-  console.log('✅ Loaded at:', new Date(window._mainJsLoadedAt).toLocaleTimeString());
-  console.log('%c⚠️ If you see warnings from line 268, you are using a CACHED version!', 'color: red; font-weight: bold;');
-  
-  // Immediate check for old code patterns
-  if (typeof applyLang === 'function') {
-    const funcStr = applyLang.toString();
-    if (funcStr.includes('applyLang called with language')) {
-      console.error('%c❌❌❌ OLD CODE DETECTED IN applyLang FUNCTION! ❌❌❌', 'color: red; font-weight: bold; font-size: 20px; background: yellow; padding: 10px;');
-      console.error('The applyLang function contains old logging code that was removed!');
-      console.error('%cDO A HARD REFRESH IMMEDIATELY: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: red; font-weight: bold; font-size: 16px;');
-    }
-  }
-  
-  // Suppress common browser console noise
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    console.log('%cDevelopment mode: Some warnings may be suppressed', 'color: gray; font-style: italic;');
-  }
+  console.log('%c✅ ABC Chemical main.js v10 loaded', 'color: green; font-weight: bold;');
 }
 
 // Language dictionary
@@ -373,25 +353,16 @@ function applyLang(lang) {
   // Version check - CRITICAL: This must run to verify new code is loaded
   if (typeof window !== 'undefined') {
     if (!window._translationVersion) {
-      window._translationVersion = 'v9';
-      console.log('%c✅✅✅ Translation system v9 loaded - ALL warnings suppressed ✅✅✅', 'color: green; font-weight: bold; font-size: 18px; background: #e8f5e9; padding: 8px; border: 3px solid green;');
-      console.log('%cIf you see translation warnings below, your browser is using a CACHED version!', 'color: red; font-weight: bold; font-size: 14px;');
-      console.log('%cDO A HARD REFRESH: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)', 'color: orange; font-weight: bold; font-size: 14px;');
-    } else if (window._translationVersion !== 'v9') {
+      window._translationVersion = 'v10';
+      // Translation system initialized
+    } else if (window._translationVersion !== 'v10') {
       console.error('%c❌ WRONG VERSION DETECTED!', 'color: red; font-weight: bold; font-size: 20px;');
-      console.error('Expected: v9, Got:', window._translationVersion);
+      console.error('Expected: v10, Got:', window._translationVersion);
     }
   }
   
   const dict = T[lang];
-  if (!dict) {
-    console.error(`Dictionary not found for language: ${lang}`);
-    return;
-  }
-  if (!dict.nav) {
-    console.error(`nav object not found in dictionary for language: ${lang}`);
-    return;
-  }
+  if (!dict || !dict.nav) return;
   
   document.documentElement.lang = (lang === 'zh') ? 'zh-Hans' : 'en';
   const b = document.getElementById('brand'); if (b) b.textContent = dict.brand;
@@ -658,19 +629,14 @@ function getCurrentLanguage() {
 
 async function loadNews() {
   try {
-    console.log('Loading news from news_data.json...');
     // Add cache-busting parameter to ensure fresh data
     const response = await fetch('news_data.json?v=' + new Date().getTime());
     if (!response.ok) {
       throw new Error(`Failed to fetch news: ${response.status} ${response.statusText}`);
     }
     const data = await response.json();
-    console.log('News data loaded:', data);
-    console.log('Number of news items:', data.news ? data.news.length : 0);
     if (data.news && data.news.length > 0) {
       renderNews(data.news);
-    } else {
-      console.error('No news items found in data');
     }
   } catch (error) {
     console.error('Error loading news:', error);
@@ -683,11 +649,8 @@ function renderNews(newsItems) {
     // Silently return if container doesn't exist (e.g., on all-news.html page)
     return;
   }
-  console.log('renderNews called with', newsItems.length, 'items');
-  console.log('News container found:', container);
 
   const lang = getCurrentLanguage();
-  console.log('Current language:', lang);
   
   // Sort news by date (newest first) and take only the top 3 most recent
   const sortedItems = [...newsItems].sort((a, b) => {
@@ -698,7 +661,6 @@ function renderNews(newsItems) {
   
   // Only show the 3 most recent news items in the floating news section
   const topThreeItems = sortedItems.slice(0, 3);
-  console.log('Displaying top 3 news items:', topThreeItems.map(item => ({ date: item.date, title: item.title_en })));
   
   // Duplicate for infinite scroll animation
   const allItems = [...topThreeItems, ...topThreeItems];
@@ -721,12 +683,10 @@ function renderNews(newsItems) {
   }).join('');
   
   container.innerHTML = html;
-  console.log('News rendered successfully: Top 3 most recent articles displayed (', topThreeItems.length, 'unique items,', allItems.length, 'total for animation)');
 }
 
 // Initialize everything
 function init() {
-  console.log('Initializing...');
   setupLangToggle();
   setupMobileDropdowns();
   
@@ -734,7 +694,6 @@ function init() {
   setTimeout(() => {
     const container = document.getElementById('news-scroll-container');
     if (container) {
-      console.log('Container found, loading news...');
       loadNews();
     }
     // Don't log error if container doesn't exist - it might be a different page (e.g., all-news.html)
@@ -743,26 +702,17 @@ function init() {
 
 // Run init when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded fired');
-    init();
-  });
+  document.addEventListener('DOMContentLoaded', init);
 } else {
   // DOM already loaded, but wait a bit to ensure all elements are ready
-  console.log('DOM already loaded, initializing...');
   setTimeout(init, 100);
 }
 
 // Also try loading news after a short delay as a fallback (only on pages with the container)
 setTimeout(() => {
   const container = document.getElementById('news-scroll-container');
-  if (container) {
-    if (container.innerHTML.trim() === '') {
-      console.log('News container is empty after 1 second, retrying loadNews...');
-      loadNews();
-    } else {
-      console.log('News container has content:', container.innerHTML.length, 'chars');
-    }
+  if (container && container.innerHTML.trim() === '') {
+    loadNews();
   }
   // Silently skip if container doesn't exist (e.g., on all-news.html)
 }, 1000);
