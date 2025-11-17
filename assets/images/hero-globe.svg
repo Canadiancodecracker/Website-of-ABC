@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0A2A58;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#002E6E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#003F83;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Sphere Base Gradient (3D effect) -->
+    <radialGradient id="sphereGradient" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#1E4D9A;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#002E6E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#001942;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Continent Gradient -->
+    <linearGradient id="continentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E4D9A;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#2A5FA8;stop-opacity:0.85" />
+    </linearGradient>
+    
+    <!-- Glow Effect for Nodes -->
+    <radialGradient id="nodeGlow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFE680;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FFE680;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#FFD24D;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#FFD24D;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Soft Glow Filter -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Atmospheric Glow Filter -->
+    <filter id="atmosphericGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.11
+                                                       0 0 0 0 0.30
+                                                       0 0 0 0 0.60
+                                                       0 0 0 0.3 0"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Node Pulse Animation -->
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.3); }
+      }
+      @keyframes glow {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+      }
+      .data-node {
+        animation: pulse 3s ease-in-out infinite;
+      }
+      .node-glow {
+        animation: glow 3s ease-in-out infinite;
+      }
+      .network-line {
+        stroke-dasharray: 5, 5;
+        animation: dash 30s linear infinite;
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -1000; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="2100" height="900" fill="url(#bgGradient)"/>
+  
+  <!-- Atmospheric Glow Layer -->
+  <g opacity="0.3">
+    <ellipse cx="1050" cy="450" rx="550" ry="420" fill="url(#sphereGradient)" filter="url(#atmosphericGlow)"/>
+  </g>
+  
+  <!-- Main Sphere (Hemisphere Base) -->
+  <g id="sphere-base">
+    <!-- Sphere with 3D gradient -->
+    <ellipse cx="1050" cy="450" rx="480" ry="380" fill="url(#sphereGradient)" opacity="0.95"/>
+    
+    <!-- Highlight for 3D effect -->
+    <ellipse cx="920" cy="320" rx="200" ry="150" fill="#1E4D9A" opacity="0.25" filter="url(#softGlow)"/>
+  </g>
+  
+  <!-- Grid Lines Layer -->
+  <g id="grid-layer" stroke="#2E66C3" stroke-width="1.5" fill="none" opacity="0.25">
+    <!-- Latitude lines (curved) -->
+    <path d="M 570,450 Q 1050,420 1530,450" class="network-line"/>
+    <path d="M 590,350 Q 1050,330 1510,350" class="network-line"/>
+    <path d="M 620,550 Q 1050,570 1480,550" class="network-line"/>
+    <path d="M 650,280 Q 1050,265 1450,280" class="network-line"/>
+    <path d="M 680,620 Q 1050,640 1420,620" class="network-line"/>
+    
+    <!-- Longitude lines (curved from top) -->
+    <path d="M 750,230 Q 750,450 770,670" class="network-line"/>
+    <path d="M 900,180 Q 900,450 920,700" class="network-line"/>
+    <path d="M 1050,160 Q 1050,450 1050,720" class="network-line"/>
+    <path d="M 1200,180 Q 1200,450 1180,700" class="network-line"/>
+    <path d="M 1350,230 Q 1350,450 1330,670" class="network-line"/>
+  </g>
+  
+  <!-- Stylized Continents Layer -->
+  <g id="continents-layer" fill="url(#continentGradient)" opacity="0.9">
+    <!-- North America (geometric, stylized) -->
+    <path d="M 720,280 L 820,260 L 880,270 L 920,250 L 960,280 L 950,350 L 920,420 L 880,450 L 840,460 L 800,440 L 760,400 L 720,350 Z" />
+    
+    <!-- South America (geometric) -->
+    <path d="M 840,500 L 880,490 L 900,520 L 910,580 L 890,640 L 860,660 L 830,650 L 820,600 L 825,550 Z" />
+    
+    <!-- Europe (small, compact) -->
+    <path d="M 1020,290 L 1080,280 L 1120,300 L 1130,340 L 1100,370 L 1060,365 L 1030,350 L 1015,320 Z" />
+    
+    <!-- Africa (triangular) -->
+    <path d="M 1050,380 L 1120,370 L 1150,420 L 1160,500 L 1140,580 L 1100,620 L 1060,610 L 1040,550 L 1030,470 Z" />
+    
+    <!-- Asia (large, complex) -->
+    <path d="M 1150,250 L 1260,240 L 1360,260 L 1420,290 L 1450,340 L 1460,400 L 1440,460 L 1380,500 L 1320,510 L 1260,490 L 1200,450 L 1170,400 L 1150,340 Z" />
+    
+    <!-- Australia (small island) -->
+    <path d="M 1380,580 L 1440,575 L 1470,600 L 1465,640 L 1430,655 L 1390,645 L 1375,615 Z" />
+    
+    <!-- Additional landmass details (islands, peninsulas) -->
+    <ellipse cx="1250" cy="380" rx="30" ry="25" opacity="0.7"/>
+    <ellipse cx="1350" cy="450" rx="25" ry="20" opacity="0.6"/>
+    <ellipse cx="950" cy="350" rx="20" ry="18" opacity="0.65"/>
+  </g>
+  
+  <!-- Network Connection Lines -->
+  <g id="connection-lines" stroke="#2E66C3" stroke-width="2" fill="none" opacity="0.25">
+    <!-- Major hub connections (curved bezier paths) -->
+    <path d="M 780,320 Q 900,300 1020,310" stroke-dasharray="3,3"/>
+    <path d="M 1020,310 Q 1150,290 1280,320" stroke-dasharray="3,3"/>
+    <path d="M 1280,320 Q 1370,350 1420,400" stroke-dasharray="3,3"/>
+    <path d="M 780,320 Q 850,420 920,450" stroke-dasharray="3,3"/>
+    <path d="M 920,450 Q 980,500 1050,480" stroke-dasharray="3,3"/>
+    <path d="M 1050,480 Q 1150,500 1240,490" stroke-dasharray="3,3"/>
+    <path d="M 1240,490 Q 1320,530 1380,560" stroke-dasharray="3,3"/>
+    <path d="M 860,550 Q 920,560 980,550" stroke-dasharray="3,3"/>
+    <path d="M 1100,580 Q 1180,600 1260,590" stroke-dasharray="3,3"/>
+    <path d="M 1020,310 Q 1050,390 1080,450" stroke-dasharray="3,3"/>
+  </g>
+  
+  <!-- Data Nodes Layer (Glowing Points) -->
+  <g id="data-nodes-layer">
+    <!-- Node glow backgrounds -->
+    <circle cx="780" cy="320" r="25" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 0s;"/>
+    <circle cx="920" cy="450" r="25" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 0.5s;"/>
+    <circle cx="1020" cy="310" r="30" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 1s;"/>
+    <circle cx="1080" cy="450" r="25" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 1.5s;"/>
+    <circle cx="1280" cy="320" r="28" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 0.8s;"/>
+    <circle cx="1380" cy="560" r="22" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 2s;"/>
+    <circle cx="860" cy="550" r="20" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 1.2s;"/>
+    <circle cx="1050" cy="480" r="24" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 0.3s;"/>
+    <circle cx="1420" cy="400" r="26" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 1.8s;"/>
+    <circle cx="1240" cy="490" r="23" fill="url(#nodeGlow)" class="node-glow" style="animation-delay: 2.2s;"/>
+    
+    <!-- Core data nodes (bright yellow-white) -->
+    <circle cx="780" cy="320" r="6" fill="#FFE680" class="data-node" style="animation-delay: 0s;"/>
+    <circle cx="920" cy="450" r="5" fill="#FFE680" class="data-node" style="animation-delay: 0.5s;"/>
+    <circle cx="1020" cy="310" r="7" fill="#FFE680" class="data-node" style="animation-delay: 1s;"/>
+    <circle cx="1080" cy="450" r="5" fill="#FFE680" class="data-node" style="animation-delay: 1.5s;"/>
+    <circle cx="1280" cy="320" r="6" fill="#FFE680" class="data-node" style="animation-delay: 0.8s;"/>
+    <circle cx="1380" cy="560" r="4.5" fill="#FFE680" class="data-node" style="animation-delay: 2s;"/>
+    <circle cx="860" cy="550" r="4" fill="#FFE680" class="data-node" style="animation-delay: 1.2s;"/>
+    <circle cx="1050" cy="480" r="5.5" fill="#FFE680" class="data-node" style="animation-delay: 0.3s;"/>
+    <circle cx="1420" cy="400" r="6" fill="#FFE680" class="data-node" style="animation-delay: 1.8s;"/>
+    <circle cx="1240" cy="490" r="5" fill="#FFE680" class="data-node" style="animation-delay: 2.2s;"/>
+    
+    <!-- Additional smaller nodes for density -->
+    <circle cx="850" cy="380" r="3" fill="#FFE680" opacity="0.7" class="data-node" style="animation-delay: 0.7s;"/>
+    <circle cx="1150" cy="370" r="3" fill="#FFE680" opacity="0.7" class="data-node" style="animation-delay: 1.3s;"/>
+    <circle cx="1320" cy="430" r="3" fill="#FFE680" opacity="0.7" class="data-node" style="animation-delay: 1.9s;"/>
+    <circle cx="980" cy="520" r="3" fill="#FFE680" opacity="0.7" class="data-node" style="animation-delay: 2.1s;"/>
+    <circle cx="1180" cy="540" r="3" fill="#FFE680" opacity="0.7" class="data-node" style="animation-delay: 0.4s;"/>
+  </g>
+  
+  <!-- Soft Lighting Overlay (top-left highlight) -->
+  <g id="lighting-layer" opacity="0.15">
+    <ellipse cx="800" cy="250" rx="350" ry="200" fill="#FFFFFF" filter="url(#softGlow)"/>
+  </g>
+  
+  <!-- Edge Vignette (subtle darkening at edges) -->
+  <g id="vignette-layer" opacity="0.3">
+    <rect width="2100" height="900" fill="none" stroke="none"/>
+    <radialGradient id="vignette">
+      <stop offset="60%" style="stop-color:#000000;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.5" />
+    </radialGradient>
+    <rect width="2100" height="900" fill="url(#vignette)"/>
+  </g>
+</svg>
+
