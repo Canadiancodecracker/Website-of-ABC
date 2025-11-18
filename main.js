@@ -143,6 +143,30 @@ const T = {
       },
       closing: "We work closely with global distributors, agronomists, and fertilizer formulators to develop customized solutions for improved soil vitality and nutrient efficiency."
     },
+    pharma: {
+      intro: "ABC Chemical Co., Ltd. is a leading manufacturer of high-purity creatine monohydrate and guanidinoacetic acid (GAA) for pharmaceutical, nutraceutical, and animal nutrition applications. Our production follows stringent GMP standards and undergoes rigorous QC/QA testing to ensure consistent quality, purity, and bioavailability for human and animal health products.",
+      benefits: {
+        title: "Key Benefits",
+        b1: { title: "Pharmaceutical-grade purity", desc: "Our creatine and GAA meet or exceed USP, EP, and customer specifications for purity, heavy metals, and microbial limits." },
+        b2: { title: "GMP-certified manufacturing", desc: "Produced in GMP-compliant facilities with full traceability, batch documentation, and regulatory support for global markets." },
+        b3: { title: "Proven performance & bioavailability", desc: "Extensively tested for solubility, stability, and efficacy in dietary supplements and animal feed formulations." },
+        b4: { title: "Regulatory compliance & documentation", desc: "Complete COA, stability data, allergen statements, and regulatory support for FDA, EFSA, and other authorities." }
+      },
+      applications: {
+        title: "Main Applications",
+        a1: "Sports nutrition and dietary supplements (creatine monohydrate)",
+        a2: "Pharmaceutical intermediates and active ingredients",
+        a3: "Animal nutrition (GAA for poultry, swine, and aquaculture)",
+        a4: "Clinical nutrition and medical foods",
+        a5: "Functional foods and beverages"
+      },
+      products: {
+        title: "Products for Pharmaceuticals & Nutrition",
+        p1: "Creatine Monohydrate (Pharmaceutical Grade)",
+        p2: "Guanidinoacetic Acid (GAA)"
+      },
+      closing: "We partner with global pharmaceutical companies, supplement brands, and animal nutrition formulators to deliver reliable, high-quality ingredients backed by comprehensive technical and regulatory support."
+    },
     sus: {
       title: "Sustainability & Responsibility",
       desc: "We invest in cleaner production technologies, closed‑loop utilities, and rigorous EHS practices to minimize environmental impact while maximizing product value.",
@@ -372,6 +396,30 @@ const T = {
         p3: "特种氮碳肥料中间体"
       },
       closing: "我们与全球的经销商、农艺师及肥料生产企业紧密合作，共同开发适用于不同农业生态区的氮肥解决方案。"
+    },
+    pharma: {
+      intro: "ABC化工有限公司是肌酸一水合物与胍基乙酸（GAA）的领先制造商，产品广泛应用于医药、营养保健品及动物营养领域。我们的生产遵循严格的GMP标准，并经过全面的QC/QA检测，确保人类与动物健康产品的质量、纯度与生物利用度始终如一。",
+      benefits: {
+        title: "核心优势",
+        b1: { title: "药用级纯度", desc: "我们的肌酸与GAA符合或超越USP、EP及客户对纯度、重金属与微生物限度的规格要求。" },
+        b2: { title: "GMP认证生产", desc: "在符合GMP标准的设施中生产，具备完整的可追溯性、批次文档与全球市场的法规支持。" },
+        b3: { title: "经过验证的性能与生物利用度", desc: "在膳食补充剂与动物饲料配方中经过广泛的溶解度、稳定性与功效测试。" },
+        b4: { title: "法规合规与文档支持", desc: "提供完整的COA、稳定性数据、过敏原声明，并为FDA、EFSA等机构提供法规支持。" }
+      },
+      applications: {
+        title: "主要应用",
+        a1: "运动营养与膳食补充剂（肌酸一水合物）",
+        a2: "药物中间体与活性成分",
+        a3: "动物营养（用于家禽、猪与水产养殖的GAA）",
+        a4: "临床营养与医疗食品",
+        a5: "功能性食品与饮料"
+      },
+      products: {
+        title: "医药与营养相关产品",
+        p1: "肌酸一水合物（药用级）",
+        p2: "胍基乙酸（GAA）"
+      },
+      closing: "我们与全球制药企业、补充剂品牌及动物营养配方商合作，提供可靠的高品质成分，并提供全面的技术与法规支持。"
     },
     sus: {
       title: "可持续发展与责任",
