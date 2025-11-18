@@ -271,20 +271,24 @@ const T = {
         dates: "June 16 – 18, 2026",
         location: "Shanghai New International Expo Center (SNIEC), China",
         focus: "Asia's premier pharma event, covering APIs, excipients, and finished dosage solutions. We will highlight our high-purity APIs, including the newly launched Dimethylamine Hydrochloride (DMH), and our new pharmaceutical solutions.",
-        booth: "[Insert Booth/Hall Number]",
-        link: "[Link to official CPHI China website or ABC Chemical event page]"
+        booth: "TBD — Contact us for details",
+        link: "Visit cphi.com/china or contact our team"
       },
       event2: {
         name: "CPHI North America 2026",
         dates: "June 2 – 4, 2026",
         location: "Pennsylvania Convention Center, Philadelphia, PA, USA",
-        focus: "The largest dedicated North American pharma trade show. We will be connecting with partners for regional supply chain expansion and discussing R&D advancements, specifically our reliable supply of high-specification intermediates."
+        focus: "The largest dedicated North American pharma trade show. We will be connecting with partners for regional supply chain expansion and discussing R&D advancements, specifically our reliable supply of high-specification intermediates.",
+        booth: "TBD — Contact us for details",
+        link: "Visit cphi.com/north-america or contact our team"
       },
       event3: {
         name: "Chemspec Europe 2026",
         dates: "May 6 – 7, 2026",
         location: "Koelnmesse, Cologne, Germany",
-        focus: "The premier exhibition for the fine and specialty chemicals industry. We will connect with specialty formulators and materials developers to discuss our high-purity calcium and cyanamide intermediates used in advanced manufacturing."
+        focus: "The premier exhibition for the fine and specialty chemicals industry. We will connect with specialty formulators and materials developers to discuss our high-purity calcium and cyanamide intermediates used in advanced manufacturing.",
+        booth: "TBD — Contact us for details",
+        link: "Visit chemspeceurope.com or contact our team"
       }
     },
     form: {
@@ -568,20 +572,24 @@ const T = {
         dates: "2026年6月16日—18日",
         location: "上海新国际博览中心 (SNIEC)",
         focus: "亚洲首要的制药行业盛会，涵盖API（活性药物成分）、辅料和成品制剂解决方案。ABC化工将重点展示高纯度API，包括新推出的盐酸二甲胺（DMH），以及最新的制药解决方案。",
-        booth: "[插入展位/展厅号]",
-        link: "[链接至 CPHI 中国官网或 ABC 化工活动页面]"
+        booth: "待定 — 请联系我们了解详情",
+        link: "访问 cphi.com/china 或联系我们的团队"
       },
       event2: {
         name: "CPHI 北美 2026",
         dates: "2026年6月2日—4日",
         location: "美国宾夕法尼亚州，费城会议中心",
-        focus: "北美最大的专业制药贸易展览会。我们将与合作伙伴建立联系，探讨区域供应链的扩展，并讨论API的研发进展，特别是我们可靠的高规格中间体供应。"
+        focus: "北美最大的专业制药贸易展览会。我们将与合作伙伴建立联系，探讨区域供应链的扩展，并讨论API的研发进展，特别是我们可靠的高规格中间体供应。",
+        booth: "待定 — 请联系我们了解详情",
+        link: "访问 cphi.com/north-america 或联系我们的团队"
       },
       event3: {
         name: "欧洲精细化工展 (Chemspec Europe 2026)",
         dates: "2026年5月6日—7日",
         location: "德国科隆展览中心",
-        focus: "欧洲首要的精细和特种化学品展览会。我们将与精细化学品配方设计师和材料开发商联系，讨论用于先进制造中的高纯度钙和氰胺中间体。"
+        focus: "欧洲首要的精细和特种化学品展览会。我们将与精细化学品配方设计师和材料开发商联系，讨论用于先进制造中的高纯度钙和氰胺中间体。",
+        booth: "待定 — 请联系我们了解详情",
+        link: "访问 chemspeceurope.com 或联系我们的团队"
       }
     },
     form: {
