@@ -141,7 +141,13 @@ const T = {
         p2: "Calcium Cyanamide-based Soil Amendment Blends",
         p3: "Specialty Nitrogen-Carbon Fertilizer Intermediates"
       },
-      closing: "We work closely with global distributors, agronomists, and fertilizer formulators to develop customized solutions for improved soil vitality and nutrient efficiency."
+      closing: "We work closely with global distributors, agronomists, and fertilizer formulators to develop customized solutions for improved soil vitality and nutrient efficiency.",
+      cta: {
+        title: "Request More Information",
+        desc: "Contact our agricultural solutions team for technical support and product recommendations.",
+        btn1: "Contact Sales",
+        btn2: "View Calcium Cyanamide"
+      }
     },
     pharma: {
       intro: "ABC Chemical Co., Ltd. is a leading manufacturer of high-purity creatine monohydrate and guanidinoacetic acid (GAA) for pharmaceutical, nutraceutical, and animal nutrition applications. Our production follows stringent GMP standards and undergoes rigorous QC/QA testing to ensure consistent quality, purity, and bioavailability for human and animal health products.",
@@ -165,7 +171,13 @@ const T = {
         p1: "Creatine Monohydrate (Pharmaceutical Grade)",
         p2: "Guanidinoacetic Acid (GAA)"
       },
-      closing: "We partner with global pharmaceutical companies, supplement brands, and animal nutrition formulators to deliver reliable, high-quality ingredients backed by comprehensive technical and regulatory support."
+      closing: "We partner with global pharmaceutical companies, supplement brands, and animal nutrition formulators to deliver reliable, high-quality ingredients backed by comprehensive technical and regulatory support.",
+      cta: {
+        title: "Request Product Information",
+        desc: "Contact our pharmaceutical sales team for specifications, samples, and regulatory documentation.",
+        btn1: "Contact Sales",
+        btn2: "View All Products"
+      }
     },
     metal: {
       intro: "ABC Chemical Co., Ltd. supplies high-purity calcium carbide engineered for reliable acetylene generation and precision support across industrial and metallurgical processes. Our material performance ensures consistent reactivity, efficient gas release, and stable operation in demanding production environments.",
@@ -190,7 +202,13 @@ const T = {
         f3: "Moisture-resistant packaging to maintain stability",
         f4: "Custom specifications available for OEM applications"
       },
-      closing: "We provide dependable carbide solutions trusted by metal processors, fabrication shops, industrial manufacturers, and chemical producers worldwide."
+      closing: "We provide dependable carbide solutions trusted by metal processors, fabrication shops, industrial manufacturers, and chemical producers worldwide.",
+      cta: {
+        title: "Request Technical Information",
+        desc: "Contact our industrial sales team for calcium carbide specifications, safety data, and application support.",
+        btn1: "Contact Sales",
+        btn2: "View Calcium Carbide Specs"
+      }
     },
     sus: {
       title: "Sustainability & Responsibility",
@@ -420,7 +438,13 @@ const T = {
         p2: "石灰氮土壤改良剂配方产品",
         p3: "特种氮碳肥料中间体"
       },
-      closing: "我们与全球的经销商、农艺师及肥料生产企业紧密合作，共同开发适用于不同农业生态区的氮肥解决方案。"
+      closing: "我们与全球的经销商、农艺师及肥料生产企业紧密合作，共同开发适用于不同农业生态区的氮肥解决方案。",
+      cta: {
+        title: "了解更多信息",
+        desc: "联系我们的农业解决方案团队，获取技术支持与产品推荐。",
+        btn1: "联系销售",
+        btn2: "查看石灰氮"
+      }
     },
     pharma: {
       intro: "ABC化工有限公司是肌酸一水合物与胍基乙酸（GAA）的领先制造商，产品广泛应用于医药、营养保健品及动物营养领域。我们的生产遵循严格的GMP标准，并经过全面的QC/QA检测，确保人类与动物健康产品的质量、纯度与生物利用度始终如一。",
@@ -444,7 +468,13 @@ const T = {
         p1: "肌酸一水合物（药用级）",
         p2: "胍基乙酸（GAA）"
       },
-      closing: "我们与全球制药企业、补充剂品牌及动物营养配方商合作，提供可靠的高品质成分，并提供全面的技术与法规支持。"
+      closing: "我们与全球制药企业、补充剂品牌及动物营养配方商合作，提供可靠的高品质成分，并提供全面的技术与法规支持。",
+      cta: {
+        title: "索取产品信息",
+        desc: "联系我们的医药销售团队，获取规格、样品及法规文件。",
+        btn1: "联系销售",
+        btn2: "查看所有产品"
+      }
     },
     metal: {
       intro: "ABC化工有限公司供应高纯度电石（CaC₂），专为稳定的乙炔产生与高要求的工业及冶金工艺而设计。我们的产品在反应性能、气体释放效率和操作稳定性方面表现优异，适用于多种关键工艺场景。",
@@ -469,7 +499,13 @@ const T = {
         f3: "防潮包装确保长期稳定性",
         f4: "可按客户需求定制规格"
       },
-      closing: "我们的电石产品被全球众多金属加工企业、工业制造商及化工厂广泛采用。"
+      closing: "我们的电石产品被全球众多金属加工企业、工业制造商及化工厂广泛采用。",
+      cta: {
+        title: "索取技术信息",
+        desc: "联系我们的工业销售团队，获取电石规格、安全数据及应用支持。",
+        btn1: "联系销售",
+        btn2: "查看电石规格"
+      }
     },
     sus: {
       title: "可持续发展与责任",
