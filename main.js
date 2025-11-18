@@ -118,6 +118,31 @@ const T = {
       a2: { title: "Pharmaceuticals & Nutrition", desc: "Creatine & GAA produced with strict quality practices for reliable performance." },
       a3: { title: "Metallurgy & Industry", desc: "Calcium carbide solutions enabling acetylene workflows and metal processing." }
     },
+    agri: {
+      intro: "ABC Chemical Co., Ltd. supplies high-purity calcium cyanamide and specialty nitrogen-carbon materials designed to improve crop nutrition, soil quality, and long-term agricultural sustainability. Our technology is engineered to maximize nitrogen use efficiency (NUE), enhance soil structure, and support balanced fertilization programs across diverse climates and crop systems.",
+      benefits: {
+        title: "Key Benefits",
+        b1: { title: "Slow-release nitrogen for higher efficiency", desc: "Calcium cyanamide provides a gradual conversion to plant-available nitrogen, reducing volatilization losses and improving nitrogen uptake." },
+        b2: { title: "Improves soil health & pH balance", desc: "By neutralizing soil acidity and enriching calcium levels, our products promote better root development and microbial activity." },
+        b3: { title: "Naturally suppresses soil-borne diseases", desc: "Helps reduce harmful pathogens and weed seeds, supporting healthier crop establishment without harmful residues." },
+        b4: { title: "Enhances yield & crop quality", desc: "Field trials show significant improvements in crop biomass, uniformity, and final yield performance." }
+      },
+      applications: {
+        title: "Main Agricultural Applications",
+        a1: "Fertilizer base dressing and top dressing for grains, oilseeds, and vegetables",
+        a2: "Soil conditioning for acidic and nutrient-depleted soils",
+        a3: "Organic and regenerative agriculture programs",
+        a4: "Controlled-release nitrogen formulations",
+        a5: "High-value crops including orchards, vineyards, tea plantations, and greenhouse systems"
+      },
+      products: {
+        title: "Products for Agriculture",
+        p1: "Calcium Cyanamide",
+        p2: "Calcium Cyanamide-based Soil Amendment Blends",
+        p3: "Specialty Nitrogen-Carbon Fertilizer Intermediates"
+      },
+      closing: "We work closely with global distributors, agronomists, and fertilizer formulators to develop customized solutions for improved soil vitality and nutrient efficiency."
+    },
     sus: {
       title: "Sustainability & Responsibility",
       desc: "We invest in cleaner production technologies, closed‑loop utilities, and rigorous EHS practices to minimize environmental impact while maximizing product value.",
@@ -322,6 +347,31 @@ const T = {
       a1: { title: "农业与肥料", desc: "基于氰胺的方案，提高氮素利用率并改善土壤健康。" },
       a2: { title: "医药与营养", desc: "肌酸与GAA在严格质量体系下生产，稳定可靠。" },
       a3: { title: "冶金与工业", desc: "电石方案支撑乙炔流程与金属加工。" }
+    },
+    agri: {
+      intro: "ABC化工有限公司提供高纯度石灰氮及特种氮碳材料，用于改善作物营养、提升土壤质量，并满足现代农业对可持续性的需求。我们的产品旨在提高氮肥利用率（NUE）、改善土壤结构，并支持不同地区与作物体系的科学施肥方案。",
+      benefits: {
+        title: "核心优势",
+        b1: { title: "缓释氮，提高利用率", desc: "石灰氮可逐步释放植物可吸收的氮素，减少挥发损失，提高氮吸收效率。" },
+        b2: { title: "改善土壤健康与酸碱平衡", desc: "有助于中和酸性土壤，补充钙质，促进根系发育与微生物活性。" },
+        b3: { title: "天然抑制土传病害", desc: "能减少土壤中部分有害病菌和杂草种子的活性，促进作物健康生长。" },
+        b4: { title: "提升产量与品质", desc: "多项田间试验表明，可显著改善作物长势、均匀度及最终产量表现。" }
+      },
+      applications: {
+        title: "主要农业应用",
+        a1: "粮食、油料、蔬菜等作物的基施与追施",
+        a2: "酸性或贫瘠土壤的改良与调理",
+        a3: "有机农业与再生农业应用",
+        a4: "控释氮肥配方开发",
+        a5: "果树、茶园、葡萄园、设施农业等高价值作物体系"
+      },
+      products: {
+        title: "农业相关产品",
+        p1: "石灰氮",
+        p2: "石灰氮土壤改良剂配方产品",
+        p3: "特种氮碳肥料中间体"
+      },
+      closing: "我们与全球的经销商、农艺师及肥料生产企业紧密合作，共同开发适用于不同农业生态区的氮肥解决方案。"
     },
     sus: {
       title: "可持续发展与责任",
