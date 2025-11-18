@@ -167,6 +167,31 @@ const T = {
       },
       closing: "We partner with global pharmaceutical companies, supplement brands, and animal nutrition formulators to deliver reliable, high-quality ingredients backed by comprehensive technical and regulatory support."
     },
+    metal: {
+      intro: "ABC Chemical Co., Ltd. supplies high-purity calcium carbide engineered for reliable acetylene generation and precision support across industrial and metallurgical processes. Our material performance ensures consistent reactivity, efficient gas release, and stable operation in demanding production environments.",
+      advantages: {
+        title: "Key Advantages",
+        a1: { title: "Stable acetylene yield", desc: "Optimized grain size and controlled CaC₂ purity deliver predictable gas output for cutting, welding, heating, and synthesis applications." },
+        a2: { title: "Engineered for industrial durability", desc: "Designed to withstand varying humidity and transportation conditions with reduced powdering and minimized degradation." },
+        a3: { title: "Low impurity profile", desc: "Strict QC minimizes phosphorus, sulfur, and metallic residues to protect downstream equipment and improve combustion behavior." },
+        a4: { title: "Efficient material handling", desc: "Granule uniformity improves feed efficiency in automated acetylene generators and reduces equipment wear." }
+      },
+      applications: {
+        title: "Primary Industrial Applications",
+        a1: { title: "Oxy-acetylene metal cutting & welding", desc: "High-temperature flames for precision metal fabrication, repair, and industrial maintenance." },
+        a2: { title: "Metallurgical heating & carburization", desc: "Used in controlled atmospheres for heat treatment, carbon enhancement, and specialty alloy processing." },
+        a3: { title: "Chemical synthesis", desc: "Raw material for acetylene-based chemical production including PVC intermediates, solvents, and specialty organic compounds." },
+        a4: { title: "Foundry and steel mill operations", desc: "Supports slag adjustment, cleaning, and metal refining workflows requiring reactive calcium-based materials." }
+      },
+      features: {
+        title: "Product Features",
+        f1: "High CaC₂ content for improved acetylene efficiency",
+        f2: "Controlled granule sizes (0–25 mm options available)",
+        f3: "Moisture-resistant packaging to maintain stability",
+        f4: "Custom specifications available for OEM applications"
+      },
+      closing: "We provide dependable carbide solutions trusted by metal processors, fabrication shops, industrial manufacturers, and chemical producers worldwide."
+    },
     sus: {
       title: "Sustainability & Responsibility",
       desc: "We invest in cleaner production technologies, closed‑loop utilities, and rigorous EHS practices to minimize environmental impact while maximizing product value.",
@@ -420,6 +445,31 @@ const T = {
         p2: "胍基乙酸（GAA）"
       },
       closing: "我们与全球制药企业、补充剂品牌及动物营养配方商合作，提供可靠的高品质成分，并提供全面的技术与法规支持。"
+    },
+    metal: {
+      intro: "ABC化工有限公司供应高纯度电石（CaC₂），专为稳定的乙炔产生与高要求的工业及冶金工艺而设计。我们的产品在反应性能、气体释放效率和操作稳定性方面表现优异，适用于多种关键工艺场景。",
+      advantages: {
+        title: "核心优势",
+        a1: { title: "乙炔产量稳定可控", desc: "经过优化的粒度与CaC₂纯度，确保切割、焊接、加热及化工合成过程中乙炔气体输出稳定。" },
+        a2: { title: "面向工业环境的耐久设计", desc: "在运输与储存过程中不易粉化、吸湿性低，确保长期稳定性。" },
+        a3: { title: "低杂质含量", desc: "严格控制磷、硫和金属杂质，保护下游设备并改善燃烧特性。" },
+        a4: { title: "高效物料处理性能", desc: "粒度均匀，适配自动化乙炔发生器，降低机械磨损，提高生产效率。" }
+      },
+      applications: {
+        title: "主要应用领域",
+        a1: { title: "氧乙炔金属切割与焊接", desc: "提供高温火焰，适用于金属制造、维修及工业维护。" },
+        a2: { title: "冶金加热与渗碳处理", desc: "用于热处理、碳势控制与特种合金加工。" },
+        a3: { title: "化工合成", desc: "作为乙炔基路线的重要原料，用于PVC中间体、溶剂及有机精细化学品生产。" },
+        a4: { title: "铸造与钢厂工艺", desc: "在炼钢、除渣、金属精炼等流程中作为活性钙基材料发挥作用。" }
+      },
+      features: {
+        title: "产品特点",
+        f1: "高CaC₂含量，乙炔转化率高",
+        f2: "多种粒度规格（0–25 mm）可选",
+        f3: "防潮包装确保长期稳定性",
+        f4: "可按客户需求定制规格"
+      },
+      closing: "我们的电石产品被全球众多金属加工企业、工业制造商及化工厂广泛采用。"
     },
     sus: {
       title: "可持续发展与责任",
