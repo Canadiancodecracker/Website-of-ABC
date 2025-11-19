@@ -37,24 +37,24 @@
     let rotation = 0;
     const rotationSpeed = 0.003;
 
-    // Cloudflare-inspired color palette - BLUE THEME (Restored for consistency)
+    // Cloudflare-inspired color palette - BLUE ON WHITE THEME
     const colors = {
       sphere: {
-        base: '#0a1e3d',       // Very dark blue
-        gradient1: '#1a4d8f',  // Medium blue
-        gradient2: '#2563eb',  // Brighter blue
-        gradient3: '#3b82f6',  // Light blue
+        base: '#ffffff',       // White base
+        gradient1: '#f0f9ff',  // Very light blue (Tailwind sky-50)
+        gradient2: '#e0f2fe',  // Light blue (Tailwind sky-100)
+        gradient3: '#bae6fd',  // Medium light blue (Tailwind sky-200)
       },
       map: {
-        continents: '#ff9f57',  // Brighter orange for landmass (contrast against blue)
-        continentsAlt: '#ffb87a', // Lighter orange
-        borders: 'rgba(255, 255, 255, 0.3)', // White borders
+        continents: '#3b82f6',  // Bright Blue (Tailwind blue-500)
+        continentsAlt: '#60a5fa', // Lighter Blue (Tailwind blue-400)
+        borders: 'rgba(255, 255, 255, 0.5)', // White borders
       },
-      grid: 'rgba(255, 255, 255, 0.05)', // Very subtle white grid
-      glow: 'rgba(59, 130, 246, 0.3)',  // Blue glow
-      markers: '#ffd700',      // Gold for markers (high contrast on blue)
-      connections: 'rgba(255, 159, 87, 0.15)', // Orange connections
-      hubConnections: 'rgba(255, 159, 87, 0.25)', // Brighter for hub lines
+      grid: 'rgba(14, 60, 117, 0.08)', // Subtle dark blue grid
+      glow: 'rgba(37, 99, 235, 0.1)',  // Subtle blue glow
+      markers: '#0E3C75',      // Dark Blue for markers
+      connections: 'rgba(59, 130, 246, 0.2)', // Blue connections
+      hubConnections: 'rgba(37, 99, 235, 0.3)', // Brighter blue for hub lines
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -312,7 +312,7 @@
         radius * 1.2
       );
       glowGradient.addColorStop(0, colors.glow);
-      glowGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius * 1.2, Math.PI, 0, false);
@@ -448,7 +448,7 @@
             proj.x, proj.y, glowSize
           );
           glowGradient.addColorStop(0, colors.markers);
-          glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
+          glowGradient.addColorStop(1, 'rgba(37, 99, 235, 0)'); // Blue transparent
 
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, glowSize, 0, Math.PI * 2);
@@ -459,13 +459,13 @@
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, size, 0, Math.PI * 2);
 
-          // Hub markers are brighter
+          // Hub markers are darker/distinct
           if (marker.hub) {
-            ctx.fillStyle = '#ffeb3b'; // Brighter yellow for hubs
-            ctx.shadowColor = '#ffeb3b';
+            ctx.fillStyle = '#1e40af'; // Darker blue for hubs (Tailwind blue-800)
+            ctx.shadowColor = '#1e40af';
             ctx.shadowBlur = 12;
           } else {
-            ctx.fillStyle = colors.markers; // Gold
+            ctx.fillStyle = colors.markers; // Standard marker blue
             ctx.shadowColor = colors.markers;
             ctx.shadowBlur = 8;
           }

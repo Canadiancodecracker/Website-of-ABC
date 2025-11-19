@@ -601,7 +601,8 @@ section[id] {
 
 /* Global Sales Map Section Styles */
 #global-sales-map {
-  background: linear-gradient(180deg, #0a1e3d 0%, #1a3a5c 40%, #0E3C75 70%, #1a4d8f 100%);
+  background: #ffffff;
+  /* White background like Cloudflare */
   position: relative;
   overflow: hidden;
 }
@@ -614,9 +615,9 @@ section[id] {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 50% 40%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 25% 70%, rgba(96, 165, 250, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 75% 70%, rgba(59, 130, 246, 0.08) 0%, transparent 45%);
+    radial-gradient(circle at 50% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 25% 70%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 75% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 45%);
   pointer-events: none;
 }
 
@@ -633,8 +634,8 @@ section[id] {
 }
 
 #globe-container canvas {
-  filter: drop-shadow(0 30px 100px rgba(59, 130, 246, 0.4));
-  /* Enhanced glow */
+  filter: drop-shadow(0 30px 100px rgba(59, 130, 246, 0.2));
+  /* Blue glow */
 }
 
 .stat-card {
@@ -644,23 +645,23 @@ section[id] {
   padding: 2rem 1.5rem;
   text-align: center;
   box-shadow:
-    0 8px 32px rgba(14, 60, 117, 0.15),
+    0 8px 32px rgba(14, 60, 117, 0.1),
     0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(14, 60, 117, 0.1);
 }
 
 .stat-card:hover {
   transform: translateY(-8px);
   box-shadow:
-    0 16px 48px rgba(14, 60, 117, 0.25),
-    0 4px 16px rgba(0, 0, 0, 0.08);
+    0 16px 48px rgba(14, 60, 117, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
 .stat-number {
   font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #0E3C75 0%, #1e50a0 100%);
+  background: linear-gradient(135deg, #0E3C75 0%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
