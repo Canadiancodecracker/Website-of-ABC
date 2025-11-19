@@ -17,43 +17,46 @@
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
-    // Set canvas size - WIDER GLOBE (increased from 600 to 900)
-    const size = Math.min(900, window.innerWidth - 40);
-    canvas.width = size;
-    canvas.height = size * 0.65; // Slightly taller for better viewing
-    canvas.style.maxWidth = '100%';
-    canvas.style.height = 'auto';
+    // Set canvas size - MAX WIDTH for "Wider" look
+    const updateSize = () => {
+      const width = Math.min(1600, window.innerWidth); // Increased max width significantly
+      canvas.width = width;
+      canvas.height = width * 0.6; // Aspect ratio
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
+    };
+    updateSize();
+
     canvas.style.display = 'block';
     canvas.style.margin = '0 auto';
 
     container.innerHTML = '';
     container.appendChild(canvas);
 
-    // Globe configuration - LARGER RADIUS
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height * 0.65; // Position sphere lower to show top hemisphere (JSON Spec: 65%)
-    const radius = Math.min(canvas.width, canvas.height) * 0.52; // Increased from 0.42 to 0.52 (JSON Spec: ~420px)
+    // Globe configuration - WIDER DIAMETER
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height * 0.75; // Lower center to show more top surface
+    let radius = Math.min(canvas.width, canvas.height) * 0.75; // Significantly increased radius (75% of min dimension)
 
     let rotation = 0;
-    const rotationSpeed = 0.003;
+    const rotationSpeed = 0.0015; // Slower, majestic rotation
 
-    // Cloudflare-inspired color palette - METALLIC & GLOW (JSON Spec)
+    // Dark Theme Palette - "Sales Net" Style
     const colors = {
       sphere: {
-        base: '#D8DDE2',       // Metallic base
-        glossInner: '#E8EDF3', // Gloss inner
-        glossOuter: 'rgba(90, 100, 120, 0.35)', // Gloss outer
-        highlight: '#FFFFFF',  // Specular highlight
+        base: 'rgba(14, 60, 117, 0.1)',       // Very transparent dark blue base
+        glossInner: 'rgba(59, 130, 246, 0.05)', // Faint blue glow inside
+        glossOuter: 'rgba(14, 60, 117, 0.9)',  // Darker edge to blend with background
+        highlight: 'rgba(255, 255, 255, 0.15)', // Subtle highlight
       },
       map: {
-        continents: '#3A82F7',  // JSON Spec Blue
-        shadow: 'rgba(0,0,0,0.15)',
+        continents: '#1E40AF',  // Darker Blue for continents
+        shadow: 'rgba(0,0,0,0.3)',
       },
-      grid: 'rgba(30, 79, 255, 0.1)', // Subtle grid to match mood
-      glow: 'rgba(255, 255, 255, 0)',  // Handled by sphere gradients
-      markers: '#1E4FFF',      // JSON Spec Deep Blue
-      markerGlow: 'rgba(30, 79, 255, 0.55)',
-      connections: 'rgba(30, 79, 255, 0.35)',
+      grid: 'rgba(96, 165, 250, 0.4)', // Bright Blue Grid ("Sales Net")
+      markers: '#60A5FA',      // Bright Blue Markers
+      markerGlow: 'rgba(96, 165, 250, 0.6)',
+      connections: 'rgba(147, 197, 253, 0.5)', // Light Blue connections
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -189,7 +192,7 @@
       const z = r * Math.sin(phi) * Math.sin(theta);
       const y = -r * Math.cos(phi);
 
-      const perspective = 800;
+      const perspective = 1000; // Increased perspective for flatter look
       const factor = perspective / (perspective + z);
 
       return {
@@ -206,16 +209,11 @@
     function drawSphere() {
       // 1. Base Metallic Fill
       const gradient = ctx.createRadialGradient(
-        centerX - radius * 0.2, // Offset for light source
-        centerY - radius * 0.3,
-        radius * 0.1,
-        centerX,
-        centerY,
-        radius
+        centerX, centerY, radius * 0.5,
+        centerX, centerY, radius
       );
 
-      gradient.addColorStop(0, colors.sphere.glossInner);
-      gradient.addColorStop(0.5, colors.sphere.base);
+      gradient.addColorStop(0, colors.sphere.base);
       gradient.addColorStop(1, colors.sphere.glossOuter);
 
       ctx.save();
@@ -225,20 +223,10 @@
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // 2. Specular Highlight (Soft Spot Light)
-      const highlightGradient = ctx.createRadialGradient(
-        centerX - radius * 0.2,
-        centerY - radius * 0.4,
-        0,
-        centerX - radius * 0.2,
-        centerY - radius * 0.4,
-        radius * 0.6
-      );
-      highlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
-      highlightGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-      ctx.fillStyle = highlightGradient;
-      ctx.fill();
+      // 2. Rim Light (Top)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
       ctx.restore();
     }
@@ -253,8 +241,7 @@
 
       // Shadow settings from JSON
       ctx.shadowColor = colors.map.shadow;
-      ctx.shadowBlur = 12;
-      ctx.shadowOffsetY = 2;
+      ctx.shadowBlur = 15;
 
       Object.keys(worldMapData).forEach((continentName) => {
         const continent = worldMapData[continentName];
@@ -275,7 +262,6 @@
           ctx.closePath();
 
           ctx.fillStyle = colors.map.continents;
-          ctx.globalAlpha = 0.90; // JSON Spec
           ctx.fill();
         }
       });
@@ -283,16 +269,16 @@
       ctx.restore();
     }
 
-    // Draw subtle grid lines
+    // Draw subtle grid lines - "SALES NET"
     function drawGridLines() {
       ctx.save();
       ctx.strokeStyle = colors.grid;
-      ctx.lineWidth = 0.5;
-      ctx.globalAlpha = 0.4;
+      ctx.lineWidth = 0.8; // Thicker lines
+      ctx.globalAlpha = 0.6; // More visible
 
       // Latitude lines
-      for (let i = 1; i <= 5; i++) {
-        const angle = (Math.PI * i) / 12;
+      for (let i = 1; i <= 8; i++) { // More lines
+        const angle = (Math.PI * i) / 16;
         const y = -Math.cos(angle) * radius;
         const r = Math.sin(angle) * radius;
 
@@ -303,7 +289,7 @@
           const z = Math.sin(theta + rotation) * r;
 
           if (z > -r * 0.2 && y <= 0) {
-            const perspective = 800;
+            const perspective = 1000;
             const factor = perspective / (perspective + z);
             const px = centerX + x * factor;
             const py = centerY + y * factor;
@@ -314,14 +300,39 @@
         }
         ctx.stroke();
       }
+
+      // Longitude lines (added for "Net" effect)
+      for (let i = 0; i < 24; i++) {
+        const thetaOffset = (Math.PI * 2 * i) / 24;
+        ctx.beginPath();
+        let first = true;
+        for (let j = 0; j <= 90; j += 5) {
+          const phi = (j * Math.PI) / 180;
+          const x = radius * Math.sin(phi) * Math.cos(thetaOffset + rotation);
+          const z = radius * Math.sin(phi) * Math.sin(thetaOffset + rotation);
+          const y = -radius * Math.cos(phi);
+
+          if (z > -radius * 0.2 && y <= 0) {
+            const perspective = 1000;
+            const factor = perspective / (perspective + z);
+            const px = centerX + x * factor;
+            const py = centerY + y * factor;
+
+            if (first) { ctx.moveTo(px, py); first = false; }
+            else ctx.lineTo(px, py);
+          }
+        }
+        ctx.stroke();
+      }
+
       ctx.restore();
     }
 
     // Draw radial hub connections
     function drawRadialConnections() {
       ctx.save();
-      ctx.lineWidth = 1; // JSON Spec
-      ctx.shadowBlur = 4; // JSON Spec
+      ctx.lineWidth = 1.5; // Thicker
+      ctx.shadowBlur = 8; // More glow
       ctx.shadowColor = colors.connections;
 
       hubMarkers.forEach(hub => {
@@ -336,12 +347,12 @@
                   Math.pow(marker.lon - hub.lon, 2)
                 );
 
-                if (distance < 0.6) {
+                if (distance < 0.7) {
                   ctx.strokeStyle = colors.connections;
                   ctx.beginPath();
                   ctx.moveTo(hubProj.x, hubProj.y);
                   const midX = (hubProj.x + markerProj.x) / 2;
-                  const midY = (hubProj.y + markerProj.y) / 2 - 15;
+                  const midY = (hubProj.y + markerProj.y) / 2 - 20; // Higher arch
                   ctx.quadraticCurveTo(midX, midY, markerProj.x, markerProj.y);
                   ctx.stroke();
                 }
@@ -365,17 +376,17 @@
       sortedMarkers.forEach(marker => {
         const proj = project3D(marker.lat, marker.lon);
         if (proj.visible) {
-          const pulse = Math.sin(time * 1.8 + marker.pulse * Math.PI * 2) * 0.25 + 1; // Speed 1.8 from Spec
-          const size = (marker.hub ? 4 : 3) * proj.factor * pulse;
+          const pulse = Math.sin(time * 2.5 + marker.pulse * Math.PI * 2) * 0.3 + 1;
+          const size = (marker.hub ? 5 : 3.5) * proj.factor * pulse;
 
-          // Outer Glow (JSON Spec: Strength 22)
-          const glowSize = size * 4;
+          // Outer Glow
+          const glowSize = size * 5;
           const glowGradient = ctx.createRadialGradient(
             proj.x, proj.y, 0,
             proj.x, proj.y, glowSize
           );
           glowGradient.addColorStop(0, colors.markerGlow);
-          glowGradient.addColorStop(1, 'rgba(30, 79, 255, 0)');
+          glowGradient.addColorStop(1, 'rgba(96, 165, 250, 0)');
 
           ctx.fillStyle = glowGradient;
           ctx.beginPath();
@@ -385,7 +396,7 @@
           // Core Marker
           ctx.fillStyle = colors.markers;
           ctx.shadowColor = colors.markerGlow;
-          ctx.shadowBlur = 8;
+          ctx.shadowBlur = 10;
 
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, size, 0, Math.PI * 2);
@@ -394,7 +405,7 @@
           if (marker.hub) {
             ctx.fillStyle = '#FFFFFF';
             ctx.beginPath();
-            ctx.arc(proj.x, proj.y, size * 0.4, 0, Math.PI * 2);
+            ctx.arc(proj.x, proj.y, size * 0.5, 0, Math.PI * 2);
             ctx.fill();
           }
         }
@@ -413,12 +424,12 @@
       drawRadialConnections();
       drawMarkers(time);
 
-      // Edge Fade (JSON Spec: Softness 0.35)
-      const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.65, 0, canvas.height);
-      fadeGradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
-      fadeGradient.addColorStop(1, 'rgba(255, 255, 255, 1)');
+      // Edge Fade to blend with background
+      const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.7, 0, canvas.height);
+      fadeGradient.addColorStop(0, 'rgba(14, 60, 117, 0)');
+      fadeGradient.addColorStop(1, 'rgba(14, 60, 117, 1)'); // Match background color
       ctx.fillStyle = fadeGradient;
-      ctx.fillRect(0, canvas.height * 0.65, canvas.width, canvas.height * 0.35);
+      ctx.fillRect(0, canvas.height * 0.7, canvas.width, canvas.height * 0.3);
 
       rotation += rotationSpeed;
       requestAnimationFrame(animate);
@@ -429,10 +440,10 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        const newSize = Math.min(900, window.innerWidth - 40); // Updated to match new max size
-        if (Math.abs(newSize - canvas.width) > 50) {
-          initGlobe(); // Reinitialize with new size
-        }
+        updateSize();
+        centerX = canvas.width / 2;
+        centerY = canvas.height * 0.75;
+        radius = Math.min(canvas.width, canvas.height) * 0.75;
       }, 250);
     });
 
