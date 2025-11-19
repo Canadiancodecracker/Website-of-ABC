@@ -1,13 +1,13 @@
 
 // ============================================
-// VERSION CHECK - This file should be v10 (Production Clean)
+// VERSION CHECK - This file should be v11 (Production Clean)
 // ============================================
 if (typeof window !== 'undefined') {
-  window._mainJsVersion = 'v10';
-  window._mainJsLineCount = 747; // Current line count
+  window._mainJsVersion = 'v11';
+  window._mainJsLineCount = 700; // Approximate new line count
   window._mainJsLoadedAt = Date.now();
-  
-  console.log('%c✅ ABC Chemical main.js v10 loaded', 'color: green; font-weight: bold;');
+
+  console.log('%c✅ ABC Chemical main.js v11 loaded', 'color: green; font-weight: bold;');
 }
 
 // Language dictionary
@@ -15,7 +15,7 @@ const T = {
   en: {
     brand: "ABC Chemical",
     corp: "ABC Chemical Co., Ltd.",
-    nav: { 
+    nav: {
       home: {
         _: "Home",
         about: "About Us",
@@ -72,8 +72,8 @@ const T = {
     products: {
       title: "Product Lines",
       desc: "Quality‑driven products engineered for performance, consistency, and safety across critical industries.",
-      p1: { 
-        title: "Calcium Carbide", 
+      p1: {
+        title: "Calcium Carbide",
         desc: "High‑purity feedstock supporting acetylene generation and downstream specialty syntheses.",
         formula: "CaC₂",
         cas: "75-20-7",
@@ -96,8 +96,8 @@ const T = {
       p2: { title: "Cyanamide Derivatives", desc: "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems." },
       p3: { title: "Performance Products", desc: "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance." },
       p4: { title: "Industrial Intermediates", desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses." },
-      p5: { 
-        title: "Calcium Cyanamide", 
+      p5: {
+        title: "Calcium Cyanamide",
         desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.",
         formula: "CaNCN",
         linearFormula: "CaNCN",
@@ -316,7 +316,7 @@ const T = {
   zh: {
     brand: "ABC化工",
     corp: "ABC化工有限公司",
-    nav: { 
+    nav: {
       home: {
         _: "首页",
         about: "关于我们",
@@ -373,8 +373,8 @@ const T = {
     products: {
       title: "产品系列",
       desc: "面向关键行业的高品质产品，强调性能、一致性与安全。",
-      p1: { 
-        title: "电石（碳化钙）", 
+      p1: {
+        title: "电石（碳化钙）",
         desc: "高纯度原料，支持乙炔制备与下游特种合成。",
         formula: "CaC₂",
         cas: "75-20-7",
@@ -397,8 +397,8 @@ const T = {
       p2: { title: "氰胺衍生物", desc: "氰胺与双氰胺，具备可控反应性与高性能固化方案。" },
       p3: { title: "性能产品", desc: "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。" },
       p4: { title: "工业中间体", desc: "硫脲与硝酸胍，可靠的高级合成中间体。" },
-      p5: { 
-        title: "氰氨化钙", 
+      p5: {
+        title: "氰氨化钙",
         desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。",
         formula: "CaNCN",
         linearFormula: "CaNCN",
@@ -626,10 +626,10 @@ function applyLang(lang) {
       console.error('Expected: v10, Got:', window._translationVersion);
     }
   }
-  
+
   const dict = T[lang];
   if (!dict || !dict.nav) return;
-  
+
   document.documentElement.lang = (lang === 'zh') ? 'zh-Hans' : 'en';
   const b = document.getElementById('brand'); if (b) b.textContent = dict.brand;
   const corp = document.getElementById('corpName'); if (corp) corp.textContent = dict.corp;
@@ -637,31 +637,31 @@ function applyLang(lang) {
   const rights = document.getElementById('rights'); if (rights) rights.textContent = dict.corp + ' ' + T[lang].footer.rights;
 
   const i18nElements = document.querySelectorAll('[data-i18n]');
-  
+
   i18nElements.forEach(el => {
     const i18nPath = el.getAttribute('data-i18n');
     if (!i18nPath) return;
-    
+
     const path = i18nPath.split('.');
     let cur = dict;
     let found = true;
-    
+
     for (let i = 0; i < path.length; i++) {
       const k = path[i];
-      
+
       if (cur == null || typeof cur !== 'object') {
         found = false;
         break;
       }
-      
+
       if (cur[k] === undefined) {
         found = false;
         break;
       }
-      
+
       cur = cur[k];
     }
-    
+
     if (found && typeof cur === 'string') {
       el.textContent = cur;
     } else if (!found) {
@@ -685,7 +685,7 @@ function applyLang(lang) {
     phone: { en: '+1 555 123 4567', zh: '+86 010 8888 8888' },
     message: { en: 'Products, specs, annual volume, delivery terms...', zh: '意向产品、规格、年需求量、交付条款…' }
   };
-  ['name','company','email','phone','message'].forEach(id => {
+  ['name', 'company', 'email', 'phone', 'message'].forEach(id => {
     const el = document.getElementById(id);
     if (el && PH[id]) el.placeholder = PH[id][lang];
   });
@@ -701,7 +701,7 @@ function applyLang(lang) {
   const iso9001Link = document.getElementById('iso-9001-link');
   const iso14001Link = document.getElementById('iso-14001-link');
   const iso45001Link = document.getElementById('iso-45001-link');
-  
+
   if (lang === 'zh') {
     // Chinese version: use Chinese certificates
     if (iso9001Link) iso9001Link.href = 'assets/iso/iso-9001-certificate-zh.png';
@@ -712,54 +712,6 @@ function applyLang(lang) {
     if (iso9001Link) iso9001Link.href = 'assets/iso/iso-9001-certificate.png';
     if (iso14001Link) iso14001Link.href = 'assets/iso/iso-14001-certificate.png';
     if (iso45001Link) iso45001Link.href = 'assets/iso/iso-45001-certificate.png';
-  }
-
-  // Update Calcium Carbide SDS link based on language
-  const calciumCarbideSdsLink = document.getElementById('calcium-carbide-sds-link');
-  if (calciumCarbideSdsLink) {
-    if (lang === 'zh') {
-      calciumCarbideSdsLink.href = 'assets/sds/SDS_Calcium_Carbide_Chinese.pdf';
-      calciumCarbideSdsLink.download = 'SDS_Calcium_Carbide_Chinese.pdf';
-    } else {
-      calciumCarbideSdsLink.href = 'assets/sds/SDS_Calcium_Carbide_English.pdf';
-      calciumCarbideSdsLink.download = 'SDS_Calcium_Carbide_English.pdf';
-    }
-  }
-
-  // Update Dicyandiamide SDS link based on language
-  const dicyandiamideSdsLink = document.getElementById('dicyandiamide-sds-link');
-  if (dicyandiamideSdsLink) {
-    if (lang === 'zh') {
-      dicyandiamideSdsLink.href = 'assets/sds/SDS_Dicyandiamide_Chinese.html';
-      dicyandiamideSdsLink.download = 'SDS_Dicyandiamide_Chinese.html';
-    } else {
-      dicyandiamideSdsLink.href = 'assets/sds/SDS_Dicyandiamide_English.html';
-      dicyandiamideSdsLink.download = 'SDS_Dicyandiamide_English.html';
-    }
-  }
-
-  // Update Creatine Monohydrate SDS link based on language
-  const creatineMonohydrateSdsLink = document.getElementById('creatine-monohydrate-sds-link');
-  if (creatineMonohydrateSdsLink) {
-    if (lang === 'zh') {
-      creatineMonohydrateSdsLink.href = 'assets/sds/SDS_Creatine_Monohydrate_Chinese.html';
-      creatineMonohydrateSdsLink.download = 'SDS_Creatine_Monohydrate_Chinese.html';
-    } else {
-      creatineMonohydrateSdsLink.href = 'assets/sds/SDS_Creatine_Monohydrate_English.html';
-      creatineMonohydrateSdsLink.download = 'SDS_Creatine_Monohydrate_English.html';
-    }
-  }
-
-  // Update Guanidine Nitrate SDS link based on language
-  const guanidineNitrateSdsLink = document.getElementById('guanidine-nitrate-sds-link');
-  if (guanidineNitrateSdsLink) {
-    if (lang === 'zh') {
-      guanidineNitrateSdsLink.href = 'assets/sds/SDS_Guanidine_Nitrate_Chinese.html';
-      guanidineNitrateSdsLink.download = 'SDS_Guanidine_Nitrate_Chinese.html';
-    } else {
-      guanidineNitrateSdsLink.href = 'assets/sds/SDS_Guanidine_Nitrate_English.html';
-      guanidineNitrateSdsLink.download = 'SDS_Guanidine_Nitrate_English.html';
-    }
   }
 
   localStorage.setItem('lang', lang);
@@ -780,23 +732,23 @@ function setupLangToggle() {
 // Setup mobile dropdown menus (click-to-expand)
 function setupMobileDropdowns() {
   const mobileToggles = document.querySelectorAll('.mega-mobile-toggle');
-  
+
   mobileToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       const dropdownId = toggle.getAttribute('data-mobile-dropdown');
       const mobileItem = toggle.closest('.mega-mobile-item');
       const isActive = mobileItem.classList.contains('active');
-      
+
       // Close all other mobile dropdowns
       document.querySelectorAll('.mega-mobile-item').forEach(item => {
         if (item !== mobileItem) {
           item.classList.remove('active');
         }
       });
-      
+
       // Toggle the clicked dropdown
       if (isActive) {
         mobileItem.classList.remove('active');
@@ -822,23 +774,23 @@ const submitButton = form?.querySelector('button[type="submit"]');
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   const lang = localStorage.getItem('lang') || 'en';
-  
+
   // Disable submit button and show loading state
   if (submitButton) {
     submitButton.disabled = true;
     const originalText = submitButton.textContent;
     submitButton.textContent = lang === 'zh' ? '发送中...' : 'Sending...';
-    
+
     try {
       // Get form data
       const formData = new FormData(form);
-      
+
       // Set reply-to email from the email field
       const emailField = form.querySelector('#email');
       if (emailField && emailField.value) {
         formData.set('_replyto', emailField.value);
       }
-      
+
       // Send to Formspree
       const response = await fetch(form.action, {
         method: 'POST',
@@ -847,15 +799,15 @@ form?.addEventListener('submit', async (e) => {
           'Accept': 'application/json'
         }
       });
-      
+
       if (response.ok) {
         // Success
-        note.textContent = lang === 'zh' 
-          ? '✓ 感谢您的提交，我们将尽快联系您。' 
+        note.textContent = lang === 'zh'
+          ? '✓ 感谢您的提交，我们将尽快联系您。'
           : '✓ Thanks — your request has been sent. Our team will get back to you shortly.';
         note.className = 'text-sm text-green-600 font-medium';
         form.reset();
-        
+
         // Reset button after 3 seconds
         setTimeout(() => {
           submitButton.disabled = false;
@@ -875,7 +827,7 @@ form?.addEventListener('submit', async (e) => {
         ? '✗ 发送失败，请稍后重试或直接发送邮件联系我们。'
         : '✗ Failed to send. Please try again later or contact us directly via email.';
       note.className = 'text-sm text-red-600 font-medium';
-      
+
       // Reset button
       submitButton.disabled = false;
       submitButton.textContent = originalText;
@@ -917,27 +869,27 @@ function renderNews(newsItems) {
   }
 
   const lang = getCurrentLanguage();
-  
+
   // Sort news by date (newest first) and take only the top 3 most recent
   const sortedItems = [...newsItems].sort((a, b) => {
     const dateA = new Date(a.date);
     const dateB = new Date(b.date);
     return dateB - dateA; // Descending order (newest first)
   });
-  
+
   // Only show the 3 most recent news items in the floating news section
   const topThreeItems = sortedItems.slice(0, 3);
-  
+
   // Duplicate for infinite scroll animation
   const allItems = [...topThreeItems, ...topThreeItems];
-  
+
   const html = allItems.map(item => {
     const date = lang === 'zh' ? item.date_zh : item.date;
     const title = lang === 'zh' ? item.title_zh : item.title_en;
     const summary = lang === 'zh' ? item.summary_zh : item.summary_en;
     const readMore = lang === 'zh' ? '阅读更多 →' : 'Read More →';
     const link = lang === 'zh' ? (item.link_zh || item.link) : item.link;
-    
+
     return `
       <div class="news-item">
         <div class="news-date">${date}</div>
@@ -947,7 +899,7 @@ function renderNews(newsItems) {
       </div>
     `;
   }).join('');
-  
+
   container.innerHTML = html;
 }
 
@@ -955,7 +907,7 @@ function renderNews(newsItems) {
 function init() {
   setupLangToggle();
   setupMobileDropdowns();
-  
+
   // Wait a bit to ensure DOM is fully ready
   setTimeout(() => {
     const container = document.getElementById('news-scroll-container');
