@@ -102,6 +102,23 @@
 ### 2. Verification
 - [x] **Content:** DCD section appears correctly on the Cyanamide Derivatives page.
 - [x] **Localization:** English and Chinese translations are present and linked.
+
+---
+
+## 📝 UPDATE: ABOUT US PREPARATION
+**Time:** 15:03 EST
+
+### 1. Localization & Assets
+- **File:** `main.js`
+  - Added `about` object to `T.en` and `T.zh` dictionaries.
+  - Included keys for: `title`, `subtitle`, `p1`-`p4`, and `strengths` (s1-s3).
+- **Assets:**
+  - Added `about-header.png` to `assets/images/`.
+
+### 2. Verification
+- [x] **Localization:** Keys are present in both languages.
+- [x] **Assets:** Header image saved.
 - [x] **Git Status:** Clean, all changes pushed to `origin/main`.
+
 
 

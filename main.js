@@ -166,6 +166,20 @@ const T = {
       a2: { title: "Pharmaceuticals & Nutrition", desc: "Creatine & GAA produced with strict quality practices for reliable performance." },
       a3: { title: "Metallurgy & Industry", desc: "Calcium carbide solutions enabling acetylene workflows and metal processing." }
     },
+    about: {
+      title: "About Us",
+      subtitle: "ABC Chemical Co., Ltd. — Advanced Calcium & Cyanamide Solutions",
+      p1: "ABC Chemical Co., Ltd. is a global manufacturer specializing in high-purity calcium cyanamide, dicyandiamide (DCD), cyanamide derivatives, creatine series products, and fine nitrogen-carbon materials. With decades of engineering experience and strong R&D capabilities, we deliver reliable chemical solutions for agriculture, pharmaceuticals, nutrition, metallurgy, environmental treatment, and advanced materials.",
+      p2: "Built on technological innovation and strict quality governance, ABC Chemical combines large-scale production with international quality standards, ensuring consistency, traceability, and safety across every batch. Our commitment to excellence has allowed our products to serve customers in 50+ countries, supported by a trusted network of global distributors.",
+      p3: "We operate modern manufacturing facilities equipped with advanced reactors, automated systems, continuous monitoring instruments, and in-house laboratories for analytical testing. Our quality systems comply with ISO 9001, ISO 14001, and ISO 45001, ensuring stable performance, occupational safety, and environmentally responsible operations.",
+      p4: "At ABC Chemical, we believe chemistry should create value responsibly. Our teams integrate R&D innovation, sustainable manufacturing, and long-term customer partnerships, delivering performance-driven materials that support growth in agriculture, health, industrial processing, and next-generation applications.",
+      strengths: {
+        title: "Our Core Strengths",
+        s1: "25+ years of manufacturing experience",
+        s2: "ISO-certified quality, environment, and safety systems",
+        s3: "Global supply chain and 120+ distribution partners"
+      }
+    },
     agri: {
       intro: "ABC Chemical Co., Ltd. supplies high-purity calcium cyanamide and specialty nitrogen-carbon materials designed to improve crop nutrition, soil quality, and long-term agricultural sustainability. Our technology is engineered to maximize nitrogen use efficiency (NUE), enhance soil structure, and support balanced fertilization programs across diverse climates and crop systems.",
       benefits: {
@@ -517,7 +531,21 @@ const T = {
       desc: "覆盖关键领域，从作物增产到人体营养及重工业。",
       a1: { title: "农业与肥料", desc: "基于氰胺的方案，提高氮素利用率并改善土壤健康。" },
       a2: { title: "医药与营养", desc: "肌酸与GAA在严格质量体系下生产，稳定可靠。" },
-      a3: { title: "冶金与工业", desc: "电石方案支撑乙炔流程与金属加工。" }
+      a3: { title: "冶金与工业", desc: "电石解决方案，助力乙炔工艺与金属加工。" }
+    },
+    about: {
+      title: "关于我们",
+      subtitle: "ABC Chemical Co., Ltd. — 先进钙与氰胺解决方案",
+      p1: "ABC Chemical Co., Ltd. 是一家全球制造商，专注于高纯度氰氨化钙、双氰胺 (DCD)、氰胺衍生物、肌酸系列产品以及精细氮碳材料。凭借数十年的工程经验和强大的研发能力，我们为农业、制药、营养、冶金、环境治理和先进材料提供可靠的化学解决方案。",
+      p2: "基于技术创新和严格的质量管理，ABC Chemical 将大规模生产与国际质量标准相结合，确保每一批次的一致性、可追溯性和安全性。我们对卓越的承诺使我们的产品服务于 50 多个国家的客户，并得到值得信赖的全球分销网络的支持。",
+      p3: "我们运营着配备先进反应器、自动化系统、连续监测仪器和内部分析测试实验室的现代化生产设施。我们的质量体系符合 ISO 9001、ISO 14001 和 ISO 45001 标准，确保稳定的性能、职业安全和环境负责的运营。",
+      p4: "在 ABC Chemical，我们相信化学应负责任地创造价值。我们的团队整合了研发创新、可持续制造和长期客户合作伙伴关系，提供性能驱动的材料，支持农业、健康、工业加工和下一代应用的增长。",
+      strengths: {
+        title: "我们的核心优势",
+        s1: "25+ 年的制造经验",
+        s2: "ISO 认证的质量、环境和安全体系",
+        s3: "全球供应链和 120+ 分销合作伙伴"
+      }
     },
     agri: {
       intro: "ABC化工有限公司提供高纯度石灰氮及特种氮碳材料，用于改善作物营养、提升土壤质量，并满足现代农业对可持续性的需求。我们的产品旨在提高氮肥利用率（NUE）、改善土壤结构，并支持不同地区与作物体系的科学施肥方案。",
