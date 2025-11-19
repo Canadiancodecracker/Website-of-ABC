@@ -130,7 +130,26 @@
 - [x] **Structure:** Section is correctly placed and responsive.
 - [x] **Content:** Text matches provided English version and translates to Chinese.
 - [x] **Visuals:** Header image displays correctly with overlay text.
+
+---
+
+## 📝 UPDATE: MOVED TO DEDICATED PAGE
+**Time:** 15:12 EST
+
+### 1. Restructuring
+- **File:** `about-us.html`
+  - Created dedicated page for "About Us".
+  - Migrated content from `index.html` section to this new page.
+  - Maintained consistent styling and localization.
+- **File:** `index.html`
+  - Removed the inline `#about` section.
+  - Updated navigation links to point to `about-us.html`.
+
+### 2. Verification
+- [x] **Navigation:** "About Us" link opens the new page.
+- [x] **Content:** All information is correctly displayed on the new page.
 - [x] **Git Status:** Clean, all changes pushed to `origin/main`.
+
 
 
 

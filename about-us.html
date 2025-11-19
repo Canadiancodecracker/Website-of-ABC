@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>About Us - ABC Chemical Co., Ltd.</title>
+    <meta name="description"
+        content="Learn about ABC Chemical Co., Ltd., a global manufacturer of high-purity calcium cyanamide and nitrogen-carbon materials." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const originalWarn = console.warn;
+            console.warn = function (...args) {
+                const msg = args[0];
+                if (msg && typeof msg === 'string') {
+                    if (msg.includes('cdn.tailwindcss.com') ||
+                        msg.includes('should not be used in production') ||
+                        msg.includes('Tailwind CSS')) {
+                        return;
+                    }
+                }
+                originalWarn.apply(console, args);
+            };
+        })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial'] },
+                    colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+                    boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+        <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+                    <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co.,
+                        Ltd.</span>
+                </a>
+                <a href="index.html" class="text-sm text-brand-blue hover:text-brand-green"
+                    data-i18n="products.backHome">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 88px;">
+        <section class="py-12 sm:py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <!-- Header Image -->
+                <div class="relative h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden mb-12 shadow-brand">
+                    <img src="assets/images/about-header.png" alt="About ABC Chemical"
+                        class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                        <div class="p-8">
+                            <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2" data-i18n="about.title">About Us
+                            </h1>
+                            <p class="text-lg text-white/90 max-w-2xl" data-i18n="about.subtitle">ABC Chemical Co., Ltd.
+                                — Advanced
+                                Calcium & Cyanamide Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <p data-i18n="about.p1">ABC Chemical Co., Ltd. is a global manufacturer specializing in
+                            high-purity calcium
+                            cyanamide, dicyandiamide (DCD), cyanamide derivatives, creatine series products, and fine
+                            nitrogen-carbon
+                            materials.</p>
+                        <p data-i18n="about.p2">Built on technological innovation and strict quality governance, ABC
+                            Chemical combines
+                            large-scale production with international quality standards, ensuring consistency,
+                            traceability, and safety
+                            across every batch.</p>
+                    </div>
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <p data-i18n="about.p3">We operate modern manufacturing facilities equipped with advanced
+                            reactors, automated
+                            systems, continuous monitoring instruments, and in-house laboratories for analytical
+                            testing.</p>
+                        <p data-i18n="about.p4">At ABC Chemical, we believe chemistry should create value responsibly.
+                            Our teams
+                            integrate R&D innovation, sustainable manufacturing, and long-term customer partnerships.
+                        </p>
+
+                        <!-- Core Strengths -->
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100 mt-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4" data-i18n="about.strengths.title">Our Core
+                                Strengths</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-brand-green mr-3 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="about.strengths.s1">25+ years of manufacturing experience</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-brand-green mr-3 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="about.strengths.s2">ISO-certified quality, environment, and safety
+                                        systems</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-5 h-5 text-brand-green mr-3 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span data-i18n="about.strengths.s3">Global supply chain and 120+ distribution
+                                        partners</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto mx-auto mb-4" />
+                <p class="text-sm">&copy; 2025 ABC Chemical Co., Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
