@@ -31,30 +31,29 @@
 
     // Globe configuration - LARGER RADIUS
     const centerX = canvas.width / 2;
-    const centerY = canvas.height * 0.88; // Position sphere lower to show top hemisphere
-    const radius = Math.min(canvas.width, canvas.height) * 0.52; // Increased from 0.42 to 0.52
+    const centerY = canvas.height * 0.65; // Position sphere lower to show top hemisphere (JSON Spec: 65%)
+    const radius = Math.min(canvas.width, canvas.height) * 0.52; // Increased from 0.42 to 0.52 (JSON Spec: ~420px)
 
     let rotation = 0;
     const rotationSpeed = 0.003;
 
-    // Cloudflare-inspired color palette - VIBRANT BLUE ON WHITE
+    // Cloudflare-inspired color palette - METALLIC & GLOW (JSON Spec)
     const colors = {
       sphere: {
-        base: 'rgba(255, 255, 255, 0.1)',       // Almost transparent base
-        gradient1: 'rgba(240, 249, 255, 0.4)',  // Very light blue transparent
-        gradient2: 'rgba(224, 242, 254, 0.3)',  // Light blue transparent
-        gradient3: 'rgba(186, 230, 253, 0.2)',  // Medium light blue transparent
+        base: '#D8DDE2',       // Metallic base
+        glossInner: '#E8EDF3', // Gloss inner
+        glossOuter: 'rgba(90, 100, 120, 0.35)', // Gloss outer
+        highlight: '#FFFFFF',  // Specular highlight
       },
       map: {
-        continents: '#3b82f6',  // Bright Blue (Tailwind blue-500)
-        continentsAlt: '#60a5fa', // Lighter Blue (Tailwind blue-400)
-        borders: 'rgba(255, 255, 255, 0.8)', // Strong white borders
+        continents: '#3A82F7',  // JSON Spec Blue
+        shadow: 'rgba(0,0,0,0.15)',
       },
-      grid: 'rgba(59, 130, 246, 0.15)', // Distinct light blue grid
-      glow: 'rgba(59, 130, 246, 0.05)',  // Very subtle blue glow
-      markers: '#1e3a8a',      // Deep Blue for markers (Tailwind blue-900)
-      connections: 'rgba(59, 130, 246, 0.3)', // Blue connections
-      hubConnections: 'rgba(37, 99, 235, 0.4)', // Brighter blue for hub lines
+      grid: 'rgba(30, 79, 255, 0.1)', // Subtle grid to match mood
+      glow: 'rgba(255, 255, 255, 0)',  // Handled by sphere gradients
+      markers: '#1E4FFF',      // JSON Spec Deep Blue
+      markerGlow: 'rgba(30, 79, 255, 0.55)',
+      connections: 'rgba(30, 79, 255, 0.35)',
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -177,6 +176,7 @@
       ];
     }
 
+    // Update markers to match JSON density preference (visually approximated by existing data)
     const markers = generateMarkers();
     const hubMarkers = markers.filter(m => m.hub);
 
@@ -189,7 +189,6 @@
       const z = r * Math.sin(phi) * Math.sin(theta);
       const y = -r * Math.cos(phi);
 
-      // Perspective projection
       const perspective = 800;
       const factor = perspective / (perspective + z);
 
@@ -197,27 +196,27 @@
         x: centerX + x * factor,
         y: centerY + y * factor,
         z: z,
-        visible: z > -r * 0.3 && y <= 0, // Only show top hemisphere and front-facing
+        visible: z > -r * 0.2 && y <= 0, // Adjusted visibility
         factor: factor,
         depth: z
       };
     }
 
-    // Draw the base sphere with gradient
+    // Draw the metallic sphere with gloss and highlights
     function drawSphere() {
+      // 1. Base Metallic Fill
       const gradient = ctx.createRadialGradient(
-        centerX - radius * 0.3,
-        centerY - radius * 0.4,
+        centerX - radius * 0.2, // Offset for light source
+        centerY - radius * 0.3,
         radius * 0.1,
         centerX,
         centerY,
         radius
       );
 
-      gradient.addColorStop(0, colors.sphere.base);
-      gradient.addColorStop(0.4, colors.sphere.gradient1);
-      gradient.addColorStop(0.8, colors.sphere.gradient2);
-      gradient.addColorStop(1, colors.sphere.gradient3);
+      gradient.addColorStop(0, colors.sphere.glossInner);
+      gradient.addColorStop(0.5, colors.sphere.base);
+      gradient.addColorStop(1, colors.sphere.glossOuter);
 
       ctx.save();
       ctx.beginPath();
@@ -226,36 +225,48 @@
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Remove inner shadow for cleaner look
+      // 2. Specular Highlight (Soft Spot Light)
+      const highlightGradient = ctx.createRadialGradient(
+        centerX - radius * 0.2,
+        centerY - radius * 0.4,
+        0,
+        centerX - radius * 0.2,
+        centerY - radius * 0.4,
+        radius * 0.6
+      );
+      highlightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+      highlightGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+      ctx.fillStyle = highlightGradient;
+      ctx.fill();
 
       ctx.restore();
     }
 
-    // Draw world map continents on the sphere
+    // Draw world map continents
     function drawWorldMap() {
       ctx.save();
 
-      // Create clipping path for hemisphere
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, Math.PI, 0, false);
       ctx.clip();
 
-      // Draw each continent
-      Object.keys(worldMapData).forEach((continentName, index) => {
+      // Shadow settings from JSON
+      ctx.shadowColor = colors.map.shadow;
+      ctx.shadowBlur = 12;
+      ctx.shadowOffsetY = 2;
+
+      Object.keys(worldMapData).forEach((continentName) => {
         const continent = worldMapData[continentName];
         const points = [];
 
-        // Project all points
         continent.forEach(coord => {
           const [lat, lon] = coord;
           const proj = project3D(lat, lon);
-          if (proj.visible) {
-            points.push(proj);
-          }
+          if (proj.visible) points.push(proj);
         });
 
         if (points.length > 2) {
-          // Draw filled continent
           ctx.beginPath();
           ctx.moveTo(points[0].x, points[0].y);
           for (let i = 1; i < points.length; i++) {
@@ -263,42 +274,12 @@
           }
           ctx.closePath();
 
-          // Gradient fill for continents - VIBRANT BLUE GRADIENT
-          const continentGradient = ctx.createLinearGradient(centerX, centerY - radius, centerX, centerY);
-          continentGradient.addColorStop(0, '#60a5fa'); // Light blue top
-          continentGradient.addColorStop(1, '#2563eb'); // Darker blue bottom
-
-          ctx.fillStyle = continentGradient;
+          ctx.fillStyle = colors.map.continents;
+          ctx.globalAlpha = 0.90; // JSON Spec
           ctx.fill();
-
-          // THICKER, MORE VISIBLE borders
-          ctx.strokeStyle = colors.map.borders;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
         }
       });
 
-      ctx.restore();
-    }
-
-    // Draw outer glow
-    function drawGlow() {
-      ctx.save();
-      const glowGradient = ctx.createRadialGradient(
-        centerX,
-        centerY,
-        radius * 0.95,
-        centerX,
-        centerY,
-        radius * 1.2
-      );
-      glowGradient.addColorStop(0, colors.glow);
-      glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius * 1.2, Math.PI, 0, false);
-      ctx.fillStyle = glowGradient;
-      ctx.fill();
       ctx.restore();
     }
 
@@ -307,8 +288,7 @@
       ctx.save();
       ctx.strokeStyle = colors.grid;
       ctx.lineWidth = 0.5;
-      ctx.lineCap = 'round';
-      ctx.globalAlpha = 0.6;
+      ctx.globalAlpha = 0.4;
 
       // Latitude lines
       for (let i = 1; i <= 5; i++) {
@@ -322,7 +302,7 @@
           const x = Math.cos(theta + rotation) * r;
           const z = Math.sin(theta + rotation) * r;
 
-          if (z > -r * 0.3 && y <= 0) {
+          if (z > -r * 0.2 && y <= 0) {
             const perspective = 800;
             const factor = perspective / (perspective + z);
             const px = centerX + x * factor;
@@ -334,62 +314,35 @@
         }
         ctx.stroke();
       }
-
-      // Longitude lines
-      for (let i = 0; i < 16; i++) {
-        const lonAngle = (Math.PI * 2 * i) / 16;
-        ctx.beginPath();
-
-        for (let j = 0; j <= 90; j += 3) {
-          const lat = (j * Math.PI) / 180;
-          const proj = project3D(lat, lonAngle);
-
-          if (proj.visible) {
-            if (j === 0) ctx.moveTo(proj.x, proj.y);
-            else ctx.lineTo(proj.x, proj.y);
-          }
-        }
-        ctx.stroke();
-      }
-
-      ctx.globalAlpha = 1.0;
       ctx.restore();
     }
 
-    // Draw radial hub connections (star pattern)
+    // Draw radial hub connections
     function drawRadialConnections() {
       ctx.save();
-      ctx.lineWidth = 1;
-      ctx.setLineDash([3, 3]);
+      ctx.lineWidth = 1; // JSON Spec
+      ctx.shadowBlur = 4; // JSON Spec
+      ctx.shadowColor = colors.connections;
 
       hubMarkers.forEach(hub => {
         const hubProj = project3D(hub.lat, hub.lon);
-
         if (hubProj.visible) {
           markers.forEach(marker => {
             if (!marker.hub) {
               const markerProj = project3D(marker.lat, marker.lon);
-
               if (markerProj.visible) {
-                // Calculate distance
                 const distance = Math.sqrt(
                   Math.pow(marker.lat - hub.lat, 2) +
                   Math.pow(marker.lon - hub.lon, 2)
                 );
 
-                // Only connect nearby markers (within region)
                 if (distance < 0.6) {
-                  const opacity = Math.max(0.1, 0.3 - distance * 0.3);
-                  ctx.strokeStyle = `rgba(255, 159, 87, ${opacity})`;
-
+                  ctx.strokeStyle = colors.connections;
                   ctx.beginPath();
                   ctx.moveTo(hubProj.x, hubProj.y);
-
-                  // Slightly curved line
                   const midX = (hubProj.x + markerProj.x) / 2;
                   const midY = (hubProj.y + markerProj.y) / 2 - 15;
                   ctx.quadraticCurveTo(midX, midY, markerProj.x, markerProj.y);
-
                   ctx.stroke();
                 }
               }
@@ -397,102 +350,77 @@
           });
         }
       });
-
-      ctx.setLineDash([]);
       ctx.restore();
     }
 
     // Draw location markers
     function drawMarkers(time) {
       ctx.save();
-
-      // Sort markers by depth for proper rendering
       const sortedMarkers = [...markers].sort((a, b) => {
         const projA = project3D(a.lat, a.lon);
         const projB = project3D(b.lat, b.lon);
-        return projA.z - projB.z; // Draw back to front
+        return projA.z - projB.z;
       });
 
       sortedMarkers.forEach(marker => {
         const proj = project3D(marker.lat, marker.lon);
-
         if (proj.visible) {
-          // Pulsing animation
-          const pulse = Math.sin(time * 2 + marker.pulse * Math.PI * 2) * 0.25 + 1;
-          const baseSize = marker.hub ? 3.5 : 2.8;
-          const size = baseSize * marker.size * proj.factor * pulse;
+          const pulse = Math.sin(time * 1.8 + marker.pulse * Math.PI * 2) * 0.25 + 1; // Speed 1.8 from Spec
+          const size = (marker.hub ? 4 : 3) * proj.factor * pulse;
 
-          // Outer glow
-          const glowSize = marker.hub ? size * 4 : size * 3;
+          // Outer Glow (JSON Spec: Strength 22)
+          const glowSize = size * 4;
           const glowGradient = ctx.createRadialGradient(
             proj.x, proj.y, 0,
             proj.x, proj.y, glowSize
           );
-          glowGradient.addColorStop(0, colors.markers);
-          glowGradient.addColorStop(1, 'rgba(37, 99, 235, 0)'); // Blue transparent
+          glowGradient.addColorStop(0, colors.markerGlow);
+          glowGradient.addColorStop(1, 'rgba(30, 79, 255, 0)');
 
+          ctx.fillStyle = glowGradient;
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, glowSize, 0, Math.PI * 2);
-          ctx.fillStyle = glowGradient;
           ctx.fill();
 
-          // Main marker
+          // Core Marker
+          ctx.fillStyle = colors.markers;
+          ctx.shadowColor = colors.markerGlow;
+          ctx.shadowBlur = 8;
+
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, size, 0, Math.PI * 2);
-
-          // Hub markers are darker/distinct
-          if (marker.hub) {
-            ctx.fillStyle = '#1e40af'; // Darker blue for hubs (Tailwind blue-800)
-            ctx.shadowColor = '#1e40af';
-            ctx.shadowBlur = 12;
-          } else {
-            ctx.fillStyle = colors.markers; // Standard marker blue
-            ctx.shadowColor = colors.markers;
-            ctx.shadowBlur = 8;
-          }
-
           ctx.fill();
-          ctx.shadowBlur = 0;
 
-          // White center dot for hub markers
           if (marker.hub) {
+            ctx.fillStyle = '#FFFFFF';
             ctx.beginPath();
             ctx.arc(proj.x, proj.y, size * 0.4, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
             ctx.fill();
           }
         }
       });
-
       ctx.restore();
     }
 
     // Animation loop
     function animate() {
       const time = Date.now() / 1000;
-
-      // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Render order (back to front)
-      drawGlow();                 // Outer glow
-      drawSphere();               // Blue base sphere
-      drawWorldMap();             // Orange continents (KEY ADDITION)
-      drawGridLines();            // Subtle grid
-      drawRadialConnections();    // Hub connection lines
-      drawMarkers(time);          // Location markers
+      drawSphere();
+      drawWorldMap();
+      drawGridLines();
+      drawRadialConnections();
+      drawMarkers(time);
 
-      // White fade at the bottom (Cloudflare style)
-      const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.8, 0, canvas.height);
+      // Edge Fade (JSON Spec: Softness 0.35)
+      const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.65, 0, canvas.height);
       fadeGradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
       fadeGradient.addColorStop(1, 'rgba(255, 255, 255, 1)');
       ctx.fillStyle = fadeGradient;
-      ctx.fillRect(0, canvas.height * 0.8, canvas.width, canvas.height * 0.2);
+      ctx.fillRect(0, canvas.height * 0.65, canvas.width, canvas.height * 0.35);
 
-      // Update rotation
       rotation += rotationSpeed;
-
-      // Continue animation
       requestAnimationFrame(animate);
     }
 

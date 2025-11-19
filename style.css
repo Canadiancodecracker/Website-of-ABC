@@ -601,24 +601,15 @@ section[id] {
 
 /* Global Sales Map Section Styles */
 #global-sales-map {
-  background: #ffffff;
-  /* White background like Cloudflare */
+  background: radial-gradient(circle at 50% 40%, #FFFFFF 0%, #E9F0FF 120%);
+  /* Matches JSON spec */
   position: relative;
   overflow: hidden;
 }
 
 #global-sales-map::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at 50% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 25% 70%, rgba(37, 99, 235, 0.05) 0%, transparent 45%),
-    radial-gradient(circle at 75% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 45%);
-  pointer-events: none;
+  display: none;
+  /* Removed as main background handles the gradient */
 }
 
 #globe-container {
