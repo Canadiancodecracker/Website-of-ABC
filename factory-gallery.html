@@ -1,185 +1,156 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Factory Gallery - ABC Chemical</title>
-    <meta name="description" content="Visual insights into ABC Chemical's production lines, cleanroom environments, and advanced facilities." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/tailwind.css">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
-            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
-            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
-          }
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Factory Gallery - ABC Chemical</title>
+  <meta name="description"
+    content="Visual insights into ABC Chemical's production lines, cleanroom environments, and advanced facilities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/tailwind.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial'] },
+          colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+          boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
         }
       }
-    </script>
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      .maple-frame {
-        position: relative;
-        background: linear-gradient(135deg, #fef3e2 0%, #fde8d4 50%, #fcd9b8 100%);
-        border: 3px solid #d97706;
-        border-radius: 16px;
-        padding: 12px;
-        box-shadow: 0 8px 24px rgba(217, 119, 6, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .maple-frame:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 32px rgba(217, 119, 6, 0.25);
-      }
-      .gallery-image {
-        border-radius: 12px;
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        border: 2px solid rgba(217, 119, 6, 0.2);
-      }
-      .gallery-image:not([src]),
-      .gallery-image[src=""],
-      .gallery-image[src*="placeholder"] {
-        background: linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #d97706;
-        font-weight: 600;
-      }
-      .gallery-image::after {
-        content: attr(alt);
-        display: none;
-      }
-      .theme-icon {
-        width: 32px;
-        height: 32px;
-        margin-bottom: 8px;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50 text-gray-900 font-sans">
-    <header class="bg-white border-b border-gray-200">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex items-center justify-between">
-          <a href="index.html" class="text-brand-blue hover:underline" data-i18n="gallery.backHome">← Back to Home</a>
-          <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle" style="border-color: #E4E7EB;">
-            <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
-            <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
-          </div>
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <header class="bg-white border-b border-gray-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="text-brand-blue hover:underline" data-i18n="gallery.backHome">← Back to Home</a>
+        <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle"
+          style="border-color: #E4E7EB;">
+          <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
+          <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Header Section -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4" data-i18n="gallery.title">Factory Gallery</h1>
-        <p class="text-xl text-gray-600 mb-2" data-i18n="gallery.subtitle">Visual Proof · Crafted with Heart</p>
-        <p class="text-lg text-gray-700 max-w-4xl mx-auto mt-6" data-i18n="gallery.description">
-          In this curated series of images and exhibits, we invite you to peer through the lens and step into our modern production workshops. Experience the clean working environment firsthand and witness the efficient operation of our automated production lines. Every photograph is a reflection of our commitment to quality, technology, and safety.
-        </p>
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4" data-i18n="gallery.title">Factory
+        Gallery</h1>
+      <p class="text-xl text-gray-600 mb-2" data-i18n="gallery.subtitle">Visual Proof · Crafted with Heart</p>
+      <p class="text-lg text-gray-700 max-w-4xl mx-auto mt-6" data-i18n="gallery.description">
+        In this curated series of images and exhibits, we invite you to peer through the lens and step into our modern
+        production workshops. Experience the clean working environment firsthand and witness the efficient operation of
+        our automated production lines. Every photograph is a reflection of our commitment to quality, technology, and
+        safety.
+      </p>
+    </div>
+
+    <!-- Main Gallery Image -->
+    <div class="mb-12">
+      <div class="rounded-2xl overflow-hidden shadow-brand bg-white p-4">
+        <img src="assets/images/gallery/factory-overview.jpg" alt="ABC Chemical Factory Overview"
+          class="w-full h-auto rounded-lg" />
+      </div>
+    </div>
+
+    <!-- Image Descriptions Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <!-- Raw Material Area -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme1.title">Raw Material Area</h3>
+        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme1.desc">Large raw material silos, underground unloading
+          points</p>
       </div>
 
-      <!-- Gallery Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        <!-- Raw Material Area -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/raw-material-area.jpg" alt="Raw Material Area" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>Raw Material Area<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme1.title">Raw Material Area</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme1.desc">Large raw material silos, underground unloading points</p>
-          </div>
+      <!-- Reaction Section -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme2.title">Reaction Section</h3>
         </div>
-
-        <!-- Reaction Section -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/reaction-section.jpg" alt="Reaction Section" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>Reaction Section<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme2.title">Reaction Section</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme2.desc">Reaction tanks, operator platforms, temperature control systems</p>
-          </div>
-        </div>
-
-        <!-- Drying & Packaging System -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7h-4m0 0V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m0 0H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/drying-packaging-system.jpg" alt="Drying & Packaging System" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>Drying & Packaging<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme3.title">Drying & Packaging System</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme3.desc">Fluidized bed dryers, fully automated packaging lines</p>
-          </div>
-        </div>
-
-        <!-- QC & QA Lab -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/qc-qa-lab.jpg" alt="QC & QA Lab" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>QC & QA Lab<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme4.title">QC & QA Lab</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme4.desc">Testing equipment, spectrometers, lab technicians at work</p>
-          </div>
-        </div>
-
-        <!-- Warehouse & Logistics -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/warehouse-logistics.jpg" alt="Warehouse & Logistics" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>Warehouse & Logistics<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme5.title">Warehouse & Logistics</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme5.desc">Finished goods pallet zones, forklift operations, truck loading and dispatch</p>
-          </div>
-        </div>
-
-        <!-- EHS Safety Facilities -->
-        <div class="maple-frame">
-          <div class="bg-white rounded-lg p-4">
-            <div class="flex items-center justify-center mb-3">
-              <svg class="theme-icon text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <img src="assets/images/gallery/ehs-safety-facilities.jpg" alt="EHS Safety Facilities" class="gallery-image" onerror="this.style.background='linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.style.color='#d97706'; this.style.fontWeight='600'; this.outerHTML='<div class=\'gallery-image\' style=\'background:linear-gradient(135deg, #fef3e2 0%, #fde8d4 100%); display:flex; align-items:center; justify-content:center; color:#d97706; font-weight:600;\'>EHS Safety Facilities<br/><small style=\'font-size:0.7em; opacity:0.7;\'>Image coming soon</small></div>';" />
-            <p class="mt-4 text-center text-base font-semibold text-gray-800" data-i18n="gallery.theme6.title">EHS Safety Facilities</p>
-            <p class="mt-2 text-center text-sm text-gray-600" data-i18n="gallery.theme6.desc">Sprinkler stations, exhaust gas treatment systems, staff safety training scenes</p>
-          </div>
-        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme2.desc">Reaction tanks, operator platforms, temperature
+          control systems</p>
       </div>
 
-      <!-- Footer Note -->
-      <div class="text-center mt-12 pt-8 border-t border-gray-200">
-        <p class="text-sm text-gray-500" data-i18n="gallery.footer">All photos are taken on-site from Ningxia Hengkang & Sunnyfield facilities.</p>
+      <!-- Drying & Packaging System -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20 7h-4m0 0V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m0 0H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme3.title">Drying & Packaging System
+          </h3>
+        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme3.desc">Fluidized bed dryers, fully automated packaging
+          lines</p>
       </div>
-    </main>
 
-    <script src="./main.js?v=3"></script>
-  </body>
+      <!-- EHS Safety Facilities -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme6.title">EHS Safety Facilities</h3>
+        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme6.desc">Sprinkler stations, exhaust gas treatment
+          systems, staff safety training scenes</p>
+      </div>
+
+      <!-- Warehouse & Logistics -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme5.title">Warehouse & Logistics</h3>
+        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme5.desc">Finished goods pallet zones, forklift
+          operations, truck loading and dispatch</p>
+      </div>
+
+      <!-- QC & QA Lab -->
+      <div class="bg-white rounded-lg p-6 shadow-md border border-gray-200">
+        <div class="flex items-center gap-3 mb-3">
+          <svg class="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-900" data-i18n="gallery.theme4.title">QC & QA Lab</h3>
+        </div>
+        <p class="text-sm text-gray-600" data-i18n="gallery.theme4.desc">Testing equipment, spectrometers, lab
+          technicians at work</p>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="text-center mt-12 pt-8 border-t border-gray-200">
+      <p class="text-sm text-gray-500" data-i18n="gallery.footer">All photos are taken on-site from Ningxia Hengkang &
+        Sunnyfield facilities.</p>
+    </div>
+  </main>
+
+  <script src="./main.js?v=3"></script>
+</body>
+
 </html>
-
