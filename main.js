@@ -139,7 +139,24 @@ const T = {
         pack1: "200kg plastic drums",
         pack2: "1000kg IBC tanks",
         storageValue: "Store in a cool (below 20°C), dry place. Avoid direct sunlight. Shelf life is limited.",
-        safetyValue: "Toxic if swallowed or in contact with skin. Causes severe skin burns and eye damage."
+        safetyValue: "Toxic if swallowed or in contact with skin. Causes severe skin burns and eye damage.",
+        dcd: {
+          title: "Dicyandiamide (DCD)",
+          desc: "Dicyandiamide (DCD) is a white crystalline powder with high purity and consistent reactivity. It is sparingly soluble in cold water, more soluble in hot water, and soluble in ethanol. DCD remains stable under dry conditions, non-flammable, and exhibits high chemical stability.",
+          synonyms: "Cyanoguanidine, Dicyanamide",
+          cas: "461-58-5",
+          mw: "84.08",
+          chemicalNameValue: "Dicyandiamide",
+          appearanceValue: "White crystalline solid",
+          density: "Relative Density",
+          densityValue: "1.40 (25 °C)",
+          meltingPoint: "Melting Point",
+          meltingPointValue: "209–212 °C",
+          solubilityValue: "Soluble in ethanol; slightly soluble in cold water; more soluble in hot water",
+          stabilityValue: "Stable under dry conditions; non-combustible",
+          structuralFormula: "Structural Formula",
+          structuralFormulaValue: "H₂N-C(=NH)-NH-C≡N"
+        }
       },
     },
     apps: {
@@ -475,7 +492,24 @@ const T = {
         pack1: "200kg 塑料桶",
         pack2: "1000kg IBC 吨桶",
         storageValue: "储存于阴凉（20°C以下）、干燥处。避免阳光直射。保质期有限。",
-        safetyValue: "吞咽或接触皮肤有毒。造成严重皮肤灼伤和眼损伤。"
+        safetyValue: "吞咽或接触皮肤有毒。造成严重皮肤灼伤和眼损伤。",
+        dcd: {
+          title: "双氰胺 (DCD)",
+          desc: "双氰胺 (DCD) 是一种白色结晶粉末，具有高纯度和稳定的反应活性。微溶于冷水，较易溶于热水，溶于乙醇。DCD 在干燥条件下保持稳定，不可燃，具有较高的化学稳定性。",
+          synonyms: "氰基胍, 二氰二胺",
+          cas: "461-58-5",
+          mw: "84.08",
+          chemicalNameValue: "双氰胺",
+          appearanceValue: "白色结晶固体",
+          density: "相对密度",
+          densityValue: "1.40 (25 °C)",
+          meltingPoint: "熔点",
+          meltingPointValue: "209–212 °C",
+          solubilityValue: "溶于乙醇；微溶于冷水；较易溶于热水",
+          stabilityValue: "干燥条件下稳定；不可燃",
+          structuralFormula: "结构式",
+          structuralFormulaValue: "H₂N-C(=NH)-NH-C≡N"
+        }
       },
     },
     apps: {
