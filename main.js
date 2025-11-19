@@ -227,6 +227,10 @@ const T = {
       r2: "Dicyandiamide - SDS",
       r3: "Creatine Monohydrate - SDS",
       r4: "Guanidine Nitrate - SDS",
+      r5: "Calcium Cyanamide - SDS",
+      r6: "Cyanamide - SDS",
+      r7: "Guanidinoacetic Acid (GAA) - SDS",
+      r8: "Thiourea - SDS",
       soon: "Coming soon"
     },
     contact: { title: "Request Information", desc: "Tell us about your application, required specs, and target volumes. Our team will respond promptly." },
@@ -528,6 +532,10 @@ const T = {
       r2: "双氰胺 - SDS",
       r3: "一水肌酸 - SDS",
       r4: "硝酸胍 - SDS",
+      r5: "石灰氮 - SDS",
+      r6: "氰胺 - SDS",
+      r7: "胍基乙酸 (GAA) - SDS",
+      r8: "硫脲 - SDS",
       soon: "即将上线"
     },
     contact: { title: "信息咨询", desc: "请告知您的应用、关键指标与目标量，我们将尽快回复。" },
