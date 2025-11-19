@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Company Overview - ABC Chemical Co., Ltd.</title>
+    <meta name="description"
+        content="Learn about ABC Chemical Co., Ltd., a global leader in NCN chemical materials serving agriculture, pharmaceuticals, nutrition, and industrial applications." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        (function () {
+            const originalWarn = console.warn;
+            console.warn = function (...args) {
+                const msg = args[0];
+                if (msg && typeof msg === 'string') {
+                    if (msg.includes('cdn.tailwindcss.com') ||
+                        msg.includes('should not be used in production') ||
+                        msg.includes('Tailwind CSS')) {
+                        return;
+                    }
+                }
+                originalWarn.apply(console, args);
+            };
+        })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial'] },
+                    colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+                    boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+        <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+                    <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co.,
+                        Ltd.</span>
+                </a>
+                <a href="index.html" class="text-sm text-brand-blue hover:text-brand-green"
+                    data-i18n="products.backHome">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 88px;">
+        <section class="py-12 sm:py-16">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <!-- Header Image -->
+                <div class="rounded-2xl overflow-hidden mb-8 shadow-brand bg-gray-100">
+                    <img src="assets/images/about-header.png" alt="About ABC Chemical"
+                        class="w-full h-auto object-contain">
+                </div>
+
+                <!-- Title Section -->
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3" data-i18n="companyOverview.title">
+                        Company Overview</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="companyOverview.subtitle">ABC Chemical
+                        Co., Ltd. — Global Leader in NCN Chemical Materials</p>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <p data-i18n="companyOverview.p1">ABC Chemical Co., Ltd. is a global supplier of high-purity
+                            nitrogen-carbon-nitrogen (NCN) chemical materials...</p>
+                        <p data-i18n="companyOverview.p2">Backed by decades of manufacturing excellence, ABC Chemical
+                            integrates advanced process technology...</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto mx-auto mb-4" />
+                <p class="text-sm">&copy; 2025 ABC Chemical Co., Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>

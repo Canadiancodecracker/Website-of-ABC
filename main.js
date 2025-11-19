@@ -180,6 +180,14 @@ const T = {
         s3: "Global supply chain and 120+ distribution partners"
       }
     },
+    companyOverview: {
+      title: "Company Overview",
+      subtitle: "ABC Chemical Co., Ltd. — Global Leader in NCN Chemical Materials",
+      p1: "ABC Chemical Co., Ltd. is a global supplier of high-purity nitrogen-carbon-nitrogen (NCN) chemical materials, specializing in calcium cyanamide, dicyandiamide, creatine monohydrate, guanidinoacetic acid, cyanamide derivatives, and customized fine chemicals. With strong expertise in production, quality assurance, and technical innovation, we serve customers across agriculture, pharmaceuticals, nutrition, metallurgy, industrial manufacturing, coatings, electronics, and environmental applications.",
+      p2: "Backed by decades of manufacturing excellence, ABC Chemical integrates advanced process technology, automated production lines, and rigorous QC/QA systems to ensure consistent product quality and supply reliability. Our operations follow international management standards, including ISO 9001, ISO 14001, and ISO 45001, ensuring safety, sustainability, and compliance at every step.",
+      p3: "Today, our products are exported to 50+ countries, supported by a global network of distributors and logistics partners. Our commitment to innovation and performance enables us to help customers enhance productivity, reduce costs, and develop next-generation materials for emerging applications.",
+      p4: "At ABC Chemical, we believe in reliable chemistry, responsible manufacturing, and long-term partnerships. Our mission is to provide advanced chemical solutions that create value for global industries and contribute to a sustainable future."
+    },
     agri: {
       intro: "ABC Chemical Co., Ltd. supplies high-purity calcium cyanamide and specialty nitrogen-carbon materials designed to improve crop nutrition, soil quality, and long-term agricultural sustainability. Our technology is engineered to maximize nitrogen use efficiency (NUE), enhance soil structure, and support balanced fertilization programs across diverse climates and crop systems.",
       benefits: {
@@ -546,6 +554,14 @@ const T = {
         s2: "ISO 认证的质量、环境和安全体系",
         s3: "全球供应链和 120+ 分销合作伙伴"
       }
+    },
+    companyOverview: {
+      title: "公司概况",
+      subtitle: "ABC Chemical Co., Ltd. — 全球领先的 NCN 系列精细化学品供应商",
+      p1: "ABC Chemical Co., Ltd. 是全球领先的高纯度 NCN（氮-碳-氮）系列精细化学品供应商，产品覆盖 石灰氮、双氰胺、肌酸一水合物、胍基乙酸、单氰胺衍生物、特种定制化学品 等核心领域。我们服务于 农业、医药与营养品、金属冶炼、工业制造、树脂固化、染料助剂、电子材料以及环保应用 等多个行业。",
+      p2: "依托多年生产经验，公司建立了 自动化连续反应系统、精密结晶与干燥技术、严格的 QC/QA 管控流程，并全面通过 ISO 9001（质量）、ISO 14001（环境）、ISO 45001（职业健康安全） 管理体系认证，确保产品的稳定性、安全性及可持续性。",
+      p3: "ABC Chemical 拥有快速增长的海外市场布局，目前产品已远销 全球 50+ 国家和地区，并建立了完善的国际分销网络与供应链体系，为客户提供稳定、及时、灵活的全球交付能力。",
+      p4: "我们始终坚持 可靠化学、责任制造、创新驱动和长期合作 的发展理念，致力于为全球客户提供高性能、可持续、高附加值的化学品解决方案，与合作伙伴共同推动行业进步与未来科技发展。"
     },
     agri: {
       intro: "ABC化工有限公司提供高纯度石灰氮及特种氮碳材料，用于改善作物营养、提升土壤质量，并满足现代农业对可持续性的需求。我们的产品旨在提高氮肥利用率（NUE）、改善土壤结构，并支持不同地区与作物体系的科学施肥方案。",
