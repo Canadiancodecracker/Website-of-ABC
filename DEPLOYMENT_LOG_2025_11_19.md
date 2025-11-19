@@ -78,5 +78,30 @@
 ### 2. Verification
 - [x] **Homepage:** "View Full Specifications" link translates correctly.
 - [x] **Product Page:** All headers, labels, and content values translate correctly when switching languages.
+
+---
+
+## 📝 UPDATE: DICYANDIAMIDE (DCD) ADDITION
+**Time:** 14:56 EST
+
+### 1. New Content Implementation
+- **File:** `cyanamide-derivatives.html`
+  - Added a dedicated section for "Dicyandiamide (DCD)".
+  - Included:
+    - **Header:** Title and Description.
+    - **Formula:** Display card for C₂H₄N₄.
+    - **Basic Info:** Chemical Name, CAS (461-58-5), MW (84.08).
+    - **Physical Properties:** Appearance, Density, Melting Point.
+    - **Detailed Specs:** Solubility, Stability, Structural Formula.
+  - All content is fully localized with `data-i18n` attributes.
+
+- **File:** `main.js`
+  - Added `dcd` object to `products.p2` in both English and Chinese dictionaries.
+  - Defined all necessary translation keys for the new section.
+
+### 2. Verification
+- [x] **Content:** DCD section appears correctly on the Cyanamide Derivatives page.
+- [x] **Localization:** English and Chinese translations are present and linked.
 - [x] **Git Status:** Clean, all changes pushed to `origin/main`.
+
 
