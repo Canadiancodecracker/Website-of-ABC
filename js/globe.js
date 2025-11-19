@@ -37,24 +37,24 @@
     let rotation = 0;
     const rotationSpeed = 0.003;
 
-    // Cloudflare-inspired color palette - BLUE ON WHITE THEME
+    // Cloudflare-inspired color palette - VIBRANT BLUE ON WHITE
     const colors = {
       sphere: {
-        base: '#ffffff',       // White base
-        gradient1: '#f0f9ff',  // Very light blue (Tailwind sky-50)
-        gradient2: '#e0f2fe',  // Light blue (Tailwind sky-100)
-        gradient3: '#bae6fd',  // Medium light blue (Tailwind sky-200)
+        base: 'rgba(255, 255, 255, 0.1)',       // Almost transparent base
+        gradient1: 'rgba(240, 249, 255, 0.4)',  // Very light blue transparent
+        gradient2: 'rgba(224, 242, 254, 0.3)',  // Light blue transparent
+        gradient3: 'rgba(186, 230, 253, 0.2)',  // Medium light blue transparent
       },
       map: {
         continents: '#3b82f6',  // Bright Blue (Tailwind blue-500)
         continentsAlt: '#60a5fa', // Lighter Blue (Tailwind blue-400)
-        borders: 'rgba(255, 255, 255, 0.5)', // White borders
+        borders: 'rgba(255, 255, 255, 0.8)', // Strong white borders
       },
-      grid: 'rgba(14, 60, 117, 0.08)', // Subtle dark blue grid
-      glow: 'rgba(37, 99, 235, 0.1)',  // Subtle blue glow
-      markers: '#0E3C75',      // Dark Blue for markers
-      connections: 'rgba(59, 130, 246, 0.2)', // Blue connections
-      hubConnections: 'rgba(37, 99, 235, 0.3)', // Brighter blue for hub lines
+      grid: 'rgba(59, 130, 246, 0.15)', // Distinct light blue grid
+      glow: 'rgba(59, 130, 246, 0.05)',  // Very subtle blue glow
+      markers: '#1e3a8a',      // Deep Blue for markers (Tailwind blue-900)
+      connections: 'rgba(59, 130, 246, 0.3)', // Blue connections
+      hubConnections: 'rgba(37, 99, 235, 0.4)', // Brighter blue for hub lines
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -214,10 +214,10 @@
         radius
       );
 
-      gradient.addColorStop(0, colors.sphere.gradient3);
-      gradient.addColorStop(0.4, colors.sphere.gradient2);
-      gradient.addColorStop(0.7, colors.sphere.gradient1);
-      gradient.addColorStop(1, colors.sphere.base);
+      gradient.addColorStop(0, colors.sphere.base);
+      gradient.addColorStop(0.4, colors.sphere.gradient1);
+      gradient.addColorStop(0.8, colors.sphere.gradient2);
+      gradient.addColorStop(1, colors.sphere.gradient3);
 
       ctx.save();
       ctx.beginPath();
@@ -226,22 +226,7 @@
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Subtle inner shadow
-      const shadowGradient = ctx.createRadialGradient(
-        centerX + radius * 0.35,
-        centerY + radius * 0.2,
-        radius * 0.1,
-        centerX,
-        centerY,
-        radius
-      );
-      shadowGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      shadowGradient.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
-
-      ctx.globalCompositeOperation = 'multiply';
-      ctx.fillStyle = shadowGradient;
-      ctx.fill();
-      ctx.globalCompositeOperation = 'source-over';
+      // Remove inner shadow for cleaner look
 
       ctx.restore();
     }
@@ -278,22 +263,18 @@
           }
           ctx.closePath();
 
-          // Gradient fill based on depth - MUCH MORE VISIBLE
-          const avgDepth = points.reduce((sum, p) => sum + p.depth, 0) / points.length;
-          const opacity = Math.max(0.7, Math.min(0.95, (avgDepth + radius) / radius)); // Increased from 0.4-0.9 to 0.7-0.95
+          // Gradient fill for continents - VIBRANT BLUE GRADIENT
+          const continentGradient = ctx.createLinearGradient(centerX, centerY - radius, centerX, centerY);
+          continentGradient.addColorStop(0, '#60a5fa'); // Light blue top
+          continentGradient.addColorStop(1, '#2563eb'); // Darker blue bottom
 
-          // Brighter, more visible continents
-          ctx.fillStyle = colors.map.continents;
-          ctx.globalAlpha = opacity * 0.95; // Increased from 0.85 to 0.95
+          ctx.fillStyle = continentGradient;
           ctx.fill();
 
           // THICKER, MORE VISIBLE borders
           ctx.strokeStyle = colors.map.borders;
-          ctx.lineWidth = 1.5; // Increased from 0.5 to 1.5
-          ctx.globalAlpha = opacity * 0.8; // Increased from 0.5 to 0.8
+          ctx.lineWidth = 1.5;
           ctx.stroke();
-
-          ctx.globalAlpha = 1.0;
         }
       });
 
@@ -500,6 +481,13 @@
       drawGridLines();            // Subtle grid
       drawRadialConnections();    // Hub connection lines
       drawMarkers(time);          // Location markers
+
+      // White fade at the bottom (Cloudflare style)
+      const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.8, 0, canvas.height);
+      fadeGradient.addColorStop(0, 'rgba(255, 255, 255, 0)');
+      fadeGradient.addColorStop(1, 'rgba(255, 255, 255, 1)');
+      ctx.fillStyle = fadeGradient;
+      ctx.fillRect(0, canvas.height * 0.8, canvas.width, canvas.height * 0.2);
 
       // Update rotation
       rotation += rotationSpeed;
