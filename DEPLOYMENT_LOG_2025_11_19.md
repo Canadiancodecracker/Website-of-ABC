@@ -56,3 +56,27 @@
 - **Commit:** (Latest commit hash)
 
 **Signed off by:** Antigravity AI
+
+---
+
+## 📝 UPDATE: CHINESE LOCALIZATION CONSISTENCY
+**Time:** 14:47 EST
+
+### 1. Localization Implementation
+- **File:** `main.js`
+  - Added comprehensive translation keys for `products.p2` (Cyanamide Derivatives) in both `en` and `zh` dictionaries.
+  - Included keys for: `chemicalNameValue`, `appearanceValue`, `stabilityValue`, `solubilityValue`, `app1`-`app4`, `pack1`-`pack2`, `storageValue`, `safetyValue`.
+  - Added common UI keys: `appearanceLabel`, `viewSpecs`, `specSheet`, `basicInfo`, `chemicalName`, `chineseName`, `cas`, `mw`, `physicalProps`, `appearance`, `stability`, `solubility`, `specGrades`, `item`, `solution30`, `solution50`, `cyanamideContent`, `dicyandiamide`, `stabilizer`, `phValue`, `packaging`, `storageSafety`, `storage`, `safety`, `requestQuote`, `contactSalesDesc`, `viewAll`, `backHome`.
+
+- **File:** `cyanamide-derivatives.html`
+  - Replaced all static English text with `data-i18n` attributes.
+  - Verified structure matches `main.js` keys.
+
+- **File:** `index.html`
+  - Added `data-i18n="products.viewSpecs"` to the "View Full Specifications" link.
+
+### 2. Verification
+- [x] **Homepage:** "View Full Specifications" link translates correctly.
+- [x] **Product Page:** All headers, labels, and content values translate correctly when switching languages.
+- [x] **Git Status:** Clean, all changes pushed to `origin/main`.
+
