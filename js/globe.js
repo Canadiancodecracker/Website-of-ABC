@@ -1,5 +1,5 @@
 // Cloudflare-style Half-Sphere Globe with World Map - ABC Chemical
-(function() {
+(function () {
   'use strict';
 
   // Initialize globe when DOM is ready
@@ -16,7 +16,7 @@
     // Create canvas for the half-sphere
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    
+
     // Set canvas size - WIDER GLOBE (increased from 600 to 900)
     const size = Math.min(900, window.innerWidth - 40);
     canvas.width = size;
@@ -25,7 +25,7 @@
     canvas.style.height = 'auto';
     canvas.style.display = 'block';
     canvas.style.margin = '0 auto';
-    
+
     container.innerHTML = '';
     container.appendChild(canvas);
 
@@ -33,28 +33,28 @@
     const centerX = canvas.width / 2;
     const centerY = canvas.height * 0.88; // Position sphere lower to show top hemisphere
     const radius = Math.min(canvas.width, canvas.height) * 0.52; // Increased from 0.42 to 0.52
-    
+
     let rotation = 0;
     const rotationSpeed = 0.003;
 
-    // Cloudflare-inspired color palette - ENHANCED FOR VISIBILITY
+    // Cloudflare-inspired color palette - ORANGE THEME
     const colors = {
       sphere: {
-        base: '#0a1e3d',       // Very dark blue
-        gradient1: '#1a4d8f',  // Medium blue
-        gradient2: '#2563eb',  // Brighter blue
-        gradient3: '#3b82f6',  // Light blue
+        base: '#ffffff',       // White base
+        gradient1: '#fff5eb',  // Very light orange
+        gradient2: '#ffe0c2',  // Light orange
+        gradient3: '#ffd1a3',  // Medium light orange
       },
       map: {
-        continents: '#ff9f57',  // Brighter orange for landmass
-        continentsAlt: '#ffb87a', // Lighter orange
-        borders: 'rgba(255, 255, 255, 0.3)', // MORE VISIBLE white borders
+        continents: '#f97316',  // Bright Orange (Tailwind orange-500)
+        continentsAlt: '#fb923c', // Lighter Orange (Tailwind orange-400)
+        borders: 'rgba(255, 255, 255, 0.4)', // White borders
       },
-      grid: 'rgba(255, 255, 255, 0.05)', // Very subtle grid
-      glow: 'rgba(59, 130, 246, 0.3)',
-      markers: '#ffd700',      // Gold for markers
-      connections: 'rgba(255, 159, 87, 0.15)', // Orange connections
-      hubConnections: 'rgba(255, 159, 87, 0.25)', // Brighter for hub lines
+      grid: 'rgba(249, 115, 22, 0.15)', // Subtle orange grid
+      glow: 'rgba(249, 115, 22, 0.1)',  // Subtle orange glow
+      markers: '#ea580c',      // Darker orange for markers (Tailwind orange-600)
+      connections: 'rgba(249, 115, 22, 0.2)', // Orange connections
+      hubConnections: 'rgba(249, 115, 22, 0.3)', // Brighter for hub lines
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -126,13 +126,13 @@
         { lat: 0.95, lon: -1.45, size: 0.8, pulse: 0.45, hub: false },  // Atlanta
         { lat: 0.85, lon: -1.48, size: 0.85, pulse: 0.5, hub: false },  // Miami
         { lat: 1.0, lon: -1.95, size: 0.75, pulse: 0.55, hub: false },  // Denver
-        
+
         // South America (4 locations)
         { lat: 0.35, lon: -1.05, size: 0.8, pulse: 0.6, hub: false },   // São Paulo
         { lat: 0.25, lon: -1.1, size: 0.75, pulse: 0.65, hub: false },  // Buenos Aires
         { lat: 0.4, lon: -1.3, size: 0.7, pulse: 0.7, hub: false },     // Lima
         { lat: 0.45, lon: -1.25, size: 0.7, pulse: 0.75, hub: false },  // Bogotá
-        
+
         // Europe (14 locations)
         { lat: 1.05, lon: -0.05, size: 1.0, pulse: 0, hub: true },      // London (HUB)
         { lat: 0.95, lon: 0.05, size: 0.9, pulse: 0.05, hub: false },   // Paris
@@ -148,7 +148,7 @@
         { lat: 1.0, lon: 0.7, size: 0.85, pulse: 0.55, hub: false },    // Moscow
         { lat: 0.9, lon: 0.28, size: 0.75, pulse: 0.6, hub: false },    // Zurich
         { lat: 0.88, lon: 0.48, size: 0.75, pulse: 0.65, hub: false },  // Bucharest
-        
+
         // Middle East & Africa (6 locations)
         { lat: 0.75, lon: 0.85, size: 0.8, pulse: 0.7, hub: false },    // Dubai
         { lat: 0.7, lon: 0.72, size: 0.75, pulse: 0.75, hub: false },   // Riyadh
@@ -156,7 +156,7 @@
         { lat: 0.15, lon: 0.55, size: 0.75, pulse: 0.85, hub: false },  // Johannesburg
         { lat: 0.2, lon: 0.5, size: 0.7, pulse: 0.9, hub: false },      // Cape Town
         { lat: 0.45, lon: 0.7, size: 0.7, pulse: 0.95, hub: false },    // Nairobi
-        
+
         // Asia-Pacific (16 locations)
         { lat: 0.7, lon: 0.95, size: 0.85, pulse: 0, hub: false },      // Mumbai
         { lat: 0.6, lon: 1.05, size: 0.8, pulse: 0.05, hub: false },    // Bangalore
@@ -184,15 +184,15 @@
     function project3D(lat, lon, r = radius) {
       const phi = lat;
       const theta = lon + rotation;
-      
+
       const x = r * Math.sin(phi) * Math.cos(theta);
       const z = r * Math.sin(phi) * Math.sin(theta);
       const y = -r * Math.cos(phi);
-      
+
       // Perspective projection
       const perspective = 800;
       const factor = perspective / (perspective + z);
-      
+
       return {
         x: centerX + x * factor,
         y: centerY + y * factor,
@@ -206,14 +206,14 @@
     // Draw the base sphere with gradient
     function drawSphere() {
       const gradient = ctx.createRadialGradient(
-        centerX - radius * 0.3, 
-        centerY - radius * 0.4, 
+        centerX - radius * 0.3,
+        centerY - radius * 0.4,
         radius * 0.1,
-        centerX, 
-        centerY, 
+        centerX,
+        centerY,
         radius
       );
-      
+
       gradient.addColorStop(0, colors.sphere.gradient3);
       gradient.addColorStop(0.4, colors.sphere.gradient2);
       gradient.addColorStop(0.7, colors.sphere.gradient1);
@@ -237,19 +237,19 @@
       );
       shadowGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
       shadowGradient.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
-      
+
       ctx.globalCompositeOperation = 'multiply';
       ctx.fillStyle = shadowGradient;
       ctx.fill();
       ctx.globalCompositeOperation = 'source-over';
-      
+
       ctx.restore();
     }
 
     // Draw world map continents on the sphere
     function drawWorldMap() {
       ctx.save();
-      
+
       // Create clipping path for hemisphere
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, Math.PI, 0, false);
@@ -259,7 +259,7 @@
       Object.keys(worldMapData).forEach((continentName, index) => {
         const continent = worldMapData[continentName];
         const points = [];
-        
+
         // Project all points
         continent.forEach(coord => {
           const [lat, lon] = coord;
@@ -268,7 +268,7 @@
             points.push(proj);
           }
         });
-        
+
         if (points.length > 2) {
           // Draw filled continent
           ctx.beginPath();
@@ -277,26 +277,26 @@
             ctx.lineTo(points[i].x, points[i].y);
           }
           ctx.closePath();
-          
+
           // Gradient fill based on depth - MUCH MORE VISIBLE
           const avgDepth = points.reduce((sum, p) => sum + p.depth, 0) / points.length;
           const opacity = Math.max(0.7, Math.min(0.95, (avgDepth + radius) / radius)); // Increased from 0.4-0.9 to 0.7-0.95
-          
+
           // Brighter, more visible continents
           ctx.fillStyle = colors.map.continents;
           ctx.globalAlpha = opacity * 0.95; // Increased from 0.85 to 0.95
           ctx.fill();
-          
+
           // THICKER, MORE VISIBLE borders
           ctx.strokeStyle = colors.map.borders;
           ctx.lineWidth = 1.5; // Increased from 0.5 to 1.5
           ctx.globalAlpha = opacity * 0.8; // Increased from 0.5 to 0.8
           ctx.stroke();
-          
+
           ctx.globalAlpha = 1.0;
         }
       });
-      
+
       ctx.restore();
     }
 
@@ -312,7 +312,7 @@
         radius * 1.2
       );
       glowGradient.addColorStop(0, colors.glow);
-      glowGradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      glowGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius * 1.2, Math.PI, 0, false);
@@ -334,19 +334,19 @@
         const angle = (Math.PI * i) / 12;
         const y = -Math.cos(angle) * radius;
         const r = Math.sin(angle) * radius;
-        
+
         ctx.beginPath();
         for (let j = 0; j <= 180; j += 3) {
           const theta = (j * Math.PI) / 180;
           const x = Math.cos(theta + rotation) * r;
           const z = Math.sin(theta + rotation) * r;
-          
+
           if (z > -r * 0.3 && y <= 0) {
             const perspective = 800;
             const factor = perspective / (perspective + z);
             const px = centerX + x * factor;
             const py = centerY + y * factor;
-            
+
             if (j === 0) ctx.moveTo(px, py);
             else ctx.lineTo(px, py);
           }
@@ -358,11 +358,11 @@
       for (let i = 0; i < 16; i++) {
         const lonAngle = (Math.PI * 2 * i) / 16;
         ctx.beginPath();
-        
+
         for (let j = 0; j <= 90; j += 3) {
           const lat = (j * Math.PI) / 180;
           const proj = project3D(lat, lonAngle);
-          
+
           if (proj.visible) {
             if (j === 0) ctx.moveTo(proj.x, proj.y);
             else ctx.lineTo(proj.x, proj.y);
@@ -383,32 +383,32 @@
 
       hubMarkers.forEach(hub => {
         const hubProj = project3D(hub.lat, hub.lon);
-        
+
         if (hubProj.visible) {
           markers.forEach(marker => {
             if (!marker.hub) {
               const markerProj = project3D(marker.lat, marker.lon);
-              
+
               if (markerProj.visible) {
                 // Calculate distance
                 const distance = Math.sqrt(
-                  Math.pow(marker.lat - hub.lat, 2) + 
+                  Math.pow(marker.lat - hub.lat, 2) +
                   Math.pow(marker.lon - hub.lon, 2)
                 );
-                
+
                 // Only connect nearby markers (within region)
                 if (distance < 0.6) {
                   const opacity = Math.max(0.1, 0.3 - distance * 0.3);
                   ctx.strokeStyle = `rgba(255, 159, 87, ${opacity})`;
-                  
+
                   ctx.beginPath();
                   ctx.moveTo(hubProj.x, hubProj.y);
-                  
+
                   // Slightly curved line
                   const midX = (hubProj.x + markerProj.x) / 2;
                   const midY = (hubProj.y + markerProj.y) / 2 - 15;
                   ctx.quadraticCurveTo(midX, midY, markerProj.x, markerProj.y);
-                  
+
                   ctx.stroke();
                 }
               }
@@ -434,13 +434,13 @@
 
       sortedMarkers.forEach(marker => {
         const proj = project3D(marker.lat, marker.lon);
-        
+
         if (proj.visible) {
           // Pulsing animation
           const pulse = Math.sin(time * 2 + marker.pulse * Math.PI * 2) * 0.25 + 1;
           const baseSize = marker.hub ? 3.5 : 2.8;
           const size = baseSize * marker.size * proj.factor * pulse;
-          
+
           // Outer glow
           const glowSize = marker.hub ? size * 4 : size * 3;
           const glowGradient = ctx.createRadialGradient(
@@ -448,31 +448,31 @@
             proj.x, proj.y, glowSize
           );
           glowGradient.addColorStop(0, colors.markers);
-          glowGradient.addColorStop(1, 'rgba(255, 215, 0, 0)');
-          
+          glowGradient.addColorStop(1, 'rgba(249, 115, 22, 0)'); // Orange transparent
+
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, glowSize, 0, Math.PI * 2);
           ctx.fillStyle = glowGradient;
           ctx.fill();
-          
+
           // Main marker
           ctx.beginPath();
           ctx.arc(proj.x, proj.y, size, 0, Math.PI * 2);
-          
-          // Hub markers are brighter
+
+          // Hub markers are darker/distinct
           if (marker.hub) {
-            ctx.fillStyle = '#ffeb3b'; // Brighter yellow for hubs
-            ctx.shadowColor = '#ffeb3b';
+            ctx.fillStyle = '#c2410c'; // Dark orange/red for hubs (Tailwind orange-700)
+            ctx.shadowColor = '#c2410c';
             ctx.shadowBlur = 12;
           } else {
-            ctx.fillStyle = colors.markers;
+            ctx.fillStyle = colors.markers; // Standard marker orange
             ctx.shadowColor = colors.markers;
             ctx.shadowBlur = 8;
           }
-          
+
           ctx.fill();
           ctx.shadowBlur = 0;
-          
+
           // White center dot for hub markers
           if (marker.hub) {
             ctx.beginPath();
@@ -489,10 +489,10 @@
     // Animation loop
     function animate() {
       const time = Date.now() / 1000;
-      
+
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Render order (back to front)
       drawGlow();                 // Outer glow
       drawSphere();               // Blue base sphere
@@ -500,10 +500,10 @@
       drawGridLines();            // Subtle grid
       drawRadialConnections();    // Hub connection lines
       drawMarkers(time);          // Location markers
-      
+
       // Update rotation
       rotation += rotationSpeed;
-      
+
       // Continue animation
       requestAnimationFrame(animate);
     }
