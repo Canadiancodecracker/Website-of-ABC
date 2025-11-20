@@ -55,15 +55,52 @@
       </p>
     </div>
 
-    <!-- Main Gallery Image -->
+    <!-- Main Gallery Images Grid -->
     <div class="mb-12">
-      <div class="rounded-2xl overflow-hidden shadow-brand bg-white p-4">
-        <img src="assets/images/gallery/factory-overview.jpg" alt="ABC Chemical Factory Overview"
-          class="w-full h-auto rounded-lg" />
+      <!-- Top Row: 3 Images -->
+      <div class="relative mb-8">
+        <!-- Decorative autumn leaves background -->
+        <div class="absolute inset-0 pointer-events-none"
+          style="background: linear-gradient(135deg, rgba(255,140,0,0.1) 0%, rgba(255,215,0,0.05) 50%, rgba(255,140,0,0.1) 100%); border-radius: 24px;">
+        </div>
+
+        <div class="relative bg-gradient-to-r from-orange-100 via-amber-50 to-orange-100 rounded-3xl p-8 shadow-brand">
+          <!-- Autumn leaf decorations - top left -->
+          <div class="absolute top-4 left-4 text-6xl opacity-80">🍂</div>
+          <div class="absolute top-8 left-16 text-4xl opacity-70">🍁</div>
+
+          <!-- Autumn leaf decorations - top right -->
+          <div class="absolute top-4 right-4 text-6xl opacity-80">🍁</div>
+          <div class="absolute top-8 right-16 text-5xl opacity-70">🍂</div>
+
+          <!-- Autumn leaf decorations - bottom -->
+          <div class="absolute bottom-4 left-1/4 text-5xl opacity-75">🍁</div>
+          <div class="absolute bottom-6 right-1/4 text-5xl opacity-75">🍂</div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <!-- Image 1: Raw Material Area -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="Raw Material Area"
+                class="w-full h-64 object-cover" />
+            </div>
+
+            <!-- Image 2: Reaction Section -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="Reaction Section"
+                class="w-full h-64 object-cover" />
+            </div>
+
+            <!-- Image 3: Drying & Packaging -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="Drying & Packaging System"
+                class="w-full h-64 object-cover" />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Chinese Subtitles Section (only visible when Chinese is selected) -->
-      <div id="chinese-subtitles" class="mt-8 hidden">
+      <!-- Chinese Subtitles for Top Row (only visible when Chinese is selected) -->
+      <div id="chinese-subtitles-top" class="mb-8 hidden">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Row 1: Top 3 sections -->
           <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
@@ -99,8 +136,53 @@
             <p class="text-sm text-gray-600">流化床干燥器、全自动包装线</p>
           </div>
         </div>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+      <!-- Bottom Row: 3 Images -->
+      <div class="relative">
+        <!-- Decorative autumn leaves background -->
+        <div class="absolute inset-0 pointer-events-none"
+          style="background: linear-gradient(135deg, rgba(255,140,0,0.1) 0%, rgba(255,215,0,0.05) 50%, rgba(255,140,0,0.1) 100%); border-radius: 24px;">
+        </div>
+
+        <div class="relative bg-gradient-to-r from-orange-100 via-amber-50 to-orange-100 rounded-3xl p-8 shadow-brand">
+          <!-- Autumn leaf decorations - top left -->
+          <div class="absolute top-4 left-4 text-6xl opacity-80">🍁</div>
+          <div class="absolute top-8 left-16 text-4xl opacity-70">🍂</div>
+
+          <!-- Autumn leaf decorations - top right -->
+          <div class="absolute top-4 right-4 text-6xl opacity-80">🍂</div>
+          <div class="absolute top-8 right-16 text-5xl opacity-70">🍁</div>
+
+          <!-- Autumn leaf decorations - bottom -->
+          <div class="absolute bottom-4 left-1/4 text-5xl opacity-75">🍂</div>
+          <div class="absolute bottom-6 right-1/4 text-5xl opacity-75">🍁</div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+            <!-- Image 4: EHS Safety -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="EHS Safety Facilities"
+                class="w-full h-64 object-cover" />
+            </div>
+
+            <!-- Image 5: Warehouse & Logistics -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="Warehouse & Logistics"
+                class="w-full h-64 object-cover" />
+            </div>
+
+            <!-- Image 6: QC Lab -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-4 border-amber-200">
+              <img src="assets/images/gallery/factory-overview.jpg" alt="QC & QA Lab"
+                class="w-full h-64 object-cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chinese Subtitles for Bottom Row (only visible when Chinese is selected) -->
+      <div id="chinese-subtitles-bottom" class="mt-8 hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Row 2: Bottom 3 sections -->
           <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-200">
             <div class="flex items-center gap-2 mb-2">
@@ -232,13 +314,22 @@
     // Toggle Chinese subtitles based on language
     function toggleChineseSubtitles() {
       const lang = localStorage.getItem('lang') || 'en';
-      const chineseSubtitles = document.getElementById('chinese-subtitles');
+      const chineseSubtitlesTop = document.getElementById('chinese-subtitles-top');
+      const chineseSubtitlesBottom = document.getElementById('chinese-subtitles-bottom');
 
-      if (chineseSubtitles) {
+      if (chineseSubtitlesTop) {
         if (lang === 'zh') {
-          chineseSubtitles.classList.remove('hidden');
+          chineseSubtitlesTop.classList.remove('hidden');
         } else {
-          chineseSubtitles.classList.add('hidden');
+          chineseSubtitlesTop.classList.add('hidden');
+        }
+      }
+
+      if (chineseSubtitlesBottom) {
+        if (lang === 'zh') {
+          chineseSubtitlesBottom.classList.remove('hidden');
+        } else {
+          chineseSubtitlesBottom.classList.add('hidden');
         }
       }
     }
