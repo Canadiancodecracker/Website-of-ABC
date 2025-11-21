@@ -1,57 +1,15 @@
-# 🚀 DEPLOYMENT LOG - November 21, 2025
+# Deployment Log - 2025-11-21
 
-**Date:** November 21, 2025
-**Time:** 17:26 EST
-**Status:** ✅ **DEPLOYED AND VERIFIED**
+## Changes
+- Removed duplicated "About Us" content from `about-us.html`.
+- Specifically, removed the header image block which contained a visual duplication of the text content found in the main section.
+- **Update**: Restored the header image section using a newly generated clean landscape image (`assets/images/about-header-clean.png`) without the text overlay, as per user request.
 
----
+## Verification
+- Checked `about-us.html` to ensure the header image div is removed.
+- Verified that the main "About Us" text content remains intact under the "About Us" heading.
+- **Update**: Verified `about-us.html` now includes the new clean image.
 
-## 📝 CHANGES DEPLOYED
-
-### 1. Dedicated Specification Pages
-- **File:** `specs-cyanamide.html`
-  - Created a dedicated, printable specification sheet for Cyanamide (Aqueous Solution).
-  - Includes General Information, Technical Specifications (30% & 50% solutions), Storage, and Packaging details.
-- **File:** `specs-dicyandiamide.html`
-  - Created a dedicated, printable specification sheet for Dicyandiamide (DCD).
-  - Includes General Information, Physical Properties, Detailed Specs, and Applications.
-
-### 2. Updated Product Page (`cyanamide-derivatives.html`)
-- **Section:** Product Specification Sheet
-- **Change:** Added direct links to the new specification pages.
-- **Links:**
-  - "Cyanamide Specification" -> `specs-cyanamide.html`
-  - "Dicyandiamide Specification" -> `specs-dicyandiamide.html`
-
-### 3. Updated Localization (`main.js`)
-- **Dictionary:** Added `specLinkCyanamide` and `specLinkDCD` keys to `products.p2`.
-- **Languages:** Updated both English (`en`) and Chinese (`zh`) dictionaries to ensure links are properly localized.
-
----
-
-## 🔍 VERIFICATION CHECKLIST
-
-### Git Status
-- [x] All changes staged.
-- [x] Commit message: "Add dedicated specification pages for Cyanamide and Dicyandiamide".
-- [x] Pushed to `origin/main`.
-- [x] Branch is up-to-date.
-
-### Code Quality
-- [x] `specs-cyanamide.html`: Valid HTML, Tailwind styling, Print button functional.
-- [x] `specs-dicyandiamide.html`: Valid HTML, Tailwind styling, Print button functional.
-- [x] `cyanamide-derivatives.html`: Links added and styled correctly.
-- [x] `main.js`: Translation keys added, JSON structure valid.
-
-### Deployment
-- [x] Changes pushed to GitHub.
-- [x] Live site should auto-update shortly.
-
----
-
-## 🔗 LINKS
-- **Repo:** https://github.com/Canadiancodecracker/Website-of-ABC
-- **Cyanamide Spec:** `specs-cyanamide.html`
-- **DCD Spec:** `specs-dicyandiamide.html`
-
-**Signed off by:** Antigravity AI
+## Status
+- [x] Changes applied
+- [x] Committed and Pushed to main branch
