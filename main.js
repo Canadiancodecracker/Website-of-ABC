@@ -124,6 +124,8 @@ const T = {
       p2: {
         title: "Cyanamide Derivatives",
         desc: "Cyanamide & Dicyandiamide for controlled reactivity and high‑performance curing systems.",
+        specLinkCyanamide: "Cyanamide Specification",
+        specLinkDCD: "Dicyandiamide Specification",
         fullName: "Cyanamide (Aqueous Solution)",
         synonyms: "Hydrogen cyanamide, Carbamonitrile",
         cas: "420-04-2",
@@ -499,6 +501,8 @@ const T = {
       p2: {
         title: "氰胺衍生物",
         desc: "氰胺与双氰胺，具备可控反应性与高性能固化方案。",
+        specLinkCyanamide: "单氰胺规格书",
+        specLinkDCD: "双氰胺规格书",
         fullName: "单氰胺（水溶液）",
         synonyms: "氨基氰, 氰胺",
         cas: "420-04-2",
