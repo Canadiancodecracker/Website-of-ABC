@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globe Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0A1628 0%, #0E3C75 50%, #1a5490 100%);
+            min-height: 100vh;
+        }
+
+        #globe-container {
+            width: 100%;
+            max-width: 800px;
+            min-height: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Globe Rendering Test</h1>
+    <div id="globe-container"></div>
+
+    <script src="js/globe.js"></script>
+
+    <script>
+        // Additional debugging
+        window.addEventListener('load', function () {
+            console.log('Page loaded');
+            console.log('Globe container exists:', !!document.getElementById('globe-container'));
+            console.log('Globe container width:', document.getElementById('globe-container').offsetWidth);
+        });
+    </script>
+</body>
+
+</html>

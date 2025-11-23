@@ -624,22 +624,7 @@ section[id] {
   pointer-events: none;
 }
 
-#globe-container {
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: -4rem auto 0;
-  padding: 0;
-  max-width: 100%;
-  /* Allow full width */
-  overflow: hidden;
-}
-
-#globe-container canvas {
-  filter: drop-shadow(0 0 60px rgba(59, 130, 246, 0.4));
-  /* Enhanced glow */
-}
+/* Globe container styles removed - using inline Tailwind classes instead */
 
 .stat-card {
   background: #FFFFFF;
@@ -783,17 +768,6 @@ section[id] {
   transition: width 1s ease-out;
 }
 
-#globe-container {
-  min-height: 600px;
-  /* Increased for wider globe */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1000px;
-  /* Allow wider display */
-  margin: 0 auto;
-}
-
 /* Globe animation */
 @keyframes float {
 
@@ -805,10 +779,6 @@ section[id] {
   50% {
     transform: translateY(-20px);
   }
-}
-
-#globe-container .globe-wrapper {
-  animation: float 6s ease-in-out infinite;
 }
 
 /* ===== NEW GLASS-STYLE KPI CARDS ===== */
