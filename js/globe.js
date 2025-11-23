@@ -11,7 +11,20 @@
 
   function initGlobe() {
     const container = document.getElementById('globe-container');
-    if (!container) return;
+    if (!container) {
+      console.error('Globe container not found!');
+      return;
+    }
+
+    console.log('Globe container found, initializing...');
+    console.log('Container width:', container.offsetWidth);
+
+    // If container width is 0, wait and retry
+    if (container.offsetWidth === 0) {
+      console.log('Container width is 0, retrying in 100ms...');
+      setTimeout(initGlobe, 100);
+      return;
+    }
 
     // Create canvas for the half-sphere
     const canvas = document.createElement('canvas');
@@ -20,11 +33,12 @@
     // Set canvas size - Optimized for side-by-side layout
     const updateSize = () => {
       const containerWidth = container.offsetWidth;
-      const width = Math.min(800, containerWidth); // Adjusted for half-width layout
+      const width = Math.min(800, containerWidth || 600); // Fallback to 600 if containerWidth is 0
       canvas.width = width;
       canvas.height = width * 0.75; // Adjusted aspect ratio for better fit
       canvas.style.width = '100%';
       canvas.style.height = 'auto';
+      console.log('Canvas sized:', width, 'x', canvas.height);
     };
     updateSize();
 
@@ -33,6 +47,7 @@
 
     container.innerHTML = '';
     container.appendChild(canvas);
+    console.log('Canvas appended to container');
 
     // Globe configuration - Optimized for new layout
     let centerX = canvas.width / 2;
