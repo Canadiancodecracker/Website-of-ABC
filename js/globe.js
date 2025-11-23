@@ -17,11 +17,12 @@
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
-    // Set canvas size - MAX WIDTH for "Wider" look
+    // Set canvas size - Optimized for side-by-side layout
     const updateSize = () => {
-      const width = Math.min(1600, window.innerWidth); // Increased max width significantly
+      const containerWidth = container.offsetWidth;
+      const width = Math.min(800, containerWidth); // Adjusted for half-width layout
       canvas.width = width;
-      canvas.height = width * 0.6; // Aspect ratio
+      canvas.height = width * 0.75; // Adjusted aspect ratio for better fit
       canvas.style.width = '100%';
       canvas.style.height = 'auto';
     };
@@ -33,30 +34,31 @@
     container.innerHTML = '';
     container.appendChild(canvas);
 
-    // Globe configuration - WIDER DIAMETER
+    // Globe configuration - Optimized for new layout
     let centerX = canvas.width / 2;
-    let centerY = canvas.height * 0.75; // Lower center to show more top surface
-    let radius = Math.min(canvas.width, canvas.height) * 0.75; // Significantly increased radius (75% of min dimension)
+    let centerY = canvas.height * 0.6; // Centered vertically
+    let radius = Math.min(canvas.width, canvas.height) * 0.55; // Slightly smaller for better fit
+
 
     let rotation = 0;
     const rotationSpeed = 0.0015; // Slower, majestic rotation
 
-    // Dark Theme Palette - "Sales Net" Style
+    // Modern Scientific Palette - Deep Blue, Neon Cyan, White
     const colors = {
       sphere: {
-        base: 'rgba(14, 60, 117, 0.1)',       // Very transparent dark blue base
-        glossInner: 'rgba(59, 130, 246, 0.05)', // Faint blue glow inside
-        glossOuter: 'rgba(14, 60, 117, 0.9)',  // Darker edge to blend with background
-        highlight: 'rgba(255, 255, 255, 0.15)', // Subtle highlight
+        base: 'rgba(10, 22, 40, 0.3)',           // Deep blue base with transparency
+        glossInner: 'rgba(6, 182, 212, 0.08)',   // Neon cyan glow inside
+        glossOuter: 'rgba(8, 47, 73, 0.95)',     // Darker deep blue edge
+        highlight: 'rgba(255, 255, 255, 0.2)',   // White highlight
       },
       map: {
-        continents: '#1E40AF',  // Darker Blue for continents
-        shadow: 'rgba(0,0,0,0.3)',
+        continents: '#0E7490',  // Cyan-700 for continents
+        shadow: 'rgba(0,0,0,0.4)',
       },
-      grid: 'rgba(96, 165, 250, 0.4)', // Bright Blue Grid ("Sales Net")
-      markers: '#60A5FA',      // Bright Blue Markers
-      markerGlow: 'rgba(96, 165, 250, 0.6)',
-      connections: 'rgba(147, 197, 253, 0.5)', // Light Blue connections
+      grid: 'rgba(6, 182, 212, 0.5)',      // Bright neon cyan grid
+      markers: '#06B6D4',                   // Neon cyan markers
+      markerGlow: 'rgba(6, 182, 212, 0.7)',
+      connections: 'rgba(34, 211, 238, 0.6)', // Light cyan connections
     };
 
     // Simplified world map data (major continents as polygon coordinates)
@@ -426,8 +428,8 @@
 
       // Edge Fade to blend with background
       const fadeGradient = ctx.createLinearGradient(0, canvas.height * 0.7, 0, canvas.height);
-      fadeGradient.addColorStop(0, 'rgba(14, 60, 117, 0)');
-      fadeGradient.addColorStop(1, 'rgba(14, 60, 117, 1)'); // Match background color
+      fadeGradient.addColorStop(0, 'rgba(10, 22, 40, 0)');
+      fadeGradient.addColorStop(1, 'rgba(10, 22, 40, 1)'); // Match new background color
       ctx.fillStyle = fadeGradient;
       ctx.fillRect(0, canvas.height * 0.7, canvas.width, canvas.height * 0.3);
 
@@ -442,8 +444,8 @@
       resizeTimeout = setTimeout(() => {
         updateSize();
         centerX = canvas.width / 2;
-        centerY = canvas.height * 0.75;
-        radius = Math.min(canvas.width, canvas.height) * 0.75;
+        centerY = canvas.height * 0.6;
+        radius = Math.min(canvas.width, canvas.height) * 0.55;
       }, 250);
     });
 

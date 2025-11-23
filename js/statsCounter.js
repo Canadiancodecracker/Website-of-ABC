@@ -1,5 +1,5 @@
 // Animated counter for statistics
-(function() {
+(function () {
   'use strict';
 
   // Initialize counters when DOM is ready
@@ -10,8 +10,8 @@
   }
 
   function initCounters() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    
+    const statNumbers = document.querySelectorAll('.stat-number, .kpi-number');
+
     if (statNumbers.length === 0) return;
 
     // Intersection Observer to trigger animation when stats come into view
