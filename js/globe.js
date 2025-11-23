@@ -9,6 +9,9 @@
     initGlobe();
   }
 
+  let retryCount = 0;
+  const MAX_RETRIES = 20;
+
   function initGlobe() {
     const container = document.getElementById('globe-container');
     if (!container) {
@@ -16,14 +19,21 @@
       return;
     }
 
-    console.log('Globe container found, initializing...');
+    console.log('Globe container found, initializing... (attempt', retryCount + 1, ')');
     console.log('Container width:', container.offsetWidth);
+    console.log('Container parent width:', container.parentElement?.offsetWidth);
 
-    // If container width is 0, wait and retry
+    // If container width is 0, wait and retry (with limit)
     if (container.offsetWidth === 0) {
-      console.log('Container width is 0, retrying in 100ms...');
-      setTimeout(initGlobe, 100);
-      return;
+      retryCount++;
+      if (retryCount < MAX_RETRIES) {
+        console.log('Container width is 0, retrying... (', retryCount, '/', MAX_RETRIES, ')');
+        requestAnimationFrame(() => setTimeout(initGlobe, 50));
+        return;
+      } else {
+        console.warn('Max retries reached, initializing with fallback width');
+        // Continue with fallback width
+      }
     }
 
     // Create canvas for the half-sphere
@@ -33,7 +43,7 @@
     // Set canvas size - Optimized for side-by-side layout
     const updateSize = () => {
       const containerWidth = container.offsetWidth;
-      const width = Math.min(800, containerWidth || 600); // Fallback to 600 if containerWidth is 0
+      const width = containerWidth > 0 ? Math.min(800, containerWidth) : 600; // Fallback to 600
       canvas.width = width;
       canvas.height = width * 0.75; // Adjusted aspect ratio for better fit
       canvas.style.width = '100%';

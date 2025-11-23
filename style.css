@@ -971,10 +971,13 @@ section[id] {
 /* Enhanced Globe Container for new layout */
 #globe-container {
   position: relative;
+  width: 100%;
+  min-width: 300px;
   filter: drop-shadow(0 0 40px rgba(96, 165, 250, 0.3));
 }
 
 #globe-container canvas {
   max-width: 100%;
   height: auto;
+  display: block;
 }
