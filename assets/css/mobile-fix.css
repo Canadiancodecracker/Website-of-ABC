@@ -191,7 +191,7 @@ object {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
+  background: #ffffff !important;
   z-index: 9998;
   overflow-y: auto;
   padding: 24px 20px 40px;
