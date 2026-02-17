@@ -59,7 +59,9 @@ object {
   header ul.menu,
   .site-header nav>ul,
   .nav-desktop-links,
-  .mega-nav-menu {
+  .mega-nav-menu,
+  .mega-nav-lang,
+  .mega-nav-inner>nav {
     display: none !important;
   }
 

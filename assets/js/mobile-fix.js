@@ -124,6 +124,13 @@
       drawer.appendChild(link);
     });
 
+    // Language buttons
+    var langDiv = document.createElement('div');
+    langDiv.className = 'drawer-lang';
+    langDiv.style.cssText = 'padding: 12px; display: flex; gap: 10px; border-bottom: 1px solid #f0f2f5;';
+    langDiv.innerHTML = '<button onclick="if(window.applyLang) window.applyLang(\'en\')" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; background: #fff; font-size: 0.9rem;">EN</button><button onclick="if(window.applyLang) window.applyLang(\'zh\')" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; background: #fff; font-size: 0.9rem;">中文</button>';
+    drawer.appendChild(langDiv);
+
     // CTA buttons
     var ctas = document.createElement('div');
     ctas.className = 'drawer-ctas';
