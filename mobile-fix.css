@@ -1,0 +1,840 @@
+/*
+ * ============================================================
+ *  ABC CHEMICAL — mobile-fix.css
+ *  DROP-IN mobile & responsive patch.
+ *  HOW TO USE:
+ *    Add ONE line inside <head> of index.html, AFTER your
+ *    existing <link rel="stylesheet" ...> lines:
+ *
+ *    <link rel="stylesheet" href="assets/css/mobile-fix.css">
+ *
+ *  This file ONLY adds overrides — it changes nothing on
+ *  desktop (≥1024px). Safe to add without touching existing code.
+ * ============================================================
+ */
+
+/* ============================================================
+   0. GLOBAL FOUNDATION — must come first
+   ============================================================ */
+
+/* Prevent horizontal overflow on every device */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure all images & videos never break out of their container */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure viewport meta is respected (fallback via CSS) */
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   1. NAVIGATION
+   ============================================================ */
+
+/* ---- Desktop nav: keep exactly as-is ---- */
+@media (min-width: 1024px) {
+  /* no overrides needed — existing styles apply */
+}
+
+/* ---- Tablet & Mobile nav ---- */
+@media (max-width: 1023px) {
+
+  /* Hide the full desktop nav link list */
+  nav .nav-links,
+  header .nav-links,
+  .navbar .nav-links,
+  nav ul.menu,
+  header ul.menu,
+  .site-header nav > ul,
+  .nav-desktop-links {
+    display: none !important;
+  }
+
+  /* Show hamburger button if already in HTML */
+  .hamburger,
+  .menu-toggle,
+  .nav-toggle,
+  [class*="hamburger"],
+  [class*="menu-btn"] {
+    display: flex !important;
+  }
+
+  /* Make the nav bar itself a proper flex row */
+  nav,
+  header nav,
+  .navbar,
+  .site-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: inherit;
+  }
+
+  /* Logo stays left, shrinks gracefully */
+  .nav-logo,
+  .logo,
+  header .brand {
+    flex-shrink: 0;
+    max-width: 180px;
+  }
+  .nav-logo img,
+  .logo img {
+    height: 36px;
+    width: auto;
+  }
+  .nav-logo-text,
+  .logo-text {
+    font-size: 0.9rem !important;
+  }
+
+  /* Language toggle stays compact */
+  .nav-lang,
+  .lang-switcher {
+    font-size: 0.72rem;
+    padding: 3px 7px;
+  }
+}
+
+/* ---- Mobile-only: tighten further ---- */
+@media (max-width: 600px) {
+  nav,
+  header nav,
+  .navbar,
+  .site-header {
+    padding: 0 16px;
+    height: 56px;
+  }
+  .nav-logo img,
+  .logo img {
+    height: 30px;
+  }
+}
+
+/* ============================================================
+   HAMBURGER BUTTON — built-in if not already present
+   This targets a button with class .hamburger or .menu-toggle
+   ============================================================ */
+.hamburger,
+.menu-toggle {
+  display: none;           /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.hamburger span,
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.hamburger.is-open span:nth-child(1),
+.menu-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.is-open span:nth-child(2),
+.menu-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.is-open span:nth-child(3),
+.menu-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================================
+   MOBILE MENU DRAWER
+   When JS adds .mobile-menu-open to <body>, the drawer slides in.
+   The drawer must have id="mobileMenuDrawer" (injected by JS below).
+   ============================================================ */
+#mobileMenuDrawer {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 9998;
+  overflow-y: auto;
+  padding: 24px 20px 40px;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 0 24px rgba(0,0,0,0.12);
+}
+#mobileMenuDrawer.is-open {
+  transform: translateX(0);
+}
+#mobileMenuDrawer a {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 13px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+#mobileMenuDrawer a:hover {
+  background: #f5f6f8;
+}
+#mobileMenuDrawer .drawer-section-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a8499;
+  padding: 20px 12px 6px;
+}
+#mobileMenuDrawer .drawer-ctas {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#mobileMenuDrawer .drawer-ctas a {
+  border: none;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px;
+}
+#mobileMenuDrawer .drawer-ctas .btn-primary-drawer {
+  background: #e8a020;
+  color: #0b1f3a;
+}
+#mobileMenuDrawer .drawer-ctas .btn-ghost-drawer {
+  background: #f0f2f5;
+  color: #1c2333;
+}
+
+/* Body scroll lock when drawer open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* ============================================================
+   2. HERO SECTION
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Ensure hero fills viewport properly */
+  .hero,
+  section.hero,
+  #home .hero,
+  [class*="hero-section"],
+  .hero-section {
+    min-height: 100svh;       /* iOS safe viewport height */
+    min-height: 100vh;        /* fallback */
+    padding-top: 60px !important;  /* clear sticky nav */
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Hero headline — scale down with fluid sizing */
+  .hero h1,
+  .hero-title,
+  .hero .display-xl {
+    font-size: clamp(2rem, 7vw, 3.5rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Hero sub-text */
+  .hero p,
+  .hero-desc,
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+    line-height: 1.65 !important;
+  }
+
+  /* CTA button row: stack on very small screens */
+  .hero-ctas,
+  .hero .btn-row,
+  .hero .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Buttons: full width on smallest screens */
+  @media (max-width: 400px) {
+    .hero-ctas a,
+    .hero-ctas button,
+    .hero .btn-row a,
+    .hero .btn-row button {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+/* ============================================================
+   3. STATS / COUNTER SECTION
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Container */
+  .stats-section,
+  .stats-bar,
+  [class*="stats-section"],
+  .counters-section {
+    padding: 48px 20px !important;
+  }
+
+  /* Grid: 2 columns on mobile, 4 on tablet */
+  .stats-grid,
+  .counters-grid,
+  .stats-row,
+  [class*="stats-grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  @media (min-width: 600px) {
+    .stats-grid,
+    .counters-grid,
+    .stats-row,
+    [class*="stats-grid"] {
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+  }
+
+  /* Each stat item */
+  .stat-item,
+  .counter-item,
+  [class*="stat-item"] {
+    padding: 24px 12px !important;
+    text-align: center !important;
+  }
+
+  /* Big numbers */
+  .stat-number,
+  .counter-number,
+  [class*="stat-number"] {
+    font-size: clamp(1.8rem, 5vw, 2.8rem) !important;
+    line-height: 1 !important;
+  }
+
+  /* Labels */
+  .stat-label,
+  .counter-label,
+  [class*="stat-label"] {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ============================================================
+   4. PRODUCT CARDS
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Grid wrapper */
+  .products-grid,
+  .product-cards,
+  [class*="products-grid"],
+  [class*="product-list"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  @media (min-width: 600px) {
+    .products-grid,
+    .product-cards,
+    [class*="products-grid"],
+    [class*="product-list"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .products-grid,
+    .product-cards,
+    [class*="products-grid"],
+    [class*="product-list"] {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+
+  /* Individual card */
+  .product-card,
+  [class*="product-card"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px 20px !important;
+  }
+
+  /* Remove horizontal scroll from card rows */
+  [class*="card-row"],
+  [class*="product-row"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    overflow-x: visible !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ============================================================
+   5. APPLICATION CARDS
+   ============================================================ */
+@media (max-width: 1023px) {
+  .applications-grid,
+  [class*="applications-grid"],
+  .app-cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  @media (min-width: 600px) {
+    .applications-grid,
+    [class*="applications-grid"],
+    .app-cards {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .applications-grid,
+    [class*="applications-grid"],
+    .app-cards {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+
+  .app-card,
+  [class*="app-card"] {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
+
+/* ============================================================
+   6. SUSTAINABILITY SECTION
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Two-column layout becomes single column */
+  .sustainability-layout,
+  .sustainability-section .two-col,
+  .sustainability-section .grid-2,
+  [class*="sustainability"] .layout-grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .sustainability-section,
+  [id="sustainability"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* ISO cert badges: wrap nicely */
+  .iso-certs,
+  [class*="iso-certs"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Stats inside sustainability visual */
+  .sustainability-metrics,
+  [class*="sus-metrics"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+/* ============================================================
+   7. NEWS SECTION
+   ============================================================ */
+@media (max-width: 1023px) {
+  .news-grid,
+  [class*="news-grid"],
+  .news-cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  @media (min-width: 600px) {
+    .news-grid,
+    [class*="news-grid"],
+    .news-cards {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  /* News header row: stack title + button */
+  .news-header,
+  [class*="news-header"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+}
+
+/* ============================================================
+   8. SDS / RESOURCES TABLE → card stack on mobile
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Convert table to card layout */
+  .resources-table,
+  table.sds-table,
+  [class*="resources"] table {
+    display: block !important;
+    width: 100% !important;
+  }
+  .resources-table thead,
+  table.sds-table thead {
+    display: none !important;   /* hide column headers */
+  }
+  .resources-table tbody,
+  .resources-table tr,
+  table.sds-table tbody,
+  table.sds-table tr {
+    display: block !important;
+    width: 100% !important;
+  }
+  .resources-table tr,
+  table.sds-table tr {
+    padding: 14px 16px !important;
+    border-bottom: 1px solid #f0f2f5 !important;
+    background: #fff;
+  }
+  .resources-table td,
+  table.sds-table td {
+    display: block !important;
+    width: 100% !important;
+    padding: 3px 0 !important;
+    border: none !important;
+    font-size: 0.875rem !important;
+  }
+  /* Label prefix via data-label attribute */
+  .resources-table td[data-label]::before,
+  table.sds-table td[data-label]::before {
+    content: attr(data-label) ": ";
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #7a8499;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Download link buttons: stack them */
+  .doc-link,
+  [class*="doc-link"],
+  .sds-link {
+    display: inline-flex !important;
+    margin: 3px 4px 3px 0 !important;
+  }
+}
+
+/* Generic table overflow fallback for medium screens */
+@media (min-width: 641px) and (max-width: 900px) {
+  .resources-table,
+  table.sds-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   9. CONTACT FORM + INFO LAYOUT
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Stack form and contact info vertically */
+  .contact-layout,
+  [class*="contact-layout"],
+  #contact .grid-2,
+  #contact .two-col {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Form grid: 1-col on mobile, 2-col on tablet */
+  .form-grid,
+  [class*="form-grid"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  @media (min-width: 500px) {
+    .form-grid,
+    [class*="form-grid"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .form-grid .field-full,
+    [class*="form-grid"] .field-full {
+      grid-column: 1 / -1 !important;
+    }
+  }
+
+  /* All inputs: ensure large enough tap targets */
+  input, textarea, select, button {
+    min-height: 44px;
+    font-size: 16px !important;  /* prevents iOS zoom on focus */
+    width: 100%;
+  }
+  textarea {
+    min-height: 120px;
+    width: 100%;
+  }
+  button[type="submit"],
+  input[type="submit"],
+  .btn-submit {
+    width: auto;
+    min-width: 160px;
+  }
+
+  /* Section padding */
+  #contact,
+  .contact-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Contact info cards: full width */
+  .contact-info-card,
+  [class*="contact-info-card"] {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+}
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+@media (max-width: 1023px) {
+  /* Stack footer columns */
+  .footer-grid,
+  footer .grid,
+  footer .columns,
+  [class*="footer-grid"],
+  footer > .container > div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 24px !important;
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid,
+    footer .grid,
+    [class*="footer-grid"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Footer brand takes full width */
+  .footer-brand,
+  [class*="footer-brand"] {
+    grid-column: 1 / -1 !important;
+  }
+
+  footer {
+    padding: 48px 20px 0 !important;
+  }
+
+  /* Footer bottom row: stack */
+  .footer-bottom,
+  [class*="footer-bottom"] {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+    padding: 20px 0 !important;
+  }
+
+  /* QR code: hide on mobile (takes up too much space) */
+  .footer img[alt*="QR"],
+  .footer img[alt*="qr"],
+  .footer img[src*="qr"] {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   11. GENERAL SECTION PADDING
+   ============================================================ */
+@media (max-width: 1023px) {
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  section.section,
+  [class*="section"] {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ============================================================
+   12. TYPOGRAPHY — fluid scaling
+   ============================================================ */
+@media (max-width: 1023px) {
+  h1 { font-size: clamp(1.8rem, 6vw, 3rem) !important; }
+  h2 { font-size: clamp(1.4rem, 4.5vw, 2rem) !important; }
+  h3 { font-size: clamp(1.05rem, 3.5vw, 1.4rem) !important; }
+  h4 { font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important; }
+  p  { font-size: clamp(0.875rem, 2.5vw, 1rem) !important; line-height: 1.7 !important; }
+}
+
+/* ============================================================
+   13. STICKY MOBILE CTA BAR
+   Appears at bottom of screen after scrolling past hero.
+   JS below toggles .is-visible class.
+   ============================================================ */
+#stickyMobileCta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e8eaed;
+  box-shadow: 0 -4px 20px rgba(11, 31, 58, 0.1);
+  padding: 12px 16px;
+  z-index: 8000;
+  gap: 10px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+@media (max-width: 1023px) {
+  #stickyMobileCta {
+    display: flex !important;
+  }
+}
+#stickyMobileCta.is-visible {
+  transform: translateY(0);
+}
+#stickyMobileCta a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  min-height: 46px;
+  transition: opacity 0.2s;
+}
+#stickyMobileCta a:active { opacity: 0.8; }
+#stickyMobileCta .cta-call {
+  background: #f0f2f5;
+  color: #1c2333;
+  max-width: 80px;
+}
+#stickyMobileCta .cta-contact {
+  background: #e8a020;
+  color: #0b1f3a;
+}
+
+/* Add bottom padding to body so sticky bar doesn't cover content */
+@media (max-width: 1023px) {
+  body { padding-bottom: 72px !important; }
+}
+
+/* ============================================================
+   14. MISCELLANEOUS FIXES
+   ============================================================ */
+
+/* Prevent oversized inline elements from breaking layout */
+@media (max-width: 1023px) {
+  /* Video poster / video container */
+  .video-wrapper,
+  [class*="video-container"],
+  [class*="video-wrap"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Two-column layouts anywhere on page */
+  .grid-2,
+  .two-col,
+  [class*="grid-2"],
+  [class*="two-col"],
+  [class*="col-2"] {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Three-column layouts: drop to 1 on mobile, 2 on tablet */
+  .grid-3,
+  .three-col,
+  [class*="grid-3"],
+  [class*="three-col"],
+  [class*="col-3"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    display: grid !important;
+  }
+  @media (max-width: 480px) {
+    .grid-3,
+    [class*="grid-3"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  /* Buttons: never overflow */
+  .btn, [class*="btn-"], button {
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  /* Skip-to-content link: keep accessible */
+  a[href="#main"],
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 99999;
+  }
+  a[href="#main"]:focus,
+  .skip-link:focus {
+    top: 8px;
+  }
+}
