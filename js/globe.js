@@ -42,7 +42,7 @@
 
     // Color palette - ClouDNS inspired
     const colors = {
-      background: '#E8E8E8',      // Light gray background
+      background: '#F9FAFB',      // Light gray background (matches bg-gray-50)
       dots: '#B0B0B0',            // Gray dots for continents
       markers: '#FF8C42',         // Orange markers
       markerGlow: 'rgba(255, 140, 66, 0.6)',

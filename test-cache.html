@@ -7,10 +7,12 @@
 console.log('Test page loaded at:', new Date().toISOString());
 console.log('If you see this message multiple times with the same timestamp, HTML is cached');
 </script>
+  <link rel="stylesheet" href="assets/css/mobile-fix.css">
 </head>
 <body>
 <h1>Cache Test Page</h1>
 <p>This page tests if HTML caching is working.</p>
 <p>Load time: <script>document.write(new Date().toISOString());</script></p>
+  <script src="assets/js/mobile-fix.js"></script>
 </body>
 </html>

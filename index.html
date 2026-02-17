@@ -46,6 +46,7 @@
     }
   </script>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="assets/css/mobile-fix.css">
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -438,44 +439,16 @@
     </section>
 
     <!-- GLOBAL SALES MAP SECTION -->
-    <section id="global-sales-map" class="relative w-full overflow-hidden"
-      style="min-height: 60vh; background: linear-gradient(135deg, #0A1628 0%, #0E3C75 50%, #1a5490 100%);">
-      <!-- Scientific Background Pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="molecular-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <circle cx="50" cy="50" r="2" fill="#60A5FA" opacity="0.3" />
-              <line x1="50" y1="50" x2="100" y2="50" stroke="#60A5FA" stroke-width="0.5" opacity="0.2" />
-              <line x1="50" y1="50" x2="50" y2="100" stroke="#60A5FA" stroke-width="0.5" opacity="0.2" />
-              <line x1="50" y1="50" x2="75" y2="25" stroke="#60A5FA" stroke-width="0.5" opacity="0.2" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#molecular-grid)" />
-        </svg>
-      </div>
-
-      <!-- Grid Lines Background -->
-      <div class="absolute inset-0 opacity-5">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#60A5FA" stroke-width="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
-
+    <section id="global-sales-map" class="relative w-full overflow-hidden bg-gray-50">
       <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
           <!-- Left: Text Content -->
           <div class="text-left z-10">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight"
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
               data-i18n="globalSales.title">
               Global Reach — Supplying 50+ Countries Worldwide
             </h2>
-            <p class="text-base sm:text-lg text-blue-100 max-w-2xl leading-relaxed" data-i18n="globalSales.subhead">
+            <p class="text-base sm:text-lg text-gray-600 max-w-2xl leading-relaxed" data-i18n="globalSales.subhead">
               From North America to Asia, ABC Chemical's high-purity materials power innovation across industries.
             </p>
           </div>
@@ -488,84 +461,84 @@
         <!-- KPI Dashboard - Below Globe -->
         <div id="global-stats" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
           <!-- Countries Widget -->
-          <div class="kpi-glass-card">
-            <div class="kpi-header">
-              <div class="kpi-icon-wrapper">
-                <svg class="kpi-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="stat-card orange-theme">
+            <div class="stat-header">
+              <div class="stat-icon-wrapper">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                   </path>
                 </svg>
               </div>
             </div>
-            <div class="kpi-content">
-              <span class="kpi-number" data-target="50">0</span>
-              <h3 class="kpi-label">Countries</h3>
-              <p class="kpi-sublabel">Worldwide Presence</p>
+            <div class="stat-content">
+              <span class="stat-number" data-target="50">0</span>
+              <h3 class="stat-label">Countries</h3>
+              <p class="stat-sublabel">Worldwide Presence</p>
             </div>
-            <div class="kpi-progress-bg">
-              <div class="kpi-progress-bar" style="width: 75%"></div>
+            <div class="stat-progress-bg">
+              <div class="stat-progress-bar" style="width: 75%"></div>
             </div>
           </div>
 
           <!-- Partners Widget -->
-          <div class="kpi-glass-card">
-            <div class="kpi-header">
-              <div class="kpi-icon-wrapper">
-                <svg class="kpi-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="stat-card orange-theme">
+            <div class="stat-header">
+              <div class="stat-icon-wrapper">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                   </path>
                 </svg>
               </div>
             </div>
-            <div class="kpi-content">
-              <span class="kpi-number" data-target="120">0</span>
-              <h3 class="kpi-label">Partners</h3>
-              <p class="kpi-sublabel">Global Distributors</p>
+            <div class="stat-content">
+              <span class="stat-number" data-target="120">0</span>
+              <h3 class="stat-label">Partners</h3>
+              <p class="stat-sublabel">Global Distributors</p>
             </div>
-            <div class="kpi-progress-bg">
-              <div class="kpi-progress-bar" style="width: 85%"></div>
+            <div class="stat-progress-bg">
+              <div class="stat-progress-bar" style="width: 85%"></div>
             </div>
           </div>
 
           <!-- Years Widget -->
-          <div class="kpi-glass-card">
-            <div class="kpi-header">
-              <div class="kpi-icon-wrapper">
-                <svg class="kpi-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="stat-card orange-theme">
+            <div class="stat-header">
+              <div class="stat-icon-wrapper">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
             </div>
-            <div class="kpi-content">
-              <span class="kpi-number" data-target="25">0</span>
-              <h3 class="kpi-label">Years</h3>
-              <p class="kpi-sublabel">Manufacturing Excellence</p>
+            <div class="stat-content">
+              <span class="stat-number" data-target="25">0</span>
+              <h3 class="stat-label">Years</h3>
+              <p class="stat-sublabel">Manufacturing Excellence</p>
             </div>
-            <div class="kpi-progress-bg">
-              <div class="kpi-progress-bar" style="width: 100%"></div>
+            <div class="stat-progress-bg">
+              <div class="stat-progress-bar" style="width: 100%"></div>
             </div>
           </div>
 
           <!-- Quality Widget -->
-          <div class="kpi-glass-card">
-            <div class="kpi-header">
-              <div class="kpi-icon-wrapper">
-                <svg class="kpi-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="stat-card orange-theme">
+            <div class="stat-header">
+              <div class="stat-icon-wrapper">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
             </div>
-            <div class="kpi-content">
-              <span class="kpi-number" data-target="99">0</span>
-              <h3 class="kpi-label">Quality</h3>
-              <p class="kpi-sublabel">Customer Satisfaction</p>
+            <div class="stat-content">
+              <span class="stat-number" data-target="99">0</span>
+              <h3 class="stat-label">Quality</h3>
+              <p class="stat-sublabel">Customer Satisfaction</p>
             </div>
-            <div class="kpi-progress-bg">
-              <div class="kpi-progress-bar" style="width: 99%"></div>
+            <div class="stat-progress-bg">
+              <div class="stat-progress-bar" style="width: 99%"></div>
             </div>
           </div>
         </div>
@@ -1019,6 +992,7 @@
   <script src="./main.js"></script>
   <script src="js/globe.js"></script>
   <script src="js/statsCounter.js"></script>
+  <script src="assets/js/mobile-fix.js"></script>
 </body>
 
 </html>
