@@ -1,6 +1,17 @@
 {
   "news": [
     {
+      "id": 7,
+      "date": "2026-02-17",
+      "date_zh": "2026年2月17日",
+      "title_en": "ABC Chemical Co., Ltd. 2026 Chinese New Year Celebration Activities",
+      "title_zh": "ABC化工有限公司 2026年春节庆祝活动",
+      "summary_en": "As the 2026 Year of the Horse Spring Festival approached, ABC Chemical Co., Ltd. organized a series of heartwarming Chinese New Year activities designed to foster a warm and harmonious festive atmosphere, allowing every employee to feel the company's sincere care and the warmth of being part of one big family.",
+      "summary_zh": "随着2026年马年春节的临近，ABC化工有限公司组织了一系列温馨的春节活动，旨在营造温馨和谐的节日氛围，让每一位员工都能感受到公司的真诚关怀和作为大家庭一员的温暖。",
+      "link": "news/2026-02-17-spring-festival-celebration.html",
+      "link_zh": "news/2026-02-17-spring-festival-celebration-zh.html"
+    },
+    {
       "id": 6,
       "date": "2025-11-14",
       "date_zh": "2025年11月14日",
