@@ -1,0 +1,269 @@
+/*
+ * ============================================================
+ *  ABC CHEMICAL — nav-mobile-fix.css  (v2)
+ *
+ *  ROOT CAUSE FIX: Your site uses bare <ul> tags inside <nav>
+ *  with no class names. Previous CSS only targeted .nav-links,
+ *  .nav-menu etc. which didn't exist — so nothing was hidden.
+ *
+ *  INSTALL (in <head>, LAST stylesheet — after all others):
+ *    <link rel="stylesheet" href="assets/css/nav-mobile-fix.css">
+ *  ALSO add before </body>:
+ *    <script src="assets/js/nav-mobile-fix.js"></script>
+ * ============================================================ */
+
+@media (max-width: 1023px) {
+
+  /* ---- 1. NAV BAR: fixed strip across top ---- */
+  nav,
+  header,
+  .navbar,
+  .site-header {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    background: #0b1f3a !important;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28) !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  /* Push page down so content isn't under fixed nav */
+  body { padding-top: 60px !important; }
+
+  /* ---- 2. HIDE ALL NAV <ul> LISTS (bare tags, no class) ---- */
+  /* This is the key fix — your HTML uses nav > ul with no class */
+  nav ul,
+  nav > ul,
+  header ul,
+  header > ul,
+  .navbar ul,
+  .site-header ul {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* ---- 3. LOGO: left side ---- */
+  .nav-logo,
+  nav > a.nav-logo,
+  nav a[href="#home"],
+  nav a[href="index.html"] {
+    flex-shrink: 0 !important;
+    order: 1 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    max-width: 65% !important;
+  }
+  .nav-logo img { height: 32px !important; width: auto !important; }
+  .nav-logo-text {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 150px !important;
+  }
+
+  /* ---- 4. LANGUAGE TOGGLE: compact pill, middle ---- */
+  .nav-lang,
+  .lang-switcher,
+  [class*="lang"] {
+    order: 2 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+    align-items: center !important;
+    gap: 4px !important;
+    margin-left: auto !important;
+    margin-right: 10px !important;
+    flex-shrink: 0 !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    color: rgba(255,255,255,0.8) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 5px !important;
+    padding: 4px 9px !important;
+    cursor: pointer !important;
+    background: transparent !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  /* ---- 5. HAMBURGER: top-right ---- */
+  .hamburger,
+  .menu-toggle,
+  button[aria-label="Toggle menu"] {
+    order: 3 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 9px !important;
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    margin: 0 !important;
+  }
+  .hamburger:hover,
+  .menu-toggle:hover {
+    background: rgba(255,255,255,0.2) !important;
+  }
+  .hamburger span,
+  .menu-toggle span,
+  button[aria-label="Toggle menu"] span {
+    display: block !important;
+    width: 20px !important;
+    height: 2px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: transform 0.25s ease, opacity 0.25s ease !important;
+  }
+  /* X when open */
+  .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+  .hamburger.is-open span:nth-child(2) { opacity: 0 !important; transform: scaleX(0) !important; }
+  .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+  .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+  .menu-toggle.is-open span:nth-child(2) { opacity: 0 !important; }
+  .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+}
+
+/* ============================================================
+   WHITE DRAWER (no media query — always in DOM, toggled by JS)
+   ============================================================ */
+
+/* Dimmed backdrop behind drawer */
+#mobileMenuBackdrop {
+  display: none;
+  position: fixed !important;
+  top: 60px !important; left: 0 !important;
+  right: 0 !important; bottom: 0 !important;
+  background: rgba(11,31,58,0.42) !important;
+  z-index: 9990 !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+#mobileMenuBackdrop.is-open { display: block !important; }
+
+/* Drawer panel — WHITE, slides in from right */
+#mobileMenuDrawer {
+  position: fixed !important;
+  top: 60px !important;
+  right: 0 !important;
+  left: auto !important;
+  bottom: 0 !important;
+  width: 300px !important;
+  max-width: 88vw !important;
+  background: #ffffff !important;
+  color: #1c2333 !important;
+  border-left: 1px solid #dde1e9 !important;
+  box-shadow: -8px 0 40px rgba(11,31,58,0.2) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 8px 0 48px !important;
+  z-index: 9995 !important;
+  transform: translateX(110%) !important;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1) !important;
+}
+#mobileMenuDrawer.is-open {
+  transform: translateX(0) !important;
+}
+
+/* Section label */
+#mobileMenuDrawer .drawer-section-label {
+  display: block !important;
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: #9aa3b0 !important;
+  padding: 16px 20px 6px !important;
+}
+
+/* Each link row */
+#mobileMenuDrawer a {
+  display: block !important;
+  font-size: 0.93rem !important;
+  font-weight: 500 !important;
+  color: #1a2235 !important;
+  background: #ffffff !important;
+  padding: 13px 20px !important;
+  border-bottom: 1px solid #f0f3f7 !important;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s, padding-left 0.18s !important;
+}
+#mobileMenuDrawer a:hover {
+  background: #f4f8ff !important;
+  color: #1a5cb8 !important;
+  padding-left: 28px !important;
+}
+
+/* CTA buttons at the bottom */
+#mobileMenuDrawer .drawer-ctas {
+  padding: 20px 16px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+#mobileMenuDrawer .drawer-ctas a {
+  border-bottom: none !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  padding: 13px 16px !important;
+}
+#mobileMenuDrawer .btn-primary-drawer {
+  background: #e8a020 !important;
+  color: #0b1f3a !important;
+}
+#mobileMenuDrawer .btn-primary-drawer:hover {
+  background: #f5b830 !important; padding-left: 16px !important;
+}
+#mobileMenuDrawer .btn-ghost-drawer {
+  background: #f0f2f5 !important;
+  color: #1c2333 !important;
+}
+#mobileMenuDrawer .btn-ghost-drawer:hover {
+  background: #e4e8ee !important; padding-left: 16px !important;
+}
+
+/* Body scroll lock */
+body.mobile-menu-open { overflow: hidden !important; }
+
+/* Full-width on tiny phones */
+@media (max-width: 340px) {
+  #mobileMenuDrawer { width: 100% !important; max-width: 100% !important; border-left: none !important; }
+}
