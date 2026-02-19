@@ -767,15 +767,12 @@ const T = {
   }
 };
 
-function applyLang(lang) {
+window.applyLang = function (lang) {
   // Version check - CRITICAL: This must run to verify new code is loaded
   if (typeof window !== 'undefined') {
     if (!window._translationVersion) {
-      window._translationVersion = 'v10';
+      window._translationVersion = 'v11';
       // Translation system initialized
-    } else if (window._translationVersion !== 'v10') {
-      console.error('%c❌ WRONG VERSION DETECTED!', 'color: red; font-weight: bold; font-size: 20px;');
-      console.error('Expected: v10, Got:', window._translationVersion);
     }
   }
 
@@ -873,12 +870,16 @@ function setupLangToggle() {
   document.querySelectorAll('[data-setlang]').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.getAttribute('data-setlang');
-      applyLang(lang);
+      if (typeof window.applyLang === 'function') {
+        window.applyLang(lang);
+      }
       loadNews(); // Reload news when language changes
     });
   });
   const saved = localStorage.getItem('lang') || 'en';
-  applyLang(saved);
+  if (typeof window.applyLang === 'function') {
+    window.applyLang(saved);
+  }
 }
 
 // Setup mobile dropdown menus (click-to-expand)
@@ -911,13 +912,13 @@ function setupMobileDropdowns() {
   });
 }
 
-const btn = document.getElementById('menuBtn');
-const panel = document.getElementById('mobileNav');
-btn?.addEventListener('click', () => {
-  const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
-  btn.setAttribute('aria-expanded', String(!expanded));
-  panel.classList.toggle('hidden');
-});
+// const btn = document.getElementById('menuBtn');
+// const panel = document.getElementById('mobileNav');
+// btn?.addEventListener('click', () => {
+//   const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
+//   btn.setAttribute('aria-expanded', String(!expanded));
+//   panel.classList.toggle('hidden');
+// });
 
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
