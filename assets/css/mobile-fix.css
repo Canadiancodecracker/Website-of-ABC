@@ -75,10 +75,9 @@ object {
   }
 
   /* Make the nav bar itself a proper flex row */
-  nav,
-  header nav,
-  .navbar,
-  .site-header {
+  .mega-nav-header,
+  header.mega-nav-header,
+  nav.mobile-fix-bar {
     display: flex !important;
     align-items: center;
     justify-content: space-between;

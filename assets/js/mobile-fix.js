@@ -325,7 +325,7 @@
      INIT — run after DOM is ready
      ========================================================= */
   function init() {
-    setupHamburgerToggle();
+    // setupHamburgerToggle(); // DISABLED: Handled by nav-mobile-fix.js to prevent conflicts
     setupStickyCta();
     setupFadeIn();
     setupCounters();

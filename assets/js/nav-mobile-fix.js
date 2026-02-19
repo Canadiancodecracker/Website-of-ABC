@@ -25,18 +25,32 @@
   /* =========================================================
      STEP 1: Find nav element
      ========================================================= */
+  /* =========================================================
+     STEP 1: Find nav element (Target the main header container)
+     ========================================================= */
   var navEl =
-    document.querySelector('nav') ||
+    document.querySelector('.mega-nav-header') ||
     document.querySelector('header') ||
+    document.querySelector('nav') ||
     document.querySelector('.navbar') ||
     document.querySelector('.site-header');
 
   if (!navEl) return;
+  navEl.classList.add('mobile-fix-bar');
+
+  if (!navEl) return;
 
   /* =========================================================
-     STEP 2: Inject hamburger button (top-right via CSS order:3)
+     STEP 2: Find or Inject hamburger button
      ========================================================= */
-  var hamburger = navEl.querySelector('.hamburger, .menu-toggle, [aria-label="Toggle menu"]');
+  var hamburger = navEl.querySelector('.hamburger, .menu-toggle, #menuBtn, [aria-label*="menu"], [aria-label*="Menu"]');
+
+  // Hide the native mobile nav if it exists to avoid conflicts
+  var nativeMobileNav = document.getElementById('mobileNav');
+  if (nativeMobileNav) {
+    nativeMobileNav.style.display = 'none';
+    nativeMobileNav.setAttribute('aria-hidden', 'true');
+  }
 
   if (!hamburger) {
     hamburger = document.createElement('button');
@@ -45,7 +59,15 @@
     hamburger.setAttribute('aria-label', 'Toggle menu');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.innerHTML = '<span></span><span></span><span></span>';
-    navEl.appendChild(hamburger);
+
+    // Inject into the inner container for better alignment
+    var inner = navEl.querySelector('.mega-nav-inner') || navEl;
+    inner.appendChild(hamburger);
+  } else {
+    // If we found an existing button (like #menuBtn), make sure it has the hamburger class for CSS
+    hamburger.classList.add('hamburger');
+    // Force the span lines because our CSS relies on them for the animated X icon
+    hamburger.innerHTML = '<span></span><span></span><span></span>';
   }
 
   /* =========================================================
