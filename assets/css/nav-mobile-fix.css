@@ -125,7 +125,9 @@
   .mega-nav-header img {
     height: 30px !important;
     width: auto !important;
-    mix-blend-mode: multiply !important;
+    /* Invert colors and use 'screen' to make the logo white/visible on the dark mobile header */
+    filter: invert(1) brightness(2) !important;
+    mix-blend-mode: screen !important;
     display: block !important;
   }
 

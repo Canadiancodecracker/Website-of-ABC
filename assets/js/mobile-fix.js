@@ -204,9 +204,15 @@
     var bar = document.createElement('div');
     bar.id = 'stickyMobileCta';
     bar.innerHTML =
-      '<a href="tel:+15551234567" class="cta-call">📞 Call</a>' +
-      '<a href="#contact" class="cta-contact">Contact Sales</a>';
+      '<a href="tel:+15551234567" class="cta-call" data-i18n="nav.contact.call">📞 Call</a>' +
+      '<a href="#contact" class="cta-contact" data-i18n="nav.contact.sales">Contact Sales</a>';
     document.body.appendChild(bar);
+
+    // Trigger translation for the new elements
+    if (typeof window.applyLang === 'function') {
+      var lang = localStorage.getItem('lang') || 'en';
+      window.applyLang(lang);
+    }
 
     var hero = $('section.hero, .hero, #home, [class*="hero-section"]');
     if (!hero) {

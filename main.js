@@ -57,8 +57,9 @@ const T = {
       contact: {
         _: "Contact",
         general: "General Inquiries",
-        sales: "Sales",
-        technical: "Technical Support"
+        sales: "Contact Sales",
+        technical: "Technical Support",
+        call: "📞 Call"
       }
     },
     hero: {
@@ -434,8 +435,9 @@ const T = {
       contact: {
         _: "联系",
         general: "一般咨询",
-        sales: "销售",
-        technical: "技术支持"
+        sales: "联系销售",
+        technical: "技术支持",
+        call: "📞 电话联系"
       }
     },
     hero: {
