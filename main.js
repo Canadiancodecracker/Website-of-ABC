@@ -59,7 +59,9 @@ const T = {
         general: "General Inquiries",
         sales: "Contact Sales",
         technical: "Technical Support",
-        call: "📞 Call"
+        call: "📞 Call",
+        backHome: "← Back to Home",
+        learnMore: "Learn More →"
       }
     },
     hero: {
@@ -161,6 +163,18 @@ const T = {
           structuralFormulaValue: "H₂N-C(=NH)-NH-C≡N"
         }
       },
+      p3: {
+        title: "Performance Products",
+        desc: "Creatine Monohydrate & Guanidinoacetic Acid for nutrition and functional performance."
+      },
+      p4: {
+        title: "Industrial Intermediates",
+        desc: "Thiourea & Guanidine Nitrate as dependable intermediates for advanced syntheses."
+      },
+      p5: {
+        title: "Calcium Cyanamide",
+        desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses."
+      }
     },
     apps: {
       title: "Applications",
@@ -374,7 +388,7 @@ const T = {
     },
     aside: { title: "Corporate Headquarters", subtitle: "Global Sales & Technical Service", general: "General Inquiries", sales: "Sales", technical: "Technical Support", technicalLink: "View details →", note: "* Addresses and phone numbers are placeholders." },
     footer: { privacy: "Privacy", terms: "Terms", compliance: "Compliance", c: "©", rights: "All rights reserved." },
-    news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists" },
+    news: { viewAll: "View all News", allNews: "All News", title: "NEWS & UPDATES", badge: "Calcium & Cyanamide Specialists", subtitle: "Stay updated with the latest news, announcements, and developments from ABC Chemical Co., Ltd." },
     video: { title: "Discover ABC Chemical", subtitle: "Learn more about our advanced calcium and cyanamide solutions" },
     globalSales: {
       eyebrow: "Global Sales Network",
@@ -386,7 +400,15 @@ const T = {
       kpi1: "countries served worldwide",
       kpi2: "distribution & logistics partners",
       kpi3: "years of manufacturing experience",
-      kpi4: "on-spec batch reliability"
+      kpi4: "on-spec batch reliability",
+      kpi1_title: "Countries",
+      kpi1_sub: "Worldwide Presence",
+      kpi2_title: "Partners",
+      kpi2_sub: "Global Distributors",
+      kpi3_title: "Years",
+      kpi3_sub: "Manufacturing Excellence",
+      kpi4_title: "Quality",
+      kpi4_sub: "Customer Satisfaction"
     }
   },
 
@@ -437,7 +459,9 @@ const T = {
         general: "一般咨询",
         sales: "联系销售",
         technical: "技术支持",
-        call: "📞 电话联系"
+        call: "📞 电话联系",
+        backHome: "← 返回首页",
+        learnMore: "了解更多 →"
       }
     },
     hero: {
@@ -539,6 +563,18 @@ const T = {
           structuralFormulaValue: "H₂N-C(=NH)-NH-C≡N"
         }
       },
+      p3: {
+        title: "性能产品",
+        desc: "肌酸一水合物与胍基乙酸，服务于营养与功能性应用。"
+      },
+      p4: {
+        title: "工业中间体",
+        desc: "硫脲与硝酸胍，可靠的高级合成中间体。"
+      },
+      p5: {
+        title: "氰氨化钙",
+        desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。"
+      }
     },
     apps: {
       title: "应用",
@@ -752,7 +788,7 @@ const T = {
     },
     aside: { title: "公司总部", subtitle: "全球销售与技术服务", general: "综合咨询", sales: "销售", technical: "技术支持", technicalLink: "查看详情 →", note: "＊ 地址与电话为示例信息。" },
     footer: { privacy: "隐私", terms: "条款", compliance: "合规", c: "©", rights: "保留所有权利。" },
-    news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家" },
+    news: { viewAll: "查看所有新闻", allNews: "所有新闻", title: "新闻与更新", badge: "钙与氰胺专家", subtitle: "获取ABC化工有限公司的最新动态、公告和发展情况。" },
     video: { title: "探索ABC化工", subtitle: "了解更多关于我们先进的钙与氰胺解决方案" },
     globalSales: {
       eyebrow: "全球销售网络",
@@ -764,7 +800,15 @@ const T = {
       kpi1: "服务国家/地区",
       kpi2: "分销与物流合作伙伴",
       kpi3: "年制造经验",
-      kpi4: "批次合格率"
+      kpi4: "批次合格率",
+      kpi1_title: "服务国家",
+      kpi1_sub: "全球覆盖",
+      kpi2_title: "合作伙伴",
+      kpi2_sub: "全球分销商",
+      kpi3_title: "年经验",
+      kpi3_sub: "卓越制造",
+      kpi4_title: "品质保证",
+      kpi4_sub: "客户满意度"
     }
   }
 };
