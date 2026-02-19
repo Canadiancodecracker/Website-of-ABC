@@ -319,6 +319,10 @@ section[id] {
   overflow: visible !important;
 }
 
+.mega-nav-header img {
+  mix-blend-mode: multiply !important;
+}
+
 .mega-nav-container {
   position: relative;
   overflow: visible !important;

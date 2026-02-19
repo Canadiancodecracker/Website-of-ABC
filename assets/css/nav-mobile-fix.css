@@ -125,6 +125,8 @@
   .mega-nav-header img {
     height: 30px !important;
     width: auto !important;
+    mix-blend-mode: multiply !important;
+    display: block !important;
   }
 
   /* Brand text colors and width restriction */

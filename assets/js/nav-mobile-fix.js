@@ -84,6 +84,7 @@
       anchors.forEach(function (a) {
         var text = a.textContent.trim().replace(/\s+/g, ' ');
         var href = a.getAttribute('href') || '#';
+        var i18n = a.getAttribute('data-i18n') || a.parentElement.getAttribute('data-i18n');
         var key = text + '||' + href;
 
         if (seen[key]) return;   // deduplicate
@@ -94,7 +95,7 @@
         // Skip very short language codes
         if (text === 'EN' || text === '中' || text === 'ZH') return;
 
-        result.push({ text: text, href: href });
+        result.push({ text: text, href: href, i18n: i18n });
       });
     });
 
@@ -125,6 +126,7 @@
     /* Section label */
     var label = document.createElement('div');
     label.className = 'drawer-section-label';
+    label.setAttribute('data-i18n', 'nav.resources.news');
     label.textContent = 'Menu';
     drawer.appendChild(label);
 
@@ -133,24 +135,24 @@
     if (links.length === 0) {
       /* Fallback: hard-code the known nav items from your site */
       links = [
-        { text: 'Home', href: '#home' },
-        { text: 'Company Overview', href: '#home' },
-        { text: 'News & Updates', href: 'all-news.html' },
-        { text: 'About Us', href: 'about-us.html' },
-        { text: 'Events', href: 'events.html' },
-        { text: 'Factory Gallery', href: 'factory-gallery.html' },
-        { text: 'Careers / Hiring', href: 'careers.html' },
-        { text: 'Products', href: '#products' },
-        { text: 'Calcium Carbide', href: 'calcium-carbide.html' },
-        { text: 'Calcium Cyanamide', href: 'calcium-cyanamide.html' },
-        { text: 'Cyanamide Derivatives', href: 'cyanamide-derivatives.html' },
-        { text: 'Applications', href: '#applications' },
-        { text: 'Agriculture & Fertilizers', href: 'agriculture-fertilizers.html' },
-        { text: 'Pharmaceuticals & Nutrition', href: 'pharmaceuticals-nutrition.html' },
-        { text: 'Metallurgy & Industry', href: 'metallurgy-industry.html' },
-        { text: 'Sustainability', href: '#sustainability' },
-        { text: 'Resources / SDS', href: '#resources' },
-        { text: 'Contact', href: '#contact' },
+        { text: 'Home', href: '#home', i18n: 'nav.home._' },
+        { text: 'Company Overview', href: '#home', i18n: 'nav.home.overview' },
+        { text: 'News & Updates', href: 'all-news.html', i18n: 'nav.home.news' },
+        { text: 'About Us', href: 'about-us.html', i18n: 'nav.about._' },
+        { text: 'Events', href: 'events.html', i18n: 'nav.about.events' },
+        { text: 'Factory Gallery', href: 'factory-gallery.html', i18n: 'nav.about.gallery' },
+        { text: 'Careers / Hiring', href: 'careers.html', i18n: 'nav.about.careers' },
+        { text: 'Products', href: '#products', i18n: 'nav.products._' },
+        { text: 'Calcium Carbide', href: 'calcium-carbide.html', i18n: 'nav.products.calcium' },
+        { text: 'Calcium Cyanamide', href: 'calcium-cyanamide.html', i18n: 'nav.products.cyanamide' },
+        { text: 'Cyanamide Derivatives', href: 'cyanamide-derivatives.html', i18n: 'nav.products.intermediates' },
+        { text: 'Applications', href: '#applications', i18n: 'nav.applications._' },
+        { text: 'Agriculture & Fertilizers', href: 'agriculture-fertilizers.html', i18n: 'nav.applications.agriculture' },
+        { text: 'Pharmaceuticals & Nutrition', href: 'pharmaceuticals-nutrition.html', i18n: 'nav.applications.pharma' },
+        { text: 'Metallurgy & Industry', href: 'metallurgy-industry.html', i18n: 'nav.applications.metallurgy' },
+        { text: 'Sustainability', href: '#sustainability', i18n: 'nav.sustainability._' },
+        { text: 'Resources / SDS', href: '#resources', i18n: 'nav.resources._' },
+        { text: 'Contact', href: '#contact', i18n: 'nav.contact._' },
       ];
     }
 
@@ -158,6 +160,7 @@
       var a = document.createElement('a');
       a.href = item.href;
       a.textContent = item.text;
+      if (item.i18n) a.setAttribute('data-i18n', item.i18n);
       drawer.appendChild(a);
     });
 
@@ -170,11 +173,17 @@
     var ctas = document.createElement('div');
     ctas.className = 'drawer-ctas';
     ctas.innerHTML =
-      '<a href="#contact" class="btn-primary-drawer">Contact Sales</a>' +
-      '<a href="#resources" class="btn-ghost-drawer">Download SDS Docs</a>';
+      '<a href="#contact" class="btn-primary-drawer" data-i18n="nav.contact.sales">Contact Sales</a>' +
+      '<a href="#resources" class="btn-ghost-drawer" data-i18n="nav.resources.sds">Download SDS Docs</a>';
     drawer.appendChild(ctas);
 
     document.body.appendChild(drawer);
+
+    /* Immediately trigger translation if main system is available */
+    if (typeof window.applyLang === 'function') {
+      var currentLang = localStorage.getItem('lang') || 'en';
+      window.applyLang(currentLang);
+    }
   }
 
   /* =========================================================
