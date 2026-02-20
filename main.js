@@ -405,7 +405,7 @@ const T = {
       eyebrow: "Global Sales Network",
       headline1: "Our global reach",
       headline2: "across 50+ countries",
-      title: "Global Reach — Supplying 50+ Countries Worldwide",
+      title: "Global Reach —<br><span class=\"text-[#ff9f1c]\">Supplying 50+<br>Countries</span><br>Worldwide",
       subhead: "From North America to Asia, ABC Chemical's high-purity materials power innovation across industries.",
       subheadOld: "From North America to Asia, ABC Chemical supplies high-purity materials to customers in more than 50 countries, supporting agriculture, nutrition, and advanced industries.",
       kpi1: "countries served worldwide",
@@ -816,7 +816,7 @@ const T = {
       eyebrow: "全球销售网络",
       headline1: "我们的全球覆盖",
       headline2: "遍及50多个国家",
-      title: "全球覆盖 — 服务全球50多个国家",
+      title: "全球覆盖 —<br><span class=\"text-[#ff9f1c]\">服务全球 50+<br>个国家</span>",
       subhead: "从北美到亚洲，ABC化工的高纯度材料为各行业的创新提供动力。",
       subheadOld: "从北美到亚洲，ABC化工向50多个国家的客户供应高纯度材料，支持农业、营养和先进工业。",
       kpi1: "服务国家/地区",
@@ -880,7 +880,7 @@ window.applyLang = function (lang) {
     }
 
     if (found && typeof cur === 'string') {
-      el.textContent = cur;
+      el.innerHTML = cur;
     } else if (!found) {
       // Translation not found - silently skip (warnings suppressed)
       // Only log if explicitly debugging
@@ -1144,11 +1144,50 @@ function initHeroSlideshow() {
   }, 5000); // Change every 5 seconds
 }
 
+// Counter animation for KPI cards
+function initCounters() {
+  const counters = document.querySelectorAll('.stat-value');
+  const observerOptions = {
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        const countTo = parseInt(target.getAttribute('data-count'));
+        if (isNaN(countTo)) return;
+
+        let currentCount = 0;
+        const duration = 2000; // 2 seconds
+        const stepTime = 30;
+        const steps = duration / stepTime;
+        const increment = countTo / steps;
+
+        const timer = setInterval(() => {
+          currentCount += increment;
+          if (currentCount >= countTo) {
+            target.textContent = countTo;
+            clearInterval(timer);
+          } else {
+            target.textContent = Math.floor(currentCount);
+          }
+        }, stepTime);
+
+        observer.unobserve(target);
+      }
+    });
+  }, observerOptions);
+
+  counters.forEach(counter => observer.observe(counter));
+}
+
 // Initialize everything
 function init() {
   setupLangToggle();
   setupMobileDropdowns();
   initHeroSlideshow();
+  initCounters();
 
   // Wait a bit to ensure DOM is fully ready
   setTimeout(() => {

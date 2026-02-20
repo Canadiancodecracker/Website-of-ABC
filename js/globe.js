@@ -37,7 +37,7 @@
       amberGlow: 'rgba(255, 159, 28, 0.35)',
       cyan: '#00d4ff',
       cyanGlow: 'rgba(0, 212, 255, 0.35)',
-      line: 'rgba(0, 212, 255, 0.06)', // Micro-lines
+      line: 'rgba(0, 212, 255, 0.15)', // More visible micro-lines
     };
 
     const continentDots = [];
@@ -45,7 +45,7 @@
 
     function generateContinentDots() {
       const dots = [];
-      const dotSpacing = canvas.width < 600 ? 4 : 6; // More dense
+      const dotSpacing = canvas.width < 600 ? 3 : 4.5; // Significantly more dense
       const regions = [
         // North America
         { x: 0.10, y: 0.15, w: 0.18, h: 0.22 }, { x: 0.08, y: 0.12, w: 0.05, h: 0.05 },
@@ -73,7 +73,7 @@
 
         for (let i = 0; i < rows; i++) {
           for (let j = 0; j < cols; j++) {
-            if (Math.random() > 0.2) { // Higher density
+            if (Math.random() > 0.1) { // Very high density
               const x = startX + (j * dotSpacing) + (Math.random() * 2);
               const y = startY + (i * dotSpacing) + (Math.random() * 2);
               dots.push({ x, y, size: Math.random() * 1.5 + 0.4 });
@@ -95,7 +95,16 @@
       { lat: 0.62, lon: 0.82, type: 'amber', name: 'Sydney' },
       { lat: 0.58, lon: 0.28, type: 'cyan', name: 'São Paulo' },
       { lat: 0.38, lon: 0.58, type: 'amber', name: 'Dubai' },
-      { lat: 0.21, lon: 0.22, type: 'cyan', name: 'Toronto' }
+      { lat: 0.21, lon: 0.22, type: 'cyan', name: 'Toronto' },
+      { lat: 0.18, lon: 0.12, type: 'amber', name: 'Vancouver' },
+      { lat: 0.35, lon: 0.88, type: 'cyan', name: 'Seoul' },
+      { lat: 0.45, lon: 0.72, type: 'amber', name: 'Singapore' },
+      { lat: 0.28, lon: 0.42, type: 'cyan', name: 'Paris' },
+      { lat: 0.42, lon: 0.52, type: 'amber', name: 'Nairobi' },
+      { lat: 0.28, lon: 0.78, type: 'cyan', name: 'Beijing' },
+      { lat: 0.32, lon: 0.74, type: 'amber', name: 'Hong Kong' },
+      { lat: 0.55, lon: 0.18, type: 'cyan', name: 'Lima' },
+      { lat: 0.28, lon: 0.08, type: 'amber', name: 'Los Angeles' }
     ];
 
     function createConnections() {
@@ -103,7 +112,7 @@
       for (let i = 0; i < markers.length; i++) {
         for (let j = i + 1; j < markers.length; j++) {
           const dist = Math.hypot(markers[i].lat - markers[j].lat, markers[i].lon - markers[j].lon);
-          if (dist < 0.45) conn.push({ from: i, to: j });
+          if (dist < 0.6) conn.push({ from: i, to: j }); // More connections
         }
       }
       return conn;
@@ -115,7 +124,7 @@
       // Draw background network
       ctx.beginPath();
       ctx.strokeStyle = colors.line;
-      ctx.lineWidth = 0.6;
+      ctx.lineWidth = 0.4; // Very thin but crisp
       connections.forEach(c => {
         const m1 = markers[c.from];
         const m2 = markers[c.to];
@@ -150,12 +159,12 @@
         const pulse = Math.sin(time * 2.5 + idx) * 0.25 + 1.2;
 
         // Outer volumetric glow
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, 25 * pulse);
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, 45 * pulse);
         grad.addColorStop(0, glow);
         grad.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(x, y, 25 * pulse, 0, Math.PI * 2);
+        ctx.arc(x, y, 45 * pulse, 0, Math.PI * 2);
         ctx.fill();
 
         // Pulsing ring (CSS equivalent)
@@ -170,7 +179,7 @@
         ctx.shadowBlur = 15;
         ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(x, y, 3.5, 0, Math.PI * 2);
+        ctx.arc(x, y, 4.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
       });
