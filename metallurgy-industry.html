@@ -1,262 +1,333 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <title>Metallurgy & Industry - ABC Chemical</title>
-    <meta name="description" content="Calcium carbide solutions enabling acetylene workflows and metal processing for industrial and metallurgical applications." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-      (function() {
-        const originalWarn = console.warn;
-        console.warn = function(...args) {
-          const msg = args[0];
-          if (msg && typeof msg === 'string') {
-            if (msg.includes('cdn.tailwindcss.com') || 
-                msg.includes('should not be used in production') ||
-                msg.includes('Tailwind CSS')) {
-              return;
-            }
-          }
-          originalWarn.apply(console, args);
-        };
-      })();
-    </script>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
-            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
-            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <title>Metallurgy & Industry - ABC Chemical</title>
+  <meta name="description"
+    content="Calcium carbide solutions enabling acetylene workflows and metal processing for industrial and metallurgical applications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    (function () {
+      const originalWarn = console.warn;
+      console.warn = function (...args) {
+        const msg = args[0];
+        if (msg && typeof msg === 'string') {
+          if (msg.includes('cdn.tailwindcss.com') ||
+            msg.includes('should not be used in production') ||
+            msg.includes('Tailwind CSS')) {
+            return;
           }
         }
+        originalWarn.apply(console, args);
+      };
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial'] },
+          colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+          boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
+        }
       }
-    </script>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
 </head>
-  <body class="bg-gray-50 text-gray-900 font-sans">
-    <!-- Header -->
-    <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
-      <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
-        <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
-          <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
-            <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
-            <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
-          </a>
-          <a href="index.html#applications" class="text-sm text-brand-blue hover:text-brand-green">← Back to Home</a>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <!-- Header -->
+  <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+    <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+        <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+          <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
+        </a>
+        <a href="index.html#applications" class="text-sm text-brand-blue hover:text-brand-green">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding-top: 88px;">
+
+    <!-- Hero Image Section -->
+    <div class="relative w-full h-96 overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600">
+      <img src="assets/images/metallurgy-hero.jpg" alt="Metallurgy & Industry"
+        class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 flex items-center">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
+          <div class="inline-block px-3 py-1 bg-white/20 text-white text-sm font-medium rounded-full mb-4">
+            Application Area
+          </div>
+          <h1 class="text-5xl font-bold mb-4 text-white" data-i18n="apps.a3.title">Metallurgy & Industry</h1>
+          <p class="text-xl text-white/90 max-w-3xl" data-i18n="apps.a3.desc">Calcium carbide solutions enabling
+            acetylene workflows and metal processing.</p>
         </div>
       </div>
-    </header>
+    </div>
 
-    <!-- Main Content -->
-    <main style="padding-top: 88px;">
-      
-      <!-- Hero Image Section -->
-      <div class="relative w-full h-96 overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-600">
-        <img src="assets/images/metallurgy-hero.jpg" alt="Metallurgy & Industry" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'" />
-        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30 flex items-center">
-          <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 w-full">
-            <div class="inline-block px-3 py-1 bg-white/20 text-white text-sm font-medium rounded-full mb-4">
-              Application Area
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
+
+      <!-- Introduction -->
+      <div class="card mb-8">
+        <p class="text-gray-700 leading-relaxed" data-i18n="metal.intro">
+          ABC Chemical Co., Ltd. supplies high-purity calcium carbide engineered for reliable acetylene generation and
+          precision support across industrial and metallurgical processes. Our material performance ensures consistent
+          reactivity, efficient gas release, and stable operation in demanding production environments.
+        </p>
+      </div>
+
+      <!-- Key Advantages -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-900" data-i18n="metal.advantages.title">Key Advantages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a1.title">Stable
+                  acetylene yield</h3>
+                <p class="text-sm text-gray-600" data-i18n="metal.advantages.a1.desc">Optimized grain size and
+                  controlled CaC₂ purity deliver predictable gas output for cutting, welding, heating, and synthesis
+                  applications.</p>
+              </div>
             </div>
-            <h1 class="text-5xl font-bold mb-4 text-white" data-i18n="apps.a3.title">Metallurgy & Industry</h1>
-            <p class="text-xl text-white/90 max-w-3xl" data-i18n="apps.a3.desc">Calcium carbide solutions enabling acetylene workflows and metal processing.</p>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a2.title">Engineered
+                  for industrial durability</h3>
+                <p class="text-sm text-gray-600" data-i18n="metal.advantages.a2.desc">Designed to withstand varying
+                  humidity and transportation conditions with reduced powdering and minimized degradation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a3.title">Low impurity
+                  profile</h3>
+                <p class="text-sm text-gray-600" data-i18n="metal.advantages.a3.desc">Strict QC minimizes phosphorus,
+                  sulfur, and metallic residues to protect downstream equipment and improve combustion behavior.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a4.title">Efficient
+                  material handling</h3>
+                <p class="text-sm text-gray-600" data-i18n="metal.advantages.a4.desc">Granule uniformity improves feed
+                  efficiency in automated acetylene generators and reduces equipment wear.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
-        
-        <!-- Introduction -->
-        <div class="card mb-8">
-          <p class="text-gray-700 leading-relaxed" data-i18n="metal.intro">
-            ABC Chemical Co., Ltd. supplies high-purity calcium carbide engineered for reliable acetylene generation and precision support across industrial and metallurgical processes. Our material performance ensures consistent reactivity, efficient gas release, and stable operation in demanding production environments.
-          </p>
-        </div>
-
-        <!-- Key Advantages -->
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold mb-6 text-gray-900" data-i18n="metal.advantages.title">Key Advantages</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="card">
-              <div class="flex items-start">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a1.title">Stable acetylene yield</h3>
-                  <p class="text-sm text-gray-600" data-i18n="metal.advantages.a1.desc">Optimized grain size and controlled CaC₂ purity deliver predictable gas output for cutting, welding, heating, and synthesis applications.</p>
-                </div>
-              </div>
+      <!-- Primary Industrial Applications -->
+      <div class="card mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900" data-i18n="metal.applications.title">Primary Industrial
+          Applications</h2>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+            <div>
+              <span class="font-semibold text-gray-900" data-i18n="metal.applications.a1.title">Oxy-acetylene metal
+                cutting & welding</span>
+              <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a1.desc">High-temperature flames for
+                precision metal fabrication, repair, and industrial maintenance.</p>
             </div>
-
-            <div class="card">
-              <div class="flex items-start">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a2.title">Engineered for industrial durability</h3>
-                  <p class="text-sm text-gray-600" data-i18n="metal.advantages.a2.desc">Designed to withstand varying humidity and transportation conditions with reduced powdering and minimized degradation.</p>
-                </div>
-              </div>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+            <div>
+              <span class="font-semibold text-gray-900" data-i18n="metal.applications.a2.title">Metallurgical heating &
+                carburization</span>
+              <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a2.desc">Used in controlled
+                atmospheres for heat treatment, carbon enhancement, and specialty alloy processing.</p>
             </div>
-
-            <div class="card">
-              <div class="flex items-start">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a3.title">Low impurity profile</h3>
-                  <p class="text-sm text-gray-600" data-i18n="metal.advantages.a3.desc">Strict QC minimizes phosphorus, sulfur, and metallic residues to protect downstream equipment and improve combustion behavior.</p>
-                </div>
-              </div>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+            <div>
+              <span class="font-semibold text-gray-900" data-i18n="metal.applications.a3.title">Chemical
+                synthesis</span>
+              <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a3.desc">Raw material for
+                acetylene-based chemical production including PVC intermediates, solvents, and specialty organic
+                compounds.</p>
             </div>
-
-            <div class="card">
-              <div class="flex items-start">
-                <div class="flex-shrink-0">
-                  <svg class="w-6 h-6 text-orange-600 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div class="ml-4">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2" data-i18n="metal.advantages.a4.title">Efficient material handling</h3>
-                  <p class="text-sm text-gray-600" data-i18n="metal.advantages.a4.desc">Granule uniformity improves feed efficiency in automated acetylene generators and reduces equipment wear.</p>
-                </div>
-              </div>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+            <div>
+              <span class="font-semibold text-gray-900" data-i18n="metal.applications.a4.title">Foundry and steel mill
+                operations</span>
+              <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a4.desc">Supports slag adjustment,
+                cleaning, and metal refining workflows requiring reactive calcium-based materials.</p>
             </div>
-          </div>
-        </div>
-
-        <!-- Primary Industrial Applications -->
-        <div class="card mb-8">
-          <h2 class="text-2xl font-bold mb-4 text-gray-900" data-i18n="metal.applications.title">Primary Industrial Applications</h2>
-          <ul class="space-y-3">
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-              <div>
-                <span class="font-semibold text-gray-900" data-i18n="metal.applications.a1.title">Oxy-acetylene metal cutting & welding</span>
-                <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a1.desc">High-temperature flames for precision metal fabrication, repair, and industrial maintenance.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-              <div>
-                <span class="font-semibold text-gray-900" data-i18n="metal.applications.a2.title">Metallurgical heating & carburization</span>
-                <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a2.desc">Used in controlled atmospheres for heat treatment, carbon enhancement, and specialty alloy processing.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-              <div>
-                <span class="font-semibold text-gray-900" data-i18n="metal.applications.a3.title">Chemical synthesis</span>
-                <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a3.desc">Raw material for acetylene-based chemical production including PVC intermediates, solvents, and specialty organic compounds.</p>
-              </div>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-              </svg>
-              <div>
-                <span class="font-semibold text-gray-900" data-i18n="metal.applications.a4.title">Foundry and steel mill operations</span>
-                <p class="text-sm text-gray-600 mt-1" data-i18n="metal.applications.a4.desc">Supports slag adjustment, cleaning, and metal refining workflows requiring reactive calcium-based materials.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Product Features -->
-        <div class="card mb-8">
-          <h2 class="text-2xl font-bold mb-4 text-gray-900" data-i18n="metal.features.title">Product Features</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm text-gray-700" data-i18n="metal.features.f1">High CaC₂ content for improved acetylene efficiency</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm text-gray-700" data-i18n="metal.features.f2">Controlled granule sizes (0–25 mm options available)</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm text-gray-700" data-i18n="metal.features.f3">Moisture-resistant packaging to maintain stability</span>
-            </div>
-            <div class="flex items-start">
-              <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm text-gray-700" data-i18n="metal.features.f4">Custom specifications available for OEM applications</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Closing Statement -->
-        <div class="card bg-gradient-to-r from-orange-50 to-amber-50 border-orange-200">
-          <p class="text-gray-700 leading-relaxed" data-i18n="metal.closing">
-            We provide dependable carbide solutions trusted by metal processors, fabrication shops, industrial manufacturers, and chemical producers worldwide.
-          </p>
-        </div>
-
-        <!-- Contact CTA -->
-        <div class="card bg-gradient-to-r from-orange-600 to-amber-600 text-white mt-8">
-          <div class="text-center py-8">
-            <h2 class="text-2xl font-bold mb-4" data-i18n="metal.cta.title">Request Technical Information</h2>
-            <p class="mb-6 opacity-90" data-i18n="metal.cta.desc">Contact our industrial sales team for calcium carbide specifications, safety data, and application support.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="index.html#contact" class="inline-block px-6 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition" data-i18n="metal.cta.btn1">
-                Contact Sales
-              </a>
-              <a href="calcium-carbide.html" class="inline-block px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-orange-600 transition" data-i18n="metal.cta.btn2">
-                View Calcium Carbide Specs
-              </a>
-            </div>
-          </div>
-        </div>
-
+          </li>
+        </ul>
       </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto mx-auto mb-4" />
-          <p class="text-sm">&copy; 2025 ABC Chemical Co., Ltd. All rights reserved.</p>
+      <!-- Product Features -->
+      <div class="card mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900" data-i18n="metal.features.title">Product Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700" data-i18n="metal.features.f1">High CaC₂ content for improved acetylene
+              efficiency</span>
+          </div>
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700" data-i18n="metal.features.f2">Controlled granule sizes (0–25 mm options
+              available)</span>
+          </div>
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700" data-i18n="metal.features.f3">Moisture-resistant packaging to maintain
+              stability</span>
+          </div>
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-700" data-i18n="metal.features.f4">Custom specifications available for OEM
+              applications</span>
+          </div>
         </div>
       </div>
-    </footer>
 
-    <script src="./main.js"></script>
-    <script src="assets/js/mobile-fix.js?v=2"></script>
+      <!-- Closing Statement -->
+      <div class="card bg-gradient-to-r from-orange-50 to-amber-50 border-orange-200">
+        <p class="text-gray-700 leading-relaxed" data-i18n="metal.closing">
+          We provide dependable carbide solutions trusted by metal processors, fabrication shops, industrial
+          manufacturers, and chemical producers worldwide.
+        </p>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="card bg-gradient-to-r from-orange-600 to-amber-600 text-white mt-8">
+        <div class="text-center py-8">
+          <h2 class="text-2xl font-bold mb-4" data-i18n="metal.cta.title">Request Technical Information</h2>
+          <p class="mb-6 opacity-90" data-i18n="metal.cta.desc">Contact our industrial sales team for calcium carbide
+            specifications, safety data, and application support.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="index.html#contact"
+              class="inline-block px-6 py-3 bg-white text-orange-600 font-semibold rounded-lg hover:bg-gray-100 transition"
+              data-i18n="metal.cta.btn1">
+              Contact Sales
+            </a>
+            <a href="calcium-carbide.html"
+              class="inline-block px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-orange-600 transition"
+              data-i18n="metal.cta.btn2">
+              View Calcium Carbide Specs
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto" />
+          <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+        </div>
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-brand-blue" data-i18n="nav.home._">Home</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+        </nav>
+        <div class="text-xs text-gray-400">
+          <span data-i18n="footer.c">©</span> <span id="y"></span>
+          <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+  <script src="assets/js/mobile-fix.js?v=2"></script>
 </body>
-</html>
 
+</html>

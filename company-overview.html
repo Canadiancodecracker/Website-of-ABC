@@ -43,7 +43,7 @@
         }
     </script>
     <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
+    <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -94,18 +94,29 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto mx-auto mb-4" />
-                <p class="text-sm">&copy; 2025 ABC Chemical Co., Ltd. All rights reserved.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2">
+                    <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto" />
+                    <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+                </div>
+                <nav class="flex items-center gap-6 text-sm">
+                    <a href="index.html" class="hover:text-brand-blue" data-i18n="nav.home._">Home</a>
+                    <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+                    <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+                    <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+                </nav>
+                <div class="text-xs text-gray-400">
+                    <span data-i18n="footer.c">©</span> <span id="y"></span>
+                    <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="./main.js"></script>
-  <script src="assets/js/mobile-fix.js?v=2"></script>
+    <script src="assets/js/mobile-fix.js?v=2"></script>
 </body>
 
 </html>

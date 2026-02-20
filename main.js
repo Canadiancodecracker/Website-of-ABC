@@ -62,7 +62,8 @@ const T = {
         call: "📞 Call",
         backHome: "← Back to Home",
         learnMore: "Learn More →"
-      }
+      },
+      menu: "Menu"
     },
     hero: {
       kicker: "Reliable • Scientific • Global",
@@ -173,7 +174,17 @@ const T = {
       },
       p5: {
         title: "Calcium Cyanamide",
-        desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses."
+        desc: "A multifunctional agrochemical and chemical intermediate, enabling soil improvement, nitrogen fertilization, and specialty NCN syntheses.",
+        fullName: "Granular Lime Nitrogen / Calcium Cyanamide (CaCN₂)",
+        synonyms: "Calcium carbimide, Cyanamide calcium derivative, Cyanamide calcium salt",
+        formula: "CaNCN",
+        linearFormula: "CaNCN",
+        cas: "156-62-7",
+        mw: "80.10",
+        ecNumber: "205-861-8",
+        appearanceLabel: "Appearance",
+        appearance: "Gray-black granule",
+        fullDesc: "Calcium cyanamide is a slow-release nitrogen fertilizer. It is used to increase crop yield and effectively kill harmful bacteria and insects, optimize soil structure, eliminate soil hardening, alleviate soil acidification, and supplement soil with calcium and nitrogen."
       }
     },
     apps: {
@@ -462,7 +473,8 @@ const T = {
         call: "📞 电话联系",
         backHome: "← 返回首页",
         learnMore: "了解更多 →"
-      }
+      },
+      menu: "菜单"
     },
     hero: {
       kicker: "可靠 • 科学 • 全球",
@@ -573,7 +585,17 @@ const T = {
       },
       p5: {
         title: "氰氨化钙",
-        desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。"
+        desc: "多功能农用化学品和化学中间体，可用于土壤改良、氮肥施用和特种NCN合成。",
+        fullName: "颗粒石灰氮 / 氰氨化钙 (CaCN₂)",
+        synonyms: "碳亚胺钙、氨基氰钙衍生物、氨基氰钙盐",
+        formula: "CaNCN",
+        linearFormula: "CaNCN",
+        cas: "156-62-7",
+        mw: "80.10",
+        ecNumber: "205-861-8",
+        appearanceLabel: "外观",
+        appearance: "灰黑色颗粒",
+        fullDesc: "氰氨化钙是一种缓释氮肥。用于增加作物产量，有效杀灭有害细菌和昆虫，优化土壤结构，消除土壤硬化，缓解土壤酸化，并为土壤补充钙和氮。"
       }
     },
     apps: {

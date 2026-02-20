@@ -1,192 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Events - ABC Chemical</title>
-    <meta name="description" content="Upcoming trade shows and events where ABC Chemical will be exhibiting." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','Arial'] },
-            colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
-            boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
-          }
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Events - ABC Chemical</title>
+  <meta name="description" content="Upcoming trade shows and events where ABC Chemical will be exhibiting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Arial'] },
+          colors: { brand: { blue: '#0E3C75', green: '#4CAF50' } },
+          boxShadow: { brand: '0 10px 30px -12px rgba(14,60,117,.25)' }
         }
       }
-    </script>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
+    }
+  </script>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="assets/css/mobile-fix.css?v=2">
 </head>
-  <body class="bg-gray-50 text-gray-900 font-sans">
-    <header class="bg-white border-b border-gray-200">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-        <div class="flex items-center justify-between">
-          <a href="index.html" class="text-brand-blue hover:underline" data-i18n="events.backHome">← Back to Home</a>
-          <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle" style="border-color: #E4E7EB;">
-            <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
-            <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+  <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+    <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+        <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+          <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
+        </a>
+        <a href="index.html" class="text-sm text-brand-blue hover:text-brand-green" data-i18n="events.backHome">← Back
+          to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" style="padding-top: 104px;">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4" data-i18n="events.title">Upcoming
+        Events</h1>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto" data-i18n="events.subtitle">
+        Join us at leading trade shows and exhibitions worldwide. Connect with our team to discuss your needs and
+        explore our high-purity chemical solutions.
+      </p>
+    </div>
+
+    <!-- Events Grid -->
+    <div class="space-y-8">
+      <!-- Event 1: CPHI China 2026 -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
+        <div class="p-6 sm:p-8">
+          <div class="flex items-start justify-between mb-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event1.name">CPHI China 2026
+            </h2>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span data-i18n="events.event1.dates">June 16 – 18, 2026</span>
+            </span>
           </div>
-        </div>
-      </div>
-    </header>
 
-    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Header Section -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4" data-i18n="events.title">Upcoming Events</h1>
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto" data-i18n="events.subtitle">
-          Join us at leading trade shows and exhibitions worldwide. Connect with our team to discuss your needs and explore our high-purity chemical solutions.
-        </p>
-      </div>
-
-      <!-- Events Grid -->
-      <div class="space-y-8">
-        <!-- Event 1: CPHI China 2026 -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
-          <div class="p-6 sm:p-8">
-            <div class="flex items-start justify-between mb-4">
-              <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event1.name">CPHI China 2026</h2>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <div class="flex items-start gap-3 mb-4">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span data-i18n="events.event1.dates">June 16 – 18, 2026</span>
-              </span>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-6 mt-6">
-              <div>
-                <div class="flex items-start gap-3 mb-4">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event1.location">Shanghai New International Expo Center (SNIEC), China</p>
-                  </div>
-                </div>
-                
-                <div class="flex items-start gap-3 mb-4">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event1.focus">Asia's premier pharma event, covering APIs, excipients, and finished dosage solutions. We will highlight our high-purity APIs, including the newly launched Dimethylamine Hydrochloride (DMH), and our new pharmaceutical solutions.</p>
-                  </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event1.location">Shanghai New International Expo
+                    Center (SNIEC), China</p>
                 </div>
               </div>
-              
-              <div>
-                <div class="flex items-start gap-3 mb-4">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.booth">Booth/Hall</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event1.booth">[Insert Booth/Hall Number]</p>
-                  </div>
-                </div>
-                
-                <div class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.link">Link</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event1.link">[Link to official CPHI China website or ABC Chemical event page]</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Event 2: CPHI North America 2026 -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
-          <div class="p-6 sm:p-8">
-            <div class="flex items-start justify-between mb-4">
-              <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event2.name">CPHI North America 2026</h2>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              <div class="flex items-start gap-3 mb-4">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span data-i18n="events.event2.dates">June 2 – 4, 2026</span>
-              </span>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-6 mt-6">
-              <div>
-                <div class="flex items-start gap-3 mb-4">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event2.location">Pennsylvania Convention Center, Philadelphia, PA, USA</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <div class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event2.focus">The largest dedicated North American pharma trade show. We will be connecting with partners for regional supply chain expansion and discussing R&D advancements, specifically our reliable supply of high-specification intermediates.</p>
-                  </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event1.focus">Asia's premier pharma event,
+                    covering APIs, excipients, and finished dosage solutions. We will highlight our high-purity APIs,
+                    including the newly launched Dimethylamine Hydrochloride (DMH), and our new pharmaceutical
+                    solutions.</p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Event 3: Chemspec Europe 2026 -->
-        <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
-          <div class="p-6 sm:p-8">
-            <div class="flex items-start justify-between mb-4">
-              <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event3.name">Chemspec Europe 2026</h2>
-              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            <div>
+              <div class="flex items-start gap-3 mb-4">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
-                <span data-i18n="events.event3.dates">May 6 – 7, 2026</span>
-              </span>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-6 mt-6">
-              <div>
-                <div class="flex items-start gap-3 mb-4">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event3.location">Koelnmesse, Cologne, Germany</p>
-                  </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.booth">Booth/Hall</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event1.booth">[Insert Booth/Hall Number]</p>
                 </div>
               </div>
-              
-              <div>
-                <div class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <div>
-                    <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
-                    <p class="text-base text-gray-900" data-i18n="events.event3.focus">The premier exhibition for the fine and specialty chemicals industry. We will connect with specialty formulators and materials developers to discuss our high-purity calcium and cyanamide intermediates used in advanced manufacturing.</p>
-                  </div>
+
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.link">Link</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event1.link">[Link to official CPHI China website
+                    or ABC Chemical event page]</p>
                 </div>
               </div>
             </div>
@@ -194,15 +131,146 @@
         </div>
       </div>
 
-      <!-- Contact CTA -->
-      <div class="mt-12 text-center">
-        <p class="text-gray-700 mb-4" data-i18n="events.cta">Interested in meeting us at these events?</p>
-        <a href="index.html#contact" class="btn-primary inline-block" data-i18n="events.contactBtn">Contact Us</a>
-      </div>
-    </main>
+      <!-- Event 2: CPHI North America 2026 -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
+        <div class="p-6 sm:p-8">
+          <div class="flex items-start justify-between mb-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event2.name">CPHI North America
+              2026</h2>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span data-i18n="events.event2.dates">June 2 – 4, 2026</span>
+            </span>
+          </div>
 
-    <script src="./main.js?v=3"></script>
-    <script src="assets/js/mobile-fix.js?v=2"></script>
+          <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <div class="flex items-start gap-3 mb-4">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event2.location">Pennsylvania Convention Center,
+                    Philadelphia, PA, USA</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event2.focus">The largest dedicated North
+                    American pharma trade show. We will be connecting with partners for regional supply chain expansion
+                    and discussing R&D advancements, specifically our reliable supply of high-specification
+                    intermediates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event 3: Chemspec Europe 2026 -->
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
+        <div class="p-6 sm:p-8">
+          <div class="flex items-start justify-between mb-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-brand-blue" data-i18n="events.event3.name">Chemspec Europe
+              2026</h2>
+            <span
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue border border-brand-blue/20">
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span data-i18n="events.event3.dates">May 6 – 7, 2026</span>
+            </span>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <div class="flex items-start gap-3 mb-4">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.location">Location</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event3.location">Koelnmesse, Cologne, Germany</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="text-sm font-semibold text-gray-500 mb-1" data-i18n="events.focus">Focus</p>
+                  <p class="text-base text-gray-900" data-i18n="events.event3.focus">The premier exhibition for the fine
+                    and specialty chemicals industry. We will connect with specialty formulators and materials
+                    developers to discuss our high-purity calcium and cyanamide intermediates used in advanced
+                    manufacturing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-12 text-center">
+      <p class="text-gray-700 mb-4" data-i18n="events.cta">Interested in meeting us at these events?</p>
+      <a href="index.html#contact"
+        class="inline-block px-6 py-3 bg-brand-blue text-white font-semibold rounded-lg hover:bg-brand-blue/90 transition"
+        data-i18n="events.contactBtn">Contact Us</a>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto" />
+          <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+        </div>
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-brand-blue" data-i18n="nav.home._">Home</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+        </nav>
+        <div class="text-xs text-gray-400">
+          <span data-i18n="footer.c">©</span> <span id="y"></span>
+          <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./main.js?v=3"></script>
+  <script src="assets/js/mobile-fix.js?v=2"></script>
 </body>
-</html>
 
+</html>

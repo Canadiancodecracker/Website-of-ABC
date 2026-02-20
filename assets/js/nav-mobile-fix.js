@@ -126,7 +126,7 @@
     /* Section label */
     var label = document.createElement('div');
     label.className = 'drawer-section-label';
-    label.setAttribute('data-i18n', 'nav.resources.news');
+    label.setAttribute('data-i18n', 'nav.menu');
     label.textContent = 'Menu';
     drawer.appendChild(label);
 

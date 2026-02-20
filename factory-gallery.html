@@ -29,20 +29,20 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
-  <header class="bg-white border-b border-gray-200">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-      <div class="flex items-center justify-between">
-        <a href="index.html" class="text-brand-blue hover:underline" data-i18n="gallery.backHome">← Back to Home</a>
-        <div class="inline-flex rounded-lg border overflow-hidden" role="group" aria-label="Language toggle"
-          style="border-color: #E4E7EB;">
-          <button id="btn-en" class="mega-lang-btn mega-lang-active" data-setlang="en" aria-pressed="true">EN</button>
-          <button id="btn-zh" class="mega-lang-btn" data-setlang="zh" aria-pressed="false">中</button>
-        </div>
+  <header class="mega-nav-header fixed top-0 inset-x-0 z-50 bg-white border-b" style="border-color: #E4E7EB;">
+    <div class="mega-nav-container mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div class="mega-nav-inner flex items-center justify-between" style="height: 72px;">
+        <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-12 w-auto" />
+          <span id="brand" class="text-lg sm:text-xl font-extrabold tracking-tight">ABC Chemical Co., Ltd.</span>
+        </a>
+        <a href="index.html" class="text-sm text-brand-blue hover:text-brand-green" data-i18n="gallery.backHome">← Back
+          to Home</a>
       </div>
     </div>
   </header>
 
-  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12" style="padding-top: 104px;">
     <!-- Header Section -->
     <div class="text-center mb-12">
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4" data-i18n="gallery.title">Factory
@@ -160,6 +160,27 @@
 
 
   </main>
+
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/abc-logo.png" alt="ABC Chemical Logo" class="h-8 w-auto" />
+          <span class="font-semibold" id="footerBrand">ABC Chemical Co., Ltd.</span>
+        </div>
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="hover:text-brand-blue" data-i18n="nav.home._">Home</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.privacy">Privacy</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.terms">Terms</a>
+          <a href="#" class="hover:text-brand-blue" data-i18n="footer.compliance">Compliance</a>
+        </nav>
+        <div class="text-xs text-gray-400">
+          <span data-i18n="footer.c">©</span> <span id="y"></span>
+          <span id="rights">ABC Chemical Co., Ltd. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Image Modal -->
   <div id="imageModal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
