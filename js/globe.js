@@ -32,12 +32,12 @@
 
     const colors = {
       background: 'transparent',
-      dots: 'rgba(100, 255, 218, 0.15)',
-      amber: 'rgba(255, 176, 31, 1)',
-      amberGlow: 'rgba(255, 176, 31, 0.3)',
-      cyan: 'rgba(100, 255, 218, 1)',
-      cyanGlow: 'rgba(100, 255, 218, 0.3)',
-      line: 'rgba(100, 255, 218, 0.08)',
+      dots: 'rgba(0, 212, 255, 0.12)', // Cyan dots, low opacity
+      amber: '#ff9f1c',
+      amberGlow: 'rgba(255, 159, 28, 0.35)',
+      cyan: '#00d4ff',
+      cyanGlow: 'rgba(0, 212, 255, 0.35)',
+      line: 'rgba(0, 212, 255, 0.06)', // Micro-lines
     };
 
     const continentDots = [];
@@ -45,13 +45,22 @@
 
     function generateContinentDots() {
       const dots = [];
-      const dotSpacing = canvas.width < 600 ? 5 : 7;
+      const dotSpacing = canvas.width < 600 ? 4 : 6; // More dense
       const regions = [
+        // North America
         { x: 0.10, y: 0.15, w: 0.18, h: 0.22 }, { x: 0.08, y: 0.12, w: 0.05, h: 0.05 },
-        { x: 0.24, y: 0.45, w: 0.10, h: 0.25 }, { x: 0.46, y: 0.15, w: 0.12, h: 0.12 },
-        { x: 0.48, y: 0.10, w: 0.05, h: 0.08 }, { x: 0.48, y: 0.35, w: 0.12, h: 0.28 },
+        // South America
+        { x: 0.24, y: 0.45, w: 0.10, h: 0.25 },
+        // Europe
+        { x: 0.46, y: 0.15, w: 0.12, h: 0.12 }, { x: 0.48, y: 0.10, w: 0.05, h: 0.08 },
+        // Africa
+        { x: 0.48, y: 0.35, w: 0.12, h: 0.28 },
+        // Asia
         { x: 0.58, y: 0.10, w: 0.25, h: 0.35 }, { x: 0.65, y: 0.30, w: 0.10, h: 0.15 },
-        { x: 0.78, y: 0.55, w: 0.10, h: 0.12 }
+        // Australia
+        { x: 0.78, y: 0.55, w: 0.10, h: 0.12 },
+        // Southeast Asia
+        { x: 0.70, y: 0.40, w: 0.05, h: 0.05 }
       ];
 
       regions.forEach(region => {
@@ -64,10 +73,10 @@
 
         for (let i = 0; i < rows; i++) {
           for (let j = 0; j < cols; j++) {
-            if (Math.random() > 0.25) {
-              const x = startX + (j * dotSpacing) + (Math.random() * 3);
-              const y = startY + (i * dotSpacing) + (Math.random() * 3);
-              dots.push({ x, y, size: Math.random() * 1.2 + 0.3 });
+            if (Math.random() > 0.2) { // Higher density
+              const x = startX + (j * dotSpacing) + (Math.random() * 2);
+              const y = startY + (i * dotSpacing) + (Math.random() * 2);
+              dots.push({ x, y, size: Math.random() * 1.5 + 0.4 });
             }
           }
         }
@@ -76,11 +85,17 @@
     }
 
     const markers = [
-      { lat: 0.24, lon: 0.18, type: 'amber' }, { lat: 0.32, lon: 0.14, type: 'cyan' },
-      { lat: 0.22, lon: 0.47, type: 'amber' }, { lat: 0.25, lon: 0.51, type: 'cyan' },
-      { lat: 0.30, lon: 0.76, type: 'amber' }, { lat: 0.28, lon: 0.84, type: 'cyan' },
-      { lat: 0.34, lon: 0.68, type: 'cyan' }, { lat: 0.62, lon: 0.82, type: 'amber' },
-      { lat: 0.58, lon: 0.28, type: 'cyan' }, { lat: 0.38, lon: 0.58, type: 'amber' }
+      { lat: 0.24, lon: 0.18, type: 'amber', name: 'New York' },
+      { lat: 0.32, lon: 0.14, type: 'cyan', name: 'San Francisco' },
+      { lat: 0.22, lon: 0.47, type: 'amber', name: 'London' },
+      { lat: 0.25, lon: 0.51, type: 'cyan', name: 'Frankfurt' },
+      { lat: 0.30, lon: 0.76, type: 'amber', name: 'Shanghai' },
+      { lat: 0.28, lon: 0.84, type: 'cyan', name: 'Tokyo' },
+      { lat: 0.34, lon: 0.68, type: 'cyan', name: 'Mumbai' },
+      { lat: 0.62, lon: 0.82, type: 'amber', name: 'Sydney' },
+      { lat: 0.58, lon: 0.28, type: 'cyan', name: 'São Paulo' },
+      { lat: 0.38, lon: 0.58, type: 'amber', name: 'Dubai' },
+      { lat: 0.21, lon: 0.22, type: 'cyan', name: 'Toronto' }
     ];
 
     function createConnections() {
@@ -88,7 +103,7 @@
       for (let i = 0; i < markers.length; i++) {
         for (let j = i + 1; j < markers.length; j++) {
           const dist = Math.hypot(markers[i].lat - markers[j].lat, markers[i].lon - markers[j].lon);
-          if (dist < 0.4) conn.push({ from: i, to: j });
+          if (dist < 0.45) conn.push({ from: i, to: j });
         }
       }
       return conn;
@@ -97,9 +112,10 @@
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Draw background network
       ctx.beginPath();
       ctx.strokeStyle = colors.line;
-      ctx.lineWidth = 0.5;
+      ctx.lineWidth = 0.6;
       connections.forEach(c => {
         const m1 = markers[c.from];
         const m2 = markers[c.to];
@@ -108,54 +124,73 @@
       });
       ctx.stroke();
 
+      // Draw continent data points
       continentDots.forEach(dot => {
         ctx.fillStyle = colors.dots;
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fill();
-        if (Math.random() > 0.9995) {
-          ctx.fillStyle = 'rgba(100, 255, 218, 0.5)';
+
+        // Random glimmers
+        if (Math.random() > 0.9997) {
+          ctx.fillStyle = colors.cyan;
           ctx.beginPath();
-          ctx.arc(dot.x, dot.y, dot.size * 3, 0, Math.PI * 2);
+          ctx.arc(dot.x, dot.y, dot.size * 2.5, 0, Math.PI * 2);
           ctx.fill();
         }
       });
 
+      // Draw animated nodes
       const time = Date.now() / 1000;
       markers.forEach((m, idx) => {
         const x = m.lon * canvas.width;
         const y = m.lat * canvas.height;
         const color = m.type === 'amber' ? colors.amber : colors.cyan;
         const glow = m.type === 'amber' ? colors.amberGlow : colors.cyanGlow;
-        const pulse = Math.sin(time * 2 + idx) * 0.2 + 1;
+        const pulse = Math.sin(time * 2.5 + idx) * 0.25 + 1.2;
 
-        const grad = ctx.createRadialGradient(x, y, 0, x, y, 18 * pulse);
+        // Outer volumetric glow
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, 25 * pulse);
         grad.addColorStop(0, glow);
         grad.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(x, y, 18 * pulse, 0, Math.PI * 2);
+        ctx.arc(x, y, 25 * pulse, 0, Math.PI * 2);
         ctx.fill();
 
+        // Pulsing ring (CSS equivalent)
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(x, y, 8 * pulse, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Center core
         ctx.shadowColor = color;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 15;
         ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(x, y, 2.5 * pulse, 0, Math.PI * 2);
+        ctx.arc(x, y, 3.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
       });
+
       requestAnimationFrame(draw);
     }
 
+    // Initialize and Start
     continentDots.push(...generateContinentDots());
     connections.push(...createConnections());
     draw();
 
+    let resizeTimer;
     window.addEventListener('resize', () => {
-      updateSize();
-      continentDots.length = 0;
-      continentDots.push(...generateContinentDots());
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        updateSize();
+        continentDots.length = 0;
+        continentDots.push(...generateContinentDots());
+      }, 200);
     });
   }
 })();

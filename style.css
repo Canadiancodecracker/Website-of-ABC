@@ -772,19 +772,38 @@ section[id] {
   transition: width 1s ease-out;
 }
 
+/* Map Floating Animation */
+.animate-map-float {
+  animation: map-float 6s ease-in-out infinite;
+}
+
+@keyframes map-float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 /* Dark Tech-Noir Stats Cards */
 #global-sales-map .stat-card {
   background: rgba(16, 32, 58, 0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.15);
   color: white;
 }
 
 #global-sales-map .stat-card:hover {
-  border-color: rgba(100, 255, 218, 0.3);
+  border-color: rgba(0, 212, 255, 0.4);
   background: rgba(16, 32, 58, 0.6);
-  box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
 }
 
 #global-sales-map .stat-number {
@@ -793,22 +812,23 @@ section[id] {
 }
 
 #global-sales-map .stat-label {
-  color: #64FFDA;
+  color: #00d4ff;
   opacity: 0.9;
 }
 
 #global-sales-map .stat-sublabel {
-  color: rgba(255, 255, 255, 0.5);
+  color: #a8dadc;
+  opacity: 0.7;
 }
 
 #global-sales-map .stat-icon-wrapper {
-  background: rgba(100, 255, 218, 0.05);
-  color: #64FFDA;
+  background: rgba(0, 212, 255, 0.05);
+  color: #00d4ff;
 }
 
 #global-sales-map .stat-card:hover .stat-icon-wrapper {
-  background: #64FFDA;
-  color: #0A192F;
+  background: #00d4ff;
+  color: #0d1b2a;
 }
 
 #global-sales-map .stat-progress-bg {
@@ -816,7 +836,7 @@ section[id] {
 }
 
 #global-sales-map .stat-progress-bar {
-  background: linear-gradient(90deg, #64FFDA, #FFB01F);
+  background: linear-gradient(90deg, #00d4ff, #ff9f1c);
 }
 
 /* Globe animation */
