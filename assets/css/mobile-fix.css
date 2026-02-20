@@ -366,7 +366,7 @@ body.mobile-menu-open {
   .stat-number,
   .counter-number,
   [class*="stat-number"] {
-    font-size: clamp(1.8rem, 5vw, 2.8rem) !important;
+    font-size: clamp(1.5rem, 5vw, 2.2rem) !important;
     line-height: 1 !important;
   }
 
@@ -776,11 +776,11 @@ body.mobile-menu-open {
    ============================================================ */
 @media (max-width: 1023px) {
   h1 {
-    font-size: clamp(1.8rem, 6vw, 3rem) !important;
+    font-size: clamp(1.5rem, 5vw, 2.2rem) !important;
   }
 
   h2 {
-    font-size: clamp(1.4rem, 4.5vw, 2rem) !important;
+    font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
   }
 
   h3 {
