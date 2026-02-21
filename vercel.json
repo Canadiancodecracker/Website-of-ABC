@@ -1,5 +1,4 @@
 {
-    "name": "website-of-abc",
     "framework": null,
     "buildCommand": null,
     "installCommand": "echo 'Skipping install'",

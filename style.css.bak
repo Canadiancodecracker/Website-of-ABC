@@ -51,27 +51,24 @@ section[id] {
 }
 
 .card {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 12px rgba(14, 60, 117, 0.08) !important;
-  border-radius: 12px !important;
-  padding: 2rem !important;
-  color: #0E3C75 !important;
-  transition: all 0.2s ease !important;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: .75rem;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-
-
-
-
-
-
 .card:hover {
-  transform: translateY(-10px) scale(1.02) !important;
-  background: rgba(255, 255, 255, 0.07) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6) !important;
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
 }
 
 .card .icon {
@@ -83,12 +80,12 @@ section[id] {
   justify-content: center
 }
 
-.card-title { color: #0E3C75 !important; font-weight: 700 !important; color: #0E3C75 !important; font-weight: 700 !important; color: #0369a1 !important; font-weight: 700 !important; color: #ffffff !important; font-weight: 700 !important;
+.card-title {
   font-size: 1.125rem;
   font-weight: 600
 }
 
-.card-desc { color: #0E3C75 !important; opacity: 0.9 !important; color: #4b5563 !important; color: #0c4a6e !important; color: rgba(255, 255, 255, 0.85) !important;
+.card-desc {
   font-size: .9rem;
   color: #4b5563
 }
