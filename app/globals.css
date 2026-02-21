@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --color-ink: #0a2a30;
+  --color-ink: #0e3c75;
   --color-emerald: #0b7f62;
   --color-teal: #00a3a7;
   --color-sky: #2b8ee5;
@@ -18,7 +18,7 @@ body {
   padding: 0;
   margin: 0;
   min-height: 100%;
-  background: radial-gradient(circle at 20% 0%, #ffffff 0%, #eaf4f6 44%, #f6fbfc 100%);
+  background: #ffffff;
   color: var(--color-ink);
   font-family: "Public Sans", "Noto Sans SC", sans-serif;
 }

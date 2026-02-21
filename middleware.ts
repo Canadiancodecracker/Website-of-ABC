@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { defaultLocale, locales } from "@/lib/i18n/config";
+import { defaultLocale, locales } from "./lib/i18n/config";
 
 function getLocaleFromPath(pathname: string): string | null {
   const segment = pathname.split("/")[1];
