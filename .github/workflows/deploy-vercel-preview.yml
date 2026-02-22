@@ -1,0 +1,47 @@
+# Preview deployment for non-main branches (optional).
+# Uses same secrets as deploy-vercel.yml. Run on push to any branch except main.
+
+name: Deploy to Vercel (Preview)
+
+on:
+  push:
+    branches-ignore: [main]
+
+concurrency:
+  group: vercel-deploy-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployment secrets
+        run: |
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "::error::Add VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID in Settings → Secrets and variables → Actions. See DEPLOY.md."
+            exit 1
+          fi
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel project
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy preview
+        run: vercel deploy --token=${{ secrets.VERCEL_TOKEN }} --yes
