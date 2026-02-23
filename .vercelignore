@@ -1,0 +1,16 @@
+# Deploy only the static ABC Chemical site (HTML/CSS/JS).
+# Exclude Next.js-style app and components so Vercel does not detect a framework.
+app
+components
+lib
+data
+next.config.js.bak
+next-env.d.ts
+tsconfig.json
+*.tsbuildinfo
+.github
+scripts
+.env.example
+.env
+.env.*
+*.md

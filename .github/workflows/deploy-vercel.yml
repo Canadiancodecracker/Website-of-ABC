@@ -47,4 +47,13 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        id: deploy
+        run: |
+          OUTPUT=$(vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes 2>&1)
+          echo "$OUTPUT"
+          URL=$(echo "$OUTPUT" | grep -oE 'https://[^[:space:]]+\.vercel\.app' | head -1)
+          if [ -n "$URL" ]; then
+            echo "url=$URL" >> $GITHUB_OUTPUT
+            echo "## Deployment ready" >> $GITHUB_STEP_SUMMARY
+            echo "**$URL**" >> $GITHUB_STEP_SUMMARY
+          fi

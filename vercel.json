@@ -2,5 +2,7 @@
     "framework": null,
     "buildCommand": null,
     "installCommand": "echo 'Skipping install'",
-    "outputDirectory": "."
+    "outputDirectory": ".",
+  "cleanUrls": false,
+  "trailingSlash": false
 }
